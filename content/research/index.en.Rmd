@@ -1,0 +1,30 @@
+---
+title: 'Research'
+author: 'Alexander Gamerdinger'
+date: '2021-12-14'
+slug: [/research/]
+description: ''
+---
+
+My research is focused on how professionals use artificial intelligence and algorithms in finance and insurance, as well as how this affects professional work, expertise, and the transnational governance. My secondary research interest is on subjective wellbeing, wellbeing professionals, wellbeing governance and the Wellbeing Economy.
+
+My analytical approach is mostly quantitative, drawing on established methods found in Relational Sociology and International Political Economy including social network analysis, multiple correspondence analysis, and career sequence analysis. I am also interested in text mining, web scraping and data visualization.
+
+## Publications 
+
+* Birkjær, M., Gamerdinger, A., & El-Abd, S. (2021). Towards a Nordic Wellbeing Economy. Copenhagen: Nordisk Ministerråd, pp. 1-61. https://doi.org/10.6027/nord2021-049
+* Gamerdinger, A., Rubio, A., & Kaats, M. (2020) Wellbeing in the age of COVID-19. Copenhagen: Happiness Research Institute, pp. 1.35. https://www.happinessresearchinstitute.com/covid-19
+
+## Press & media 
+
+* 
+* Talk about happiness and home (in German) [Deutschlandfunk Nova](https://www.deutschlandfunknova.de/beitrag/wohnen-unser-traum-vom-eigenheim-lebt)
+* The Loneliness Pandemic [Wellbeing People](https://www.youtube.com/watch?v=P9lXf1QTjSM)
+* Why we need a common language for Wellbeing Economy? [WeAll](https://weall.org/why-we-need-a-common-language-for-wellbeing-economy)
+* How has Covid-19 affected wellbeing across the world? [What Works Wellbeing ](https://weall.org/why-we-need-a-common-language-for-wellbeing-economy)
+* The Germans and their homes (in German) [Frankfurter Allgemeine](https://www.faz.net/aktuell/wirtschaft/gluecks-studie-die-deutschen-lieben-ihre-haeuser-16255243.html)
+
+
+
+
+

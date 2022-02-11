@@ -1,0 +1,25 @@
+languageCode = "en"
+languageName = "English"
+displayName = "EN"
+isoCode = "en"
+weight = 1
+rtl = false
+
+title = "Alexander Gamerdinger"
+# logo = "img/logo.jpg"
+description = "Personal Website of Alexander Gamerdinger"
+copyright = "&copy; 2022 Alexander Gamerdinger"
+
+dateFormat = "2 January 2006"
+
+[author]
+  name = "Alexander Gamerdinger"
+  image = "author.jpg"
+  headline = "PhD fellow at Copenhagen Business School"
+  bio = "I am a PhD fellow at Copenhagen Business School writing about Artificial Intelligence in insurance, professional networks and algorithmic work."
+  links = [
+    { email = "mailto:aga.ioa@cbs.dk" },
+    { github = "https://github.com/GamerdingerA" },
+    { linkedin = "https://linkedin.com/in/alexander-gamerdinger" },
+    { twitter = "https://twitter.com/GamerdingerA" },
+  ]
