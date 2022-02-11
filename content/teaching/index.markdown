@@ -2,6 +2,9 @@
 title: 'Teaching'
 author: Alexander Gamerdinger
 date: '2022-01-23'
+showTableOfContents: false
+showDate: false
+showReadingTime: false
 slug: []
 categories: []
 tags: []

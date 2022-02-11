@@ -2,10 +2,13 @@
 title: 'About me'
 author: Alexander Gamerdinger
 date: '2021-12-14'
+showTableOfContents: false
+showDate: false
+showReadingTime: false
 description: 'I am Alexander, a research assistant at Copenhagen Business School'
 ---
 
-I am a research assistant at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. My research is primarily focused on professionals and algorithmic work in the insurance industry. I am fully funded by the [Algorithms,Data & Democracy](https://algoritmer.org/) project. See more in my [CV](/index.en_files/CV_AG.pdf). 
+I am a research assistant at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. My research is primarily focused on professionals and algorithmic work in the insurance industry. I am fully funded by the [Algorithms,Data & Democracy](https://algoritmer.org/) project. 
 
 In my spare time, I write, teach and talk about subjective wellbeing, happiness and the Wellbeing Economy. This is a remainder of my prior work with my wonderful and talented collegaues at the [Happiness Research Institute](https://happinessresearchinstitute.com), a Copenhagen based think tank. 
 

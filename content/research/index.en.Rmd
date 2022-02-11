@@ -2,6 +2,9 @@
 title: 'Research'
 author: 'Alexander Gamerdinger'
 date: '2021-12-14'
+showTableOfContents: false
+showDate: false
+showReadingTime: false
 slug: [/research/]
 description: ''
 ---
@@ -17,7 +20,7 @@ My analytical approach is mostly quantitative, drawing on established methods fo
 
 ## Press & media 
 
-* 
+* Who makes the rules for a Wellbeing Economy?[Wellbeing Economy Alliance](https://weall.org/who-makes-the-rules-for-a-wellbeing-economy)
 * Talk about happiness and home (in German) [Deutschlandfunk Nova](https://www.deutschlandfunknova.de/beitrag/wohnen-unser-traum-vom-eigenheim-lebt)
 * The Loneliness Pandemic [Wellbeing People](https://www.youtube.com/watch?v=P9lXf1QTjSM)
 * Why we need a common language for Wellbeing Economy? [WeAll](https://weall.org/why-we-need-a-common-language-for-wellbeing-economy)
