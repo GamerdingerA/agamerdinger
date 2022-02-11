@@ -1,0 +1,283 @@
+---
+title: Who makes the rules for a Wellbeing Economy?
+author: Alexander Gamerdinger
+date: '2022-02-11'
+slug: []
+categories:
+  - Wellbeing Economy
+tags:
+  - R
+  - Quantiative Analysis
+draft: yes
+description: ''
+---
+
+```{r setup, include = FALSE}
+
+
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(igraph)
+library(readxl)
+library(writexl)
+library(RColorBrewer) #to use good looking colors for Igraph
+
+# ----------------- 1. LOAD DATA  -----------------
+dataset <- read_excel("/Users/alexandergamerdinger/Desktop/PhD/blog/Wellbeing Economy Alliance/Who writes the rules of the Wellbeing Economy?/input/140921_Data_Collection, Master Thesis, Alexander Gamerdinger.xlsx", 
+                      sheet = 1,  guess_max = 10000)
+
+d <- dataset[,-9:-19]
+
+# ----------------- 1.1 NODE DATA SETS  -----------------
+
+# Organizational network 
+Organization_types <- colnames(d)
+Organization_types <- Organization_types %>%
+  str_replace_all("[:punct:]", "") %>%
+  str_replace_all("[:digit:]", "") %>%
+  str_trim(side = "both") %>%
+  trimws()
+Organization_types <- Organization_types[-1:-8]
+colnames(d) <- d[1,]
+Organizations <- colnames(d)
+Organizations <- Organizations[-1:-8] %>% str_replace_all(" ", " ")
+Node_P <- tibble(Organization = Organizations, Organ_Types = Organization_types )
+
+# Professional network 
+Node <- d[-1,1:8]
+colnames(Node) <- colnames(Node) %>% str_replace_all(" ", " ")
+
+# ----------------- 1.2 EDGE DATA SETS  -----------------
+
+# creating edge data
+Edge <- d[ ,-2:-8]
+colnames(Edge) <- Edge[1, ] %>% str_replace_all(" ", " ")
+Edge <- Edge[-1, ]
+Edge <- Edge %>% replace(is.na(.), "0")
+Edge[,-1] <- Edge[,-1] %>% mutate_if(is.character,as.numeric)
+Edge <- as.data.frame(Edge)
+row.names(Edge) <- Edge$Person
+Edge <- Edge[,-1]
+
+adjacency <- as.matrix(Edge) %*% t(as.matrix(Edge))
+network <- graph_from_adjacency_matrix(adjacency, 
+                                       diag = F, 
+                                       mode = "undirected", 
+                                       weighted = TRUE)
+
+network <- set_vertex_attr(network, "Career_Experience", index = V(network), Node$`Career Experience`)
+network <- set_vertex_attr(network, "Country", index = V(network), Node$Country)      
+network <- set_vertex_attr(network, "Professional_ecology", index = V(network), Node$Profession)
+network <- set_vertex_attr(network, "Professional_group", index = V(network), Node$`Professional Group`)
+
+
+# simplify the network and account for weights 
+nt <- simplify(network, remove.multiple = TRUE, remove.loops = TRUE)
+
+edge <- cbind(as_edgelist(nt, names = TRUE), round( E(nt)$weight, 3))
+edge <- as_tibble(edge)
+names(edge)[names(edge) == "V1"] <- "Source"
+names(edge)[names(edge) == "V2"] <- "Target"
+names(edge)[names(edge) == "V3"] <- "Weight"
+edge$Weight <- as.numeric(edge$Weight)
+
+write_csv(edge, "edge_list.csv")
+
+#centrality measures
+V(nt)$degree <- degree(nt, mode="all")
+V(nt)$eig<- evcent(nt)$vector
+V(nt)$betweenness <- betweenness(nt)
+
+#delete isolated 
+Isolated = which(degree(nt)==0)
+cp1 = igraph::delete.vertices(nt, Isolated)
+
+#cp1 <-  igraph::delete.edges(cp1, which(E(cp1)$weight <= 2))
+
+#selecting the biggest component of the graph
+complist1 <- components(cp1)
+table(complist1$csize) 
+
+# Select largest component 
+comp1 <- decompose.graph(cp1)
+typeof(comp1)
+sapply(comp1, vcount) 
+
+comptab1 <- as.data.frame(table(complist1$membership)) %>% dplyr::as_tibble() %>%
+  arrange(desc(Freq))
+
+cp1 <- comp1[[comptab1$Var1[1]]]
+
+clus <- as_tbl_graph(cp1) 
+
+```
+
+
+*This blogpost was originally published at the [Wellbeing Economy Alliance Website ](https://www.webofknowledge.com)https://weall.org/who-makes-the-rules-for-a-wellbeing-economy*
+
+I would like you to imagine the Wellbeing Economy movement as a two-sided medal. The front side of the medal represents what is most visible about it, such as the participating organizations, their goals, strategies, and research reports. The often-overlooked reverse side represents the people behind the movement, their careers, ideas, and interlinkages. In this blog post, I introduce this reverse side of the Wellbeing Economy movement which I have studied intensively for the last year as a part of my Master’ s Thesis. 
+
+My interest in the Wellbeing Economy movement grew steadily during my work at the Happiness Research Institute in Copenhagen and quickly developed into a thesis idea as it resonated well with my education in sociology and international political economy. 
+
+In contrast to many political economists who study powerful organizations such as the UN, or countries such as the United States to understand how authority is generated in an international setting, I wanted to understand how people’s backgrounds, strategic positions and professional networks are influencing the success of the Wellbeing Economy movement. Insights into the social relations of active members can provide a different understanding of the movement and shed light on why it is so difficult to “overrule” the current economic system. I very much hope that this sociological view on the Wellbeing Economy movement can give inspiration to new ideas that strengthen the impact of the movement going forward. Intellectually, much of thinking is inspired by scholars at Copenhagen Business school (e.g. Seabrooke & Henriksen, 2017). 
+
+## Who are members of the Wellbeing Economy Movement?
+
+In the past year, I collected information on 246 people who actively work on Wellbeing Economy issues in association with the Wellbeing Economy Alliance (WEAll). As with other social movements, membership is fairly heterogeneous, dispersed around the globe and composed of different groups. The movement mainly operates in Europe and other countries from the Global North, while deliberately including underrepresented areas from the Global South (see Table 1). 
+
+```{r, echo=FALSE}
+
+Node %>% count(Country) %>% arrange(-n) %>% 
+  mutate(across(Country, str_replace_all,"UK", "England (UK)"),
+         across(Country, str_replace_all, "Scotland", "Scotland (UK)")) %>% 
+  slice(10) %>% knitr::kable("html", booktabs = T, align = c( "l","c"), caption = "Countries of the movement (cutoff = 5 residents)") %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hold_position", "hover", "responsive")) %>%
+  kableExtra::column_spec(1, width = "3.5cm") %>%
+  kableExtra::column_spec(2, width = "3.5cm") 
+
+```
+
+To create an overview, I categorized experts by their sector and professional group (Figure 2). Most of the members are either academics in universities or research institutions. The second largest group is composed of activists who work in NGOs, foundations, and other activist organizations. One fifth of the members work in public or intergovernmental institutions as policymakers, advisers, or politicians, while only a few are businesspeople. 
+
+This sectoral distribution of membership tells us about the status of the movement. As relatively few hold positions within the business or policymaking sector – such as national parliaments, administrations or commissions – ideas associated with the Wellbeing Economy are still very distant from the current status quo.
+
+```{r figure, fig.cap= "Sectors and professional groups", out.width="100%", fig.align="center", echo=FALSE}
+
+knitr::include_graphics("groups.jpg")
+
+```
+
+This distance becomes more visible in Figure 3, which shows the professional network of the Wellbeing Economy movement. Each node represents an individual who is connected to other individuals by current or past employment. As highlighted by Louvain’s clustering algorithm, we can see that academics and activists form tighter communities and have stronger organizational affiliations with each other than policymakers. The bigger node sizes of activists and academics also reveal a greater number of organizational overlaps that they have with policymakers. In contrast, EU and UK policymakers form their own, looser communities situated at the periphery of the network. 
+
+```{r pn, echo= FALSE, fig.height = 8, fig.width = 10, fig.cap= "Professional network of Wellbeing Economy movement", fig.align="center"}
+
+clus %>% 
+  activate(nodes) %>% 
+  mutate(cluster = group_louvain()) %>% 
+  filter(cluster %in% c(1:4)) %>% 
+  ggraph(layout = "kk") + 
+  geom_edge_link(aes(alpha = weight, color = weight), show.legend = FALSE) + 
+  scale_edge_alpha_continuous(range = c(0.4,1)) +
+  scale_edge_width_continuous(range = c(0.1,10)) +
+  scale_edge_colour_gradient(low = "lightyellow3", high = "olivedrab4") +
+  geom_node_point(aes(size = degree, colour = factor(cluster))) + 
+  scale_size_continuous(guide = NULL) +
+  scale_color_manual(name = "Communities", values = c("#2F5597","#548235","#C55A11", "#ED7D31"), 
+                     labels=c("Academics",
+                              "Activists",
+                              "UK Policymakers",
+                              "EU Policymakers")) +
+  theme_graph() +
+  labs(title = "",
+       subtitle = "") + 
+  theme(legend.position = 'bottom') 
+```
+
+```{r pn1, echo= FALSE, fig.height = 8, fig.width = 10, fig.cap= "Organizational Network", fig.align="center"}
+
+adjacency <- t(as.matrix(Edge)) %*% as.matrix(Edge)
+
+network <- graph_from_adjacency_matrix(adjacency, 
+                                       diag = FALSE, 
+                                       mode = "undirected", 
+                                       weighted = T)
+
+network <- set_vertex_attr(network, "Type", index = V(network), Node_P$Organ_Types)
+
+# simplify the network and account for weights 
+on <- simplify(network, remove.multiple = TRUE, remove.loops = TRUE)
+
+#centrality measures
+V(on)$degree <- degree(on, mode="all")
+V(on)$eig<- evcent(on)$vector
+V(on)$betweenness <- betweenness(on)
+
+#delete isolated 
+Isolated = which(degree(on)==0)
+on1 = igraph::delete.vertices(on, Isolated)
+
+#selecting the biggest component of the graph
+complist1 <- components(on1)
+
+# Select largest component 
+comp1 <- decompose.graph(on1)
+
+comptab1 <- as.data.frame(table(complist1$membership)) %>% dplyr::as_tibble() %>%
+  arrange(desc(Freq))
+
+cp1 <- comp1[[comptab1$Var1[1]]]
+
+cp10 <- as_tbl_graph(cp1, directed = F) 
+
+cp10 %>% 
+  ggraph(layout = "mds") + 
+  geom_edge_link(aes(color = weight, alpha = weight, width = weight), show.legend = F) + 
+  scale_edge_alpha_continuous(range = c(0.2,1)) +
+  scale_edge_width_continuous(range = c(0.5,1.2)) +
+  scale_edge_colour_gradient(low = "lightyellow3", high = "olivedrab4") +
+  geom_node_point(aes(size = degree, colour =Type), alpha = 0.8) +  
+  scale_size_continuous(guide = NULL) +
+  scale_color_brewer(name = "Type of Organization", palette = "Dark2", 
+                     labels=c("Consultancy",
+                              "Foundation",
+                              "Association",
+                              "NGO", 
+                              "Public Organization", 
+                              "Resarch Institution")) +
+  geom_node_text(aes(filter = (degree >= 21),size = degree, label = name), repel = T, force =130, size =4, max.overlaps = 20,
+                 family = "serif")+
+  labs(title = "",
+       subtitle = "") +
+  theme_graph() +
+  theme(legend.position = 'bottom') 
+```
+
+Figure 4 shows the organizational network of the Wellbeing Economy Movement. Organizations with the largest nodes are labeled and weighted according to their number of affiliations; ties are weighted by their shared affiliations. While WEAll and its Scotland hub are among the most prominent organizations by design, other important organizations include international organizations such as the UN, OECD and World Bank, NGOs such as Oxfam and the Club of Rome, as well as a variety of mostly British universities, think tanks and professional organizations. Most noteworthy is the triangular connection between WEAll, the UN and the Alliance for Sustainability and Prosperity, involved in the very creation of WEAll,  which is mostly composed of prominent ecological and environmental academics. 
+
+In sociological terms, the organizational footprint allows us to identify “locations of change”, where Wellbeing Economy ideas are allowed to prosper. Although international organizations and NGOs are an important ally to have, they alone cannot push for a Wellbeing Economy revolution. The movement strongly relies on the support of prominent national institutions which currently act as gatekeepers for change. Looking back at Figure 4, such national institutions are largely absent in the organizational network of the movement. The Scottish Government is one of the rare exceptions to the case. 
+
+## What are strategies to achieve a Wellbeing Economy? 
+
+As an umbrella organization, WEAll unites the voices of people and organizations that share the goal to move away from the current growth-seeking economic system. Scholarship on wellbeing policy (e.g. Laurent 2021; Bache & Scott 2018) highlights the existence of three distinct fundamental goals of a Wellbeing Economy, namely: 1) to alleviate social inequalities and poverty, 2) to tackle climate change and other forms of environmental degradation and 3) to increase mental health and subjective wellbeing. 
+
+As a result, professional groups possess a variety of strategies aimed at transitioning into a Wellbeing Economy. These include: 1) the measurement and monitoring of wellbeing indicators, 2) the active use of wellbeing indicators in cost-benefit analysis, wellbeing-budgets, or mandated legislation, 3) the explicit use of wellbeing-minded policy, 4) the creation of new socio-political wellbeing narratives, 5) the initiation of system change and 6) an either agnostic, positive or negative stance towards continued economic growth. 
+
+Given the recent emergence of the movement, there is currently no unique strategic position on how to transition into a Wellbeing Economy shared amongst all participants. Although some professional groups do possess clear strategic positions, their strategies are mutually conflicting. Figure 5 illustrates that activists and academics advocate for system change while policymakers and other academic groups believe that a Wellbeing Economy is achieved by continuously measuring wellbeing indicators. The conflict is created as the former calls for a radical shift in policymaking, while the latter rather signalizes a reformation of current policymaking through the inclusion – and possibly active use – of wellbeing indicators. 
+
+```{r figure2, fig.cap= "Strategic positions of professional groups", out.width="100%", fig.align="center", echo=FALSE}
+
+knitr::include_graphics("strategies.jpg")
+
+```
+
+## How can we transition into a Wellbeing Economy?
+
+This quick glimpse at the reverse side of the medal representing the Wellbeing Economy movement reveals the underlying problem and a strategic opportunity. Conflicting strategies between policymakers and other professional groups seem to slow the transformation to a Wellbeing Economy. This is further decelerated by an industry sector that lacks  a clear strategic vision towards transformative change.
+
+However, recognizing that strategic positions emerge from current and past forms of social interaction, WEAll has the timely opportunity to change such strategies by building new forms of social interactions between formerly disconnected professional groups. 
+
+What the Wellbeing Economy movement has done so far, is to strengthen the strategic coalition between activists and academics – convincing researchers that real, transformative change is necessary. However, coalescing between activists and incumbent policymakers has not yet been successful, partly because transformative change is contrary to the current way of policymaking. One recent exception  was seen in Germany, where the Minister of Foreign Affairs appointed Jennifer Morgan, the American head of Greenpeace as a special climate convoy (Schuetze, 2022). More initiatives like this are needed. Thus, to foster the coalition between activists and policymakers from a sociological viewpoint, I have the following recommendations.
+
+### My recommendations
+
+1) **Foster relationships with policymakers through targeted events, research, or membership involvement.** National policymakers are the avenue for change. Change is about creating social ties, and if ties to current and future policymakers can be facilitated, Wellbeing Economy ideas might drive the policymaking of the future.
+
+In the European Union, ideas about the “Economy of Wellbeing” have shown interest from the Council of the European Union (European Council, 2019). In order to convince European policymakers about the Wellbeing Economy, WEAll should: 
+
+2) **Focus on policymakers working in national institutions, as they currently only occupy peripheral positions in the network**
+
+3) **Consider the strategy: system change through wellbeing measurement – an increasing focus on wellbeing measurement show policymakers the need for system change **
+
+## References
+
+Bache, I., & Scott, K. (2018). Wellbeing in Politics and Policy. In I. Bache & K. Scott (Eds.), The Politics of Wellbeing: Theory, Policy and Practice (pp. 1–22). Palgrave Macmillan. <https://doi.org/10.1007/978-3-319-58394-5_1>
+
+European Council. (2019). Economy of Wellbeing in the EU: People’s Wellbeing Fosters Economic Growth. <https://eu2019.fi/en/backgrounders/economy-of-wellbeing#:~:text=Wellbeing%20is%20one%20of%20the,they%20work%20and%20pay%20taxes> 
+
+Laurent, É. (2021). The Well-being Transition: Analysis and Policy. Palgrave Macmillan.
+
+Christopher F. Schuetze. (2022).  Germany Has a New Climate Envoy: an American Greenpeace Activist <https://www.nytimes.com/2022/02/09/world/europe/germany-jennifer-morgan-greenpeace.html> 
+
+Seabrooke, L., & Henriksen, L. F. (Eds.). (2017). Professional networks in transnational governance. Cambridge University Press.
+
