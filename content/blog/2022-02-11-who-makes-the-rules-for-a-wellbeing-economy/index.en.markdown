@@ -16,7 +16,7 @@ description: ''
 
 
 
-*This blogpost was originally published at the [Wellbeing Economy Alliance Website ](https://www.webofknowledge.com)https://weall.org/who-makes-the-rules-for-a-wellbeing-economy*
+*This blog post was originally published at the [Wellbeing Economy Alliance Website ](https://weall.org/who-makes-the-rules-for-a-wellbeing-economy)*
 
 I would like you to imagine the Wellbeing Economy movement as a two-sided medal. The front side of the medal represents what is most visible about it, such as the participating organizations, their goals, strategies, and research reports. The often-overlooked reverse side represents the people behind the movement, their careers, ideas, and interlinkages. In this blog post, I introduce this reverse side of the Wellbeing Economy movement which I have studied intensively for the last year as a part of my Master’ s Thesis. 
 
@@ -98,13 +98,13 @@ In the European Union, ideas about the “Economy of Wellbeing” have shown int
 
 2) **Focus on policymakers working in national institutions, as they currently only occupy peripheral positions in the network**
 
-3) **Consider the strategy: system change through wellbeing measurement – an increasing focus on wellbeing measurement show policymakers the need for system change **
+3) **Consider the strategy: system change through wellbeing measurement – an increasing focus on wellbeing measurement show policymakers the need for system change**
 
 ## References
 
-Bache, I., & Scott, K. (2018). Wellbeing in Politics and Policy. In I. Bache & K. Scott (Eds.), The Politics of Wellbeing: Theory, Policy and Practice (pp. 1–22). Palgrave Macmillan. <https://doi.org/10.1007/978-3-319-58394-5_1>
+Bache, I., & Scott, K. (2018). Wellbeing in Politics and Policy. In I. Bache & K. Scott (Eds.), The Politics of Wellbeing: Theory, Policy and Practice (pp. 1–22). Palgrave Macmillan. 
 
-European Council. (2019). Economy of Wellbeing in the EU: People’s Wellbeing Fosters Economic Growth. <https://eu2019.fi/en/backgrounders/economy-of-wellbeing#:~:text=Wellbeing%20is%20one%20of%20the,they%20work%20and%20pay%20taxes> 
+European Council. (2019). Economy of Wellbeing in the EU: People’s Wellbeing Fosters Economic Growth. 
 
 Laurent, É. (2021). The Well-being Transition: Analysis and Policy. Palgrave Macmillan.
 
