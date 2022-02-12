@@ -8,7 +8,6 @@ categories:
 tags:
   - R
   - Quantiative Analysis
-draft: yes
 description: ''
 ---
 <script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
