@@ -6,26 +6,33 @@
   <main class="relative grow">
     <div class="flex flex-col items-center justify-center h-full">
     <header class="flex flex-col sm:flex-row sm:items-stretch sm:text-left items-center mb-3">
+      
+      <div class="flex flex-col items-center sm:text-left mb-3" >
+             &nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
       {{ with .Site.Author.image }}
         {{ $authorImage := resources.Get . }}
         {{ if $authorImage }}
-          {{ $authorImage := $authorImage.Fill "288x288" }}
+          {{ $authorImage := $authorImage.Fill "400x400" }}
           <img
-            class="mb-2 rounded-full w-36 h-36"
-            width="144"
-            height="144"
+            class="mb-2 mr-3 rounded-full w-50 h-50"
+            width="160"
+            height="160"
             alt="Author"
             src="{{ $authorImage.RelPermalink }}"
           />
         {{ end }}
       {{ end }}
+      
       <!-- Just to give easy spacing control, aint no tailwind expert -->
-      <div class="flex flex-col items-center sm:text-left mb-3" >
-             &nbsp;&nbsp;&nbsp;&nbsp;
-             &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="flex flex-col items-center sm:text-left ml-3">
+             
+       
       </div>
-      <!-- <div class="flex flex-col sm:items-left sm:text-left mb-3 items-center text-center" > -->
-      <div class="flex flex-col mb-3 items-left text-left" >
+      <!--items-center text-center -->
+      <div class="flex flex-col mb-3 sm:text-left sm:items-left">
+      <!--<div class="flex flex-col mb-3 items-left text-left" >-->
         <h1 class="text-4xl font-extrabold">
           {{ .Site.Author.name | default .Site.Title }}
         </h1>
