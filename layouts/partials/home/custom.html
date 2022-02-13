@@ -3,7 +3,8 @@
     h-full
   {{ end }}"
 >
-  <div class="flex flex-col items-center">
+  <main class="relative grow">
+  <div class="flex flex-col items-center justify-center h-full">
   <header class="flex flex-row items-center mb-3">
     {{ with .Site.Author.image }}
       {{ $authorImage := resources.Get . }}
@@ -20,7 +21,6 @@
     {{ end }}
     <!-- Just to give easy spacing control -->
     <div class="flex flex-col items-left mb-3" >
-           &nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;
            &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
@@ -40,11 +40,12 @@
       {{ partialCached "author-links.html" . }}
     </div>
   
-  <section class="prose dark:prose-invert">{{ .Content | emojify }}
+  <section class="prose dark:prose-invert">{{ .Content | emojify }}</section>
   </div>
   </header>
   </div>
-  </section>
+  
+  </main>
 </article>
 <section>
   {{ partial "recent-articles.html" . }}
