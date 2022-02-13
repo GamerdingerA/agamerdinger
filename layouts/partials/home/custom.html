@@ -3,7 +3,8 @@
     h-full
   {{ end }}"
 >
-  <header class="flex flex-row items-left mb-3">
+  <div class="flex flex-col items-center">
+  <header class="flex flex-row items-center mb-3">
     {{ with .Site.Author.image }}
       {{ $authorImage := resources.Get . }}
       {{ if $authorImage }}
@@ -17,6 +18,12 @@
         />
       {{ end }}
     {{ end }}
+    <!-- Just to give easy spacing control -->
+    <div class="flex flex-col items-left mb-3" >
+           &nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
     <div class="flex flex-col items-left mb-3" >
       
     
@@ -36,6 +43,7 @@
   <section class="prose dark:prose-invert">{{ .Content | emojify }}
   </div>
   </header>
+  </div>
   </section>
 </article>
 <section>
