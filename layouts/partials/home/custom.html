@@ -1,27 +1,43 @@
-<div id="page">
-  {{ partial "partials/home/page.html" . }}
-</div>
-<div id="profile" class="hidden h-full">
-  {{ partial "partials/home/profile.html" . }}
-</div>
-
-<script type="text/javascript">
-  function switchLayout() {
-    const pageDiv = document.getElementById("page");
-    const profileDiv = document.getElementById("profile");
-    const layoutCode = document.querySelectorAll("code[id=layout]");
-    if (pageDiv.style.display === "none") {
-      pageDiv.style.display = "block";
-      profileDiv.style.display = "none";
-      layoutCode.forEach(function (el) {
-        el.innerText = "page";
-      });
-    } else {
-      pageDiv.style.display = "none";
-      profileDiv.style.display = "block";
-      layoutCode.forEach(function (el) {
-        el.innerText = "profile";
-      });
-    }
-  }
-</script>
+<article
+  class="flex flex-col items-left justify-left text-left {{ if not .Site.Params.homepage.showRecent }}
+    h-full
+  {{ end }}"
+>
+  <header class="flex flex-row items-left mb-3">
+    {{ with .Site.Author.image }}
+      {{ $authorImage := resources.Get . }}
+      {{ if $authorImage }}
+        {{ $authorImage := $authorImage.Fill "288x288" }}
+        <img
+          class="mb-2 rounded-full w-36 h-36"
+          width="144"
+          height="144"
+          alt="Author"
+          src="{{ $authorImage.RelPermalink }}"
+        />
+      {{ end }}
+    {{ end }}
+    <div class="flex flex-col items-left mb-3" >
+      
+    
+    
+    <h1 class="text-4xl font-extrabold">
+      {{ .Site.Author.name | default .Site.Title }}
+    </h1>
+    {{ with .Site.Author.headline }}
+      <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+        {{ . }}
+      </h2>
+    {{ end }}
+    <div class="mt-1 text-2xl">
+      {{ partialCached "author-links.html" . }}
+    </div>
+  
+  <section class="prose dark:prose-invert">{{ .Content | emojify }}
+  </div>
+  </header>
+  </section>
+</article>
+<section>
+  {{ partial "recent-articles.html" . }}
+</section>
