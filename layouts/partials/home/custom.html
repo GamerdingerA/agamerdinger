@@ -4,46 +4,44 @@
   {{ end }}"
 >
   <main class="relative grow">
-  <div class="flex flex-col items-center justify-center h-full">
-  <header class="flex flex-col sm:flex-row w-full sm:items-stretch sm:text-left items-center mb-3">
-    {{ with .Site.Author.image }}
-      {{ $authorImage := resources.Get . }}
-      {{ if $authorImage }}
-        {{ $authorImage := $authorImage.Fill "288x288" }}
-        <img
-          class="mb-2 rounded-full w-36 h-36"
-          width="144"
-          height="144"
-          alt="Author"
-          src="{{ $authorImage.RelPermalink }}"
-        />
+    <div class="flex flex-col items-center justify-center h-full">
+    <header class="flex flex-col sm:flex-row sm:items-stretch sm:text-left items-center mb-3">
+      {{ with .Site.Author.image }}
+        {{ $authorImage := resources.Get . }}
+        {{ if $authorImage }}
+          {{ $authorImage := $authorImage.Fill "288x288" }}
+          <img
+            class="mb-2 rounded-full w-36 h-36"
+            width="144"
+            height="144"
+            alt="Author"
+            src="{{ $authorImage.RelPermalink }}"
+          />
+        {{ end }}
       {{ end }}
-    {{ end }}
-    <!-- Just to give easy spacing control -->
-    <div class="flex flex-col items-left mb-3" >
-           &nbsp;&nbsp;&nbsp;&nbsp;
-           &nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
-    <div class="flex flex-col items-left mb-3" >
+      <!-- Just to give easy spacing control, aint no tailwind expert -->
+      <div class="flex flex-col items-center sm:text-left mb-3" >
+             &nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <!-- <div class="flex flex-col sm:items-left sm:text-left mb-3 items-center text-center" > -->
+      <div class="flex flex-col mb-3 items-left text-left" >
+        <h1 class="text-4xl font-extrabold">
+          {{ .Site.Author.name | default .Site.Title }}
+        </h1>
+        {{ with .Site.Author.headline }}
+          <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+            {{ . }}
+          </h2>
+        {{ end }}
+        <div class="mt-1 text-2xl">
+          {{ partialCached "author-links.html" . }}
+        </div>
       
-    
-    
-    <h1 class="text-4xl font-extrabold">
-      {{ .Site.Author.name | default .Site.Title }}
-    </h1>
-    {{ with .Site.Author.headline }}
-      <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
-        {{ . }}
-      </h2>
-    {{ end }}
-    <div class="mt-1 text-2xl">
-      {{ partialCached "author-links.html" . }}
+      <section class="prose dark:prose-invert">{{ .Content | emojify }}</section>
     </div>
-  
-  <section class="prose dark:prose-invert">{{ .Content | emojify }}</section>
-  </div>
-  </header>
-  </div>
+    </header>
+    </div>
   
   </main>
 </article>
