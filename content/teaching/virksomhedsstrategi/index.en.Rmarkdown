@@ -53,16 +53,19 @@ I uge 7, lærer vi:
 2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `dplyr` funktioner  
 3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
-#### Materiale
+#### Materiale (online)
+- [lektion01-øvelse](lektion01/lektion01-v01-virkstrat.R)
+
+#### Materiale (on campus)
 Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
-- [lektion01-powerpoint](lektion01-powerpoint.pptx) eller [lektion01-pdf](lektion01-powerpoint.pdf)
-- [lektion01-øvelse](lektion01-øvelse.R)
+- [lektion01-powerpoint](lektion01/lektion01-powerpoint.pptx) eller [lektion01-pdf](lektion01/lektion01-powerpoint.pdf)
+- [lektion01-øvelse](lektion01/lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
 
 #### Readings
-- [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard_Larsen_2015.pdf)
-- [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](Larsen_Ellersgaard_Bernsen_2015.pdf)
-- [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](Steinitz_Ellersgaard_Larsen_2016.pdf)
+- [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
+- [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
+- [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
 
 ---
 
