@@ -1,6 +1,7 @@
 ################
 #
 # Uge 7: lektion01-øvelse
+# Virksomhedsstrategi i et netværksperspektiv
 #
 ################
 
@@ -12,16 +13,28 @@
 
 
 ### SPØRGSMÅL 2 ###
-# Hvilke affiliationer har de fleste? -------------------------------------
+# Hvilke styrelser (affiliation) har de fleste medlemmer? -------------------------------------
 
 
-# Hvor mange kvinder er i data sæt (i %) ----------------------------------
+# Hvor mange kvinder findes der i datasæt? (i %) ----------------------------------
 
 
-# Hvilken person har de fleste affiliationer i hele data sæt? -------------
+# Hvem sidder i de fleste styrelser? -------------
 
 ### SPØRGSMÅL 3 ###
-# Data subset "Political" -------------------------------------------------
+# Lav et nyt datasæt “den1” hvor I kigger kun på aktørene i sektor “Parliament” -------------------------------------------------
+
+
+# Er der flere kvinder i dette dataseæt? ----------------------------------
+
+### SPØRGSMÅL 4 ###
+# Lav et one-mode netværk af individuer og visualisere dette. -------------
+
+
+
+
+### SPØRGSMÅL 5 ###
+# Beskriv netværket -------------------------------------------------------
 
 
 
