@@ -8,6 +8,8 @@ tags: []
 description: ''
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 ---
+![Abstract purple artwork](abstract.jpg "Photo by [Jr Korpa](https://unsplash.com/@jrkorpa) on [Unsplash](https://unsplash.com/)")
+
 [**Link til Canvas**](https://cbscanvas.instructure.com/courses/22821/modules)
 
 ### Kursets formål 
@@ -36,6 +38,10 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 
 ### Holdundervisning
 
+{{< alert >}}
+**Quick Link** Her kan du finde [syllabus](Virksomhedsstrategi i et netværksperspektiv syllabus spring 2022.pdf)
+{{< /alert >}}
+
 ### Uge 7
 I denne uge, lærer vi:
 1. Hvordan man installerer R og Rstudio
@@ -49,7 +55,7 @@ Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com
 - [lektion01-data](den17-no-nordic-letters.csv)
 
 #### Readings
-- 
+- [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard and Larsen - 2015 - The Danish Elite Network.pdf)
 
 
 
