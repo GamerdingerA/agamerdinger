@@ -40,8 +40,12 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 Alt undervisning er on campus!
 {{< /alert >}}
 
-#### Syllabus
+#### Vigtige informationer
 - [Se syllabus her](syllabus_2022.pdf)
+- [Guide: Installing R and Rstuido](setup-r-v01.pdf)
+- [Guide: R Resources](setup-r-v01.pdf)
+
+---
 
 ### Uge 7
 I denne uge, lærer vi:
@@ -58,10 +62,11 @@ Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com
 #### Readings
 - [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard_Larsen_2015.pdf)
 
+---
 
+### Uge 8
 
-
-
+*Info kommer Fredag d. 18 Februar*
 
 
 
