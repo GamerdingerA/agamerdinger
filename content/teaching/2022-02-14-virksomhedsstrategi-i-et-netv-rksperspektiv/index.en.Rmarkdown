@@ -39,9 +39,9 @@ I denne uge, lærer i grundlæggende netværkfunktioner i R. Bedst case scenario
 2. Vi gennemgår data.table og dplyr funktioner for at subsætte data 
 3. Vi visualisere et simpelt netværk
 
-- [Powerpoint presentation](virkstrat.pptx)
-- [Tom R-fil til øvelserne](virkstrat.pptx)
-- [Data fil](virkstrat.pptx)
+- [Powerpoint presentation](lektion01-powerpoint.pptx)
+- [Tom R-fil til øvelserne](lektion01-powerpoint.pptx)
+- [Data fil](lektion01-powerpoint.pptx)
 
 
 
