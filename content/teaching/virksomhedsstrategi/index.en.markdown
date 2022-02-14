@@ -61,6 +61,8 @@ Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com
 
 #### Readings
 - [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard_Larsen_2015.pdf)
+- [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](Larsen_Ellersgaard_Bernsen_2015.pdf)
+- [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](Steinitz_Ellersgaard_Larsen_2016.pdf)
 
 ---
 
