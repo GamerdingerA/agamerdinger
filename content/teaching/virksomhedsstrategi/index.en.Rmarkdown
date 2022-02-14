@@ -7,7 +7,7 @@ categories: []
 tags: []
 description: ''
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
-showHeadingAnchors: true
+showBreadcrumbs: true
 ---
 [**Link til Canvas**](https://cbscanvas.instructure.com/courses/22821/modules)
 
@@ -48,6 +48,17 @@ Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com
 - [lektion01-powerpoint](lektion01-powerpoint.pptx)
 - [lektion01-øvelse](lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
+
+#### Readings
+- 
+
+
+
+
+
+
+
+
 
 
 
