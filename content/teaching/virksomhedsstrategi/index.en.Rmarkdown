@@ -54,10 +54,10 @@ I uge 7, lærer vi:
 3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
 #### Materiale (online)
+- videoerne er desværre for store, og skal derfor ses på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 - [lektion01-øvelse](lektion01/lektion01-v01-virkstrat.R)
 
 #### Materiale (on campus)
-Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 - [lektion01-powerpoint](lektion01/lektion01-powerpoint.pptx) eller [lektion01-pdf](lektion01/lektion01-powerpoint.pdf)
 - [lektion01-øvelse](lektion01/lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
