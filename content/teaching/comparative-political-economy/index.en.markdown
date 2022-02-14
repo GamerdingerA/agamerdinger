@@ -6,6 +6,9 @@ slug: []
 categories: []
 tags: []
 description: 'This course is taught at CBS'
+summary: "Copenhagen Business School | Bsc International Business & Politics | 4th Semester"
 ---
 
-Comparative Political Economy is a mandatory course for the Bachelor's in International Political Econonmy at Copenhagen Business School.
+## Course overview
+
+*More information is following shortly*
