@@ -31,10 +31,17 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Book meeting here</a>
 <!-- Calendly link widget end -->
 
-### Uge 7
+### Kursusmateriale
+
+#### Uge 7
+I denne uge, lærer i grundlæggende netværkfunktioner i R. Bedst case scenario: 
+1. Vi har installeret R og Rstudio
+2. Vi gennemgår data.table og dplyr funktioner for at subsætte data 
+3. Vi visualisere et simpelt netværk
 
 - [Powerpoint presentation](virkstrat.pptx)
-
+- [Tom R-fil til øvelserne](virkstrat.pptx)
+- [Data fil](virkstrat.pptx)
 
 
 
