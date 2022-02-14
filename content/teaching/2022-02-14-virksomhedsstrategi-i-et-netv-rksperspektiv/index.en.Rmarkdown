@@ -1,0 +1,11 @@
+---
+title: Virksomhedsstrategi i et Netværksperspektiv
+author: Alexander Gamerdinger
+date: '2022-02-14'
+slug: []
+categories: []
+tags: []
+description: ''
+---
+
+This course is a mandatory course for European Business students at Copenhagen Business School. 
