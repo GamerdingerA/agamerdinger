@@ -7,6 +7,7 @@ categories: []
 tags: []
 description: ''
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
+showHeadingAnchors: true
 ---
 [**Link til Canvas**](https://cbscanvas.instructure.com/courses/22821/modules)
 
