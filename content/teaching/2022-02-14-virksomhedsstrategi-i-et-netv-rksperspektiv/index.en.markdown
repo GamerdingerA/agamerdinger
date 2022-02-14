@@ -19,16 +19,17 @@ virksomhedens strategiske processer. Kurset er inddelt i tre dele.
 Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligesom de praktisk-strategiske implikationer af virksomhedsnetværk løbende vil blive diskuteret gennem kurset.
 
 ### Office hours og kontakt
-Alexander Gamerdinger
-E-mail: aga.ioa@cbs.dk
-Office hours: Fredag kl. 09:00-10:20 (efter aftale)
-Office: Kilen 3. sal (K3.42 - temporarly)
+- Alexander Gamerdinger
+- E-mail: aga.ioa@cbs.dk
+- Office hours: Fredag kl. 09:00-10:20 (efter aftale)
+- Office: Kilen 3. sal (K3.42 - temporarly)
 
-<!-- Calendly badge widget begin -->
+
+<!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/aga-ioa/30min', text: 'Book a meeting', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
-<!-- Calendly badge widget end -->
+<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Schedule time with me</a>
+<!-- Calendly link widget end -->
 
 
 
