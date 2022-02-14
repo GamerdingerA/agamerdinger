@@ -25,8 +25,6 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 - Office hours: Fredag kl. 09:00-10:20 (efter aftale)
 - Office: Kilen 3. sal (K3.42 - temporarly)
 
-&nbsp;
-
 <!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -37,13 +35,14 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 
 ### Holdundervisning
 
-#### Uge 7
+### Uge 7
 I denne uge, lærer vi:
 1. Hvordan man installerer R og Rstudio
 2. Hvordan man subsetter data sæt med hjælp af `data.table` og/eller `dplyr` funktioner  
 3. Hvordan man visualisere simple netværk med `ggraph` og `igraph` funktioner
 
-##### Materiale
+#### Materiale
+Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 - [lektion01-powerpoint](lektion01-powerpoint.pptx)
 - [lektion01-øvelse](lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
