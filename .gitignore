@@ -2,4 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-.config.yaml
+.DS_Store
+/public
+/resources
+/public/
+/resources/
