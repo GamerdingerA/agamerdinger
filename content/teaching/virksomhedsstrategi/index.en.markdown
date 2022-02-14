@@ -48,10 +48,10 @@ Alt undervisning er on campus!
 ---
 
 ### Uge 7
-I denne uge, lærer vi:
+I uge 7, lærer vi:
 1. Hvordan man installerer R og Rstudio
-2. Hvordan man subsetter data sæt med hjælp af `data.table` og/eller `dplyr` funktioner  
-3. Hvordan man visualisere simple netværk med `ggraph` og `igraph` funktioner
+2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `dplyr` funktioner  
+3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
 #### Materiale
 Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
