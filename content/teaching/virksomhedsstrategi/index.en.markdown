@@ -35,19 +35,18 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 
 ---
 
-&nbsp;
-
-### Kursusmateriale
+### Holdundervisning
 
 #### Uge 7
-I denne uge, lærer i grundlæggende netværkfunktioner i R. Bedst case scenario: 
-1. Vi har installeret R og Rstudio
-2. Vi gennemgår data.table og dplyr funktioner for at subsætte data 
-3. Vi visualisere et simpelt netværk
+I denne uge, lærer vi:
+1. Hvordan man installerer R og Rstudio
+2. Hvordan man subsetter data sæt med hjælp af `data.table` og/eller `dplyr` funktioner  
+3. Hvordan man visualisere simple netværk med `ggraph` og `igraph` funktioner
 
-- [Powerpoint presentation](lektion01-powerpoint.pptx)
-- [Tom R-fil til øvelserne](lektion01-powerpoint.pptx)
-- [Data fil](lektion01-powerpoint.pptx)
+##### Materiale
+- [lektion01-powerpoint](lektion01-powerpoint.pptx)
+- [lektion01-øvelse](lektion01-øvelse.R)
+- [lektion01-data](den17-no-nordic-letters.csv)
 
 
 

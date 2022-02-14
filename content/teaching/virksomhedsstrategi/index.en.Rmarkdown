@@ -35,8 +35,6 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 
 ---
 
-&nbsp;
-
 ### Holdundervisning
 
 #### Uge 7
@@ -46,9 +44,9 @@ I denne uge, lærer vi:
 3. Hvordan man visualisere simple netværk med `ggraph` og `igraph` funktioner
 
 ##### Materiale
-- [Powerpoint presentation](lektion01-powerpoint.pptx)
-- [lektion01-øvelse](lektion01-powerpoint.pptx)
-- [Data fil](lektion01-powerpoint.pptx)
+- [lektion01-powerpoint](lektion01-powerpoint.pptx)
+- [lektion01-øvelse](lektion01-øvelse.R)
+- [lektion01-data](den17-no-nordic-letters.csv)
 
 
 
