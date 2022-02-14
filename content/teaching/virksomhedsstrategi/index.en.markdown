@@ -22,9 +22,9 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 
 ### Office hours og kontakt
 - Alexander Gamerdinger
-- E-mail: aga.ioa@cbs.dk
+- E-mail: <aga.ioa@cbs.dk>
 - Office hours: Fredag kl. 09:00-10:20 (efter aftale)
-- Office: Kilen 3. sal (K3.42 - temporarly)
+- Office: Kilen 3. sal (K3.42)
 
 <!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -41,7 +41,7 @@ Alt undervisning er on campus!
 {{< /alert >}}
 
 #### Syllabus
-[syllabus](Virksomhedsstrategi i et netværksperspektiv syllabus spring 2022.pdf)
+[syllabus](syllabus_2022.pdf)
 
 ### Uge 7
 I denne uge, lærer vi:
@@ -56,7 +56,7 @@ Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com
 - [lektion01-data](den17-no-nordic-letters.csv)
 
 #### Readings
-- [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard and Larsen - 2015 - The Danish Elite Network.pdf)
+- [Ellersgaard & Larsen. (2015). The Danish Elite Network](Ellersgaard_Larsen_2015.pdf)
 
 
 
