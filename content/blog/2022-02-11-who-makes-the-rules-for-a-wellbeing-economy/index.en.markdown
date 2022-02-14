@@ -38,8 +38,64 @@ In the past year, I collected information on 246 people who actively work on Wel
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;width: 3.5cm; "> England (UK) </td>
+   <td style="text-align:center;width: 3.5cm; "> 57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> United States </td>
+   <td style="text-align:center;width: 3.5cm; "> 36 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Scotland (UK) </td>
+   <td style="text-align:center;width: 3.5cm; "> 35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Belgium </td>
+   <td style="text-align:center;width: 3.5cm; "> 15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Finland </td>
+   <td style="text-align:center;width: 3.5cm; "> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Germany </td>
+   <td style="text-align:center;width: 3.5cm; "> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Netherlands </td>
+   <td style="text-align:center;width: 3.5cm; "> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> New Zealand </td>
+   <td style="text-align:center;width: 3.5cm; "> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Canada </td>
+   <td style="text-align:center;width: 3.5cm; "> 8 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;width: 3.5cm; "> Australia </td>
    <td style="text-align:center;width: 3.5cm; "> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> France </td>
+   <td style="text-align:center;width: 3.5cm; "> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Costa Rica </td>
+   <td style="text-align:center;width: 3.5cm; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Iceland </td>
+   <td style="text-align:center;width: 3.5cm; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Sweden </td>
+   <td style="text-align:center;width: 3.5cm; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Wales </td>
+   <td style="text-align:center;width: 3.5cm; "> 5 </td>
   </tr>
 </tbody>
 </table>

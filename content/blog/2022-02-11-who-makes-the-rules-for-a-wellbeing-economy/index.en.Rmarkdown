@@ -130,7 +130,7 @@ In the past year, I collected information on 246 people who actively work on Wel
 Node %>% count(Country) %>% arrange(-n) %>% 
   mutate(across(Country, str_replace_all,"UK", "England (UK)"),
          across(Country, str_replace_all, "Scotland", "Scotland (UK)")) %>% 
-  slice(10) %>% knitr::kable("html", booktabs = T, align = c( "l","c"), caption = "Countries of the movement (cutoff = 5 residents)") %>% 
+  slice(1:15) %>% knitr::kable("html", booktabs = T, align = c( "l","c"), caption = "Countries of the movement (cutoff = 5 residents)") %>% 
   kableExtra::kable_styling(bootstrap_options = c("striped", "hold_position", "hover", "responsive")) %>%
   kableExtra::column_spec(1, width = "3.5cm") %>%
   kableExtra::column_spec(2, width = "3.5cm") 
