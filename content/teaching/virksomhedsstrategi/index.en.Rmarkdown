@@ -55,7 +55,7 @@ I uge 7, lærer vi:
 
 #### Materiale
 Materialet findes både her eller på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
-- [lektion01-powerpoint](lektion01-powerpoint.pptx)
+- [lektion01-powerpoint](lektion01-powerpoint.pptx) eller [lektion01-pdf](lektion01-powerpoint.pdf)
 - [lektion01-øvelse](lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
 
