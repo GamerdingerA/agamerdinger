@@ -41,7 +41,7 @@ Alt undervisning er on campus!
 {{< /alert >}}
 
 #### Syllabus
-[syllabus](syllabus_2022.pdf)
+- [Se syllabus her](syllabus_2022.pdf)
 
 ### Uge 7
 I denne uge, lærer vi:
