@@ -28,8 +28,23 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 <!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Schedule time with me</a>
+<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Book meeting here</a>
 <!-- Calendly link widget end -->
+
+### Uge 7
+
+- [Powerpoint presentation](virkstrat.pptx)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
