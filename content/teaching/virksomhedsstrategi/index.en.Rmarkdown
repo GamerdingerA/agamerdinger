@@ -37,8 +37,11 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 ### Holdundervisning
 
 {{< alert >}}
-**Quick Link** Her kan du finde [syllabus](Virksomhedsstrategi i et netværksperspektiv syllabus spring 2022.pdf)
+Alt undervisning er on campus!
 {{< /alert >}}
+
+#### Syllabus
+[syllabus](Virksomhedsstrategi i et netværksperspektiv syllabus spring 2022.pdf)
 
 ### Uge 7
 I denne uge, lærer vi:
