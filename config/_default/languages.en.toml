@@ -15,8 +15,8 @@ dateFormat = "2 January 2006"
 [author]
   name = "Alexander Gamerdinger"
   image = "author.jpg"
-  headline = "PhD fellow at Copenhagen Business School"
-  bio = "I am a PhD fellow at Copenhagen Business School writing about Artificial Intelligence in insurance, professional networks and algorithmic work."
+  headline = "Assistant Lecturer at Copenhagen Business School"
+  bio = "I am an Assistant Lecturer at Copenhagen Business School."
   links = [
     { email = "mailto:aga.ioa@cbs.dk" },
     { github = "https://github.com/GamerdingerA" },
