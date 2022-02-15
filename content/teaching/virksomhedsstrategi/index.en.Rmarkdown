@@ -61,11 +61,11 @@ I uge 7, lærer vi:
 
 #### Materiale (online)
 - videoerne er desværre for store, og skal derfor ses på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
-- [lektion01-øvelse](lektion01/lektion01-v01-virkstrat.R)
+- [lektion01-online-rscript](lektion01/lektion01-v01-virkstrat.R)
 
 #### Materiale (on campus)
 - [lektion01-powerpoint](lektion01/lektion01-powerpoint.pptx) eller [lektion01-pdf](lektion01/lektion01-powerpoint.pdf)
-- [lektion01-øvelse](lektion01/lektion01-øvelse.R)
+- [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
 
 #### Readings
