@@ -6,7 +6,7 @@
 ################
 
 # Pakker og working directory ---------------------------------------------
-# Load alle pakker vi har brugt for her og setwd() til din working directory
+# Load alle pakker vi har brugt for her og indstil din working directory
 
 
 
@@ -26,7 +26,7 @@
 
 
 ### SPØRGSMÅL 3 ###
-# Lav et nyt datasæt “den1” hvor I kigger kun på aktørene i sektor “Parliament” -------------------------------------------------
+# Lav et nyt datasæt “den1” hvor du kigger kun på aktørene i sektor “Parliament” -------------------------------------------------
 
 
 
