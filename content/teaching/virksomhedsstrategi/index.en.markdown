@@ -74,7 +74,7 @@ I uge 7, lærer vi:
 - [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
 
 #### Tech Support 
-- Just for in case: <https://cbs-dk.zoom.us/j/67588907134>
+- Just for in case (Feb 16, kl.08-09): <https://cbs-dk.zoom.us/j/67588907134>
 
 ---
 
