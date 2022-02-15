@@ -50,6 +50,7 @@ Alt undervisning er on campus!
 - Jeg har problemer med at installere en pakke [For macOS bruger](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86081)
 
 *Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanvas.instructure.com/courses/22821/discussion_topics)* 
+
 ---
 
 ### Uge 7
