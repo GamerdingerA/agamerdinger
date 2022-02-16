@@ -1,2 +1,3 @@
 # agamerdinger
-Personal website of Alexander Gamerdinger
+
+This repository is for my personal website.
