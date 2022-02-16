@@ -170,7 +170,9 @@ clus %>%
   theme_graph() +
   labs(title = "",
        subtitle = "") + 
-  theme(legend.position = 'bottom') 
+  theme(legend.position = 'bottom', 
+       legend.title = element_text(size=18), 
+       legend.text = element_text(size=14)) 
 ```
 
 ```{r pn1, echo= FALSE, fig.height = 8, fig.width = 10, fig.cap= "Organizational Network", fig.align="center"}
@@ -224,12 +226,14 @@ cp10 %>%
                               "NGO", 
                               "Public Organization", 
                               "Resarch Institution")) +
-  geom_node_text(aes(filter = (degree >= 21),size = degree, label = name), repel = T, force =130, size =4, max.overlaps = 20,
+  geom_node_text(aes(filter = (degree >= 21),size = degree, label = name), repel = T, force =130, size =5, max.overlaps = 20,
                  family = "serif")+
   labs(title = "",
        subtitle = "") +
   theme_graph() +
-  theme(legend.position = 'bottom') 
+  theme(legend.position = 'bottom', 
+       legend.title = element_text(size=18), 
+       legend.text = element_text(size=14)) 
 ```
 
 Figure 4 shows the organizational network of the Wellbeing Economy Movement. Organizations with the largest nodes are labeled and weighted according to their number of affiliations; ties are weighted by their shared affiliations. While WEAll and its Scotland hub are among the most prominent organizations by design, other important organizations include international organizations such as the UN, OECD and World Bank, NGOs such as Oxfam and the Club of Rome, as well as a variety of mostly British universities, think tanks and professional organizations. Most noteworthy is the triangular connection between WEAll, the UN and the Alliance for Sustainability and Prosperity, involved in the very creation of WEAll,  which is mostly composed of prominent ecological and environmental academics. 
