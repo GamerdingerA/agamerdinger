@@ -8,7 +8,7 @@ showReadingTime: false
 description: 'I am Alexander, an Assistant Lecturer at Copenhagen Business School'
 ---
 
-I am an Assistant Lecturer at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. My research is primarily focused on professionals and algorithmic work in the insurance industry. I am fully funded by the [Algorithms,Data & Democracy](https://algoritmer.org/) project. 
+I am an Assistant Lecturer at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. My research is primarily focused on professionals and algorithmic work in the insurance industry. I am fully funded by the [Algorithms,Data & Democracy](https://algoritmer.org/) project. Check out my [CV](160221_CV_AG.pdf)
 
 In my spare time, I write, teach and talk about subjective wellbeing, happiness and the Wellbeing Economy. This is a remainder of my prior work with my talented colleagues at the [Happiness Research Institute](https://happinessresearchinstitute.com), a Copenhagen based Think Tank. 
 
