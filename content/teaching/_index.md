@@ -9,8 +9,10 @@ cascade:
   showHeadingAnchors: true
 ---
 
+In spring 2022, I am teaching the following courses at Copenhagen Business School and Northeastern University.
+
 ### For students
-In Spring 2022, I am teaching the following courses at Copenhagen Business School and Northeastern University. Please find relevant course material and information about office hours in the links below. All material uploaded on this website is also available in Canvas.
+Please find relevant course material and information about office hours in the links below. All material uploaded on this website is also available in Canvas.
 
 ---
 

@@ -48,6 +48,7 @@ Alt undervisning er on campus!
 #### Troubleshooting
 - Hvordan sletter jeg R og Rstudio rigtigt? [For macOS bruger](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Uninstalling-under-macOS) [For Windows bruger](https://stackoverflow.com/questions/55204017/how-to-uninstall-r-and-rstudio-with-all-packages-settings-and-everything-else)
 - Jeg har problemer med at installere en pakke [For macOS bruger](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86081)
+- Hvis jeg plotter netværk, åbner Rstduio et nyt vindue. Svar: Det er fordi du har en gammel version af Rstudio. Updatere Rstudio.
 
 Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanvas.instructure.com/courses/22821/discussion_topics)
 
@@ -59,6 +60,11 @@ I uge 7, lærer vi:
 2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `dplyr` funktioner  
 3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
+#### Readings
+- [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
+- [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
+- [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
+
 #### Materiale (online)
 - videoerne er desværre for store, og skal derfor ses på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 - [lektion01-online-rscript](lektion01/lektion01-v01-virkstrat.R)
@@ -68,17 +74,17 @@ I uge 7, lærer vi:
 - [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
 - [lektion01-data](den17-no-nordic-letters.csv)
 
-#### Readings
-- [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
-- [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
-- [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
-
-#### Tech Support 
-- Just for in case (Feb 16, kl.08-09): <https://cbs-dk.zoom.us/j/67588907134>
+#### Mine R scripts 
+- [lektion01-øvelse-rscript-Alexander](lektion01/lektion01-rscript_Alexander.R)
 
 ---
 
 ### Uge 8
+
+{{< alert >}}
+**To do!** Prøv og svar på spørgsmål, som i kan se i filen [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
+{{< /alert >}}
+
 
 *Info kommer Fredag d. 18 Februar*
 
