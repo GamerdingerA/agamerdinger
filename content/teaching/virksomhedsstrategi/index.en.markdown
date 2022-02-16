@@ -57,7 +57,7 @@ Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanva
 ### Uge 7
 I uge 7, lærer vi:
 1. Hvordan man installerer R og Rstudio
-2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `dplyr` funktioner  
+2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `tidyverse` funktioner
 3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
 #### Readings
@@ -85,6 +85,8 @@ I uge 7, lærer vi:
 **To do!** Prøv og svar på spørgsmål, som I kan se i filen [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
 {{< /alert >}}
 
+#### R resourcer
+- [Data manipulation med tidyverse](https://rstudio-education.github.io/tidyverse-cookbook/transform-tables.html)
 
 *Info kommer Fredag d. 18 Februar*
 
