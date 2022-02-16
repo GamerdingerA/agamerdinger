@@ -82,7 +82,7 @@ I uge 7, lærer vi:
 ### Uge 8
 
 {{< alert >}}
-**To do!** Prøv og svar på spørgsmål, som i kan se i filen [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
+**To do!** Prøv og svar på spørgsmål, som I kan se i filen [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
 {{< /alert >}}
 
 
