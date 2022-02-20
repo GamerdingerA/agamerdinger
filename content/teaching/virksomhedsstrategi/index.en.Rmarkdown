@@ -55,10 +55,10 @@ Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanva
 ---
 
 ### Uge 7
-I uge 7, lærer vi:
-1. Hvordan man installerer R og Rstudio
-2. Hvordan man subsetter datasæt med hjælp af `data.table` og/eller `tidyverse` funktioner
-3. Hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
+I uge 7, lærer I:
+1. hvordan man installerer R og Rstudio
+2. hvordan man subsetter datasæt med hjælp af `data.table` og/eller `tidyverse` funktioner
+3. hvordan man visualiserer simple netværk med `ggraph` og `igraph` funktioner
 
 #### Readings
 - [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
@@ -79,20 +79,28 @@ I uge 7, lærer vi:
 
 ---
 
-### Uge 8
-
 {{< alert >}}
 **To do!** Prøv og svar på spørgsmål, som I kan se i filen [lektion01-øvelse-rscript](lektion01/lektion01-øvelse.R)
 {{< /alert >}}
 
+
+### Uge 8
+I uge 8 lærer I: 
+1. hvordan man udvælger komponenter af et netværk med `igraph/tidyverse`funktioner
+2. om forskellige måder at måle sammenhængskraft i netværk (densitet, stilængder, diameter)
+3. hvordan man kan visualisere det på en individ- og organisationsniveau med `ggraph` funktioner
+
 #### R resourcer
 - [Data manipulation med tidyverse](https://rstudio-education.github.io/tidyverse-cookbook/transform-tables.html)
 
-*Info kommer Fredag d. 18 Februar*
+#### Materiale (online)
+- videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 
+#### Materiale (on campus)
+- lektion02-powerpoint
+- lektion02-øvelse-rscript
 
-
-
+#### Mine R scripts 
 
 
 
