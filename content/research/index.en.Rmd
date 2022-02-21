@@ -6,7 +6,7 @@ showTableOfContents: false
 showDate: false
 showReadingTime: false
 slug: [/research/]
-description: ''
+description: 'My research is focused on professionals, algorithmic work and wellbeing-related issues'
 ---
 
 My research is focused on how the use of artificial intelligence and algorithms affect professional work, expertise, and the transnational governance of the insurance sector. Besides, I have a passion for happiness research and like to write and teach on issues related to subjective wellbeing, wellbeing governance and Wellbeing Economy.

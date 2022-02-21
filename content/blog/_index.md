@@ -1,6 +1,6 @@
 ---
 title: "My Blog"
-description: "My blog page"
+description: "This page shows a selection of my blog posts"
 groupByYear: false
 ---
 
