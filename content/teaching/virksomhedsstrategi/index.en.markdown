@@ -97,12 +97,14 @@ I uge 8 lærer I:
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 
 #### Materiale (on campus)
+- [lektion02-øvelse-rscript](lektion02/lektion02-without-code.R)
 - lektion02-powerpoint
-- lektion02-øvelse-rscript
+
 
 #### Mine R scripts 
+- Mine scripts bliver oploadet på onsdag den 23 februar.
 
-
+---
 
 
 
