@@ -96,6 +96,7 @@ introduktion (2016, København: Samfundslitteratur)
 
 #### R resourcer
 - [Data manipulation med tidyverse](https://rstudio-education.github.io/tidyverse-cookbook/transform-tables.html)
+- [How to search for help online](lektion02/searching-for-help-guide.pdf)
 
 #### Materiale (online)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
