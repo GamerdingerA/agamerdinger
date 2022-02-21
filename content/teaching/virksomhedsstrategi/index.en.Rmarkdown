@@ -90,6 +90,10 @@ I uge 8 lærer I:
 2. om forskellige måder at måle sammenhængskraft i netværk (densitet, stilængder, diameter)
 3. hvordan man kan visualisere det på en individ- og organisationsniveau med `ggraph` funktioner
 
+#### Readings 
+- Kap. 3 side 51-59. Lasse Folke Henriksen, & Christian Waldstrøm Netværksanalyse - en
+introduktion (2016, København: Samfundslitteratur) 
+
 #### R resourcer
 - [Data manipulation med tidyverse](https://rstudio-education.github.io/tidyverse-cookbook/transform-tables.html)
 
