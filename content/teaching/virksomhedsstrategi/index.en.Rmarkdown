@@ -102,7 +102,7 @@ introduktion (2016, København: Samfundslitteratur)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 
 #### Materiale (on campus)
-- [lektion02-øvelse-rscript](lektion02/lektion02-without-code.R)
+- [lektion02-øvelse-rscript](lektion02/lektion02-without-code_v2.R)
 - [lektion02-powerpoint](lektion02/lektion02-powerpoint.pptx) eller [lektion02-pdf](lektion02/lektion02-powerpoint.pdf)
 
 #### Mine R scripts 
