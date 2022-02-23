@@ -75,7 +75,7 @@ I uge 7, lærer I:
 - [lektion01-data](den17-no-nordic-letters.csv)
 
 #### Mine R scripts 
-- [lektion01-øvelse-rscript-Alexander](lektion01/lektion01-rscript_Alexander.R)
+- [lektion01-rscript-Alexander](lektion01/lektion01-rscript_Alexander.R)
 
 ---
 
@@ -106,7 +106,7 @@ introduktion (2016, København: Samfundslitteratur)
 - [lektion02-powerpoint](lektion02/lektion02-powerpoint.pptx) eller [lektion02-pdf](lektion02/lektion02-powerpoint.pdf)
 
 #### Mine R scripts 
-- Mine scripts bliver oploadet på onsdag den 23 februar.
+- [lektion02-rscript-Alexander](lektion02/lektion02-code-and-comments.R)
 
 ---
 
