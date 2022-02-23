@@ -100,6 +100,7 @@ introduktion (2016, København: Samfundslitteratur)
 
 #### Materiale (online)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
+- [video om materiale vi har ikke nået til](https://cbs.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2eb3b8e5-d6ee-4ebe-9af0-ae4500ee7b4e&start=0)
 
 #### Materiale (on campus)
 - [lektion02-øvelse-rscript](lektion02/lektion02-without-code_v2.R)
