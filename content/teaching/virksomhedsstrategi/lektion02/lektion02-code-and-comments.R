@@ -10,7 +10,7 @@ setwd("/Users/alexandergamerdinger/Desktop/PhD/teaching/virksomhedsstrategi_fora
 
 # install new packages 
 
-install.packages('graphlayouts')
+#install.packages('graphlayouts')
 
 # loading libraries 
 library(data.table)
@@ -87,7 +87,7 @@ plot(e4, vertex.size=10, vertex.label=NA)
 edge_density(e4, loops=FALSE)
 
 # eliteDB graph
-edge_density(net1, loops=FALSE)
+edge_density(net2, loops=FALSE)
 
 # plot
 net2 %>% 
@@ -144,10 +144,10 @@ net_largest %>%
 
 # select the second-largest component
 index1 <- tbl$V1[2]
-net_second <- net2[[index1]]
+net_second <- net3[[index1]]
 
 # density second-largest component
-edge_density(second, loops = FALSE)
+edge_density(net_second, loops = FALSE)
 
 # plot the second largest 
 net_second %>% 
