@@ -54,7 +54,7 @@ Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanva
 
 ---
 
-### Uge 7
+### Uge 7: Intro til netværksanalyse og visualisering 
 I uge 7, lærer I:
 1. hvordan man installerer R og Rstudio
 2. hvordan man subsetter datasæt med hjælp af `data.table` og/eller `tidyverse` funktioner
@@ -84,7 +84,7 @@ I uge 7, lærer I:
 {{< /alert >}}
 
 
-### Uge 8
+### Uge 8: Sammenhængskraft i netværk
 I uge 8 lærer I: 
 1. hvordan man udvælger komponenter af et netværk med `igraph/tidyverse`funktioner
 2. om forskellige måder at måle sammenhængskraft i netværk (densitet, stilængder, diameter)
@@ -111,7 +111,7 @@ introduktion (2016, København: Samfundslitteratur)
 
 ---
 
-### Uge 9
+### Uge 9: Centralitetsanalyse 
 
 {{< alert >}}
 **Feedback** Jeg har lavet en Feedback Discussion på [Canvas](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86820). I må gerne give en kommentar om hvordan holdundervisning kan forbedres. Hvis det nuværende system ikke fungerer for jer, så må i endelig skrive. 
