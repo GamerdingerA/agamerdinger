@@ -114,7 +114,7 @@ introduktion (2016, København: Samfundslitteratur)
 ### Uge 9
 
 {{< alert >}}
-**Feedback** Jeg har lavet en Feedback Discussion på [CANVAS](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86820). I må gerne give en kommentar om hvordan holdundervisning kan forbedres. Hvis det nuværende system ikke fungere for jer, så må i endelig skrive. 
+**Feedback** Jeg har lavet en Feedback Discussion på [CANVAS](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86820). I må gerne give en kommentar om hvordan holdundervisning kan forbedres. Hvis det nuværende system ikke fungerer for jer, så må i endelig skrive. 
 {{< /alert >}}
 
 
