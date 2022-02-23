@@ -107,6 +107,7 @@ introduktion (2016, København: Samfundslitteratur)
 
 #### Mine R scripts 
 - [lektion02-rscript-Alexander](lektion02/lektion02-code-and-comments.R)
+- [lektion01-øvelse-rscript-solutions](lektion01/lektion01-øvesle-solutions.R)
 
 ---
 
