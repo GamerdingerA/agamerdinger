@@ -48,9 +48,9 @@ Alt undervisning er on campus!
 #### Troubleshooting
 - Hvordan sletter jeg R og Rstudio rigtigt? [For macOS bruger](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Uninstalling-under-macOS) [For Windows bruger](https://stackoverflow.com/questions/55204017/how-to-uninstall-r-and-rstudio-with-all-packages-settings-and-everything-else)
 - Jeg har problemer med at installere en pakke [For macOS bruger](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86081)
-- Hvis jeg plotter netværk, åbner Rstduio et nyt vindue. Svar: Det er fordi du har en gammel version af Rstudio. Updatere Rstudio.
+- Hvis jeg plotter netværk, åbner Rstduio et nyt vindue. Svar: Det er fordi du har en gammel version af Rstudio. Opdater Rstudio.
 
-Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanvas.instructure.com/courses/22821/discussion_topics)
+Hvis der opstår flere problemer, stil et nyt spørgsmål [her](https://cbscanvas.instructure.com/courses/22821/discussion_topics).
 
 ---
 
@@ -111,8 +111,11 @@ introduktion (2016, København: Samfundslitteratur)
 
 ---
 
+### Uge 9
 
-
+{{< alert >}}
+**Feedback** Jeg har lavet en Feedback Discussion på [CANVAS](https://cbscanvas.instructure.com/courses/22821/discussion_topics/86820). I må gerne give en kommentar om hvordan holdundervisning kan forbedres. Hvis det nuværende system ikke fungere for jer, så må i endelig skrive. 
+{{< /alert >}}
 
 
 
