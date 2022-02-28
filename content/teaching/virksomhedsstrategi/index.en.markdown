@@ -41,7 +41,7 @@ Alt undervisning er on campus!
 {{< /alert >}}
 
 #### Vigtige informationer
-- [Se syllabus her](syllabus_2022.pdf)
+- [Se syllabus her](syllabus_2022_1.pdf)
 - [Guide: Installing R and Rstuido](setup-r-v01.pdf)
 - [Guide: R Resources](setup-r-v01.pdf)
 
