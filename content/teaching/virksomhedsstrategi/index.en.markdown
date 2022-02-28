@@ -131,7 +131,7 @@ introduktion (2016, København: Samfundslitteratur)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 
 #### Materiale (on campus)
-- [lektion03-rscript](lektion03/lektion03-rscript-Alexander.R)
+- [lektion03-rscript-Alexander](lektion03/lektion03-rscript-Alexander.R)
 
 
 
