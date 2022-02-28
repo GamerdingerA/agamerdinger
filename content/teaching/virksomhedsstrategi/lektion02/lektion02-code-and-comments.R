@@ -248,7 +248,6 @@ ggsave("output/distance_to_lego.png", width = 30, height = 17.5, units = "cm")
 
 # Diameter  ----------------------------------------------------------------
 # diameter of network - the longest shortest path in the network. 
-
 diameter(net_largest, directed = FALSE, weights = NULL)
 
 # Who is on the outskirts?
@@ -275,12 +274,12 @@ E(net_largest, path = diam)$diameter <- TRUE
 # plot it
 net_largest %>% 
   ggraph(layout = "fr") +
-  geom_edge_link0(aes(filter=diameter==TRUE), color = "red", width = 1.5) +
   geom_edge_link0(aes(filter=diameter==FALSE), color = "gray60") +
+  geom_edge_link0(aes(filter=diameter==TRUE), color = "red", width = 1.5) +
   geom_node_point(aes(filter=diameter==FALSE), color = "black") +
   geom_node_point(aes(filter=diameter==TRUE), color = "red", size =2) +
-  geom_node_label(aes(filter=diameter==TRUE, label = name), nudge_y = -0.3) +
-  theme_graph() + ggtitle('Diameter in EliteDBs largest component')
+  geom_node_label(aes(filter=diameter==TRUE, label = name), nudge_y = -0.3, size =2.5, repel = TRUE) +
+  theme_graph() + labs(title = 'Diameter in EliteDBs largest component')
 
 # save the output to the output folder
 ggsave("output/diameter_eliteDB_largest.png", width = 30, height = 17.5, units = "cm")
@@ -308,11 +307,12 @@ E(net_largest, path=path_of_interest$vpath[[1]])$path1 <- TRUE
 
 # plot it
 # alpha, is a way to make a point, or an edge more transparent. alpha = 1 means that the object is untransparent and alpha = 0 means that it is totally transparent. 
-ggraph(net_largest, layout='fr') + 
+net_largest %>% 
+ggraph(layout='fr') + 
 geom_edge_link0(aes(filter=path1==TRUE), color='red', width=1.2) + 
 geom_edge_link0(aes(filter=path1==FALSE), color='grey50', alpha=0.5) + 
 geom_node_point(aes(filter=path1==TRUE), color='red', size=5, alpha=0.5) + 
-geom_node_point(aes(filter=path1==FALSE), color='black', size=5, alpha=0.25) + 
+geom_node_point(aes(filter=path1==FALSE), color='black', size=3, alpha=0.25) + 
 geom_node_label(aes(filter=path1==TRUE, label=name), color='black', size=3, alpha=0.25, nudge_y=-1) + 
 theme_graph() 
 # save to the output folder
