@@ -133,7 +133,9 @@ introduktion (2016, København: Samfundslitteratur)
 #### Materiale (on campus)
 - [lektion03-rscript-Alexander](lektion03/lektion03-rscript-Alexander.R)
 
+--- 
 
+### Uge 10: Identifikation af communities
 
 
 
