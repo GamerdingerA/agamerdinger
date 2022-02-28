@@ -118,13 +118,14 @@ introduktion (2016, København: Samfundslitteratur)
 
 ### Uge 9: Centralitetsanalyse 
 I uge 9 lærer I: 
-1. hvordan man beregner degree (grad), betweenness, closeness (mærhed) og eigenvector centralitet med `igraph` funktioner 
+1. hvordan man beregner degree (grad), betweenness, closeness (nærhed) og eigenvector centralitet med `igraph` funktioner 
 2. hvordan man kan visualisere centrale aktører i et netværk
 
 #### Readings 
 - Kap. 3 side 70-76. Lasse Folke Henriksen, & Christian Waldstrøm Netværksanalyse - en
 introduktion (2016, København: Samfundslitteratur) 
 - [Seidman. (1983). Network structure and minimum degree](lektion03/Seidman_1983.pdf)
+- [Freeman. (1979). Centrality in social networks: Conceptual clarification](lektion03/Freeman_1979.pdf)
 
 #### Materiale (online)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
