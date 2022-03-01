@@ -138,7 +138,8 @@ introduktion (2016, København: Samfundslitteratur)
 
 ### Uge 10: Identifikation af communities
 
-
+#### Readings 
+- [Blondel et al. (2008). Fast unfolding of communities in large networks](lektion04/Blondel_et_al_2008.pdf)
 
 
 
