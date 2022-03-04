@@ -43,7 +43,7 @@ Alt undervisning er on campus!
 #### Vigtige informationer
 - [Se syllabus her](syllabus_2022_1.pdf)
 - [Guide: Installing R and Rstuido](setup-r-v01.pdf)
-- [Guide: R Resources](setup-r-v01.pdf)
+- [Guide: R Resources](r-resources-v01.pdf)
 
 #### Troubleshooting
 - Hvordan sletter jeg R og Rstudio rigtigt? [For macOS bruger](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Uninstalling-under-macOS) [For Windows bruger](https://stackoverflow.com/questions/55204017/how-to-uninstall-r-and-rstudio-with-all-packages-settings-and-everything-else)
