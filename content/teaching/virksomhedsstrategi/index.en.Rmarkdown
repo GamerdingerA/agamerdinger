@@ -144,6 +144,8 @@ I uge 10 lærer I:
 
 #### Readings 
 - [Blondel et al. (2008). Fast unfolding of communities in large networks](lektion04/Blondel_et_al_2008.pdf)
+- Kap. 3 side 60-69. Lasse Folke Henriksen, & Christian Waldstrøm Netværksanalyse - en
+introduktion (2016, København: Samfundslitteratur) 
 
 #### R resourcer
 - [Handbook of Graphs and Networks in People Analytics](https://ona-book.org/community.html)
