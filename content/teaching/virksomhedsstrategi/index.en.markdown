@@ -137,12 +137,19 @@ introduktion (2016, København: Samfundslitteratur)
 --- 
 
 ### Uge 10: Identifikation af communities
+I uge 10 lærer I: 
+1. hvordan man beregner man assortativitet
+2. hvordan man finder og visualiserer klynger/communities i et netværk
+3. hvordan man finder og visualiserer klikker i et netværk
 
 #### Readings 
 - [Blondel et al. (2008). Fast unfolding of communities in large networks](lektion04/Blondel_et_al_2008.pdf)
 
+#### R resourcer
+- [Handbook of Graphs and Networks in People Analytics](https://ona-book.org/community.html)
 
+#### Materiale (online)
+- videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
 
-
-
-
+#### Materiale (on campus)
+- [lektion03-rscript-Alexander](lektion04/lektion04-rscript-Alexander-v01.R)
