@@ -155,3 +155,11 @@ introduktion (2016, København: Samfundslitteratur)
 
 #### Materiale (on campus)
 - [lektion03-rscript-Alexander](lektion04/lektion04-rscript-Alexander-v01.R)
+
+--- 
+
+### Uge 11: Analyse af strategiske netværksroller
+
+
+
+
