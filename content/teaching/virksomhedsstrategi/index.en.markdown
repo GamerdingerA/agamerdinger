@@ -161,7 +161,7 @@ introduktion (2016, København: Samfundslitteratur)
 --- 
 
 {{< alert >}}
-**Gruppe opgave** gruppe opgaven skal afleveres den 18. marts. Vejledning af opgaven findes [her](lektion04/lektion04_group_assignment.pdf). 
+**Info** gruppe opgaven skal afleveres den 18. marts. Vejledning af opgaven findes [her](lektion04/lektion04_group_assignment.pdf). 
 {{< /alert >}}
 
 
