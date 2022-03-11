@@ -156,8 +156,14 @@ introduktion (2016, København: Samfundslitteratur)
 #### Materiale (on campus)
 - [lektion04-rscript-Alexander](lektion04/lektion04-rscript-Alexander-v01.R)
 - [lektion03-rscript-øvelse-nøgle](lektion03/lektion03-øvelse-nøgle.R)
+- [lektion04-group-assignment](lektion04/lektion04_group_assignment.pdf)
 
 --- 
+
+{{< alert >}}
+**Gruppe opgave** gruppe opgaven skal afleveres den 18. marts. Vejledning af opgaven findes [her](lektion04/lektion04_group_assignment.pdf). 
+{{< /alert >}}
+
 
 ### Uge 11: Analyse af strategiske netværksroller
 
