@@ -166,6 +166,41 @@ introduktion (2016, København: Samfundslitteratur)
 
 
 ### Uge 11: Analyse af strategiske netværksroller
+I uge 11 lærer I: 
+1. hvordan man beregner Burt's constraint
+2. hvordan man subsetter "den" datasættet på "tags" kolonnen 
+
+Resten af tiden har I tid til at arbejde på jeres gruppe opgave.
+
+#### Materiale (online)
+- videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
+
+#### Materiale (on campus)
+- [lektion05-rscript-Alexander](lektion05/lektion05-rscript-Alexander.R)
+- [lektion05-custom-funktioner](lektion05/lektion05-custom-functions.r)
+
+--- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
