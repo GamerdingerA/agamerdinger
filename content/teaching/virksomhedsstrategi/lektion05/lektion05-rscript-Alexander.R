@@ -9,7 +9,6 @@
 ## load working directory 
 setwd("/Users/alexandergamerdinger/Desktop/PhD/teaching/virksomhedsstrategi_forår_2022")
 
-
 # libraries
 library(data.table)
 library(tidyverse)
@@ -21,7 +20,7 @@ library(graphlayouts)
 
 # load custom functions to search for tags
 # before loading, make sure to save this r script in your r folder, otherwise it will not be loaded properly. 
-source('r/custom-functions-lektion05.r')
+source('r/lektion05-custom-functions.r')
 
 # Load data,  make network object,  select largest component --------------
 den <- read_csv("input/den17-no-nordic-letters.csv")
@@ -44,6 +43,7 @@ net2 <- simplify(net2, remove.multiple=TRUE, remove.loops=TRUE)
 # Select largest component 
 complist <- components(net2)
 net3 <- decompose.graph(net2)
+
 tbl <-table(complist$membership) %>% data.table() %>% arrange(desc(N))
 tbl$V1 <- as.numeric(tbl$V1)
 net_largest <- net3[[tbl$V1[1]]]
@@ -57,12 +57,12 @@ net_metrics <- tibble(
   
   name = names(constraint(net_largest)),
   constraint = constraint(net_largest),
-  degree = degree(net_largest)                                                                                          
+  degree = degree(net_largest) 
   
 )
 
 # Let us see who is least constraint?
-net_metrics %>% arrange(constraint)
+net_metrics %>% arrange(constraint) 
 
 # We can also turn the metric around because low values for Burt's constraint means high values for brokerage. 
 net_metrics <- net_metrics %>% mutate(brokerage = 1-constraint)
@@ -91,7 +91,7 @@ ggraph() +
   geom_edge_link0(color='grey', width=0.6, alpha=0.35) + 
   geom_node_point(aes(size=brokerage), alpha=0.75) + 
   theme_graph() + scale_color_viridis() +
-  geom_node_label(aes(filter=name %in% ten_largest, label=name), alpha=0.75, repel=T) +
+  geom_node_label(aes(filter=name %in% ten_largest, label=name), alpha=0.75, repel=T, size=1) +
   geom_node_point(aes(filter=name %in% ten_largest,), color='red', size=.75, alpha=0.75) 
 
 
@@ -114,4 +114,3 @@ finance <- c(bank, finans, pension)
 
 # Select all names from the data set 
 den2 <- den1 %>% filter(affiliation %in% finance)
-
