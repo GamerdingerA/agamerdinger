@@ -9,7 +9,7 @@
 
 # Install and load packages -----------------------------------------------
 
-## load workingdirectory
+## load working directory
 setwd("/Users/alexandergamerdinger/Desktop/PhD/teaching/virksomhedsstrategi_forår_2022")
 
 # New package that gives access to new functions for ggraph (e.g. drawing ellipses)
@@ -63,7 +63,7 @@ net2 <- igraph::simplify(net2, remove.loops = TRUE, remove.multiple = TRUE)
 # For assortativity based on degree we use the function assortativity_degree. It measures similarity on degree - e.g. those that have many friends also hang out with other popular people. 
 
 # Assortativity degree 
-assortativity_degree(net, directed=FALSE)
+assortativity_degree(net2, directed=FALSE)
 
 # Continuous Assortativity ------------------------------------------------
 # To calculate similarity between affiliations, we need to create a new variable - gender proportion. 
@@ -84,7 +84,7 @@ Men <- gender %>% filter(gender == "Men")
 Women <- gender %>% filter(gender == "Women" & n == n_total)
 Women$share = 0
 
-Men <- Men %>%  select(affiliation, share)
+Men <- Men %>% select(affiliation, share)
 Women <- Women %>% select(affiliation, share)
 
 # create a common object 
@@ -112,7 +112,7 @@ ggraph(layout = "stress") +
 geom_edge_link0(width=.5, alpha=0.4) + 
 geom_node_point(aes(color=share_men), size=5) + 
 theme_graph() +
-scale_color_gradient2(low='firebrick4', mid='grey80', high='dodgerblue4', midpoint=0.5, na.value='pink')
+scale_color_gradient2(low='firebrick4', mid='grey80', high='dodgerblue4', midpoint=0.5, na.value='pink') 
 
 # Calculate assortativity for share of men
 assortativity(net_largest, V(net_largest)$share_men, directed=FALSE)
@@ -134,7 +134,6 @@ theme_graph()
 
 # Make sure to write as.factor(), so it is recognized as a categorical variable
 assortativity_nominal(net_largest, as.factor(V(net_largest)$random), directed=FALSE)
-
 
 # Template to add external variables to EliteDB ---------------------------
 # first, you create a data frame that includes the names of the nodes of the network
