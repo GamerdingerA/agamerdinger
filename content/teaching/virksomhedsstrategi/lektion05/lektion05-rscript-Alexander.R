@@ -6,6 +6,13 @@
 #
 #########################################
 
+install.packages("devtools")
+devtools::install_github("gadenbuie/rsthemes")
+
+rsthemes::install_rsthemes()
+
+
+
 ## load working directory 
 setwd("/Users/alexandergamerdinger/Desktop/PhD/teaching/virksomhedsstrategi_forår_2022")
 
@@ -113,4 +120,4 @@ pension <- has.tags(den1, 'Pensions')
 finance <- c(bank, finans, pension)
 
 # Select all names from the data set 
-den2 <- den1 %>% filter(affiliation %in% finance)
+den2 <- den1 %>% filter(affiliation %in% finans)
