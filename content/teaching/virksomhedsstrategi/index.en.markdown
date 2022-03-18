@@ -184,7 +184,7 @@ Resten af tiden har I tid til at arbejde på jeres gruppe opgave.
 ### Uge 12: Indsamling af netværksdata og konstruktion af netværksobjekter
 Det er vores sidste øvelsestime. Her gennemgår vi: 
 1. hvordan man kan loade et netværksobjekt på en anderledes måde 
-2. ektra visualiseringsteknikker 
+2. ekstra visualiseringsteknikker 
 3. hvordan man arbejder med Orbis data. 
 
 #### Materiale (online)
