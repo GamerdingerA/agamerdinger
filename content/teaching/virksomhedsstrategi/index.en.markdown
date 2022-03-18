@@ -24,7 +24,7 @@ Forbindelsen mellem teori og metode i konkrete caseanalyser har prioritet ligeso
 - Alexander Gamerdinger
 - E-mail: <aga.ioa@cbs.dk>
 - Office hours: Fredag kl. 09:00-10:20 (efter aftale)
-- Office: Kilen 3. sal (K3.42)
+- Office: Kilen 3. sal (K3.43)
 
 <!-- Calendly link widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -181,27 +181,17 @@ Resten af tiden har I tid til at arbejde på jeres gruppe opgave.
 
 --- 
 
+### Uge 12: Indsamling af netværksdata og konstruktion af netværksobjekter
+Det er vores sidste øvelsestime. Her gennemgår vi: 
+1. hvordan man kan loade et netværksobjekt på en anderledes måde 
+2. ektra visualiseringsteknikker 
+3. hvordan man arbejder med Orbis data. 
 
+#### Materiale (online)
+- videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
+- hvordan downloader man data fra [Orbis](https://cbs.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=7745539a-08ed-45d6-8da4-ab8b00ceb972)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### Materiale (on campus)
+- [lektion06-rscript-Alexander](lektion06/lektion06-rscript-Alexander.R)
+- [EXTRA-lektion06-orbis](lektion06/lektion06-extra-orbis.R)
 
