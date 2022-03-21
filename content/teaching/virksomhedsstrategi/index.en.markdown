@@ -185,7 +185,7 @@ Resten af tiden har I tid til at arbejde på jeres gruppe opgave.
 Det er vores sidste øvelsestime. Her gennemgår vi: 
 1. hvordan man kan loade et netværksobjekt på en anderledes måde 
 2. ekstra visualiseringsteknikker 
-3. hvordan man arbejder med Orbis data. 
+3. hvordan man arbejder med Orbis data
 
 #### Materiale (online)
 - videoerne vises på [Canvas](https://cbscanvas.instructure.com/courses/22821/modules)
