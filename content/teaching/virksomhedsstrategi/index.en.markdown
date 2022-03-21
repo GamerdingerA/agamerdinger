@@ -194,4 +194,5 @@ Det er vores sidste øvelsestime. Her gennemgår vi:
 #### Materiale (on campus)
 - [lektion06-rscript-Alexander](lektion06/lektion06-rscript-Alexander.R)
 - [EXTRA-lektion06-orbis](lektion06/lektion06-extra-orbis.R)
+- [Feedback-gruppe-opgave](lektion06/feedback_group_assignment_2022.pdf)
 
