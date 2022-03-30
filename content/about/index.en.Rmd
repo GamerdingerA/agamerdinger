@@ -10,13 +10,11 @@ description: 'I am Alexander, a PhD Fellow at Copenhagen Business School'
 
 I am a PhD Fellow at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. My research is primarily focused on professionals and algorithmic work in the insurance industry. I am fully funded by the [Algorithms,Data & Democracy](https://algoritmer.org/) project. 
 
-If you want to know more, check out my [CV](300321-CV-Alexander.pdf).
-
 In my spare time, I write, teach and talk about subjective wellbeing, happiness and the Wellbeing Economy. This is a remainder of my prior work with my talented colleagues at the [Happiness Research Institute](https://happinessresearchinstitute.com), a Copenhagen based Think Tank. 
 
 I enjoy working with quantitative data, using statistical methods, social network analysis and text analysis in R. 
 
-If you would like to know more about me, check out my [blog](/blog/) or contact me at aga.ioa@cbs.dk   
+If you would like to know more about me, check out my [CV](300321-CV-Alexander.pdf), [blog](/blog/) or contact me at aga.ioa@cbs.dk   
 
 
 
