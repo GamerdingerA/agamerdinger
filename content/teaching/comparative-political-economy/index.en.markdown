@@ -9,7 +9,7 @@ description: 'This course is taught at CBS'
 summary: "Copenhagen Business School | Bsc International Business & Politics | 4th Semester"
 ---
 
-![Flags artwork](course_-picture_background.jpg "Photo by [@bumblebib](https://unsplash.com/@bumblebib) on [Unsplash](https://unsplash.com/)")
+![Flags artwork](course_background.jpg "Photo by [@bumblebib](https://unsplash.com/@bumblebib) on [Unsplash](https://unsplash.com/)")
 
 ## Course overview
 The course covers key theoretical approaches in the field of Comparative Political Economy (CPE), including for instance the ‘varieties of capitalism’ approach as well as constructivist and critical political economy theories. To assess the strengths and weaknesses of these theoretical approaches they are discussed in relation to concrete advanced industrialised economies.
