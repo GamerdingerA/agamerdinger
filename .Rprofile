@@ -19,6 +19,7 @@ options(
   blogdown.author = "Alexander Gamerdinger",  
   blogdown.ext = ".Rmarkdown",     
   blogdown.subdir = "blog",
+  blogdown.server.verbose = TRUE,
   # build .Rmd to .html (via Pandoc); to build to Markdown, set this option to 'markdown'
   blogdown.method = 'html'
 )
