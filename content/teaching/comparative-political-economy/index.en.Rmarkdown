@@ -18,7 +18,7 @@ The course takes both a synchronic and a diachronic comparative perspective on n
 
 The course shares its exam with Philosophy of Social Science. Students write a project report in groups. The project report applies CPE theory in an empirically grounded comparative analysis with a view to answering a clear and relevant research question formulated by the group. The project report should justify theoretical choices and account for methods, data and philosophy of science assumptions. It forms the basis of an oral group exam.
 
-- [Course description and examination rules]("https://cbscanvas.instructure.com/courses/20732/modules/items/546961)
+- [Course description and examination rules](https://cbscanvas.instructure.com/courses/20732/modules/items/546961)
 - [Course Plan 2022](IBP_CPE_2022.pdf)
 
 ## My role as project supervisor 
