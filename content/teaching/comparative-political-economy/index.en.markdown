@@ -21,10 +21,10 @@ The course shares its exam with Philosophy of Social Science. Students write a p
 - [Course description and examination rules]("https://cbscanvas.instructure.com/courses/20732/modules/items/546961)
 - [Course Plan 2022](IBP_CPE_2022.pdf)
 
-## My role as project supervisor and examinator
-In this course, I will supervise some student groups on their project reports. Each group is encouraged to use the supervision time, which in this course amounts to 45 minutes. Groups who have me as a supervisor can book a supervision meeting through the link below. The list will be released on May 10th. 
+## My role as project supervisor 
+In this course, I will supervise student groups on their project reports. Each group is encouraged to use the supervision time, which in this course amounts to 45 minutes. Student groups are welcome to book a supervision meeting through the link below. 
 
-Supervision is preferred to take place offline, at my office at Kilen, CBS. In case an online meeting is preferred, please write me an e-mail. 
+Supervision is preferred to take place offline, at my office at Kilen, CBS. In case an online meeting is preferred, please let me know. 
 
 ### Contact information and supervision time
 - Alexander Gamerdinger
