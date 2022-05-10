@@ -24,6 +24,12 @@ The course shares its exam with Philosophy of Social Science. Students write a p
 ## My role as project supervisor 
 In this course, I will supervise student groups on their project reports. Each group is encouraged to use the supervision time, which in this course amounts to 45 minutes. Student groups are welcome to book a supervision meeting through the link below. 
 
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Book meeting here</a>
+<!-- Calendly link widget end -->
+
 Supervision is preferred to take place offline, at my office at Kilen, CBS. In case an online meeting is preferred, please let me know. 
 
 ### Contact information and supervision time
@@ -31,11 +37,7 @@ Supervision is preferred to take place offline, at my office at Kilen, CBS. In c
 - E-mail: <aga.ioa@cbs.dk>
 - Office: Kilen 3. sal (K3.43)
 
-<!-- Calendly link widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/30min'});return false;">Book meeting here</a>
-<!-- Calendly link widget end -->
+
 
 
 
