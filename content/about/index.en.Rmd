@@ -8,10 +8,8 @@ showReadingTime: false
 description: 'I am Alexander, a PhD Fellow at Copenhagen Business School'
 ---
 
-I am a PhD Fellow at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. While I have a background in International Political Economy, my research is situated in Economic Sociology, Sociology of Professions and Sociology of Insurance. I am researching the sociotechnical dyanmics of digital technologies on the European insurance sector. More specifically, I am interested in how big data analytics and algorithms affect 1) the professional landscape, 2) the organizational structure, and 3) the governance of insurance in Europe.
+I am a PhD Fellow at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. While I have a background in International Political Economy, my research is situated in Economic Sociology, Sociology of Professions and Sociology of Insurance. My research is part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consortium, which includes several danish universities and the think-tank Mandag Morgen. 
 
-As a part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consortium, my empirical setting is mostly Denmark.
+In my spare time, I am passionate about coding in R, following the wellbeing and post-growth movement, and swimming. 
 
-I employ mixed-method research methods to answer my research questions. While I have a background in quantitative methods including multivariate statistics (structural equations modelling, multiple correspondence analysis), social network analysis and text analysis, I also have a passion for ethnographic methods. I do not really have a preference of methods and adapt it to my research goals - I enjoy coding in R as well as by hand.
-
-If you would like to know more about me, check out my [CV](250122 CV-Alexander.pdf), [blog](/blog/) or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
+If you would like to know more about me, check out my [CV](251022 CV-Alexander.pdf), [blog](/blog/) or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
