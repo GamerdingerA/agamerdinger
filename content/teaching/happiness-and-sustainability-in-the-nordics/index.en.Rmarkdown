@@ -11,6 +11,6 @@ summary: "Northeastern University | Honors Bachelor Students"
 ---
 
 ## Course overview
-More information is following shortly. 
 
-Course description: [Happiness and Sustainability in the Nordics](https://undergraduate.northeastern.edu/honors/global-opportunities/honors-docs/)
+As part of the Northeastern University summer program for Honors Bachelor Students, I was giving guest lectures on the Science of Subjective Wellbeing. 
+

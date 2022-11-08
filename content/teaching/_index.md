@@ -9,7 +9,7 @@ cascade:
   showHeadingAnchors: true
 ---
 
-In spring 2022, I am teaching the following courses at Copenhagen Business School and Northeastern University.
+In 2022, I am teaching the following undergraduate courses. 
 
 ---
 
