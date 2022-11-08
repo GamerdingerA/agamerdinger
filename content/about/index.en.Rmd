@@ -12,4 +12,4 @@ I am a PhD Fellow at the [Department of Organization](https://www.cbs.dk/en/rese
 
 In my spare time, I am passionate about coding in R, following the wellbeing and post-growth movement, and swimming. 
 
-If you would like to know more about me, check out my [CV](251022 CV-Alexander.pdf), [blog](/blog/) or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
+If you would like to know more about me, check out my [CV](251022 CV-Alexander .pdf), [blog](/blog/) or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
