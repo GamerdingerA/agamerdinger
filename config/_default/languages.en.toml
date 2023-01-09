@@ -8,7 +8,7 @@ rtl = false
 title = "Alexander Gamerdinger"
 # logo = "img/logo.jpg"
 description = "Personal Website of Alexander Gamerdinger"
-copyright = "&copy; 2023 Alexander Gamerdinger"
+copyright = "&copy; 2022 Alexander Gamerdinger"
 
 dateFormat = "2 January 2006"
 
@@ -23,5 +23,4 @@ dateFormat = "2 January 2006"
     { linkedin = "https://linkedin.com/in/alexander-gamerdinger" },
     { twitter = "https://twitter.com/GamerdingerA" },
     { link = "https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa" },
-    { google = "https://scholar.google.com/citations?user=qstJ4-QAAAAJ&hl=en&oi=ao" },
   ]
