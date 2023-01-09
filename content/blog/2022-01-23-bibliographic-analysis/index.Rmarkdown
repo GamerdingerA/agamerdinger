@@ -1,5 +1,5 @@
 ---
-title: 'Bibliographic Analysis'
+title: 'A different kind of literature review: networks and online data bases'
 author: Alexander Gamerdinger
 date: '2022-01-23'
 showDate: true
@@ -14,13 +14,23 @@ tags:
 description: ''
 ---
 
-Starting an academic project or a review without prior knowledge of the literature can be challenging. Luckily, there are some methods that can help you to get a good overview of the literature and some of its most representative papers. In this blog post, I will show you how I used bibliographic analysis to become familiar with the literature of my PhD.
+Keeping updated with the rapid pace and number of academic publications within almost every field of study has become increasingly difficult. At the same time, using the existing knowledge base correctly is a crucial ingredient for advancing a line of research.
+
+In this blog post, I am presenting my approach of reviewing literature - that is, using **bibliographic analysis** to map existing fields of study.
+
+Starting an academic project or a review without prior knowledge of the literature can be challenging. Luckily, there are some methods that can help you to get a better overview of the literature and some of its most representative papers. In this blog post, I will use bibliographic methods to investigate the literature on algorithmic work in the insurance sector.
 
 ## The intuition behind bibliographic methods
 
-Bibliographic methods allow you to map out and understand the relational structure between papers in an academic literature. The basic idea is to use documents' reference lists to partition scholarly works into meaningful subgroups, to study their linkages, and assess their similarity and cohesion. Very simply put, these methods cluster scholarly works together whose reference lists are similar, and repel those whose reference lists do not contain linkages.
+Bibliographic methods allow you to map out and understand the relational structure between papers in an academic literature. By using the reference lists of academic papers as edge lists, these methods allow for:
 
-It is really helpful to visualize bibliographic methods through network analysis. In this post, I will go in depth with two bibliographic methods, namely **bibliographic coupling** and **co-citation coupling**. Both are commonly used by scholars, but are operationalized in slightly different ways. While bibliographic coupling visualizes the interrelations of *citing papers*, co-citation coupling shows associations between *cited papers*.
+1.  The assessment of logical relationships between documents using density, connectivity and average distance measures between papers.
+
+2.  The identification of widely-cited and centered documents, including those that bridge knowledge flows between groups of papers.
+
+3.  The discovery of knowledge and research communities and the description of their similarities.
+
+I will visualize bibliographic methods by using social network analysis. In this post, I will go in depth with two bibliographic methods, namely **bibliographic coupling** and **co-citation coupling**. Both are commonly used by scholars, but are operationalized in slightly different ways. While bibliographic coupling visualizes the interrelations of *citing papers*, co-citation coupling shows associations between *cited papers*.
 
 ```{r figure, fig.cap= "Bibliographic coupling and Co-citation Analysis", out.width="100%", fig.align="center", echo=FALSE}
 
@@ -32,11 +42,11 @@ Figure 1 reveals that bibliographic coupling links two papers if they share a co
 
 ## How to get started
 
-1.  You need a sample of papers to analyze. This sample can be found and downloaded from websites like [Scopus](https://www.scopus.com) or [Web of Science](https://www.webofknowledge.com). Usually, an institutional log in is required. The sample of scholarly works can either be found by keywords (using Boolean numerators) or by selecting all papers that are cited by an article of interest.
+1.  You need a sample of papers to analyze. This sample can be found and downloaded from websites like [Scopus](https://www.scopus.com) or [Web of Science](https://www.webofknowledge.com). The sample of scholarly works can either be found by keywords (using Boolean numerators) or by selecting all papers that are cited by an article of interest.
 
 2.  Make sure to download all information about articles, *including* their list of references. Download them either in .csv or .bib format.
 
-3.  Install and load three R packages that make your life so much easier. These are the [bibliometrix](https://www.bibliometrix.org/) package by Massimo Aria & Corrado Cuccurullo, the [igraph](https://igraph.org/r/) package by Gábor Csárdi and Tamás Nepusz, and the [ggraph](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/) package by Thomas Lin Pedersen.
+3.  Install and load three R packages. These are the [bibliometrix](https://www.bibliometrix.org/) package by Massimo Aria & Corrado Cuccurullo, the [igraph](https://igraph.org/r/) package by Gábor Csárdi and Tamás Nepusz, and the [ggraph](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/) package by Thomas Lin Pedersen.
 
 ```{r loading, eval=FALSE, include=TRUE}
 
@@ -53,10 +63,10 @@ Once you have downloaded the data, convert it into a data frame, using the `conv
 ```{r, data, eval=FALSE, include=TRUE}
 
 # loading data using scopus 
-df <- convert2df("insurance_data.bib", dbsource = "scopus", format ="bibtex")
+df <- convert2df("transnational_networks.bib", dbsource = "scopus", format ="bibtex")
 
 # loading data using web of science
-df <- convert2df("insurance_data.bib", dbsource = "wos", format ="bibtex")
+df <- convert2df("transnational_networks.bib", dbsource = "wos", format ="bibtex")
 
 ```
 
@@ -65,7 +75,7 @@ The bibliometrix package offers other platforms to load data from, a more compre
 ```{r bibliometrix, include=FALSE}
 
 library(bibliometrix) ; library(igraph) ; library(ggraph) ; library(tidyverse)
-df <- convert2df("insurance_data.bib", dbsource = "wos", format ="bibtex")
+df <- convert2df("transnational_networks.bib", dbsource = "scopus", format ="bibtex")
 output <- biblioAnalysis(df, sep = ";")
 
 ```
@@ -186,8 +196,7 @@ As stated already, bibliographic coupling links two *citing papers* if they have
 
 ### Loading the data
 
-To load the data, we use the `biblioNetwork()` function from the bibliometrix package which uses a very intuitive syntax to create an adjacency matrix. The adjacency matrix (which is basically is a symmetric matrix) can then be read using the `graph_from_adjacency_matrix()` function. 
-
+To load the data, we use the `biblioNetwork()` function from the bibliometrix package which uses a very intuitive syntax to create an adjacency matrix. The adjacency matrix (which is basically is a symmetric matrix) can then be read using the `graph_from_adjacency_matrix()` function.
 
 ```{r loading1, eval=FALSE, include=TRUE}
 
@@ -220,7 +229,7 @@ graph1 <- delete.vertices(graph, Isolated)
 
 #visualizing the graph 
 graph1 %>% 
-  ggraph(layout = "mds") +
+  ggraph(layout = "fr") +
   geom_edge_link0(aes(color = weight, width = weight), show.legend = FALSE) +
   scale_edge_color_gradient(low = "lightyellow3", high = "olivedrab4") +
   geom_node_point(aes(size = degree)) + 
@@ -234,8 +243,7 @@ graph1 %>%
 
 ```
 
-I use the *mds* layout which uses multidimensional scaling for generating the coordinates to get a more accurate picture of similarity and distance. In other words, the algorithm places two strongly tied papers closer together, and repels papers without ties. 
-
+I use the *mds* layout which uses multidimensional scaling for generating the coordinates to get a more accurate picture of similarity and distance. In other words, the algorithm places two strongly tied papers closer together, and repels papers without ties.
 
 ```{r making-graph, echo= FALSE, fig.height = 8, fig.width = 10, fig.cap= "Bibliographic Coupling Network", fig.align="center"}
 # making an adjacency matrix (papers x papers)
