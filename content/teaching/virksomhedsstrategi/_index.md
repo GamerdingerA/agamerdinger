@@ -10,8 +10,6 @@ cascade:
   showHeadingAnchors: true
 ---
 
-![Abstract purple artwork](course-picture.jpg "Photo by [Sander Weeteling](https://unsplash.com/@sanderweeteling) on [Unsplash](https://unsplash.com/)")
-
 ### Kursets formål
 
 Kurset er et obligatorisk fag for HA i europæisk business på [Copenhagen Business School](https://cbscanvas.instructure.com/courses/22821/modules/items/480509). Kurset introducerer til virksomhedsstrategi i et netværksperspektiv. Virksomheder og deres medarbejdere er afhængige af deres omverden og en helt central måde er at knytte an til omverdenen gennem netværk af forskellig art. Virksomheder konkurrerer og samarbejder med andre organisationer via netværk, som bl.a. giver dem adgang til ressourcer, som de er afhængige af. Kurset udstyrer de studerende med redskaber fra netværksanalyse til at forstå hvordan interne såvel som eksterne netværk indvirker på virksomhedens strategiske processer. Kurset har i tre dele.
