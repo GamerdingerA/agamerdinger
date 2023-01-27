@@ -1,0 +1,51 @@
+theme: congo
+languageCode: en-AU
+defaultContentLanguage: en
+title: Congo
+enableEmoji: yes
+summaryLength: 0
+author:
+  bio: 'This is an example author bio, and although there''s a stock photo of a dog
+    here, this article was actually created by a human. :dog:'
+  image: img/author.jpg
+  links:
+    - twitter: https://twitter.com/
+    - facebook: https://facebook.com/
+    - linkedin: https://linkedin.com/
+    - youtube: https://youtube.com/
+  name: Congo
+taxonomies:
+  tag: tags
+params:
+  article:
+    editAppendPath: yes
+    editURL: https://github.com/jpanther/congo/tree/dev/exampleSite/content/
+    showBreadcrumbs: yes
+    showEdit: yes
+  homepage:
+    layout: custom
+    mainSections: samples
+    showRecent: yes
+  list:
+    groupByYear: no
+    showBreadcrumbs: yes
+menu:
+  main:
+    - name: Docs
+      pageRef: docs
+      weight: 10
+    - name: Samples
+      pageRef: samples
+      weight: 20
+    - name: Users
+      pageRef: users
+      weight: 30
+    - name: GitHub
+      url: https://github.com/jpanther/congo
+      weight: 40
+markup:
+  goldmark:
+    renderer:
+      unsafe: yes
+  highlight:
+    noClasses: no
