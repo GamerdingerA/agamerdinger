@@ -1,5 +1,5 @@
 ---
-title: "Virksomhedsstrategi i et netværksperspektiv"
+title: "Corporate strategy in a network perspective (in Danish)"
 description: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 cascade:
@@ -32,3 +32,5 @@ You are welcome to book a 20 min slot during my office hours. Please just select
 ------------------------------------------------------------------------
 
 # Sessions
+
+Sessions will be uploaded continuously...
