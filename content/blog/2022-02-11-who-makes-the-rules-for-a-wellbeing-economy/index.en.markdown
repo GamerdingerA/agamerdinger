@@ -28,6 +28,21 @@ In contrast to many political economists who study powerful organizations such a
 
 In the past year, I collected information on 246 people who actively work on Wellbeing Economy issues in association with the Wellbeing Economy Alliance (WEAll). As with other social movements, membership is fairly heterogeneous, dispersed around the globe and composed of different groups. The movement mainly operates in Europe and other countries from the Global North, while deliberately including underrepresented areas from the Global South (see Table 1). 
 
+
+```
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `across(Country, str_replace_all, "UK", "England (UK)")`.
+## Caused by warning:
+## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+## Supply arguments directly to `.fns` through an anonymous function instead.
+## 
+##   # Previously
+##   across(a:b, mean, na.rm = TRUE)
+## 
+##   # Now
+##   across(a:b, \(x) mean(x, na.rm = TRUE))
+```
+
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>Table 1: Countries of the movement (cutoff = 5 residents)</caption>
  <thead>
@@ -110,6 +125,12 @@ This sectoral distribution of membership tells us about the status of the moveme
 </div>
 
 This distance becomes more visible in Figure 3, which shows the professional network of the Wellbeing Economy movement. Each node represents an individual who is connected to other individuals by current or past employment. As highlighted by Louvain’s clustering algorithm, we can see that academics and activists form tighter communities and have stronger organizational affiliations with each other than policymakers. The bigger node sizes of activists and academics also reveal a greater number of organizational overlaps that they have with policymakers. In contrast, EU and UK policymakers form their own, looser communities situated at the periphery of the network. 
+
+
+```
+## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+```
 
 <div class="figure" style="text-align: center">
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/pn-1.png" alt="Professional network of Wellbeing Economy movement" width="960" />

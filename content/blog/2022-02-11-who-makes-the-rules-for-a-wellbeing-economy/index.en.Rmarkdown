@@ -23,7 +23,7 @@ library(writexl)
 library(RColorBrewer) #to use good looking colors for Igraph
 
 # ----------------- 1. LOAD DATA  -----------------
-dataset <- read_excel("/Users/alexandergamerdinger/Desktop/PhD/blog/Wellbeing Economy Alliance/Who writes the rules of the Wellbeing Economy?/input/140921_Data_Collection, Master Thesis, Alexander Gamerdinger.xlsx", 
+dataset <- read_excel("/Users/alexandergamerdinger/Desktop/PhD/admin/blog/Wellbeing Economy Alliance/Who writes the rules of the Wellbeing Economy?/input/140921_Data_Collection, Master Thesis, Alexander Gamerdinger.xlsx", 
                       sheet = 1,  guess_max = 10000)
 
 d <- dataset[,-9:-19]

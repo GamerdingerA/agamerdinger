@@ -1,5 +1,5 @@
 ---
-title: 'Bibliographic Analysis'
+title: 'A different kind of literature review: networks and online data bases'
 author: Alexander Gamerdinger
 date: '2022-01-23'
 showDate: true
@@ -18,13 +18,23 @@ description: ''
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
 <link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
-Starting an academic project or a review without prior knowledge of the literature can be challenging. Luckily, there are some methods that can help you to get a good overview of the literature and some of its most representative papers. In this blog post, I will show you how I used bibliographic analysis to become familiar with the literature of my PhD.
+Keeping updated with the rapid pace and number of academic publications within almost every field of study has become increasingly difficult. At the same time, using the existing knowledge base correctly is a crucial ingredient for advancing a line of research.
+
+In this blog post, I am presenting my approach of reviewing literature - that is, using **bibliographic analysis** to map existing fields of study.
+
+Starting an academic project or a review without prior knowledge of the literature can be challenging. Luckily, there are some methods that can help you to get a better overview of the literature and some of its most representative papers. In this blog post, I will use bibliographic methods to investigate the literature on algorithmic work in the insurance sector.
 
 ## The intuition behind bibliographic methods
 
-Bibliographic methods allow you to map out and understand the relational structure between papers in an academic literature. The basic idea is to use documents' reference lists to partition scholarly works into meaningful subgroups, to study their linkages, and assess their similarity and cohesion. Very simply put, these methods cluster scholarly works together whose reference lists are similar, and repel those whose reference lists do not contain linkages.
+Bibliographic methods allow you to map out and understand the relational structure between papers in an academic literature. By using the reference lists of academic papers as edge lists, these methods allow for:
 
-It is really helpful to visualize bibliographic methods through network analysis. In this post, I will go in depth with two bibliographic methods, namely **bibliographic coupling** and **co-citation coupling**. Both are commonly used by scholars, but are operationalized in slightly different ways. While bibliographic coupling visualizes the interrelations of *citing papers*, co-citation coupling shows associations between *cited papers*.
+1.  The assessment of logical relationships between documents using density, connectivity and average distance measures between papers.
+
+2.  The identification of widely-cited and centered documents, including those that bridge knowledge flows between groups of papers.
+
+3.  The discovery of knowledge and research communities and the description of their similarities.
+
+I will visualize bibliographic methods by using social network analysis. In this post, I will go in depth with two bibliographic methods, namely **bibliographic coupling** and **co-citation coupling**. Both are commonly used by scholars, but are operationalized in slightly different ways. While bibliographic coupling visualizes the interrelations of *citing papers*, co-citation coupling shows associations between *cited papers*.
 
 <div class="figure" style="text-align: center">
 <img src="Figure on difference between methods.png" alt="Bibliographic coupling and Co-citation Analysis" width="100%" />
@@ -35,11 +45,11 @@ Figure 1 reveals that bibliographic coupling links two papers if they share a co
 
 ## How to get started
 
-1.  You need a sample of papers to analyze. This sample can be found and downloaded from websites like [Scopus](https://www.scopus.com) or [Web of Science](https://www.webofknowledge.com). Usually, an institutional log in is required. The sample of scholarly works can either be found by keywords (using Boolean numerators) or by selecting all papers that are cited by an article of interest.
+1.  You need a sample of papers to analyze. This sample can be found and downloaded from websites like [Scopus](https://www.scopus.com) or [Web of Science](https://www.webofknowledge.com). The sample of scholarly works can either be found by keywords (using Boolean numerators) or by selecting all papers that are cited by an article of interest.
 
 2.  Make sure to download all information about articles, *including* their list of references. Download them either in .csv or .bib format.
 
-3.  Install and load three R packages that make your life so much easier. These are the [bibliometrix](https://www.bibliometrix.org/) package by Massimo Aria & Corrado Cuccurullo, the [igraph](https://igraph.org/r/) package by Gábor Csárdi and Tamás Nepusz, and the [ggraph](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/) package by Thomas Lin Pedersen.
+3.  Install and load three R packages. These are the [bibliometrix](https://www.bibliometrix.org/) package by Massimo Aria & Corrado Cuccurullo, the [igraph](https://igraph.org/r/) package by Gábor Csárdi and Tamás Nepusz, and the [ggraph](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/) package by Thomas Lin Pedersen.
 
 
 ```r
@@ -55,10 +65,10 @@ Once you have downloaded the data, convert it into a data frame, using the `conv
 
 ```r
 # loading data using scopus 
-df <- convert2df("insurance_data.bib", dbsource = "scopus", format ="bibtex")
+df <- convert2df("transnational_networks.bib", dbsource = "scopus", format ="bibtex")
 
 # loading data using web of science
-df <- convert2df("insurance_data.bib", dbsource = "wos", format ="bibtex")
+df <- convert2df("transnational_networks.bib", dbsource = "wos", format ="bibtex")
 ```
 
 The bibliometrix package offers other platforms to load data from, a more comprehensive guide can be found [here](https://www.bibliometrix.org/vignettes/Introduction_to_bibliometrix.html).
@@ -104,6 +114,21 @@ tbl %>%
 
 And this is how `tbl` looks like. Here, I only chose to show the first five entries.
 
+
+```
+## Warning: There was 1 warning in `mutate()`.
+## ℹ In argument: `across(DOI, str_replace_all, "https://doi.org/NA$", "NA")`.
+## Caused by warning:
+## ! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+## Supply arguments directly to `.fns` through an anonymous function instead.
+## 
+##   # Previously
+##   across(a:b, mean, na.rm = TRUE)
+## 
+##   # Now
+##   across(a:b, \(x) mean(x, na.rm = TRUE))
+```
+
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <caption>Table 1: Most cited papers</caption>
  <thead>
@@ -116,34 +141,34 @@ And this is how `tbl` looks like. Here, I only chose to show the first five entr
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;width: 3.5cm; "> Xing Y, 2013, Syst Res Behav Sci </td>
-   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1002/sres.2185 </td>
-   <td style="text-align:center;width: 1.5cm; "> 70 </td>
-   <td style="text-align:center;"> 7.00 </td>
+   <td style="text-align:left;width: 3.5cm; "> Brenner N, 2010, Global Netw </td>
+   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1111/j.1471-0374.2009.00277.x </td>
+   <td style="text-align:center;width: 1.5cm; "> 1156 </td>
+   <td style="text-align:center;"> 82.57 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 3.5cm; "> Carey G, 2018, Int Rev Sociol </td>
-   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1080/03906701.2018.1425084 </td>
-   <td style="text-align:center;width: 1.5cm; "> 32 </td>
-   <td style="text-align:center;"> 6.40 </td>
+   <td style="text-align:left;width: 3.5cm; "> Betsill Mm, 2006, Global Gov </td>
+   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1163/19426720-01202004 </td>
+   <td style="text-align:center;width: 1.5cm; "> 477 </td>
+   <td style="text-align:center;"> 26.50 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 3.5cm; "> Needham C, 2018, Soc Policy Adm </td>
-   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1111/spol.12320 </td>
-   <td style="text-align:center;width: 1.5cm; "> 27 </td>
-   <td style="text-align:center;"> 5.40 </td>
+   <td style="text-align:left;width: 3.5cm; "> Stone D, 2004, J Eur Public Policy </td>
+   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1080/13501760410001694291 </td>
+   <td style="text-align:center;width: 1.5cm; "> 521 </td>
+   <td style="text-align:center;"> 26.05 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 3.5cm; "> Park S, 2019, Info Commun Soc </td>
-   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1080/1369118X.2019.1606266 </td>
-   <td style="text-align:center;width: 1.5cm; "> 21 </td>
-   <td style="text-align:center;"> 5.25 </td>
+   <td style="text-align:left;width: 3.5cm; "> Salehyan I, 2006, Int Organ </td>
+   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1017/S0020818306060103 </td>
+   <td style="text-align:center;width: 1.5cm; "> 458 </td>
+   <td style="text-align:center;"> 25.44 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 3.5cm; "> Carey G, 2018, Soc Policy Adm </td>
-   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1111/spol.12321 </td>
-   <td style="text-align:center;width: 1.5cm; "> 25 </td>
-   <td style="text-align:center;"> 5.00 </td>
+   <td style="text-align:left;width: 3.5cm; "> Erel U, 2010, Sociology </td>
+   <td style="text-align:left;width: 8cm; "> https://doi.org/10.1177/0038038510369363 </td>
+   <td style="text-align:center;width: 1.5cm; "> 314 </td>
+   <td style="text-align:center;"> 22.43 </td>
   </tr>
 </tbody>
 </table>
@@ -173,24 +198,24 @@ tbl1 %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;width: 2cm; "> Carey G </td>
-   <td style="text-align:center;width: 2cm; "> 3 </td>
+   <td style="text-align:left;width: 2cm; "> Carroll Wk </td>
+   <td style="text-align:center;width: 2cm; "> 9 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 2cm; "> Malbon E </td>
-   <td style="text-align:center;width: 2cm; "> 3 </td>
+   <td style="text-align:left;width: 2cm; "> Mazzucato V </td>
+   <td style="text-align:center;width: 2cm; "> 7 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 2cm; "> Mcfall L </td>
-   <td style="text-align:center;width: 2cm; "> 3 </td>
+   <td style="text-align:left;width: 2cm; "> Seabrooke L </td>
+   <td style="text-align:center;width: 2cm; "> 7 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 2cm; "> Van Hoyweghen I </td>
-   <td style="text-align:center;width: 2cm; "> 3 </td>
+   <td style="text-align:left;width: 2cm; "> Henriksen Lf </td>
+   <td style="text-align:center;width: 2cm; "> 6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 2cm; "> Barry L </td>
-   <td style="text-align:center;width: 2cm; "> 2 </td>
+   <td style="text-align:left;width: 2cm; "> De Graaff N </td>
+   <td style="text-align:center;width: 2cm; "> 5 </td>
   </tr>
 </tbody>
 </table>
@@ -214,8 +239,7 @@ As stated already, bibliographic coupling links two *citing papers* if they have
 
 ### Loading the data
 
-To load the data, we use the `biblioNetwork()` function from the bibliometrix package which uses a very intuitive syntax to create an adjacency matrix. The adjacency matrix (which is basically is a symmetric matrix) can then be read using the `graph_from_adjacency_matrix()` function. 
-
+To load the data, we use the `biblioNetwork()` function from the bibliometrix package which uses a very intuitive syntax to create an adjacency matrix. The adjacency matrix (which is basically is a symmetric matrix) can then be read using the `graph_from_adjacency_matrix()` function.
 
 
 ```r
@@ -247,7 +271,7 @@ graph1 <- delete.vertices(graph, Isolated)
 
 #visualizing the graph 
 graph1 %>% 
-  ggraph(layout = "mds") +
+  ggraph(layout = "fr") +
   geom_edge_link0(aes(color = weight, width = weight), show.legend = FALSE) +
   scale_edge_color_gradient(low = "lightyellow3", high = "olivedrab4") +
   geom_node_point(aes(size = degree)) + 
@@ -260,8 +284,18 @@ graph1 %>%
         plot.subtitle = element_text(size = 18, hjust = 0.5, face = "italic"))
 ```
 
-I use the *mds* layout which uses multidimensional scaling for generating the coordinates to get a more accurate picture of similarity and distance. In other words, the algorithm places two strongly tied papers closer together, and repels papers without ties. 
+I use the *mds* layout which uses multidimensional scaling for generating the coordinates to get a more accurate picture of similarity and distance. In other words, the algorithm places two strongly tied papers closer together, and repels papers without ties.
 
+
+```
+## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+```
+
+```
+## Warning: ggrepel: 712 unlabeled data points (too many overlaps). Consider
+## increasing max.overlaps
+```
 
 <div class="figure" style="text-align: center">
 <img src="{{< blogdown/postref >}}index_files/figure-html/making-graph-1.png" alt="Bibliographic Coupling Network" width="960" />
