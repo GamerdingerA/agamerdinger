@@ -2,6 +2,7 @@
 title: Introduction to network analysis in R
 author: Alexander Gamerdinger
 date: '2023-01-26'
+thumbnail: course-picture.jpg
 slug: /introduction/
 categories:
   - R
@@ -11,7 +12,7 @@ description: 'Introduction to network analysis'
 summary: "In this session, we cover how to install R and RStudio, how to subset and manipulate data sets, and how to visualize simple networks using ggraph and igraph packages."
 ---
 
-## Session 1 - Introduction to network analysis
+## Session 1 - Introduction to network analysis 
 
 Please find the readings and the materials for this session attached below.
 

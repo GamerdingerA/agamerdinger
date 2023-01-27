@@ -369,3 +369,5 @@ den %>%
 ## 10 TDC (note)                                        24
 ## # … with 1,185 more rows
 ```
+
+### 1.4 Creating matrices
