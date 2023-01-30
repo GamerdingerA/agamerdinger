@@ -377,4 +377,12 @@ den %>%
 ## # … with 1,185 more rows
 ```
 
-### 1.4 Creating matrices
+### 1.4 Creating graph matrices
+
+Before we can make a network graph, we need to transform the data from a data frame \\\\(row \* column\$\\\\) into a data matrix.
+
+There are two kinds of matrices of a graph, which determine the type of a network. There are two-mode networks where two different entities are connected to each other (such as organization and individual) and one-mode networks, where only one entity is connected to each other (organization and organization or individual and individual). Each kind of network is constructed by a different kind of matrix.
+
+We differ between:
+
+1.  an `incidence matrix` which is an \\\\(n \* m\\\\) matrix, where each row corresponds to a node and each column corresponds to an edge

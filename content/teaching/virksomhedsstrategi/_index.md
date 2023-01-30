@@ -24,10 +24,8 @@ The course is an obligatory course for 3rd year bachelor students at Copenhagen 
 You are welcome to book a 20 min slot during my office hours. Please just select the day and time in the widget below.
 
 <!-- Calendly link widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/20min'});return false;">Book a meeting</a>
-<!-- Calendly link widget end -->
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"> <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script> <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/20min'});return false;">Book a meeting</a> <!-- Calendly link widget end -->
 
 ------------------------------------------------------------------------
 
