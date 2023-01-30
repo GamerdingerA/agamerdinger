@@ -26,7 +26,7 @@
 
 
 ### SPØRGSMÅL 3 ###
-# Lav et nyt datasæt “den1” hvor du kigger kun på aktørene i sektor “Parliament” -------------------------------------------------
+# Lav et nyt datasæt “den1” hvor du kigger kun på aktørene i sektor “Commissions” -------------------------------------------------
 
 
 
@@ -35,7 +35,7 @@
 
 
 ### SPØRGSMÅL 4 ###
-# Lav et one-mode netværk af individuer og visualisere dette. -------------
+# Lav et one-mode netværk af styrelser og visualisere dette. -------------
 
 
 

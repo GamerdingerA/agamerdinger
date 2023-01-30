@@ -2,30 +2,16 @@
 title: "Session 1: Introduction to network analysis"
 author: Alexander Gamerdinger
 date: '2023-01-26'
-thumbnail: course-picture.jpg
 slug: /introduction/
 categories:
   - R
   - Teaching
 tags:
 description: 'Introduction to network analysis'
-summary: "In this session, we cover how to install R and RStudio, how to subset and manipulate data sets, and how to visualize simple networks using ggraph and igraph packages."
+summary: "In this session, we cover how to install R and RStudio, how to subset and manipulate data sets, and how to visualize simple networks using the packages: ggraph and igraph."
 ---
 
 ## Session 1 - Introduction to network analysis
-
-Please find the readings and the materials for this session attached below.
-
-#### Readings
-
--   [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
--   [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
--   [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
-
-#### Materials
-
--   [data](input/den17-no-nordic-letters.csv)
--   [r-script](lektion01/lektion01-rscript_Alexander.R)
 
 The first thing you need to do is to set a project folder called `virksomhedsstrategi` which you can either place on your desktop, or into a another folder (such as one called `6_semester`).
 
@@ -138,7 +124,11 @@ If you want to know more about the pipe operator, see this website here: <https:
 
 After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`.
 
-Remember to load your data set from your working directory. As your data set is saved in the `input` folder, you have to write this in the command above.
+{{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
+Download the data set
+{{< /button >}}
+
+Remember to load your data set from your working directory. Since your data set is saved in the `input` folder, you have to write the following command.
 
 
 ```r
@@ -185,7 +175,7 @@ head(den)
 
 #### 1.3.1 Summary statistics
 
-The data set `den17` has 56,849 rows of individuals and 17 columns.
+The data set `den` has 56,849 rows of individuals and 17 columns.
 
 
 ```r
@@ -231,7 +221,7 @@ glimpse(den) # we could also write: den %>% glimpse()
 ## $ gender          <chr> "Men", "Men", "Men", "Men", "Men", "Men", "Men", "Men"…
 ```
 
-If we are interested in seeing how many data entries there are per sector, we can write the following.
+If we are interested in seeing how many data entries there are per sector, we can write the following command.
 
 
 ```r
@@ -292,7 +282,7 @@ Here, we make use of the following functions:
 
 2.  we use the `filter()`function to select specific rows, keeping all columns constant
 
-Both of these functions are used to make subsets, that are then assigned to new data objects.
+Both of these functions are used to make subsets, that are then assigned to new data objects. Below, we assign a subset of `den` which only looks at `Corporations` to the object `den1`.
 
 
 ```r
@@ -351,10 +341,11 @@ den1
 ## #   variable names ¹​affiliation, ²​position_id, ³​description
 ```
 
-All of these functions can be combined through the pipe operator. How would you e.g. find out which is the affiliation with the most members in the corporate sector?
+All of these functions can be combined through the pipe operator which allows you to write two commands at once without having to assign it to an object in the meantime. How would you e.g. find the affiliation with the most members in the corporate sector?
 
 
 ```r
+# find a list of corporate affiliations and order them
 den %>% 
   filter(sector == "Corporations") %>% 
   count(affiliation, sort = T)
@@ -377,12 +368,168 @@ den %>%
 ## # … with 1,185 more rows
 ```
 
-### 1.4 Creating graph matrices
+### 1.4 Creating graphs
 
-Before we can make a network graph, we need to transform the data from a data frame \\\\(row \* column\$\\\\) into a data matrix.
+{{< katex >}}
 
-There are two kinds of matrices of a graph, which determine the type of a network. There are two-mode networks where two different entities are connected to each other (such as organization and individual) and one-mode networks, where only one entity is connected to each other (organization and organization or individual and individual). Each kind of network is constructed by a different kind of matrix.
+Before we can make a network graph, we need to transform the data from a \\(row \* column\\) data frame into a data matrix.
 
-We differ between:
+There are two important kinds of data matrices of which networks are constructed:
 
-1.  an `incidence matrix` which is an \\\\(n \* m\\\\) matrix, where each row corresponds to a node and each column corresponds to an edge
+1.  A two-mode network is based on an `incidence matrix` which is an \\(n \* m\\) matrix, where \\(n\\) corresponds to one unit (such as an individual), and \\(m\\) corresponds to another unit (such as organization). Each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} = 0\\) otherwise.
+
+2.  A one-mode network is based on an `adjacency matrix` which is an \\(n \* n \\) matrix, where both row elements \\(n\\) and column elements \\(n\\) corresponds to nodes with the same unit. It is a symmetric matrix where each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} =0\\) otherwise.
+
+In R, we create an incidence matrix by cross tabulating two columns of a data frame with the `xtabs()` function which stands for *cross tabulation.* To transform an `incidence` matrix into an `adjacency` matrix, we perform a simple matrix multiplication of the `incidence` matrix with the transposed version of itself.
+
+
+```r
+## incidence matrix ## 
+
+# we use the argument sparse to save space on our memory because 
+# every time there is no edge, the compute will write a "." finstead of a 0
+incidence <- xtabs(formula = ~ name + affiliation, 
+                   data = den1, 
+                   sparse = TRUE)
+
+#show the first two rows and first two cols
+incidence[1:2,1:2]
+```
+
+```
+## 2 x 2 sparse Matrix of class "dgCMatrix"
+##                       affiliation
+## name                   & co 3C Groups
+##   Aage Almtoft            .         .
+##   Aage Juhl Joergensen    .         .
+```
+
+```r
+## Adjacency matrices ##
+
+# individuals * individuals matrix 
+adj_i <- incidence %*% Matrix::t(incidence)
+
+#show the first two rows and first two cols
+adj_i[1:2,1:2]
+```
+
+```
+## 2 x 2 sparse Matrix of class "dgCMatrix"
+##                      Aage Almtoft Aage Juhl Joergensen
+## Aage Almtoft                    1                    .
+## Aage Juhl Joergensen            .                    1
+```
+
+```r
+# affiliation * affiliation matrix 
+adj_a <- Matrix::t(incidence) %*% incidence
+
+#show the first two rows and first two cols
+adj_a[1:2,1:2]
+```
+
+```
+## 2 x 2 sparse Matrix of class "dgCMatrix"
+##           & co 3C Groups
+## & co         4         .
+## 3C Groups    .         3
+```
+
+#### 1.4.1 Loading graph objects
+
+Graph objects can be loaded through a variety of ways. In this course, we concentrate on loading graph objects from `incidence` and `adjacency` matrices with the `igraph` package.
+
+Since some people have several affiliations (see data set `den`), graph objects loaded from with the function `graph_from_adjacency_matrix()` contain loops and weights. In order to remove those loops and weights again, and to make the graph object more lean, we add the `simplify()` function.
+
+
+```r
+# making a two-mode graph
+gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
+gr
+```
+
+```
+## IGRAPH 00c0509 UN-B 8090 7989 -- 
+## + attr: type (v/l), name (v/c)
+## + edges from 00c0509 (vertex names):
+##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
+##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
+##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
+##  [7] Soeren Melanchton Pedersen--3C Groups Lone Lehmann Laurberg     --3M       
+##  [9] Maurizio Botta            --3M        Nicolas Nees Henriksson   --3M       
+## [11] Niels Roeddik             --3M        Rasmus Gymoese Berthelsen --3M       
+## [13] Ulla Charlotte Ravn       --3M        Bo Boje Larsen            --3xN      
+## [15] Jan Ammundsen             --3xN       Jeanette Hansen           --3xN      
+## + ... omitted several edges
+```
+
+```r
+# one-mode graph for individuals 
+gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
+
+# one-mode graph for affiliations
+gr2 <- graph_from_adjacency_matrix(adj_a, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
+```
+
+Having loaded the graph objects, we are able to visualize them using the `ggraph` package.
+
+### 1.5 Visualizing network graphs
+
+![](https://raw.githubusercontent.com/thomasp85/ggraph/main/man/figures/logo.png)
+
+The syntax for plotting network graphs in the `ggraph` package is very close to the `ggplot` package. We start out with the `ggraph()` function, where we specify the graph object. This creates a plain board which can be filled accordingly with other functions. Here is an example code for visualizing two-mode networks.
+
+
+```r
+# Visualize the two mode graph
+gr %>% 
+  # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr" 
+  ggraph(layout = "kk") +
+  # draws edges
+  geom_edge_link0(color = "black", edge_width = 0.1) +
+  # draws nodes
+  geom_node_point(aes(color = type), size=0.2, alpha = 0.4) +
+  # # draws labels for type==TRUE and repels the overlapping ones. 
+  # geom_node_text(aes(filter=type==TRUE, label =name), size=0.8, repel = TRUE) +
+  # overrides the existing legend
+  scale_color_manual(values=c("sienna1", "steelblue2"), labels=c("individuals", "companies")) +
+  theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/two-mode-1.png" width="672" />
+
+Despite the fact that we reduced the node size drastically, it is still difficult to view this network because of the limited page size. After all, it is a network with `8,090` nodes and `7,989` edges.
+
+Let us also visualize the one-mode network of companies.
+
+
+```r
+# Visualize the two mode graph
+gr2 %>% 
+#   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr 
+  ggraph(layout = "kk") +
+  # draws edges
+  geom_edge_link0(color = "gray80") +
+  # draws nodes
+  geom_node_point(size=1, alpha = 0.6, color = "salmon2") +
+  theme_graph()
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/one-mode-1.png" width="672" />
+
+This is all we cover this session. To practice a little more, you can download an empty exercise sheet below:
+
+{{< button href="lektion01/lektion01-øvelse.R" target="_self" download= "lektion01-øvelse.R" >}}
+Download the exercise sheet
+{{< /button >}}
+
+#### Readings
+
+-   [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
+-   [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
+-   [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
+
+<!-- #### Materials -->
+
+<!-- -   [r-script](lektion01/lektion01-rscript_Alexander.R) -->
