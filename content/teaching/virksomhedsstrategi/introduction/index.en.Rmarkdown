@@ -117,13 +117,13 @@ If you want to know more about the pipe operator, see this website here: <https:
 
 ### 1.2 Loading a data set
 
-After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`.
+After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`. First, download the data set and place it into the `virksomhedsstrategi/input` folder.
 
 {{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
 Download the data set
 {{< /button >}}
 
-Remember to load your data set from your working directory. Since your data set is saved in the `input` folder, you have to write the following command.
+Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
 
 ```{r loading data, echo=TRUE}
 

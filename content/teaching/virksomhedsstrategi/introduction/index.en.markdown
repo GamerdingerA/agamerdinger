@@ -122,13 +122,13 @@ If you want to know more about the pipe operator, see this website here: <https:
 
 ### 1.2 Loading a data set
 
-After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`.
+After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`. First, download the data set and place it into the `virksomhedsstrategi/input` folder.
 
 {{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
 Download the data set
 {{< /button >}}
 
-Remember to load your data set from your working directory. Since your data set is saved in the `input` folder, you have to write the following command.
+Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
 
 
 ```r
@@ -450,9 +450,9 @@ gr
 ```
 
 ```
-## IGRAPH 00c0509 UN-B 8090 7989 -- 
+## IGRAPH 922c786 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 00c0509 (vertex names):
+## + edges from 922c786 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
