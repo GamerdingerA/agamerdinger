@@ -450,9 +450,9 @@ gr
 ```
 
 ```
-## IGRAPH 922c786 UN-B 8090 7989 -- 
+## IGRAPH 8d21670 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 922c786 (vertex names):
+## + edges from 8d21670 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
@@ -518,7 +518,9 @@ gr2 %>%
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/one-mode-1.png" width="672" />
 
-This is all we cover this session. To practice a little more, you can download an empty exercise sheet below:
+## Material
+
+To practice a little more, you can download an empty exercise sheet by clicking the button below. You can also find a filled out cheat sheet below.
 
 {{< button href="lektion01/lektion01-øvelse.R" target="_self" download= "lektion01-øvelse.R" >}}
 Download the exercise sheet
@@ -530,6 +532,7 @@ Download the exercise sheet
 -   [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
 -   [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
 
-<!-- #### Materials -->
+#### Materials
 
-<!-- -   [r-script](lektion01/lektion01-rscript_Alexander.R) -->
+-   [r-script cheat sheet](lektion01/r-script.R)
+-   [r-script exercise](lektion01/lektion01-øvelse.R)
