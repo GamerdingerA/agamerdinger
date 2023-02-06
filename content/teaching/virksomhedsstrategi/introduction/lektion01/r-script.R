@@ -32,7 +32,7 @@ den %>% select(name, affiliation)
 den %>% count(affiliation, sort= TRUE)
 # check that this does the same thing than this: den %>% group_by(affiliation) %>% summarize(n = n())
 
-#filter dat aset den to only include Commissions, then call it den2
+#filter dataset den to only include Corporations, then call it den1
 den1 <- den %>% filter(sector == "Corporations")
 
 # Making a two-mode network --------------------------------------------------------
@@ -52,14 +52,14 @@ adj_a <- Matrix::t(incidence) %*% incidence
 adj_a[1:5,1:5]
 
 
-# make a graph object "net" from the incidence matrix
+# make a graph object "gr" from the incidence matrix
 gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
 
-# make a graph from adjacency 
+# make a graph from adjacency (gr1 for individuals)
 gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% 
   simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
-# make a graph from adjacency 
+# make a graph from adjacency (gr2 for corporations)
 gr2 <- graph_from_adjacency_matrix(adj_a, mode = "undirected") %>% 
   simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -77,7 +77,7 @@ gr %>%
 
 # Make and visualize the one-mode network ---------------------------------
 
-# Visualize the new graph
+# Visualize the new graph for corporations
 gr2 %>% 
   ggraph(layout="mds") +
   geom_edge_link0(color = "gray60") +
