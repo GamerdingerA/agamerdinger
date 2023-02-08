@@ -1,5 +1,5 @@
 ---
-title: "Corporate strategy in a network perspective (in Danish)"
+title: "Corporate strategy in a network perspective"
 description: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 cascade:
