@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH cebe942 UN-- 661 1332 -- 
+## IGRAPH 3117808 UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from cebe942 (vertex names):
+## + edges from 3117808 (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -364,7 +364,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.4864865
+## [1] 0.5934066
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
@@ -508,5 +508,176 @@ comp1 %>%
 
 ```r
 # save it - we save it in our output folder. 
-ggsave("output/distance_to_lego.png", width = 30, height = 17.5, units = "cm")
+ggsave("output/02-distance_to_lego.png", width = 30, height = 17.5, units = "cm")
+```
+
+## 2.6 Diameter
+
+The diameter is a measure that only makes sense to use in connected graph components. It is the shortest path in the network. Networks with smaller diameters are often considered close communities. The shortest path in the network is calculated using the following functions:
+
+
+```r
+# diameter for the network component
+diameter(comp1, directed = FALSE)
+```
+
+```
+## [1] 14
+```
+
+```r
+# Who is on the outskirts?
+farthest.nodes(comp1, directed = FALSE)
+```
+
+```
+## $vertices
+## + 2/533 vertices, named, from 79fdcab:
+## [1] Miracle (Bestyrelse) Philips             
+## 
+## $distance
+## [1] 14
+```
+
+```r
+# How to traverse it?
+diam <- get.diameter(comp1, directed = FALSE)
+diam
+```
+
+```
+## + 15/533 vertices, named, from 79fdcab:
+##  [1] Miracle (Bestyrelse)                     
+##  [2] Kim Johansen                             
+##  [3] Anders Nielsen & Co                      
+##  [4] Erria A/S (bestyrelse)                   
+##  [5] Mols-Linien                              
+##  [6] Linderberg Group                         
+##  [7] Bech-Bruun                               
+##  [8] F Group                                  
+##  [9] Brdr. A. & O. Johansen (AO)              
+## [10] Kontorfaellesskabet paa Sankt Annae Plads
+## + ... omitted several vertices
+```
+
+Now, if we want to visualize the diameter, we need to first create two network attributes. A vertex attribute `V(comp1)$diameter` as well as an edge attribute `E(comp1)$diameter`
+
+
+```r
+# making new graph attribute for nodes
+V(comp1)$diameter <- 
+    # condition to evaluate
+  ifelse(V(comp1)$name %in% names(diam), 
+         # if condition is true
+         TRUE, 
+         # if condition is false
+         FALSE)
+
+# making new graph attribute for edges. The code for edges are kind of different, this is igraph-specific
+E(comp1)$diameter <- FALSE
+E(comp1, path = diam)$diameter <- TRUE
+```
+
+Now, we can visualize this:
+
+
+```r
+# plot it
+comp1 %>% 
+  ggraph(layout = "fr") +
+  geom_edge_link0(aes(filter=diameter==FALSE), color = "gray60") +
+  geom_edge_link0(aes(filter=diameter==TRUE), color = "red", width = 1.5) +
+  geom_node_point(aes(filter=diameter==FALSE), color = "black") +
+  geom_node_point(aes(filter=diameter==TRUE), color = "red", size =2) +
+  geom_node_label(aes(filter=diameter==TRUE, label = name), nudge_y = -0.3, size =2.5, repel = TRUE) + 
+  labs(title = 'Diameter in EliteDBs largest component') +
+  theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/vis3-1.png" width="672" />
+
+And then, save the figure in the `output` folder.
+
+
+```r
+# save the output to the output folder
+ggsave("output/02-diameter_comp1.png", width = 30, height = 17.5, units = "cm")
+```
+
+## 2.7 Highlighting certain paths
+
+Last, we can highlight the shortest path between two specific nodes in a connected network. First, we make the path and add this path as a network attribute.
+
+
+```r
+# get the igraph object that contains the path
+path_of_interest <- shortest_paths(comp1, 
+                            from = names(V(comp1)) =="A.P. Moeller - Maersk", 
+                             to  = names(V(comp1)) =="Advice A/S",
+                             output = "both") # both path nodes and edges
+
+# path_of_interest object gives us a path for nodes ($vpath) and one for edges ($epath)
+path_of_interest
+```
+
+```
+## $vpath
+## $vpath[[1]]
+## + 5/533 vertices, named, from 79fdcab:
+## [1] A.P. Moeller - Maersk            Kontorfaellesskabet i Amaliegade
+## [3] Bang & Olufsen                   Groupcare (Bestyrelse)          
+## [5] Advice A/S                      
+## 
+## 
+## $epath
+## $epath[[1]]
+## + 4/1244 edges from 79fdcab (vertex names):
+## [1] A.P. Moeller - Maersk--Kontorfaellesskabet i Amaliegade
+## [2] Bang & Olufsen       --Kontorfaellesskabet i Amaliegade
+## [3] Bang & Olufsen       --Groupcare (Bestyrelse)          
+## [4] Advice A/S           --Groupcare (Bestyrelse)          
+## 
+## 
+## $predecessors
+## NULL
+## 
+## $inbound_edges
+## NULL
+```
+
+```r
+# making new graph attribute for nodes
+V(comp1)$path1 <- 
+    # condition to evaluate
+  ifelse(V(comp1)$name %in% names(path_of_interest$vpath[[1]]), 
+         # if condition is true
+         TRUE, 
+         # if condition is false
+         FALSE)
+
+# making new graph attribute for edges.
+E(comp1)$path1 <- FALSE
+E(comp1, path = path_of_interest$vpath[[1]])$path1 <- TRUE
+```
+
+Second, we visualize this, and save it in our `output` folder.
+
+
+```r
+comp1 %>% 
+ggraph(layout='fr') + 
+geom_edge_link0(aes(filter=path1==TRUE), color='red', width=1.2) + 
+geom_edge_link0(aes(filter=path1==FALSE), color='grey50', alpha=0.5) + 
+geom_node_point(aes(filter=path1==TRUE), color='red', size=5, alpha=0.5) + 
+geom_node_point(aes(filter=path1==FALSE), color='black', size=3, alpha=0.25) + 
+geom_node_label(aes(filter=path1==TRUE, label=name), color='black', size=3, alpha=0.25, nudge_y=-1) + 
+theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/vis4-1.png" width="672" />
+
+
+```r
+# save to the output folder
+ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 ```
