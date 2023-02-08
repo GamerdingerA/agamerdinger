@@ -97,6 +97,25 @@ net2 %>%
   theme_graph()
 
 # Components of a graph ---------------------------------------------------
+
+gr
+
+complist <- components(gr)
+
+
+
+
+index <- table(complist$membership) %>% 
+  as_tibble(.name_repair = make.names) %>% 
+  mutate(X = as.numeric(X)) %>% 
+  arrange(desc(n)) %>% 
+  pull(1) 
+  
+
+
+decompose.graph(gr)
+
+
 # We subdivide graphs into its components, since some measures such as diameter only make sense to calculate within a component.
 # get a list of the components
 complist <- components(net2)
@@ -114,7 +133,7 @@ complist$csize
 complist$no
 
 # Now: decompose the actual graph into components
-net3 <- decompose.graph(net2)
+net <- decompose.graph(gr)
 
 # select the biggest component 
 # create a table of complist$membership to see how many members each component has and arrange by number of nodes
