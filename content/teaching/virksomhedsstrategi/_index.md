@@ -10,8 +10,6 @@ cascade:
   showHeadingAnchors: true
 ---
 
-## About the course
-
 The course is an obligatory course for 3rd year bachelor students at Copenhagen Business School. You can read more about the course [here](https://cbscanvas.instructure.com/courses/22821/modules/items/480509).
 
 -   [Course syllabus](syllabus_2023.pdf)

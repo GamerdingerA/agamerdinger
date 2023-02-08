@@ -2,7 +2,7 @@
 title: 'Research'
 author: 'Alexander Gamerdinger'
 date: '2021-12-14'
-showTableOfContents: false
+showTableOfContents: true
 showDate: false
 showReadingTime: false
 slug: [/research/]

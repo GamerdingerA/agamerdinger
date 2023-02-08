@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH 5e0f54d UN-- 661 1332 -- 
+## IGRAPH cebe942 UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from 5e0f54d (vertex names):
+## + edges from cebe942 (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -330,7 +330,7 @@ den %>%
   view()
 ```
 
-## 2.4 Transitivity 
+## 2.4 Transitivity
 
 Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. To understand the measure a little better, take a look at these graphs:
 
@@ -364,7 +364,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.4029851
+## [1] 0.4864865
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
