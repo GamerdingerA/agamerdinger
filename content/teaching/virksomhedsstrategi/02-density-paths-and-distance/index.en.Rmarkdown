@@ -156,7 +156,8 @@ gr %>%
   ggraph(layout = "fr") +
   geom_edge_link0(color = "gray70") +
   geom_node_point(size=1.5) +
-  theme_graph()
+  theme_graph() 
+
 ```
 
 As we can see, there is a main graph component in the middle of the visualization, a few small components on the edges of the graph object.
@@ -511,3 +512,7 @@ theme_graph()
 ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 
 ```
+
+## Material 
+
+- [r-script](02-r-script.R)

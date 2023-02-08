@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH 3117808 UN-- 661 1332 -- 
+## IGRAPH d758b7b UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from 3117808 (vertex names):
+## + edges from d758b7b (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -177,7 +177,7 @@ gr %>%
   ggraph(layout = "fr") +
   geom_edge_link0(color = "gray70") +
   geom_node_point(size=1.5) +
-  theme_graph()
+  theme_graph() 
 ```
 
 ```
@@ -364,7 +364,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.5934066
+## [1] 0.4431818
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
@@ -532,7 +532,7 @@ farthest.nodes(comp1, directed = FALSE)
 
 ```
 ## $vertices
-## + 2/533 vertices, named, from 79fdcab:
+## + 2/533 vertices, named, from 07cfa87:
 ## [1] Miracle (Bestyrelse) Philips             
 ## 
 ## $distance
@@ -546,7 +546,7 @@ diam
 ```
 
 ```
-## + 15/533 vertices, named, from 79fdcab:
+## + 15/533 vertices, named, from 07cfa87:
 ##  [1] Miracle (Bestyrelse)                     
 ##  [2] Kim Johansen                             
 ##  [3] Anders Nielsen & Co                      
@@ -623,7 +623,7 @@ path_of_interest
 ```
 ## $vpath
 ## $vpath[[1]]
-## + 5/533 vertices, named, from 79fdcab:
+## + 5/533 vertices, named, from 07cfa87:
 ## [1] A.P. Moeller - Maersk            Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen                   Groupcare (Bestyrelse)          
 ## [5] Advice A/S                      
@@ -631,7 +631,7 @@ path_of_interest
 ## 
 ## $epath
 ## $epath[[1]]
-## + 4/1244 edges from 79fdcab (vertex names):
+## + 4/1244 edges from 07cfa87 (vertex names):
 ## [1] A.P. Moeller - Maersk--Kontorfaellesskabet i Amaliegade
 ## [2] Bang & Olufsen       --Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen       --Groupcare (Bestyrelse)          
@@ -681,3 +681,7 @@ theme_graph()
 # save to the output folder
 ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 ```
+
+## Material 
+
+- [r-script](02-r-script.R)
