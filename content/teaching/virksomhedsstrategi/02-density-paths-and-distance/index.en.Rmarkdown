@@ -517,6 +517,6 @@ ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 
 ```
 
-## Material
+## 2.8 Material
 
 -   [r-script](02-r-script.R)

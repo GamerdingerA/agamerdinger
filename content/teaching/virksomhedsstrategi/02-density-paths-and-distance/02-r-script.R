@@ -322,13 +322,4 @@ comp1 %>%
 # save to the output folder
 ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 
- 
-
-
-
-
-
-
-
-
 
