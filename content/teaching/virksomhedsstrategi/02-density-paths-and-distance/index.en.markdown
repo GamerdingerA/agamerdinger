@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH d758b7b UN-- 661 1332 -- 
+## IGRAPH cfda323 UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from d758b7b (vertex names):
+## + edges from cfda323 (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -167,6 +167,10 @@ edge_density(e3, loops=FALSE)
 If we calculate the density of our graph object `gr` then we find it at 0.01. For those of you, who wonder why we add the argument `loop = FALSE` in the `edge_density()` function; this is because we only deal with simplified networks without self-loops. Hence, we need to add this argument.
 
 ## 2.3 Components of a graph
+
+The component of a graph is also called a connected sub-graph. Here is an example of graph components:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Equivalentie.svg/1024px-Equivalentie.svg.png" alt="Graph components (from Wikipedia)" width="324"/>
 
 The graph object `gr`, which has `661` nodes and`1332` ties, looks like this if we visualize it:
 
@@ -317,7 +321,7 @@ This is done in the following way:
 
 ```r
 # in names, we store all affiliation names from the second largest component
-names <- V(net_second)$names
+names <- V(comp2)$name
 
 # who are the people (and all of their attributes) that are a part of these boards?
 den2 %>% 
@@ -332,7 +336,7 @@ den %>%
 
 ## 2.4 Transitivity
 
-Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. To understand the measure a little better, take a look at these graphs:
+Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. Thereby, it measures the existence of tightly connected communities. To understand the measure a little better, take a look at these graphs:
 
 
 ```r
@@ -364,7 +368,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.4431818
+## [1] 0.3970588
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
@@ -532,7 +536,7 @@ farthest.nodes(comp1, directed = FALSE)
 
 ```
 ## $vertices
-## + 2/533 vertices, named, from 07cfa87:
+## + 2/533 vertices, named, from 2611a21:
 ## [1] Miracle (Bestyrelse) Philips             
 ## 
 ## $distance
@@ -546,7 +550,7 @@ diam
 ```
 
 ```
-## + 15/533 vertices, named, from 07cfa87:
+## + 15/533 vertices, named, from 2611a21:
 ##  [1] Miracle (Bestyrelse)                     
 ##  [2] Kim Johansen                             
 ##  [3] Anders Nielsen & Co                      
@@ -623,7 +627,7 @@ path_of_interest
 ```
 ## $vpath
 ## $vpath[[1]]
-## + 5/533 vertices, named, from 07cfa87:
+## + 5/533 vertices, named, from 2611a21:
 ## [1] A.P. Moeller - Maersk            Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen                   Groupcare (Bestyrelse)          
 ## [5] Advice A/S                      
@@ -631,7 +635,7 @@ path_of_interest
 ## 
 ## $epath
 ## $epath[[1]]
-## + 4/1244 edges from 07cfa87 (vertex names):
+## + 4/1244 edges from 2611a21 (vertex names):
 ## [1] A.P. Moeller - Maersk--Kontorfaellesskabet i Amaliegade
 ## [2] Bang & Olufsen       --Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen       --Groupcare (Bestyrelse)          
@@ -682,6 +686,6 @@ theme_graph()
 ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 ```
 
-## Material 
+## Material
 
-- [r-script](02-r-script.R)
+-   [r-script](02-r-script.R)

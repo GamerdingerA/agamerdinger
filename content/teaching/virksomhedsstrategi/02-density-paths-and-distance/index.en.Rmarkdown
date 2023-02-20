@@ -147,6 +147,10 @@ If we calculate the density of our graph object `gr` then we find it at `r round
 
 ## 2.3 Components of a graph
 
+The component of a graph is also called a connected sub-graph. Here is an example of graph components:
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Equivalentie.svg/1024px-Equivalentie.svg.png" alt="Graph components (from Wikipedia)" width="324"/>
+
 The graph object `gr`, which has `661` nodes and`1332` ties, looks like this if we visualize it:
 
 ```{r vis1}
@@ -249,7 +253,7 @@ This is done in the following way:
 ```{r affil, eval=FALSE, include=TRUE}
 
 # in names, we store all affiliation names from the second largest component
-names <- V(net_second)$names
+names <- V(comp2)$name
 
 # who are the people (and all of their attributes) that are a part of these boards?
 den2 %>% 
@@ -265,7 +269,7 @@ den %>%
 
 ## 2.4 Transitivity
 
-Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. To understand the measure a little better, take a look at these graphs:
+Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. Thereby, it measures the existence of tightly connected communities. To understand the measure a little better, take a look at these graphs:
 
 ```{r trans}
 
@@ -513,6 +517,6 @@ ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 
 ```
 
-## Material 
+## Material
 
-- [r-script](02-r-script.R)
+-   [r-script](02-r-script.R)

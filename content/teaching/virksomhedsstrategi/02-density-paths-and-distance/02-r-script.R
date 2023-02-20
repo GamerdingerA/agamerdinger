@@ -8,7 +8,7 @@
 # SETTING UP --------------------------------------------------------------
 
 #setting the working directory
-setwd("")
+setwd("/Users/alexandergamerdinger/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/PhD/teaching/virksomhedsstrategi_2023")
 
 # install new packages 
 install.packages('graphlayouts')
@@ -51,6 +51,7 @@ gr <- graph_from_adjacency_matrix(adj_c, mode = "undirected") %>%
   simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
 # Density ---------------------------------------------------
+# The density of a network is the probability that two random nodes of the network are linked with each other. It is calculated by dividing the given number of edges by the total possible number of edges.
 # examples
 
 e1 <- make_full_graph(40)
@@ -70,8 +71,9 @@ edge_density(e3, loops=FALSE)
 edge_density(gr, loops= FALSE)
 
 # Components ---------------------------------------------------
+# A component is connected sub graph 
 
-# plot teh graph and see that there is a couple of components
+# plot the graph and see that there is a couple of components
 gr %>% 
   ggraph(layout = "fr") +
   geom_edge_link0(color = "gray70") +
@@ -132,7 +134,7 @@ comp2 %>%
 # How to find people and affiliations in components?
 
 # in names, we store all affiliation names from the second largest component
-names <- V(net_second)$names
+names <- V(comp1)$name
 
 # who are the people (and all of their attributes) that are a part of these boards?
 den2 %>% 
@@ -146,7 +148,8 @@ den %>%
 
 
 # Transitivity ------------------------------------------------------------
-# Transitivity is a measure that represents the number of actual triads out of all possible triads in the network. 
+# Transitivity is a measure that represents the number of actual triads out of all possible triads in the network.
+# Thereby, it measures the existence of tightly connected communities.
 
 # examples
 # a ring graph, which does not contain any triads
