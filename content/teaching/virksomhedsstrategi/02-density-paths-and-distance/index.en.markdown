@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH 966b967 UN-- 661 1332 -- 
+## IGRAPH 1a48611 UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from 966b967 (vertex names):
+## + edges from 1a48611 (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -368,7 +368,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.2916667
+## [1] 0.5217391
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
@@ -536,7 +536,7 @@ farthest.nodes(comp1, directed = FALSE)
 
 ```
 ## $vertices
-## + 2/533 vertices, named, from 187df35:
+## + 2/533 vertices, named, from 8145a8c:
 ## [1] Miracle (Bestyrelse) Philips             
 ## 
 ## $distance
@@ -550,7 +550,7 @@ diam
 ```
 
 ```
-## + 15/533 vertices, named, from 187df35:
+## + 15/533 vertices, named, from 8145a8c:
 ##  [1] Miracle (Bestyrelse)                     
 ##  [2] Kim Johansen                             
 ##  [3] Anders Nielsen & Co                      
@@ -627,7 +627,7 @@ path_of_interest
 ```
 ## $vpath
 ## $vpath[[1]]
-## + 5/533 vertices, named, from 187df35:
+## + 5/533 vertices, named, from 8145a8c:
 ## [1] A.P. Moeller - Maersk            Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen                   Groupcare (Bestyrelse)          
 ## [5] Advice A/S                      
@@ -635,7 +635,7 @@ path_of_interest
 ## 
 ## $epath
 ## $epath[[1]]
-## + 4/1244 edges from 187df35 (vertex names):
+## + 4/1244 edges from 8145a8c (vertex names):
 ## [1] A.P. Moeller - Maersk--Kontorfaellesskabet i Amaliegade
 ## [2] Bang & Olufsen       --Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen       --Groupcare (Bestyrelse)          
@@ -688,4 +688,5 @@ ggsave('output/lektion02-path-example.png', width=30, height=17.5, unit='cm')
 
 ## 2.8 Material
 
--   [r-script](02-r-script.R)
+-   [02-r-script](02-r-script.R)
+-   [02-r-script-blank](02-r-script-blank.R)
