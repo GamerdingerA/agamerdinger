@@ -122,7 +122,9 @@ If you want to know more about the pipe operator, see this website here: <https:
 
 ### 1.2 Loading a data set
 
-After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`. First, download the data set and place it into the `virksomhedsstrategi/input` folder.
+After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`. This data set was made by Christoph and Anton and can also be found [on Github](https://github.com/antongrau/eliter).
+
+First, download the data set and place it into the `virksomhedsstrategi/input` folder.
 
 {{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
 Download the data set
@@ -450,9 +452,9 @@ gr
 ```
 
 ```
-## IGRAPH b6f8010 UN-B 8090 7989 -- 
+## IGRAPH e1a75d2 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from b6f8010 (vertex names):
+## + edges from e1a75d2 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
@@ -530,6 +532,3 @@ To practice a little more, you can download an empty exercise sheet. You can als
 -   [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
 -   [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
 -   [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
-
-
-

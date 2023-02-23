@@ -9,7 +9,7 @@
 # Load alle pakker vi har brugt for her og setwd() til din working directory
 
 library(igraph) ; library(ggraph) ; library(tidyverse) ; library(data.table)
-setwd("/Users/alexandergamerdinger/Desktop/PhD/website/agamerdinger/content/teaching/virksomhedsstrategi")
+setwd("")
 
 # Load data ---------------------------------------------------------------
 
@@ -23,6 +23,7 @@ den %>%
   group_by(affiliation) %>% 
   summarize(N = n()) %>% 
   arrange(desc(N)) 
+
 # Svaret er H.M. Dronningens 75-aars foedselsdag
 
 # Hvor mange kvinder findes der i datasæt? (i %) ----------------------------------
@@ -55,9 +56,9 @@ den %>%
 # Svaret er Claus Jensen 6395
 
 ### SPØRGSMÅL 3 ###
-# Lav et nyt datasæt “den1” hvor I kigger kun på aktørene i sektor “Parliament” -------------------------------------------------
+# Lav et nyt datasæt “den1” hvor I kigger kun på aktørene i sektor “Commissions” -------------------------------------------------
 
-den1 <- den %>% filter(sector == "Parliament")
+den1 <- den %>% filter(sector == "Commissions")
 
 # Er der flere kvinder i dette dataseæt? ----------------------------------
 
@@ -70,7 +71,7 @@ den1 %>%
   summarize(n = n()) %>% 
   mutate(Percent = round(n/sum(n), 2)*100)
 
-# Svaret er nej, der er kun 16 percent kvinder i "Parliament" subset
+# Svaret er ja, der er 38 percent kvinder i "Commissions" subset
 
 ### SPØRGSMÅL 4 ###
 # Lav et one-mode netværk af individuer og visualisere dette. -------------
@@ -78,14 +79,14 @@ den1 %>%
 #lav graph
 incidence <- xtabs(formula = ~name + affiliation, sparse = TRUE, data = den1)
 
-graph <- graph_from_incidence_matrix(incidence, directed = FALSE)
+gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
 
-graph_projection <- bipartite.projection(graph)
+adj_i <- incidence %*% Matrix::t(incidence)
 
-ind_graph <- graph_projection$proj1
+gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected")
 
 #visualize graph
-ind_graph %>% 
+gr1 %>% 
   ggraph(layout = "fr") +
   geom_edge_link0(color = "gray70") +
   geom_node_point(size = 1) +
