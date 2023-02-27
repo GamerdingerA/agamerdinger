@@ -169,6 +169,9 @@ glimpse(df)
 
 If you add other columns than specified in the video above, the function `clean_orbis()` might produce errors. The `clean_orbis()` function enables you to use all remaining functions, such as creating an incidence matrix and a graph object, just like with the data set `den17`. There is no need to rename columns.
 
+Please note, that Orbis data is "real data" in the sense that it is not completely clean. Depending on your data set, you have to undertake further cleaning operations. Some of those can be seen in the r-script that can be found below under materials. 
+
+
 ## 3.3 Loading and visualizing a two-mode network
 
 After we have found a suitable subset of our data, we are ready to load a graph object. Since both `den17` and Orbis data have two columns (name and affiliation) which are used as input variables for our graph object, we *always* load data by first creating an `incidence` matrix.

@@ -240,19 +240,22 @@ glimpse(df)
 ```
 
 ```
-## Rows: 25,917
+## Rows: 31,444
 ## Columns: 8
 ## $ name        <chr> "Mr Ane Maersk Mc-Kinney Uggla", "Mr Lars Erik Brenoe", "M…
 ## $ affiliation <chr> "A.P. MOLLER HOLDING A/S", "A.P. MOLLER HOLDING A/S", "A.P…
-## $ title       <chr> "Chairman", "Member of the Board", "Member of the Board", …
+## $ title       <chr> "Chairman (Board of Directors)", "Director (Board of Direc…
 ## $ id          <chr> "P043421359", "P041964972", "P645698736", "P041410476", "P…
-## $ sector      <chr> "6499", "6499", "6499", "6499", "6499", "6499", "7990", "7…
+## $ sector      <chr> "6499", "6499", "6499", "6499", "6499", "6499", "6499", "6…
 ## $ revenue     <dbl> 62187559, 62187559, 62187559, 62187559, 62187559, 62187559…
-## $ n_employees <dbl> 93076, 93076, 93076, 93076, 93076, 93076, 85375, 85375, 85…
+## $ n_employees <dbl> 93076, 93076, 93076, 93076, 93076, 93076, 93076, 93076, 93…
 ## $ gender      <chr> "male", "male", "female", "male", "male", "male", "male", …
 ```
 
 If you add other columns than specified in the video above, the function `clean_orbis()` might produce errors. The `clean_orbis()` function enables you to use all remaining functions, such as creating an incidence matrix and a graph object, just like with the data set `den17`. There is no need to rename columns.
+
+Please note, that Orbis data is "real data" in the sense that it is not completely clean. Depending on your data set, you have to undertake further cleaning operations. Some of those can be seen in the r-script that can be found below under materials. 
+
 
 ## 3.3 Loading and visualizing a two-mode network
 
@@ -286,9 +289,9 @@ gr
 ```
 
 ```
-## IGRAPH e1d1d52 UN-B 920 931 -- 
+## IGRAPH c51ee69 UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from e1d1d52 (vertex names):
+## + edges from c51ee69 (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -576,7 +579,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 21 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 18 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 

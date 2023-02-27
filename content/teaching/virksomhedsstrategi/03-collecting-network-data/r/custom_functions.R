@@ -13,7 +13,7 @@
 #===========================================================================
 
 clean_orbis <- function(path = "path") {
-
+  
   require(dplyr)
   require(readxl)
   
@@ -36,13 +36,9 @@ clean_orbis <- function(path = "path") {
     # select and rename of what is of interest
     select(all_of(selected_vars)) %>% 
     # get rid of na's in title
-    filter(!is.na(title), 
-    # select only certain titles 
-           title %in% c('Member of the Board', 'Chairman', 'Member of the board')) %>% 
-    # fix small issues
-    mutate(across(title, ~ str_replace_all(.,"Member of the board", "Member of the Board")), 
-           across(n_employees, ~ na_if(., "n.a.") %>% as.numeric(.)), 
-    # create gender variable 
+    filter(!is.na(title)) %>% 
+    mutate(across(n_employees, ~ na_if(., "n.a.") %>% as.numeric(.)), 
+           # create gender variable 
            gender = case_when(
              grepl("^mr", name, ignore.case = TRUE) ~ "male",
              grepl("^ms", name, ignore.case = TRUE) ~ "female", 

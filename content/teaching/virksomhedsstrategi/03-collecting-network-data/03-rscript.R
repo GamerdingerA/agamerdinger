@@ -71,8 +71,20 @@ c1 <- intersect(a1, b1)
 
 df <- clean_orbis(path = "input/public_companies_cph.xlsx")
 
+# see how many types of titles there are
+t1 <- df %>% count(title, sort = T)
+
+# chose those that are important to have 
+t2 <- c("Member of the Board", "Chairman", "Member of the board")
+
+# rename so that all members of the board (no matter how different there spelling) are counted as the same
+df1 <- 
+  df %>% 
+  filter(title %in% t2) %>% 
+  mutate(across(title, ~str_replace_all(., "Member of the board", "Member of the Board")))
+
 # data set on "firm" level
-f1 <- df %>% 
+f1 <- df1 %>% 
   # get rid of name and title cols
   select(-name, -title, -id) %>% 
   # only look at the unique cols
@@ -80,7 +92,7 @@ f1 <- df %>%
 
 # share of men and board size per company (will be shown in later exercises too)
 gender <- 
-  df %>% 
+  df1 %>% 
   count(affiliation, gender) %>% 
   group_by(affiliation) %>% 
   mutate(
