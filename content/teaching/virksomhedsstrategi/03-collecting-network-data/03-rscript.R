@@ -17,7 +17,7 @@ library(ggraph)
 library(igraph)
 library(graphlayouts)
 # for cleaning functions in orbis
-source("custom_functions.R")
+source("r/custom_functions.R")
 
 # Subsetting den17 dataset by tags ----------------------------------------
 
