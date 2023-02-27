@@ -205,7 +205,7 @@ Visualizing two-mode networks is very similar to visualizing one-mode networks. 
 
 When we visualize two-mode networks, we need to make the `type` of the node visible, because otherwise, we will not know which node is a corporation and person respectively. We specify this by using the color argument.
 
-```{r two_mode_network}
+```{r two_mode_network, warning=FALSE}
 
 gr %>% 
   ggraph("fr") +
@@ -224,7 +224,7 @@ gr %>%
 
 We select the largest component exactly as we do with one-mode networks too. Let us select the largest component and visualize it.
 
-```{r comp}
+```{r comp, warning=FALSE}
 
 # Select largest component 
 complist <- components(gr)
@@ -382,3 +382,21 @@ comp1 %>%
   geom_node_label(aes(color=firmtype, label=name), size=2, nudge_y=-0.05, repel=TRUE) + 
   theme_graph() 
 ```
+
+## 3.5 Material
+
+-  [03-rscript](03-rscript.R)
+-  [03-rscript-blank](03-rscript-blank.R)
+-  [custom-functions-rscript](r/custom_functions.R)
+-  [public-companies-cph-orbis](public_companies_cph.xlsx)
+
+
+
+
+
+
+
+
+
+
+

@@ -286,9 +286,9 @@ gr
 ```
 
 ```
-## IGRAPH 65f36c9 UN-B 920 931 -- 
+## IGRAPH 9d4d498 UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 65f36c9 (vertex names):
+## + edges from 9d4d498 (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -319,11 +319,6 @@ gr %>%
        # changing the legend header
        color = "Node types") +
   theme_graph()
-```
-
-```
-## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
-## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
 ```
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/two_mode_network-1.png" width="672" />
@@ -581,8 +576,26 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 7 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 22 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/vis-firmtype-1.png" width="672" />
+
+## 3.5 Material
+
+-  [03-rscript](03-rscript.R)
+-  [03-rscript-blank](03-rscript-blank.R)
+-  [custom-functions-rscript](r/custom_functions.R)
+-  [public-companies-cph-orbis](public_companies_cph.xlsx)
+
+
+
+
+
+
+
+
+
+
+

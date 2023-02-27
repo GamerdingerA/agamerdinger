@@ -39,60 +39,33 @@ show.all.tags(den1)
 # Subsetting den1 by one tag
 
 # suppose we want to get a subset of den1 that includes all names and affiliations with the tag "Banks"
-bank <- has.tags(den1, "Banks", result = "den")
 
-# now, we only want the UNIQUE affiliations 
-bank1 <- has.tags(den1, "Banks", result = "affil")
-
-# and only UNIQUE names
-bank2 <- has.tags(den1, "Banks", result = "name")
 
 # Subsetting den1 by several tags
 
-# we can also subset by several tags, first we make a vector
-tags <- c("Banks", "Finance", "Pensions")
+# we can also subset by several tags, first we make a vector for "Banks", "Finance" and "Pensions"
 
-# this gives us the whole data tibble 
-finance <-has.tags(den1, tags, result = "den")
 
-# now, we only want the UNIQUE affiliations 
-finance1 <-has.tags(den1, tags, result = "affil")
-
-# and only UNIQUE names
-finance2 <-has.tags(den1, tags, result = "name")
 
 # How to find those nodes that are members of two tags?
-a1 <- den1 %>% filter(grepl("Farming", tags)) %>% pull(name)
-b1 <- den1 %>% filter(grepl("Banks", tags)) %>% pull(name)
-c1 <- intersect(a1, b1)
+
 
 
 # Orbis -------------------------------------------------------------------
 
 df <- clean_orbis(path = "input/public_companies_cph.xlsx")
 
-# data set on "firm" level
-f1 <- df %>% 
-  # get rid of name and title cols
-  select(-name, -title, -id) %>% 
-  # only look at the unique cols
-  distinct(affiliation, .keep_all = TRUE) 
+# data set on "firm" level and call it f1. 
+# get rid of name and title cols
+# only look at the unique cols
+
 
 # share of men and board size per company (will be shown in later exercises too)
-gender <- 
-  df %>% 
-  count(affiliation, gender) %>% 
-  group_by(affiliation) %>% 
-  mutate(
-    board_size = sum(n), 
-    share_male = n/board_size) %>% 
-  filter(gender == "male")  %>% 
-  select(-gender, -n)
 
-# the firm data set
-firm <- 
-  f1 %>% 
-  left_join(gender, by= "affiliation")
+
+# the firm data set together
+
+
 
 # Loading graph object ----------------------------------------------------
 
@@ -167,16 +140,12 @@ comp1 %>%
 # quick visualization
 gr1 %>% autograph()
 
+# make a tibble (a1) where you make a name and gender column
 
-# make a tibble where you make a name and gender column
-a1 <- tibble(
-  name = V(gr1)$name, 
-  gender = finance %>% count(name, gender) %>% pull(gender)
-)
+
 
 # check if the sequence of names are similar in the tibble and the graph object and then add it
-all.equal(V(gr1)$name, a1$name)
-V(gr1)$gender <- a1$gender
+
 
 # visualize
 gr1 %>% 
@@ -190,18 +159,14 @@ bank <- has.tags(den1, "Banks", "affil")
 fin <- has.tags(den1, "Finance", "affil")
 pension <- has.tags(den1, "Pensions", "affil")
 
-# first, let us create a data frame which binds three data frames together into one. We give each node a tag name. 
-a1 <- rbind(
-  tibble(name=fin, tag ="finance"), 
-  tibble(name=bank, tag ="bank"), 
-  tibble(name=pension, tag ="pension")
-)
+# first, let us create a data frame (a1) which binds three data frames together into one. We make a tibble with a "name" column and a "tag" column. 
 
-# second, let us make an incidence matrix
-a2 <- xtabs(formula = ~ name + tag, data = a1, sparse = T)
+
+# second, let us make an incidence matrix on name and tag 
+
 
 #let us look at the result
-a2
+
 
 # change matrix to tibble format 
 a2 <- a2 %>% as.matrix() %>% as_tibble(rownames = "name")
@@ -220,15 +185,15 @@ bank_finance_pension <- a2 %>% filter(bank==1 & finance==1 & pension ==1) %>% pu
 V(gr2)$firmtype <- NA
 
 # rename for reach firm type 
-V(gr2)$firmtype[which(V(gr2)$name %in% only_bank)] <- "only_bank"
-V(gr2)$firmtype[which(V(gr2)$name %in% only_finance)] <- "only_finance"
-V(gr2)$firmtype[which(V(gr2)$name %in% only_pension)] <- "only_pension"
-V(gr2)$firmtype[which(V(gr2)$name %in% bank_finance)] <- "bank_finance"
-V(gr2)$firmtype[which(V(gr2)$name %in% bank_pension)] <- "bank_pension"
-V(gr2)$firmtype[which(V(gr2)$name %in% finance_pension)] <- "finance_pension"
-V(gr2)$firmtype[which(V(gr2)$name %in% bank_finance_pension)] <- "bank_finance_pension"
 
-# [more advanced] Option 2: naming each through a loop
+
+# V(gr2)$firmtype[which(V(gr2)$name %in% only_pension)] <- "only_pension"
+# V(gr2)$firmtype[which(V(gr2)$name %in% bank_finance)] <- "bank_finance"
+# V(gr2)$firmtype[which(V(gr2)$name %in% bank_pension)] <- "bank_pension"
+# V(gr2)$firmtype[which(V(gr2)$name %in% finance_pension)] <- "finance_pension"
+# V(gr2)$firmtype[which(V(gr2)$name %in% bank_finance_pension)] <- "bank_finance_pension"
+
+# [more advanced] Option 2: naming each through a loop (not obligatory to know)
 # create a list with all 7 options
 list <- c("only_bank", "only_finance", "only_pension", "bank_finance", "bank_pension", "finance_pension", "bank_finance_pension")
 
@@ -237,6 +202,7 @@ for (i in list) {
   names <- which(V(gr2)$name %in% get(i)) # use get() to get the values that are within i
   V(gr2)$firmtype[names] <- i # name each firm type
 }
+
 
 # Look at the result
 V(gr2)$firmtype #make sure that there are no NA values. 
