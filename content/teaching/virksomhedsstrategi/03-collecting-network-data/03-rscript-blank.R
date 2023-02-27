@@ -55,16 +55,28 @@ show.all.tags(den1)
 
 df <- clean_orbis(path = "input/public_companies_cph.xlsx")
 
-# data set on "firm" level and call it f1. 
-# get rid of name and title cols
-# only look at the unique cols
-
+# data set on "firm" level
+f1 <- df %>% 
+  # get rid of name and title cols
+  select(-name, -title, -id) %>% 
+  # only look at the unique cols
+  distinct(affiliation, .keep_all = TRUE) 
 
 # share of men and board size per company (will be shown in later exercises too)
+gender <- 
+  df %>% 
+  count(affiliation, gender) %>% 
+  group_by(affiliation) %>% 
+  mutate(
+    board_size = sum(n), 
+    share_male = n/board_size) %>% 
+  filter(gender == "male")  %>% 
+  select(-gender, -n)
 
-
-# the firm data set together
-
+# the firm data set
+firm <- 
+  f1 %>% 
+  left_join(gender, by= "affiliation")
 
 
 # Loading graph object ----------------------------------------------------
