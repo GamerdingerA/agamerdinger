@@ -8,7 +8,7 @@ categories:
   - Teaching
 tags:
 description: 'Session on how to collecting network data'
-summary: 'In this session, You will learn how to subset the data set "den" by sectors, and how to collect network data from a website called "orbis". Last, we will see how to visualize a two-mode network and to add network attributes'
+summary: 'In this session, You will learn how to subset the data set den17 by tags, and how to collect network data from Orbis. Last, we cover how to visualize a two-mode network and to add network attributes'
 ---
 
 ## Session 3 - collection and construction of network data

@@ -8,7 +8,7 @@ categories:
   - Teaching
 tags:
 description: 'Session on how to collecting network data'
-summary: 'In this session, You will learn how to subset the data set "den" by sectors, and how to collect network data from a website called "orbis". Last, we will see how to visualize a two-mode network and to add network attributes'
+summary: 'In this session, You will learn how to subset the data set den17 by tags, and how to collect network data from Orbis. Last, we cover how to visualize a two-mode network and to add network attributes'
 ---
 
 ## Session 3 - collection and construction of network data
@@ -286,9 +286,9 @@ gr
 ```
 
 ```
-## IGRAPH 3f4e70e UN-B 920 931 -- 
+## IGRAPH 7b8f29e UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 3f4e70e (vertex names):
+## + edges from 7b8f29e (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -581,7 +581,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 23 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 10 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
