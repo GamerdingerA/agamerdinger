@@ -286,9 +286,9 @@ gr
 ```
 
 ```
-## IGRAPH 7b8f29e UN-B 920 931 -- 
+## IGRAPH 65f36c9 UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 7b8f29e (vertex names):
+## + edges from 65f36c9 (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -315,7 +315,7 @@ gr %>%
   # changing the legend content
   scale_color_manual(values = c("steelblue", "salmon2"), 
                      labels = c("individuals", "corporations")) +
-  labs(title = "Financial corporate interlocks in DK", 
+  labs(title = "Corporate interlocks in the Danish financial sector", 
        # changing the legend header
        color = "Node types") +
   theme_graph()
@@ -361,7 +361,7 @@ comp1 %>%
   # changing the legend content
   scale_color_manual(values = c("steelblue", "salmon2"), 
                      labels = c("individuals", "corporations")) +
-  labs(title = "Biggest component of financial corporate interlocks in DK", 
+  labs(title = "Biggest component of corporate interlocks in the Danish financial sector", 
        # changing the legend header
        color = "Node types") +
   theme_graph()
@@ -581,7 +581,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 10 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 7 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 

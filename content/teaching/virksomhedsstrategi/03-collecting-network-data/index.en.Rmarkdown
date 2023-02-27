@@ -216,7 +216,7 @@ gr %>%
   # changing the legend content
   scale_color_manual(values = c("steelblue", "salmon2"), 
                      labels = c("individuals", "corporations")) +
-  labs(title = "Financial corporate interlocks in DK", 
+  labs(title = "Corporate interlocks in the Danish financial sector", 
        # changing the legend header
        color = "Node types") +
   theme_graph()
@@ -255,7 +255,7 @@ comp1 %>%
   # changing the legend content
   scale_color_manual(values = c("steelblue", "salmon2"), 
                      labels = c("individuals", "corporations")) +
-  labs(title = "Biggest component of financial corporate interlocks in DK", 
+  labs(title = "Biggest component of corporate interlocks in the Danish financial sector", 
        # changing the legend header
        color = "Node types") +
   theme_graph()
