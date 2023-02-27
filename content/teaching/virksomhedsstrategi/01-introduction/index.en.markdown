@@ -452,9 +452,9 @@ gr
 ```
 
 ```
-## IGRAPH e1a75d2 UN-B 8090 7989 -- 
+## IGRAPH 858b3f4 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from e1a75d2 (vertex names):
+## + edges from 858b3f4 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
@@ -524,8 +524,9 @@ gr2 %>%
 
 To practice a little more, you can download an empty exercise sheet. You can also find a filled out cheat sheet below.
 
--   [r-script cheat sheet](lektion01/r-script.R)
--   [r-script exercise](lektion01/lektion01-øvelse.R)
+-   [01-rscript](lektion01/01-r-script.R)
+-   [01-rscript-blank](lektion01/01-r-script-blank.R)
+-   [01-rscript-øvelse](lektion01/lektion01-øvelse.R)
 
 #### Readings
 
