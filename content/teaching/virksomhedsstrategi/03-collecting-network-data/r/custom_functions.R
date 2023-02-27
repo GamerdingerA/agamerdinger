@@ -18,7 +18,7 @@ clean_orbis <- function(path = "path") {
   require(readxl)
   
   # loading data and retrieving names
-  df <- suppressWarnings(readxl::read_xlsx("input/public_companies_cph.xlsx", sheet = 2))
+  df <- suppressWarnings(readxl::read_xlsx(path, sheet = 2))
   names <- df %>% names() 
   
   # renaming cols (here adapting for the fact that "\r" can sometimes be included)
