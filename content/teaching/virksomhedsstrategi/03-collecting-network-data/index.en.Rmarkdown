@@ -388,7 +388,7 @@ comp1 %>%
 -  [03-rscript](03-rscript.R)
 -  [03-rscript-blank](03-rscript-blank.R)
 -  [custom-functions-rscript](r/custom_functions.R)
--  [public-companies-cph-orbis](public_companies_cph.xlsx)
+-  [public-companies-cph-orbis](input/public_companies_cph.xlsx)
 
 
 

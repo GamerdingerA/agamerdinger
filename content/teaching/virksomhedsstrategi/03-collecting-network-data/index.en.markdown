@@ -286,9 +286,9 @@ gr
 ```
 
 ```
-## IGRAPH 9d4d498 UN-B 920 931 -- 
+## IGRAPH e1d1d52 UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 9d4d498 (vertex names):
+## + edges from e1d1d52 (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -576,7 +576,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 22 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 21 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
@@ -587,7 +587,7 @@ comp1 %>%
 -  [03-rscript](03-rscript.R)
 -  [03-rscript-blank](03-rscript-blank.R)
 -  [custom-functions-rscript](r/custom_functions.R)
--  [public-companies-cph-orbis](public_companies_cph.xlsx)
+-  [public-companies-cph-orbis](input/public_companies_cph.xlsx)
 
 
 
