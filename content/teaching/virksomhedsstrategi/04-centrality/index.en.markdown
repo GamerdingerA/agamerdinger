@@ -209,3 +209,123 @@ head(metrics)
 After running this snipped, look at the `metircs` object with the `view()` function to further understand the association between the centrality metrics.
 
 ## 4.2 Network visualization
+
+After having looked at the different centrality measures, the next step is to include them into network visualizations. Before we add a new graph attributes, it is always important to check if the sequence of loading is the same between the graph object and the attribute source.
+
+In case the sequence is not the same, we use the following functions to change the order of a vector or data frame.
+
+
+```r
+# be sure that the names of the affiliations are the same and sorted the same way
+all.equal(metrics$name, V(comp1)$name) # woups
+```
+
+```
+## [1] "533 string mismatches"
+```
+
+```r
+# however, they are just in a different order
+all.equal(sort(metrics$name),sort(V(comp1)$name)) 
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# We need to match these two values 
+# The match function reproduces the order (in numerical location) of the first vector, to the second one. 
+index <- match(V(comp1)$name,metrics$name)
+
+new_order <- metrics$name[index] #see for yourself
+
+all.equal(new_order, V(comp1)$name) # now it is the same order.
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# we can also reorder the whole data frame
+metrics <- metrics %>% arrange(factor(name, levels = name[index]))
+
+all.equal(metrics$name, V(comp1)$name)
+```
+
+```
+## [1] TRUE
+```
+
+After we have found the correct sequence, we can add the centrality measures as a node attribute to our graph object `comp1`.
+
+
+```r
+# add the attributes / variables
+V(comp1)$size <- metrics$N
+V(comp1)$closeness <- metrics$closeness
+V(comp1)$betweenness <- metrics$betweenness
+```
+
+Last, we can visualize the centrality measures as part of the graph object. In the first example, nodes are colored by betweenness scores, while in the second example, they are colored by closeness. Last, both graph objects are saved.
+
+
+```r
+# Visualizing by betweenness 
+comp1 %>% 
+  ggraph(layout='fr') + 
+  geom_edge_link0(color='grey', width=0.6, alpha=0.35) + 
+  geom_node_point(aes(color=betweenness, size=size), alpha=0.75) +
+  scale_color_viridis() +
+  geom_node_label(aes(
+  filter=name %in% {metrics %>% filter(betweenness_rank < 10) %>% pull(name)} #baseR version would be: net_metrics$name[net_metrics$betweenness_rank < 10]
+,label=name), alpha=0.65, size = 3, repel=T, force = 50) +
+  theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/graph-1.png" width="672" />
+
+
+```r
+ggsave('output/elitedb-graph-betweenness.png', width=30, height=17.5, unit='cm')
+```
+
+
+```r
+# another example, with closeness
+comp1 %>% 
+  ggraph(layout='fr') + 
+  geom_edge_link0(color='grey', width=0.6, alpha=0.35) + 
+  geom_node_point(aes(color=closeness, size=size), alpha=0.75) + 
+  theme_graph() + scale_color_viridis() +
+  geom_node_label(aes(
+    filter=name %in% {metrics %>% filter(grepl("bank", tolower(name))) %>% pull(name)},
+    label=name), alpha=0.65, repel=T,size=3, force = 50)
+```
+
+```
+## Warning: ggrepel: 13 unlabeled data points (too many overlaps). Consider
+## increasing max.overlaps
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/graph1-1.png" width="672" />
+
+
+```r
+ggsave('output/elitedb-graph-closeness.png', width=30, height=17.5, unit='cm')
+```
+
+## 4.3 Material
+
+- [04-rscript.R](04-rscript.R)
+- [04-rscript-blank.R](04-rscript-blank.R)
+
+
+
+
+
+
+
+
+

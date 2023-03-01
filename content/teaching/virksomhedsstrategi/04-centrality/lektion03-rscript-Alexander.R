@@ -158,8 +158,8 @@ round(cor(as.matrix(net_metrics %>% select(closeness, eigen, betweenness, degree
 all.equal(net_metrics$name, V(net_largest)$name) # woups
 all.equal(sort(net_metrics$name),sort(V(net_largest)$name)) # However the only thing that is different is the order between them
 
-# We need to match these two values 
-# The match function reproduces the order (in numerical location) of the first vector, to the second one. 
+# We need to match these two values
+# The match function reproduces the order (in numerical location) of the first vector, to the second one.
 index <- match(V(net_largest)$name, net_metrics$name)
 new_order <- net_metrics$name[index] #see for yourself
 
