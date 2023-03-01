@@ -79,7 +79,17 @@ comp1 %>%
 
 # centrality --------------------------------------------------------------
 
-# degree, betweenness, closeness, eigen_centrality
+# degree: antal af direkte forbindelser
+
+
+# Betweenness centrality: største andel af korteste stier igennem noden
+
+
+# Closeness centrality: mindste afstande alle andre noder i netværk
+
+
+# Eigenvector centrality: best forbundet til andre centrale noder
+
 
 
 

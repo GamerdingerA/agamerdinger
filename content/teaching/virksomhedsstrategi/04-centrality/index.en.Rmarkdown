@@ -13,7 +13,7 @@ summary: 'The focus of this session is on node centrality measures, or how you c
 
 ## Session 4 - Analysis of node centrality measures
 
-This session will provide you with tools to analyze important nodes in the network. It is different from [session 2](http://localhost:4321/teaching/virksomhedsstrategi/density-and-components/), which focused on the analysis of the network structure, as we are now focusing on the node level.
+This session will provide you with tools to analyze important nodes in a network. It is different from [session 2](http://localhost:4321/teaching/virksomhedsstrategi/density-and-components/), which focused on the analysis of the network structure, as we are now focusing on the node level importance.
 
 Before we introduce the new measures, let us set our working directory, load `den17`, find a subset and load a network object.
 
@@ -140,14 +140,14 @@ theme_graph()
 
 ## 4.1 Centrality measures
 
-In this session will focus on the following centrality measures.
+In this session will focus on the following centrality measures:
 
 1.  Degree centrality, which measures the amount of direct links that a node has with others. It tells us something about the local centrality of a node and is calculated with the function `degree()`
 2.  Betweenness centrality, which measures how important a given node is in connecting other pairs of nodes in the graph. It is a common measure for identifying brokers in a network and is calculated with the function `betweenness()`
 3.  Closeness centrality, which measures how efficiently the entire graph can be traversed from a given node. Nodes with high closeness centrality are likely to reach the entire network more efficiently. It is calculated with the function `closeness()`
 4.  Eigenvector centrality which measures how connected a node is to other influential nodes. Nodes can have high influence through being connected to a lot of other nodes with low influence, or through being connected to a small number of highly influential nodes. It is calculated with the function `eigen_centrality()`
 
-Let us look compare the measures with each other. First, we create a table called `metrics` which contains all centrality metrics.
+Let us compare the measures with each other. First, we create a table called `metrics` which contains all centrality metrics.
 
 Second, we look at the distributions of these metrics. You are not obliged to understand this `ggplot()` code. More importantly, you see that while betweenness, degree and eigenvector centrality behave similarly, closeness is almost normally distributed.
 
@@ -182,7 +182,7 @@ metrics %>%
 
 ```
 
-Next, we will add some additional columns to further understand the relationship between the centrality scores. We will make a column where we include the size of the affiliation, and create a ranking system telling us the overall rank of a node by each centrality measure. Again, this code is a little advanced not meant to be reproduced by you, so just focus on the interpretation.
+Next, we will add some additional columns to further understand the relationship between the centrality scores. We will make a column where we include the size of the affiliation, and create a ranking system telling us the overall rank of a node by each centrality measure. Again, this code is a little advanced and not meant to be reproduced by you, so just focus on the interpretation.
 
 ```{r}
 
@@ -224,9 +224,9 @@ After running this snipped, look at the `metircs` object with the `view()` funct
 
 ## 4.2 Network visualization
 
-After having looked at the different centrality measures, the next step is to include them into network visualizations. Before we add a new graph attributes, it is always important to check if the sequence of loading is the same between the graph object and the attribute source.
+After having looked at the different centrality measures, the next step is to include them into network visualizations. Before we add a new graph attributes, it is always important to check if the sequence of items is the same between the graph object and the attribute vector.
 
-In case the sequence is not the same, we use the following functions to change the order of a vector or data frame.
+In case the sequence is not the same, we use the `match()` functions to change the order of a vector and the `factor()` function to change the order of a data frame.
 
 ```{r check}
 

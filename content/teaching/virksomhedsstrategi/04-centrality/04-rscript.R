@@ -79,6 +79,18 @@ comp1 %>%
 
 # centrality --------------------------------------------------------------
 
+# degree: antal af direkte forbindelser
+degree(net_largest, mode = "all")
+
+# Betweenness centrality: største andel af korteste stier igennem noden
+betweenness(net_largest, directed=FALSE, weights=NA) 
+
+# Closeness centrality: mindste afstande alle andre noder i netværk
+closeness(net_largest, mode="all", weights=NA) 
+
+# Eigenvector centrality: best forbundet til andre centrale noder
+eigen_centrality(net_largest, directed=FALSE, weights=NA)$vector
+
 # create a table with all centrality metrics
 metrics <- tibble(
   name = names(degree(comp1, mode="all")),
