@@ -305,7 +305,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 13 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 12 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
@@ -318,14 +318,5 @@ ggsave('output/elitedb-graph-closeness.png', width=30, height=17.5, unit='cm')
 
 ## 4.3 Material
 
-- [04-rscript.R](04-rscript.R)
-- [04-rscript-blank.R](04-rscript-blank.R)
-
-
-
-
-
-
-
-
-
+-   [04-rscript.R](04-rscript.R)
+-   [04-rscript-blank.R](04-rscript-blank.R)
