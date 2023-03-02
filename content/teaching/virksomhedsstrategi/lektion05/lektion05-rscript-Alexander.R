@@ -110,6 +110,7 @@ has.tags(den1, 'Banks', result = "name") #returns only the names with the tags
 finans <- has.tags(den1, 'Finance')
 pension <- has.tags(den1, 'Pensions')
 
+
 finance <- c(bank, finans, pension)
 
 # Select all names from the data set 
