@@ -209,4 +209,3 @@ comp1 %>%
     label=name), alpha=0.65, repel=T,size=3, force = 50)
 
 ggsave('output/elitedb-graph-closeness.png', width=30, height=17.5, unit='cm')
-
