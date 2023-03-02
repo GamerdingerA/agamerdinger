@@ -8,7 +8,7 @@ categories:
   - Teaching
 tags:
 description: 'Session on centrality measures'
-summary: 'The focus of this session is on node centrality measures, or how you can find important nodes in a network. We will cover several metrics including degree centrality, betweenness centrality, closeness and eigenvector centrality.'
+summary: 'The focus of this session is on node centrality measures. We will cover several metrics including degree centrality, betweenness centrality, closeness and eigenvector centrality.'
 ---
 
 ## Session 4 - Analysis of node centrality measures
@@ -305,7 +305,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 13 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 14 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
