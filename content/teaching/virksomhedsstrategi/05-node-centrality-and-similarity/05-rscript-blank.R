@@ -72,10 +72,10 @@ comp1 %>%
 # A measure of brokerage. It a measure on the node level that is higher for those that have less structural opportunities for bridging structural holes within a network. It measures how many direct ties of a node are redundant (connected with themselves). The more nodes are redundant, the more constraint a node is. 
 
 # constraint - the higher, the less chances for brokerage
-constraint(comp1)
+
 
 # make brokerage variable
-brokerage <- 1- constraint(comp1)
+
 
 
 # Let us make a data.frame with tibble() and look at the different measures. 
@@ -94,16 +94,14 @@ metrics %>% arrange(desc(brokerage))
 # Visualize Burt's constraint ---------------------------------------------
 
 # Make sure to test if sequence is correct before adding it to a network attribute. 
-all.equal(metrics$name, V(comp1)$name) 
+
 
 # Add to our graph object
-V(comp1)$brokerage <- metrics$brokerage
+
 
 # how to select the 10 most central people?
-ten_largest <- metrics %>% 
-  arrange(desc(brokerage)) %>% #arranage by brokerage
-  slice(1:10) %>% # slice the data frame and look at the first 10 nodes
-  pull(name) # extract only the names
+
+
 
 # visualize
 comp1 %>% 
@@ -124,15 +122,15 @@ comp1 %>%
 # For assortativity based on degree we use the function assortativity_degree. It measures similarity on degree - e.g. those that have many friends also hang out with other popular people. 
 
 # Assortativity degree for gr
-assortativity_degree(gr, directed=FALSE)
+
 
 # Assortativity degree for biggest component
-assortativity_degree(comp1, directed=FALSE)
+
 
 # To calculate similarity between affiliations, we need to create a new variable - gender proportion. 
 
 # What is the gender proportion?
-den1 %>% count(gender)
+
 
 # Let's aggregate gender proportions for each affiliation (but only look at women and men)
 gender <- den1 %>% 
@@ -164,7 +162,7 @@ gender2 <-
   filter(affiliation %in% V(comp1)$name)
 
 
-# check if they are same than the comp1aph
+# check if they are same sequence than in the comp1 object 
 all.equal(gender2$affiliation, V(comp1)$name)
 index <- match(V(comp1)$name, gender2$affiliation)
 gender2 <- gender2 %>% arrange(factor(affiliation, levels = affiliation[index]))
@@ -182,7 +180,7 @@ comp1 %>%
   scale_color_gradient2(low='firebrick4', mid='grey80', high='dodgerblue4', midpoint=0.5, na.value='pink') 
 
 # Calculate assortativity for share of men
-assortativity(comp1, V(comp1)$share_men, directed=FALSE)
+
 
 # Categorical Assortativity ------------------------------------------------
 # let us create a categorical gender variable based on gender2. 
@@ -208,7 +206,10 @@ comp1 %>%
   theme_graph() 
 
 # Make sure to write as.factor(), so it is recognized as a categorical variable
-assortativity_nominal(comp1, as.numeric(as.factor(V(comp1)$gender_cat)), directed = FALSE)
+
+
+
+
 
 # Template to add external variables to EliteDB ---------------------------
 # first, you create a data frame that includes the names of the nodes of the network
