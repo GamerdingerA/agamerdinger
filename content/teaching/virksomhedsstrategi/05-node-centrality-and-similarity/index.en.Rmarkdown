@@ -122,7 +122,7 @@ Burt's constraint is a measure of brokerage. The idea of brokerage suggests that
 ```{r con}
 
 # constraint - the higher, the less chances for brokerage
-constraint(comp1)
+constraint(comp1)[1:10]
 
 # make brokerage variable so we can compare it to the other measures
 brokerage <- 1- constraint(comp1)
@@ -279,12 +279,14 @@ comp1 %>%
   theme_graph() 
 
 # Make sure to write as.factor(), so it is recognized as a categorical variable
-assortativity_nominal(comp1, as.numeric(as.factor(V(comp1)$gender_cat)), directed = FALSE)
+assortativity_nominal(comp1, 
+                      as.numeric(as.factor(V(comp1)$gender_cat)),
+                      directed = FALSE)
 
 
 ```
 
-With an assortativity of `0.03`, there is a neutral likelihood that nodes with the same gender category `gender_cat` are directly connected with each other. The score is telling us that we cannot expect boards with the same gender proportion to be connected with each other.
+With an assortativity of `0.039`, there is a neutral likelihood that nodes with the same gender category `gender_cat` are directly connected with each other. The score is telling us that we cannot expect boards with the same gender proportion to be connected with each other.
 
 ## 5.3 Material
 
