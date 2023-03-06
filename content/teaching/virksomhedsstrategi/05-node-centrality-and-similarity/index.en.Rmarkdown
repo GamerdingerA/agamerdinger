@@ -176,7 +176,7 @@ comp1 %>%
 
 ```
 
-## 5.2 Assortativity 
+## 5.2 Assortativity
 
 Assortativity measures the extend to which nodes with similar properties are connected to each other. The assortativity coefficient ranges between -1 and 1, where 1 indicates that there is a high likelihood of two nodes with the same properties being connected. Networks that have an assortativity of 0 are usually referred to as neutral.
 
@@ -251,7 +251,7 @@ assortativity(comp1, V(comp1)$share_men, directed=FALSE)
 
 In this example, the assortativity of `0.157`tells us that there is a small likelihood that boards with a similar gender proportion are directly connected with each other.
 
-### 5.2.2 Categorical assortativity 
+### 5.2.2 Categorical assortativity
 
 Now, we can use the gender proportion variable to create a new categorical variable of gender. It changes the variable to *female dominated*, *gender_balanced* and *male_dominated* depending on their proportions. This is then used to calculate and visualize categorical assortativity.
 
@@ -285,3 +285,10 @@ assortativity_nominal(comp1, as.numeric(as.factor(V(comp1)$gender_cat)), directe
 ```
 
 With an assortativity of `0.03`, there is a neutral likelihood that nodes with the same gender category `gender_cat` are directly connected with each other. The score is telling us that we cannot expect boards with the same gender proportion to be connected with each other.
+
+## 5.3 Material
+
+-   [05-rscript](05-rscript.R)
+-   [05-rscript-blank](05-rscript-blank.R)
+
+
