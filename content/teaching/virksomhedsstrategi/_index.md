@@ -15,9 +15,15 @@ The course is an obligatory course for 3rd year bachelor students at Copenhagen 
 -   [Course syllabus](syllabus_2023.pdf)
 -   [Guide: Installing R and Rstudio](setting_up_R.pdf)
 
-#### Booking office hours
+#### Contact and office hours
 
-You are welcome to book a 20 min slot during my office hours. Please just select the day and time in the widget below.
+You are welcome to contact me via e-mail or to book a 20 min slot during my office hours. Please just select the day and time in the widget below.
+
+-   Name: Alexander Gamerdinger
+
+-   E-mail: aga.ioa\@cbs.dk
+
+-   Office: KL 3.43 (3rd floor at Kilen)
 
 <!-- Calendly link widget begin -->
 
