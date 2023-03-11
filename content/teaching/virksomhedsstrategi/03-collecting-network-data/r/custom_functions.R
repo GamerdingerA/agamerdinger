@@ -12,6 +12,7 @@
 
 #===========================================================================
 
+# a function that uploads an orbis object and cleans it.
 clean_orbis <- function(path = "path") {
   
   require(dplyr)
@@ -311,8 +312,51 @@ sectors.to.role        <- function(den, list.dens, role = c("Chief executive", "
     }
 }
 
-
-
+# a function that helps to visualize communities in a grpah object. 
+ggcom <- function(gr, layout = "fr", stretching_paramter = 0.25) {
+  
+  
+  if (!igraph::is_igraph(gr)) {
+    stop("This object must be an igraph object")
+  }
+  
+  # setting default weight to 1
+  E(gr)$weight <- 1 
+  
+  #creating louvain clustering
+  louvain <- cluster_louvain(gr)
+  V(gr)$community <- sprintf("%02d",louvain$membership)
+  
+  # coloring
+  a1 <- as_tibble(as_edgelist(gr), .repair_names = "unique")
+  E(gr)$community <- map2_chr(a1$V1, a1$V2, function(.x, .y){
+    ifelse(
+      V(gr)$community[which(V(gr)$name==.x)] ==
+        V(gr)$community[which(V(gr)$name==.y)],
+      V(gr)$community[which(V(gr)$name==.x)],
+      "9999") 
+  })
+  
+  gr1 <- gr
+  
+  # assigning weight
+  for(i in unique(V(gr)$community)) {
+    gr_vertex = which(V(gr)$community == i)
+    gr1 = add_edges(gr1, combn(gr_vertex, 2), attr=list(weight= stretching_paramter))
+  } 
+  
+  # Make a layout. Only those layouts that support weights can be used. 
+  gr1_layout <- create_layout(gr1, layout)
+  gr_layout <- create_layout(gr, layout)
+  
+  # let us copy the coordinates over to our original graph object 
+  gr_layout$x <- gr1_layout$x
+  gr_layout$y <- gr1_layout$y
+  
+  # return gr_layout
+  return(gr_layout)
+  
+}
 
 
 
