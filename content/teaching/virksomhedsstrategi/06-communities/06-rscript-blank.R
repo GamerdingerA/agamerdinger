@@ -79,32 +79,39 @@ comp1 %>%
 # Communities -------------------------------------------------------------
 # In this lesson, we are looking the louvain clustering method. This is how you can cluster nodes by communities. 
 
-louvain <- cluster_louvain(comp1)
+
 
 # Look inside the object
-names(louvain)
+
 
 # How large are the clusters?
-louvain$membership # which community does a node belong to?
-length(louvain$membership) # number of communities
-table(louvain$membership) # distribution of members
+# which community does a node belong to? ($membership)
 
-# How many clustering iterations?
-dim(louvain$memberships) 
+
+# number of communities
+
+
+# distribution of members
+
+
+# How many clustering iterations? ($memberships)
+
 
 # How effective has it clustered?
 
 # Modularity is a measure that tells us the percentage of edges in the network that fall within the given communities compared to what we would expect if the graph was drawn at random. It tells us how dense edge connections are within communities, comparing to what we would expect in a random graph. 
 
-louvain$modularity # 3 rounds of clustering
-modularity(louvain) # last round 
+# 3 rounds of clustering
+
+
+# last round 
 
 # Visualizing communities -------------------------------------------------
 # Do they have the same sequence of names?
-all.equal(louvain$names, V(comp1)$name)
+
 
 # adding membership as an attribute to community (with sprintf() function which makes membership values look nicer )
-V(comp1)$community <- sprintf("%02d",louvain$membership) 
+
 
 # DOES NOT NEED TO BE UNDERSTOOD --
 # Creating edge attribute that gives the edge the same community color if it connects two nodes within an community, and gives it a black color if it connects two different communities. 
@@ -130,12 +137,12 @@ comp1 %>%
 # making sense of the community membership
 
 # to find the nodes who are a part of a given community
-names_c1 <- V(comp1)$name[which(V(comp1)$community == "07")]
+
 
 # to visualize them in the graph
 
 comp1 %>% 
-  ggraph(layout = "stress") +
+  ggraph() +
   geom_edge_link0(aes(filter=community!='9999', color=community), width=0.6, alpha=0.55) + 
   geom_edge_link0(aes(filter=community=='9999'), color='black', width=0.6, alpha=0.35) + 
   geom_node_point(aes(color=community), alpha=0.95, size=3) + 
@@ -143,6 +150,7 @@ comp1 %>%
   geom_node_label(aes(filter=name %in% names_c1, label=name, color=community), size = 2, repel=TRUE, force = 10) +
   theme_graph() 
   
+
 # Improving or changing colors: 
 # Option one: if not many unique colors present, I recommend using the viridis functions: scale_color_viridis() or scale_edge_color_viridis() 
 # Option two: if many colors are present, use the RColorBrewer palettes
@@ -157,7 +165,7 @@ amount <- V(comp1)$community %>% unique() %>% length()
 mycolors <- colorRampPalette(brewer.pal(8, "Paired"))(amount)
 
 comp1 %>%        
-  ggraph(layout = "stress") + 
+  ggraph() + 
   geom_edge_link0(aes(filter=community!='9999', color=community), width=0.6, alpha=0.55) + 
   geom_edge_link0(aes(filter=community=='9999'), color='black', width=0.6, alpha=0.35) + 
   geom_node_point(aes(color=community), alpha=0.95, size=3) + 
@@ -169,34 +177,25 @@ comp1 %>%
 # is a subset of nodes in a graph whose edge density is 1 - meaning that every member has ties. This is understood as the most intense possible type of community in an undirected graph. In comparison to community detection, cliques can be overlapping.
 
 # How to find cliques: 
-clique <- cliques(comp1, min = 2) # specify min 2 as there should be at least two people (exclude isolates)
+# specify min 2 as there should be at least two people (exclude isolates)
 
 # How many do we have?
-length(clique)
+
 
 # How many of them have a different size?
-map_dbl(.x = clique, ~ length(.x)) %>% table() 
 
 
 # For strategic queries: 
 # Example: to find how many cliques Sydbank is in.
-a1 <- keep(clique, function(x) any(x$name == 'Sydbank'))
-length(a1)
+
 
 # How large are the cliques that Sydbank is in?
-table(sapply(a1, length)) # or from the purr package table(map_dbl(a1, length))
+
 
 # Maximum cliques 
 # A non-overlapping amount of cliques that are largest, meaning that they cannot be extended by including one more adjacent vertex
 
-# how many max. cliques are there?
-count_max_cliques(comp1, min = 2) 
 
-# find all of the maximal cliques
-max_cliques <- maximal.cliques(comp1, min = 2)
-
-# distribution?
-table(sapply(max_cliques, length))
 
 # Further resources -------------------------------------------------------
 all_layouts <- c(

@@ -13,7 +13,7 @@ summary: 'This session will focus on the Louvain community detection algorithm a
 
 ## Session 6 - Communities and cliques
 
-This session marks the last 'tools' session of the course and focuses on node-communities. Communities are basically groups of nodes in the network that are very densely connected with each other. Detecting communities tells us something about the overall network structure.
+This session marks the last 'tools' session of the course and focuses on node communities. Communities are groupings of nodes in the network that are very densely connected with each other. Detecting communities tells us something about the overall network structure.
 
 As always, we are working with the data set `den17`. We also install two packages in the beginning of our script. The `purrr` packages, which facilitates to work with lists, and the `RcolorBrewer` package, which contains a ready-to-use color palettes for creating beautiful graphics. After having loaded the packages, we can execute the usual functions to transform `den17` into a graph object. See the code-snippet below:
 
@@ -78,4 +78,319 @@ comp1 <- comps[[index[1]]]
 
 ## 6.1 Community detection
 
+Communities are highly connected clusters of nodes within a network. The process of discovering *optimal* communities of nodes is called `community detection`. This process is an unsupervised process where each node is classified according to a community.
+
+The most common community detection algorithm is called the *Louvain clustering method*, which partitions nodes by maximizing `modularity`.
+
+> Modularity measures how dense the connections are within subsets of vertices in a graph by comparing the density to that which would be expected from a random graph. In an unweighted and undirected graph, modularity takes a value between −0.5 and +1. Any value above zero means that the vertices inside the subgroups are more densely connected than would be expected by chance. The higher the modularity of a graph, the more connected the vertices are inside the subgroups compared to between the subgroups, and therefore the more certain we can be that the subgroups represent genuine communities of more intense connection.
+>
+> Explanation are drawn from the [Handbook of Graphs and Networks in People Analytics](https://ona-book.org/community.html)
+
+Modularity is calculated through several steps, in which modularity is maximized. The exact process is described in this paper [Blondel et al. 2008](Blondel_et_al_2008.pdf). In R, we cluster the nodes in a network by using the `cluster_louvain()` function.
+
+
+```r
+#clustering 
+louvain <- cluster_louvain(comp1)
+
+# Look inside the object
+names(louvain)
+```
+
+```
+## [1] "membership"  "memberships" "modularity"  "names"       "vcount"     
+## [6] "algorithm"
+```
+
+```r
+# How large are the clusters?
+louvain$membership # which community does a node belong to?
+```
+
+```
+##   [1]  1  2  3  4  3  5  3  6  4  6  7  8  9  4  8  6 10 11  5 10  5  2  4  6  8
+##  [26] 10 12  2  5 13  2  3  3 14  7 13  3 14 15  1  8 10  1 13  2 12 12  7  3  8
+##  [51] 14 12  8  3  2 10 16 15  4 10  3 17 15  4 15  1 10 17  1 15  1 10  8  3  6
+##  [76]  6 12  6  3 18 10  9  4 14 10 15  2  7  5  2 12 15  2 14 14  6 17 17  5  5
+## [101]  6  4 13  6  8 17  4  6  7  6  8 13  2 18  8  4 14  7  7 10 15 15  3  2 15
+## [126]  4 17  3  1  5  3 17  3  3  6  6  7  3 15  5  2  2 12  5  5  5  3 12 13  8
+## [151]  1 11  5 18  5  4 12 17  4  6  2 14  8  1  3  3  1  3  8 15 17 15 10 15  8
+## [176]  3  8  3  7 13  5 17  1 13  4 18 15  6  3  5 12  3  5  8 13  2 17  8  4  8
+## [201]  3 15 10  8  1  5  5  8 13 10  8 14  8  3 15 18  1  2  3  2 14  3  9  2  1
+## [226] 10 10 10  6  2 14 13 15  8  3 15  9  4  5 17 12 14 17 15  9 10  5 12  4  5
+## [251] 17  1  1  3  1  5  2  2 15 15  9 12  3  3  3  3  1  3  2  6  9 12 15 10  6
+## [276]  1  2  5 14  3  3  8 15  6  7  4  8  8 15  8 13 15  3  5  3  3 12  3  2  5
+## [301]  6 14  5 12 15  2 11 17  6 12  3  4  7  7  5 10 17  1 17 14  3 12 14  5 12
+## [326] 10  7 10  6 10 16 16 16  7 18  4  8 13  1 12 15 15  1  1 10 10 10  1 15 15
+## [351]  3  3  8  7  1  1  3 15  3 10 10 10 10 10  7  1  1  1  7 15  4 18 17 16 13
+## [376]  3  8 10  9  3  4  1  2  2  3  4 12  3  3  3  2  3 12  1 10  3  4  2 15 14
+## [401] 15  6 12  2 13  1  5  7 12 13 12  3 15 10  9  4 12  9 12 16 13  3  8  1  1
+## [426]  5  5  8  9 11  4  7  8 13  4  3  3 17  5  5 14 14 10  5 13  2 17  3 17  4
+## [451]  3 13  2  6  4 17 13 14 10  3  3  3  3  3  7  3 13 15  8  6 18  4  7 17  3
+## [476] 18  1  8 16  3  5  5 14  5  1 13  2 17  5  7  6  4 15  4  5  3  5 13  1  3
+## [501] 14  1 10 10 10  5 12  2 10 10  2 10 10 10 10  7 12  6  3 10 14  2  1 10  3
+## [526] 16  8  1  5  8 15  1 17
+```
+
+```r
+length(louvain$membership) # number of communities
+```
+
+```
+## [1] 533
+```
+
+```r
+table(louvain$membership) # distribution of members
+```
+
+```
 ## 
+##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 
+## 41 36 74 32 43 28 23 37 11 47  4 29 24 23 39  8 25  9
+```
+
+```r
+# How many clustering iterations?
+dim(louvain$memberships) 
+```
+
+```
+## [1]   3 533
+```
+
+```r
+# How effective has it clustered?
+louvain$modularity # 3 rounds of clustering
+```
+
+```
+## [1] 0.5547532 0.6811425 0.6922614
+```
+
+```r
+modularity(louvain) # last round 
+```
+
+```
+## [1] 0.6922614
+```
+
+As we can see, the algorithm has found `19` distinct communities (which may deviate at your personal computer) in three clustering rounds. In each clustering iteration, the modularity has been increased, and has reached the value `0.69` in the last round.
+
+## 6.2 Community visualization
+
+As always, we are interested not only in community calculation, but also in how to visualize them. This is simply done by adding the community scores to a network object. In this case, we create a new network attribute called `V(comp1)$community`.
+
+To make it visually more pleasing, we run a loop with the `map2_chr()` function which creates an edge attribute `E(comp1)$community`. This edge attribute gives the edge the same community color if it connects two nodes within an community, and gives it a black color if it connects two different communities.
+
+
+```r
+# Do they have the same sequence of names?
+all.equal(louvain$names, V(comp1)$name)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# adding membership as an attribute to community (with sprintf() function which makes membership values look nicer)
+V(comp1)$community <- sprintf("%02d",louvain$membership) 
+
+# DOES NOT NEED TO BE UNDERSTOOD --
+# Creating edge attribute that gives the edge the same community color if it connects two nodes within an community, and gives it a black color if it connects two different communities. 
+
+a1 <- as_tibble(as_edgelist(comp1), .repair_names = "unique")
+
+E(comp1)$community <- 
+  # mapping two edge cols in a function into a character vector (chr)
+  map2_chr(a1$V1, a1$V2, function(.x, .y){
+    # if else statement
+  ifelse(
+    # checks if community between nodes that form edges (in a1 object) are part of the same communtiy
+    V(comp1)$community[which(V(comp1)$name==.x)] ==
+      V(comp1)$community[which(V(comp1)$name==.y)],
+    # if yes, write the community
+    V(comp1)$community[which(V(comp1)$name==.x)],
+    # if not, write "9999" 
+    "9999") 
+})
+```
+
+Now, this can be visualized with the `ggraph()` plotting syntax.
+
+
+```r
+# Plotting 
+comp1 %>% 
+  ggraph(layout = "fr") +
+  geom_edge_link0(aes(filter=community!= "9999", 
+                      color = community), 
+                  width = 0.65, 
+                  alpha = 0.6) +
+  geom_edge_link0(aes(filter=community == "9999"), 
+                  color = "black", 
+                  width = 0.65, 
+                  alpha = 0.4) + 
+  geom_node_point(aes(color=community), 
+                  alpha=0.95, 
+                  size=2.5) + 
+  theme_graph() 
+```
+
+```
+## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/vis2-1.png" width="672" />
+
+### 6.2.1 Understanding community membership
+
+Sometimes, it might be difficult to see who is a part of each community. The best way of finding the nodes that are part of the community is to make a tibble with two columns, name and community. You can however, also pull the names directly for each community and then label their names in a graph. This is what I am doing in the code below:
+
+
+```r
+# to find the nodes who are a part of a given community. Here, I am looking at hte members of community nr. 07
+names_c7 <- V(comp1)$name[which(V(comp1)$community == "07")]
+
+# to visualize them in the graph
+comp1 %>% 
+  ggraph(layout = "stress") +
+  geom_edge_link0(aes(filter=community!='9999', color=community), width=0.6, alpha=0.55) + 
+  geom_edge_link0(aes(filter=community=='9999'), color='black', width=0.6, alpha=0.35) + 
+  geom_node_point(aes(color=community), alpha=0.95, size=3) + 
+  geom_node_point(aes(filter=name %in% names_c7), color = "black", size=1.5) + 
+  geom_node_label(aes(filter=name %in% names_c7, label=name, color=community), size = 1.5, repel=TRUE, force = 10) +
+  theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/com_mem-1.png" width="672" />
+
+### 6.2.2 Changing colors
+
+Sometimes, the default color palettes are not visually pleasing. You have two options to change color palettes:
+
+1.  if there are not many unique colors present, I recommend using the viridis functions `scale_color_viridis()` or `scale_edge_color_viridis()`as a part of your `ggraph()` workflow
+2.  if many colors are present, use the RColorBrewer palettes
+
+You can display all of the given color palettes by calling the function `display.brewer.all()`. Make sure that you have installed the package and called `library(RcolorBrewer)` before using this function.
+
+
+```r
+display.brewer.all()
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/colbre-1.png" width="672" />
+
+If you have chosen a palette that you like, you can also adapt the amount of different colors you need with the following functions. This can then be used in the `ggraph()` syntax.
+
+
+```r
+# choose color and adapt to the amount of different colors you need 
+amount <- V(comp1)$community %>% unique() %>% length()
+mycolors <- colorRampPalette(brewer.pal(8, "Paired"))(amount)
+
+comp1 %>%        
+  ggraph("fr") + 
+  geom_edge_link0(aes(filter=community!='9999', 
+                      color=community), 
+                  width=0.6, 
+                  alpha=0.55) + 
+  geom_edge_link0(aes(filter=community=='9999'), 
+                  color='black', 
+                  width=0.6, 
+                  alpha=0.35) + 
+  geom_node_point(aes(color=community), 
+                  alpha=0.95, 
+                  size=3) + 
+  scale_edge_color_manual(values = mycolors) +
+  # use this function to change the color palette
+  scale_color_manual(values = mycolors) +
+  theme_graph() 
+```
+
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/vis2_2-1.png" width="672" />
+
+## 6.3 Cliques
+
+Cliques are subsets of nodes in a graph whose edge density equals 1 meaning that every member is connected with each other. This makes cliques the most extreme kind of community in an undirected graph. In comparison to community detection, clique membership can be overlapping.
+
+We find cliques with the `cliques()` function where we need to specify the lower size threshold. The minimum value must be 2 as we need at least two nodes to form a clique.
+
+
+```r
+# How to find cliques: 
+clique <- cliques(comp1, min = 2) # specify min 2 as there should be at least two people (exclude isolates)
+
+# How many do we have?
+length(clique)
+```
+
+```
+## [1] 2797
+```
+
+```r
+# How many of them have a different size?
+map_dbl(.x = clique, ~ length(.x)) %>% table()
+```
+
+```
+## .
+##    2    3    4    5    6    7    8 
+## 1244  867  445  176   53   11    1
+```
+
+For strategic inquiries, such as how to find all cliques that `Sydbank` is included in, we can use the `keep()` function of the `purrr` package that allows us to find names in lists.
+
+
+```r
+# For strategic queries: 
+# Example: to find how many cliques Sydbank is in.
+a1 <- keep(.x = clique, ~ any(.x$name == "Sydbank"))
+
+
+# How large are the cliques that Sydbank is in?
+map_dbl(.x = a1, ~length(.x)) %>% table()
+```
+
+```
+## .
+##  2  3  4  5  6  7 
+## 13 22 22 15  6  1
+```
+
+Last, we can also use the `maximal.cliques()` function to find the maximal non-overlapping amount of cliques in a network.
+
+
+```r
+# how many max. cliques are there?
+count_max_cliques(comp1, min = 2) 
+```
+
+```
+## [1] 499
+```
+
+```r
+# find all of the maximal cliques
+max_cliques <- maximal.cliques(comp1, min = 2)
+
+# look at the distribution 
+
+# distribution?
+map_dbl(.x = max_cliques, ~ length(.x)) %>% table()
+```
+
+```
+## .
+##   2   3   4   5   6   7   8 
+## 262 138  58  33   4   3   1
+```
+
+## 6.4 Material
+
+- [06-rscript.R](06-rscript.R)
+- [06-rscript-blank.R](06-rscript-blank.R)
