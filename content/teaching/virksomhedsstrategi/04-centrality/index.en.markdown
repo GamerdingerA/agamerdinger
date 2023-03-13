@@ -305,7 +305,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 14 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 12 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
