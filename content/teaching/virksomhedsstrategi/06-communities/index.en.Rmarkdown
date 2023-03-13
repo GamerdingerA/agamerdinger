@@ -155,7 +155,7 @@ names(louvain)
 
 # How large are the clusters?
 louvain$membership # which community does a node belong to?
-length(louvain$membership) # number of communities
+unique(louvain$membership) %>% length() # number of communities
 table(louvain$membership) # distribution of members
 
 # How many clustering iterations?
@@ -167,7 +167,7 @@ modularity(louvain) # last round
 
 ```
 
-As we can see, the algorithm has found `19` distinct communities (which may deviate at your personal computer) in three clustering rounds. In each clustering iteration, the modularity has been increased, and has reached the value `0.69` in the last round.
+As we can see, the algorithm has found `r unique(louvain$membership) %>% length()` distinct communities (which may deviate at your personal computer) in three clustering rounds. In each clustering iteration, the modularity has been increased, and has reached the value `0.69` in the last round.
 
 ## 6.2 Community visualization
 
@@ -338,5 +338,5 @@ map_dbl(.x = max_cliques, ~ length(.x)) %>% table()
 
 ## 6.4 Material
 
-- [06-rscript.R](06-rscript.R)
-- [06-rscript-blank.R](06-rscript-blank.R)
+-   [06-rscript.R](06-rscript.R)
+-   [06-rscript-blank.R](06-rscript-blank.R)

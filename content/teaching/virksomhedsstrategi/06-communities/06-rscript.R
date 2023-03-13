@@ -86,7 +86,7 @@ names(louvain)
 
 # How large are the clusters?
 louvain$membership # which community does a node belong to?
-length(louvain$membership) # number of communities
+unique(louvain$membership) %>% length() # number of communities
 table(louvain$membership) # distribution of members
 
 # How many clustering iterations?
