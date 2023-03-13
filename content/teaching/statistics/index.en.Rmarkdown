@@ -10,8 +10,6 @@ description: ''
 summary: "Copenhagen Business School | HA i Europæisk Business | 3th Semester"
 ---
 
-![Abstract stats artwork](statistics_picture.jpg "Photo by [Markus Spiske]https://unsplash.com/@markusspiske) on [Unsplash](https://unsplash.com/)")
-
 ## Course overview
 Research methods are our essential tools as social scientists. Our methodological capabilities help us address real world questions in a systematical and valid way.
 
