@@ -435,7 +435,7 @@ Finally, the **`ggsave`** function is used to save the graph as a PNG file. The 
 ggsave('output/elitedb-graph-lektion06_01.png', plot = p1, width=30, height=17.5, unit='cm')
 ```
 
-## 7.4 Analysis of centrality measures using ggplot2
+## 7.3 Analysis of centrality measures using ggplot2
 
 Sometimes, it can be useful to further analyse the association between centrality measures. Here, I am showing two options on how to analyze their interaction.
 
@@ -501,7 +501,7 @@ ggplot(aes(x = degree, fill=firmtype)) + geom_histogram(binwidth=1) +
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/02-1.png" width="672" />
 
-## 6.4 Material
+## 7.4 Material
 
 -   [07-rscript.R](07-rscript.R)
 
