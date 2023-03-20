@@ -8,7 +8,7 @@
 # SETTING UP --------------------------------------------------------------
 
 #setting the working directory
-setwd("/Users/alexandergamerdinger/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/PhD/teaching/virksomhedsstrategi_2023")
+setwd("")
 
 #loading the libraries
 library(tidyverse)
