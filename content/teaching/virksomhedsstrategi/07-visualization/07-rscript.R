@@ -1,7 +1,7 @@
 
 ##########################
 #
-#  Øvelse 6: Communities and Cliques
+#  Øvelse 7: Network Visualization
 #
 ###########################
 
