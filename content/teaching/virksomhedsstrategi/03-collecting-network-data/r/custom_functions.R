@@ -17,9 +17,9 @@ clean_orbis <- function(path = "path") {
   
   require(dplyr)
   require(readxl)
-  
+
   # loading data and retrieving names
-  df <- suppressWarnings(readxl::read_xlsx(path, sheet = 2))
+  df <- suppressMessages(readxl::read_xlsx(path, sheet = 2))
   names <- df %>% names() 
   
   # renaming cols (here adapting for the fact that "\r" can sometimes be included)
@@ -33,17 +33,25 @@ clean_orbis <- function(path = "path") {
     "n_employees" = grep("number of employees", names, ignore.case = T, value = T)
   )
   
-  df1 <- df %>% 
+  df1 <- df %>%
     # select and rename of what is of interest
-    select(all_of(selected_vars)) %>% 
-    # get rid of na's in title
-    filter(!is.na(title)) %>% 
-    mutate(across(n_employees, ~ na_if(., "n.a.") %>% as.numeric(.)), 
-           # create gender variable 
-           gender = case_when(
-             grepl("^mr", name, ignore.case = TRUE) ~ "male",
-             grepl("^ms", name, ignore.case = TRUE) ~ "female", 
-             .default = NA)) %>% 
+    select(all_of(selected_vars)) %>%
+    mutate(
+      #condition
+      n_employees = ifelse(n_employees == "n.a.",
+                           # treatment
+                           na_if(n_employees, "n.a."),
+                           # if not
+                           n_employees),
+      # create gender variable
+      gender = case_when(
+        grepl("^mr", name, ignore.case = TRUE) ~ "male",
+        grepl("^ms", name, ignore.case = TRUE) ~ "female",
+        .default = NA
+      )
+    ) %>%
+    # get rid of na's in title and employees
+    filter(!is.na(title) & !is.na(n_employees)) %>%
     # get rid of duplicates
     distinct(affiliation, id, .keep_all = TRUE)
   
