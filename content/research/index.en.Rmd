@@ -1,12 +1,13 @@
 ---
-title: 'Research'
-author: 'Alexander Gamerdinger'
-date: '2021-12-14'
-showTableOfContents: true
-showDate: false
-showReadingTime: false
-slug: [/research/]
-description: 'My research is focused on professionals, algorithmic work and wellbeing-related issues'
+title: "Research"
+author: "Alexander Gamerdinger"
+date: "2021-12-14"
+showTableOfContents: yes
+showDate: no
+showReadingTime: no
+slug: /research/
+description: "My research is focused on professionals, algorithmic work and wellbeing-related
+  issues"
 ---
 
 My research is focused on the sociotechnical dyanmics of digital technologies on the European insurance sector. More specifically, I am interested in how big data analytics and algorithms affect 1) the professional landscape, 2) the organizational structure, and 3) the governance of insurance in Europe.
