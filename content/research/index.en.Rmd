@@ -15,9 +15,12 @@ As a part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consorti
 
 I employ mixed-method research methods to answer my research questions. While I have a background in quantitative methods including multivariate statistics (structural equations modelling, multiple correspondence analysis), social network analysis and text analysis, I also have a passion for ethnographic methods. I do not really have a preference of methods and adapt it to my research goals - I enjoy coding in R as well as by hand.
 
-## Publications
+## Peer-reviewed Publications
 
 -   Gamerdinger, A., Just, S. N., & Lantz, P. M. V. (2023). Healthy transparency: Dynamic interrelations between credibility, transparency, and trust in the context of Danish public authorities’ COVID-19 communication. Social Sciences & Humanities Open, 8(1), 100688.[Link](https://www.sciencedirect.com/science/article/pii/S2590291123002930)
+
+## Non-peer-reviewed Publications
+
 -   Gamerdinger A., Lantz, M. V., & Just S. N. (2022). Evaluering af Sundhedsstyrelsens borgerrettede coronakommunikation: Tre analytiske nedslag i pandemiens første 100 uger. Copenhagen: Roskilde University, pp 1-54. [Link](https://www.sst.dk/-/media/Udgivelser/2022/Corona/Evalueringer/Evaluering-af-SSTs-borgerrettede-kommunikation-covid.ashx)
 -   Birkjær, M., Gamerdinger, A., & El-Abd, S. (2021). Towards a Nordic Wellbeing Economy. Copenhagen: Nordisk Ministerråd, pp. 1-61. [Link](https://doi.org/10.6027/nord2021-049)
 -   Gamerdinger, A., Rubio, A., & Kaats, M. (2020) Wellbeing in the age of COVID-19. Copenhagen: Happiness Research Institute, pp. 1-35. [Link](https://www.happinessresearchinstitute.com/covid-19)
