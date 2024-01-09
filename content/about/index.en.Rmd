@@ -8,10 +8,16 @@ showReadingTime: false
 description: 'I am Alexander, a PhD Fellow at Copenhagen Business School'
 ---
 
-I am a PhD Fellow at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. I have a BSc and MSc in International Business and Politics from CBS specializing in International Political Economy and wellbeing indicators.
+I am a PhD student at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. 
 
-After my education, I started a PhD fellowship at CBS where I research the use of data and new technologies in insurance. Theoretically, I draw on Sociology of Professions and Sociology of Insurance. My research is part of the [Algorithms,Data & Democracy](https://algoritmer.org/) project which includes several university in Denmark. 
+As part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consortium, I study how 'data professionals' and regulatory experts organize the ethical adoption of novel algorithmic tools and techniques in the insurance sector. I am interested in the ways in which professional decisions, morals, and judgments shape and appropriate classification systems and their social implications.
 
-In my spare time, I am passionate about coding in R, following the wellbeing and post-growth movement, and swimming. 
+My research explores two specific contexts. The first context focuses on the regulatory governance of AI in the European Union, where I analyze how regulatory experts translate EU-wide governance initiatives, such as the AI Act or the Ethics Guidelines for Trustworthy AI, into practical governance standards for practitioners that clarify which AI systems are morally acceptable. The second context focuses on algorithmic practices in insurance companies, where I examine how 'data professionals' adopt novel risk classification systems. Specifically, I examine the 'cultural machinery' of actuaries and data scientists and how they mobilize risk technologies as instruments of expertise, morality, and legal control.
 
-If you would like to know more about me, check out my [CV](251022 CV-Alexander .pdf), [blog](/blog/) or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
+Methodologically, I conduct mixed methods research, including participant observation, interviews, statistical analysis, and spatial quantitative analyses such as network analysis or multiple correspondence analysis.
+
+I have a background from Copenhagen Business School, where I received my BSc and MSc degrees in International Business and Politics. For the winter semester 2024, I am a Visiting Researcher at Stanford University, associated with the [SCANCOR](https://scancor.org/about/) program. Before starting my Ph.D., I was an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I continue to actively follow the wellbeing and post-growth political movement.
+
+If you would like to know more about me, check out my [CV](251022 CV-Alexander .pdf), or send me an e-mail at [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk){.email}
+
+
