@@ -10,12 +10,6 @@ description: "My research is focused on professionals, algorithmic work and well
   issues"
 ---
 
-My research is focused on the sociotechnical dyanmics of digital technologies on the European insurance sector. More specifically, I am interested in how big data analytics and algorithms affect 1) the professional landscape, 2) the organizational structure, and 3) the governance of insurance in Europe.
-
-As a part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consortium, my empirical setting is mostly Denmark.
-
-I employ mixed-method research methods to answer my research questions. While I have a background in quantitative methods including multivariate statistics (structural equations modelling, multiple correspondence analysis), social network analysis and text analysis, I also have a passion for ethnographic methods. I do not really have a preference of methods and adapt it to my research goals - I enjoy coding in R as well as by hand.
-
 ## Peer-reviewed Publications
 
 -   Gamerdinger, A., Just, S. N., & Lantz, P. M. V. (2023). Healthy transparency: Dynamic interrelations between credibility, transparency, and trust in the context of Danish public authorities' COVID-19 communication. Social Sciences & Humanities Open, 8(1), 100688.[Link](https://www.sciencedirect.com/science/article/pii/S2590291123002930)
