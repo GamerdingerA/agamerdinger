@@ -1,18 +1,17 @@
 languageCode = "en"
 languageName = "English"
-displayName = "EN"
-isoCode = "en"
+languageDirection = "ltr"
 weight = 1
-rtl = false
+
 
 title = "Alexander Gamerdinger"
-# logo = "img/logo.jpg"
-description = "Personal Website of Alexander Gamerdinger"
 copyright = "&copy; 2025 Alexander Gamerdinger"
 
-dateFormat = "2 January 2006"
+[params]
+  description = "Personal Website of Alexander Gamerdinger"
+  dateFormat = "2 January 2006"
 
-[author]
+[params.author]
   name = "Alexander Gamerdinger"
   image = "author.jpg"
   headline = "PhD Fellow at Copenhagen Business School"
