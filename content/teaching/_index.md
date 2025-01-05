@@ -5,8 +5,8 @@ cascade:
   showReadingTime: false
   groupByYear: true
   showDate: false
-  showSummary: true
-  showHeadingAnchors: true
+  showSummary: false
+  showHeadingAnchors: false
 ---
 
 
