@@ -16,12 +16,14 @@ description: "My research is focused on professionals, algorithmic work and well
 
 ## Non-peer-reviewed Publications
 
+- Gamerdinger, A., & Holm, J. (2024). Ethical AI in Life and Non-Life Insurance: A Framework for Mapping Ethical Trade-Offs in AI Use. Copenhagen: Forsikring & Pension. [Link](https://fogp.dk/media/n23fabwb/ethical-ai-in-life-and-non-life-insurance-final-oktober-2024.pdf)
 -   Birkjær, M., Gamerdinger, A., & El-Abd, S. (2021). Towards a Nordic Wellbeing Economy. Copenhagen: Nordisk Ministerråd, pp. 1-61. [Link](https://doi.org/10.6027/nord2021-049)
 -   Gamerdinger, A., Rubio, A., & Kaats, M. (2020) Wellbeing in the age of COVID-19. Copenhagen: Happiness Research Institute, pp. 1-35. [Link](https://www.happinessresearchinstitute.com/covid-19)
 
 ## Press & media
 
--   Da Sundhedsstyrelsen blev til Coronastyrelsen [Kommunikationsforum](https://www.kommunikationsforum.dk/artikler/Saadan-kommunikerede-SST-under-pandemien)
+- AI: Dilemma-kortlægning skal finde ”skjulte” etiske overvejelser [Forsikring & Pension](https://fogp.dk/politik/digitalisering-og-dataetik/kunstig-intelligens/ai-dilemma-kortlaegning-skal-finde-skjulte-etiske-overvejelser/)
+- Da Sundhedsstyrelsen blev til Coronastyrelsen [Kommunikationsforum](https://www.kommunikationsforum.dk/artikler/Saadan-kommunikerede-SST-under-pandemien)
 -   Who makes the rules for a Wellbeing Economy? [Wellbeing Economy Alliance](https://weall.org/who-makes-the-rules-for-a-wellbeing-economy)
 -   Talk about happiness and home (in German) [Deutschlandfunk Nova](https://www.deutschlandfunknova.de/beitrag/wohnen-unser-traum-vom-eigenheim-lebt)
 -   The Loneliness Pandemic [Wellbeing People](https://www.youtube.com/watch?v=P9lXf1QTjSM)
