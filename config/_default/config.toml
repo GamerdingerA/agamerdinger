@@ -17,3 +17,8 @@ pagerSize = 10
 [services]
   [services.googleAnalytics]
     ID = "G-YB2C47SWM7"
+    
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
