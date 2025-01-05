@@ -10,31 +10,11 @@ cascade:
   showHeadingAnchors: true
 ---
 
-The course is an obligatory course for 3rd year bachelor students at Copenhagen Business School. You can read more about the course [here](https://cbscanvas.instructure.com/courses/22821/modules/items/480509).
+This course introduces students to the fundamentals of business strategy through a network perspective, emphasizing how organizations connect and interact with their environments. Students explore key theories on network-based business strategy, gain hands-on experience with conducting network analysis using the R programming language, and apply these insights to real-world cases. The course integrates theoretical frameworks, methodological tools, and practical applications, enabling students to analyze how internal and external networks impact organizational strategy.
+
+Teaching methods include lectures, practical exercises, and diverse learning materials such as readings, podcasts, and videos. Students will work with real-world data, including Danish business networks, and apply their learning through case analyses and exercises. Assessment is project-based, requiring students to conduct an independent network analysis, combining theory and method to address practical organizational challenges. By the end of the course, students will have developed analytical skills and a nuanced understanding of how networks influence business strategy. You can read more about the course [here](https://cbscanvas.instructure.com/courses/22821/modules/items/480509).
 
 -   [Course syllabus](syllabus_2023.pdf)
 -   [Guide: Installing R and Rstudio](setting_up_R.pdf)
 
-#### Contact and office hours
-
-You are welcome to contact me via e-mail or to book a 20 min slot during my office hours. Please just select the day and time in the widget below.
-
--   Name: Alexander Gamerdinger
-
--   E-mail: aga.ioa\@cbs.dk
-
--   Office: KL 3.43 (3rd floor at Kilen)
-
-<!-- Calendly link widget begin -->
-
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"> <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script> <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/aga-ioa/20min'});return false;">Book a meeting</a> <!-- Calendly link widget end -->
-
-#### Trouble shooting
-
--   Problemer med at installere tidyverse pakken (<https://cbscanvas.instructure.com/courses/30857/discussion_topics/108286>)
-
-------------------------------------------------------------------------
-
 # Sessions
-
-Sessions will be uploaded continuously...

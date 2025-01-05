@@ -1,7 +1,7 @@
 ---
 title: "Session 1: Introduction to network analysis"
 author: Alexander Gamerdinger
-date: '2023-01-26'
+date: '2023-01-25'
 slug: /introduction/
 categories:
   - R
@@ -464,9 +464,9 @@ gr
 ```
 
 ```
-## IGRAPH ff30386 UN-B 8090 7989 -- 
+## IGRAPH 4530498 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from ff30386 (vertex names):
+## + edges from 4530498 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
