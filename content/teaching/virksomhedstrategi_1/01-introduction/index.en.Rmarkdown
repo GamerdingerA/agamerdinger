@@ -1,0 +1,345 @@
+---
+title: "Session 1: Introduction to network analysis"
+author: Alexander Gamerdinger
+date: '2023-01-25'
+slug: /introduction/
+categories:
+  - R
+  - Teaching
+tags:
+description: 'Introduction to network analysis'
+summary: "In this session, we cover how to install R and RStudio, how to subset and manipulate data sets, and how to visualize simple networks using the packages: ggraph and igraph."
+---
+
+## Session 1 - Introduction to network analysis
+
+The first thing you need to do is to set a project folder called `virksomhedsstrategi` which you can either place on your desktop, or into a another folder (such as one called `6_semester`).
+
+In this folder, I would like you to create **4 new sub-folders**. Make sure that all of these are spelled with small caps, to make typing easier.
+
+1.  a folder called `input` where you will all the data files (in `csv`, `xlsx`, or other formats)
+
+2.  a folder called `output`where you will save all network figures we will produce
+
+3.  a folder called `r`where you will save all your r-scripts. Make sure to make an r-script for each of the sessions.
+
+After you have created all of the folders, you can open your Rstudio. Create a new r-script, and set your working directory to the file `virksomhedsstrategi`.
+
+For macOs users, click on the folder name, and press `Option + CMD + C`. Paste the path into the function `setwd()`. It should look something similar to this:
+
+```{r set up, eval=FALSE, include=TRUE}
+
+setwd("/Users/alexandergamerdinger/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/PhD/teaching/virksomhedsstrategi_2023")
+
+
+```
+
+### 1.1 Installing and loading packages
+
+After you have set your working directory, we will install and load important packages that we will use throughout the course.
+
+1.  The `tidyverse` package, which is basically a collection of a variety of packages that makes it easy and visually pleasing to manipulate and work with data
+
+2.  The `igraph`package, which allows us to construct network objects
+
+3.  The `ggraph`package, which enables us to create beautiful network graphs
+
+4.  The `data.table` package, which we will use occasionally for some data wrangling
+
+How do we install and load packages? Please note that **packages need to only be installed once.** This means that you can simply delete the `install.packages()` function right after its execution.
+
+```{r packages, eval=FALSE, include=TRUE}
+
+# install packages (but only run this once)
+install.packages("tidyverse")
+install.packages("igraph")
+install.packages("ggraph")
+install.packages("data.table")
+
+# load pckages (run this every time you open/re-open your r-script)
+library("tidyverse")
+library("igraph")
+library("ggraph")
+library("data.table")
+
+```
+
+```{r loading, include=FALSE}
+
+# load pckages (run this every time you open/re-open your r-script)
+library("tidyverse")
+library("igraph")
+library("ggraph")
+library("data.table")
+```
+
+#### 1.1.1 A note on the tidyverse syntax
+
+The `tidyverse` package is great because it has transformed the way of writing R, and has made it much more beautiful. One very important aspect of the package is the use of the pipe `%>%`.
+
+The pipe allows us to write cleaner and more visually pleasing code. Let us take a look at this data set `iris` with the attempt to find the mean petal length and width of all species above a petal width of 0.2.
+
+In `baseR` you would have to write this:
+
+```{r base, echo=TRUE}
+
+#finding a sub set
+subset <- subset(iris, Petal.Width > 0.2)
+
+# selecting only columns on Petals
+only_pedal <- subset[,c("Petal.Length", "Petal.Width", "Species")]
+
+# finding mean Petal length and width per species
+aggregate(subset[ ,c("Petal.Length", "Petal.Width")],
+          by = list(subset$Species), 
+          FUN = mean)
+```
+
+In `dplyr` which is a sub-package of `tidyverse`, you would only have to write this:
+
+```{r tidy, echo=TRUE}
+
+iris %>% 
+  # finding a sub set
+  filter(Petal.Width > 0.2) %>% 
+  # selecting only three columns
+  select(Petal.Length, Petal.Width, Species) %>% 
+  #grouping by species
+  group_by(Species) %>% 
+  # aggregating by mean
+  summarize(across(starts_with("Petal"), mean))
+
+```
+
+The pipe operator allows you to simply pass the output of one function as an input to another function that comes afterwards. This makes your code easily readable and efficient.
+
+If you want to know more about the pipe operator, see this website here: <https://uc-r.github.io/pipe>
+
+### 1.2 Loading a data set
+
+After you have set your working directory, and loaded all the required packages, we can now load the data set called `den17-no-nordic-letters.csv`. This data set was made by Christoph and Anton and can also be found [on Github](https://github.com/antongrau/eliter).
+
+First, download the data set and place it into the `virksomhedsstrategi/input` folder.
+
+{{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
+Download the data set
+{{< /button >}}
+
+Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
+
+```{r loading data, echo=TRUE}
+
+# loading data | If there is an error, 
+#it is probably because of your working directory
+
+den <- read_csv("input/den17-no-nordic-letters.csv")
+
+# look at the head of the data set
+head(den)
+```
+
+### 1.3 Data manipulation with `dplyr`
+
+#### 1.3.1 Summary statistics
+
+The data set `den` has 56,849 rows of individuals and 17 columns.
+
+```{r dim}
+
+dim(den) # we could also write: den %>% dim()
+
+```
+
+We use the following functions in order to gain a better overview of our data set:
+
+1.  the `glimpse()` function to understand the overall structure of the data set
+
+2.  the `count()` function to get summary statistics of one or several variables
+
+3.  the `view()` function to see the whole data set, or a subset, on the big screen.
+
+```{r glimpse}
+
+glimpse(den) # we could also write: den %>% glimpse()
+
+```
+
+If we are interested in seeing how many data entries there are per sector, we can write the following command.
+
+```{r count}
+
+den %>% # here, we start to use the pipe
+  count(sector) # this gives us an unordered summary statistics
+
+den %>% 
+  count(sector, sort = TRUE) # this gives us the same thing, but ordered
+
+
+```
+
+#### 1.3.1 Data subsets
+
+Most of the time, we are interested in looking at subsets of the data set `den`, e.g. to visualize the Danish corporate network, or the ones of political commissions etc.
+
+Here, we make use of the following functions:
+
+1.  we use the `select()` function to select specific columns, keeping all rows constant
+
+2.  we use the `filter()`function to select specific rows, keeping all columns constant
+
+Both of these functions are used to make subsets, that are then assigned to new data objects. Below, we assign a subset of `den` which only looks at `Corporations` to the object `den1`.
+
+```{r select}
+
+# selecting the name and affiliation of a person
+den %>% 
+  select(name, affiliation)
+```
+
+```{r filter}
+
+# filtering the data set to only show the sector of corporations
+# and assigning it to the object den1
+
+den1 <- 
+  den %>% 
+  filter(sector == "Corporations")
+
+# look at the object den1 
+den1
+
+```
+
+All of these functions can be combined through the pipe operator which allows you to write two commands at once without having to assign it to an object in the meantime. How would you e.g. find the affiliation with the most members in the corporate sector?
+
+```{r combination}
+
+# find a list of corporate affiliations and order them
+den %>% 
+  filter(sector == "Corporations") %>% 
+  count(affiliation, sort = T)
+
+
+```
+
+### 1.4 Creating graphs
+
+{{< katex >}}
+
+Before we can make a network graph, we need to transform the data from a \\(row \* column\\) data frame into a data matrix.
+
+There are two important kinds of data matrices of which networks are constructed:
+
+1.  A two-mode network is based on an `incidence matrix` which is an \\(n \* m\\) matrix, where \\(n\\) corresponds to one unit (such as an individual), and \\(m\\) corresponds to another unit (such as organization). Each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} = 0\\) otherwise.
+
+2.  A one-mode network is based on an `adjacency matrix` which is an \\(n \* n \\) matrix, where both row elements \\(n\\) and column elements \\(n\\) corresponds to nodes with the same unit. It is a symmetric matrix where each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} =0\\) otherwise.
+
+In R, we create an incidence matrix by cross tabulating two columns of a data frame with the `xtabs()` function which stands for *cross tabulation.* To transform an `incidence` matrix into an `adjacency` matrix, we perform a simple matrix multiplication of the `incidence` matrix with the transposed version of itself.
+
+```{r incidence}
+
+## incidence matrix ## 
+
+# we use the argument sparse to save space on our memory because 
+# every time there is no edge, the compute will write a "." finstead of a 0
+incidence <- xtabs(formula = ~ name + affiliation, 
+                   data = den1, 
+                   sparse = TRUE)
+
+#show the first two rows and first two cols
+incidence[1:2,1:2]
+
+## Adjacency matrices ##
+
+# individuals * individuals matrix 
+adj_i <- incidence %*% Matrix::t(incidence)
+
+#show the first two rows and first two cols
+adj_i[1:2,1:2]
+
+# affiliation * affiliation matrix 
+adj_a <- Matrix::t(incidence) %*% incidence
+
+#show the first two rows and first two cols
+adj_a[1:2,1:2]
+```
+
+#### 1.4.1 Loading graph objects
+
+Graph objects can be loaded through a variety of ways. In this course, we concentrate on loading graph objects from `incidence` and `adjacency` matrices with the `igraph` package.
+
+Since some people have several affiliations (see data set `den`), graph objects loaded from with the function `graph_from_adjacency_matrix()` contain loops and weights. In order to remove those loops and weights again, and to make the graph object more lean, we add the `simplify()` function.
+
+```{r load graphs}
+
+# making a two-mode graph
+gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
+gr
+
+# one-mode graph for individuals 
+gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
+
+# one-mode graph for affiliations
+gr2 <- graph_from_adjacency_matrix(adj_a, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
+
+
+```
+
+Having loaded the graph objects, we are able to visualize them using the `ggraph` package.
+
+### 1.5 Visualizing network graphs
+
+![](https://raw.githubusercontent.com/thomasp85/ggraph/main/man/figures/logo.png)
+
+The syntax for plotting network graphs in the `ggraph` package is very close to the `ggplot` package. We start out with the `ggraph()` function, where we specify the graph object. This creates a plain board which can be filled accordingly with other functions. Here is an example code for visualizing two-mode networks.
+
+```{r two-mode, warning=FALSE}
+
+# Visualize the two mode graph
+gr %>% 
+  # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr" 
+  ggraph(layout = "kk") +
+  # draws edges
+  geom_edge_link0(color = "black", edge_width = 0.1) +
+  # draws nodes
+  geom_node_point(aes(color = type), size=0.2, alpha = 0.4) +
+  # # draws labels for type==TRUE and repels the overlapping ones. 
+  # geom_node_text(aes(filter=type==TRUE, label =name), size=0.8, repel = TRUE) +
+  # overrides the existing legend
+  scale_color_manual(values=c("sienna1", "steelblue2"), labels=c("individuals", "companies")) +
+  theme_graph() 
+
+```
+
+Despite the fact that we reduced the node size drastically, it is still difficult to view this network because of the limited page size. After all, it is a network with `8,090` nodes and `7,989` edges.
+
+Let us also visualize the one-mode network of companies.
+
+```{r one-mode, warning=FALSE}
+
+# Visualize the two mode graph
+gr2 %>% 
+#   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr 
+  ggraph(layout = "kk") +
+  # draws edges
+  geom_edge_link0(color = "gray80") +
+  # draws nodes
+  geom_node_point(size=1, alpha = 0.6, color = "salmon2") +
+  theme_graph()
+
+
+```
+
+## R-scripts
+
+To practice a little more, you can download an empty exercise sheet. You can also find a filled out cheat sheet below.
+
+-   [01-rscript](lektion01/01-r-script.R)
+-   [01-rscript-blank](lektion01/01-r-script-blank.R)
+-   [01-rscript-øvelse](lektion01/lektion01-øvelse.R)
+
+#### Readings
+
+-   [Ellersgaard & Larsen. (2015). The Danish Elite Network](lektion01/Ellersgaard_Larsen_2015.pdf)
+-   [Larsen, Ellersgaard & Bernsen (2015). Magteliten: hvordan 423 danskere styrer landet](lektion01/Larsen_Ellersgaard_Bernsen_2015.pdf)
+-   [Larsen, Ellersgaard & Steinitz (2016). Magtens Atlas: Et kort over netværk i Danmark](lektion01/Steinitz_Ellersgaard_Larsen_2016.pdf)
