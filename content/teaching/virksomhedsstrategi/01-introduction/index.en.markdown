@@ -28,7 +28,7 @@ After you have created all of the folders, you can open your Rstudio. Create a n
 For macOs users, click on the folder name, and press `Option + CMD + C`. Paste the path into the function `setwd()`. It should look something similar to this:
 
 
-```r
+``` r
 setwd("/Users/alexandergamerdinger/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/PhD/teaching/virksomhedsstrategi_2023")
 ```
 
@@ -47,7 +47,7 @@ After you have set your working directory, we will install and load important pa
 How do we install and load packages? Please note that **packages need to only be installed once.** This means that you can simply delete the `install.packages()` function right after its execution.
 
 
-```r
+``` r
 # install packages (but only run this once)
 install.packages("tidyverse")
 install.packages("igraph")
@@ -72,7 +72,7 @@ The pipe allows us to write cleaner and more visually pleasing code. Let us take
 In `baseR` you would have to write this:
 
 
-```r
+``` r
 #finding a sub set
 subset <- subset(iris, Petal.Width > 0.2)
 
@@ -95,7 +95,7 @@ aggregate(subset[ ,c("Petal.Length", "Petal.Width")],
 In `dplyr` which is a sub-package of `tidyverse`, you would only have to write this:
 
 
-```r
+``` r
 iris %>% 
   # finding a sub set
   filter(Petal.Width > 0.2) %>% 
@@ -133,7 +133,7 @@ Download the data set
 Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
 
 
-```r
+``` r
 # loading data | If there is an error, 
 #it is probably because of your working directory
 
@@ -152,25 +152,24 @@ den <- read_csv("input/den17-no-nordic-letters.csv")
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-```r
+``` r
 # look at the head of the data set
 head(den)
 ```
 
 ```
 ## # A tibble: 6 × 17
-##   name             affiliation   role  tags  posit…¹     id sector type  descr…²
-##   <chr>            <chr>         <chr> <chr>   <dbl>  <dbl> <chr>  <chr> <chr>  
-## 1 Aage Almtoft     Middelfart S… Memb… Corp…       1  95023 Corpo… <NA>  Automa…
-## 2 Aage B. Andersen Foreningen O… Memb… Char…       4  67511 NGO    Orga… Direkt…
-## 3 Aage Christensen AARHUS SOEMA… Chai… Foun…       6 100903 Found… <NA>  Automa…
-## 4 Aage Dam         Brancheforen… Chai… Busi…       8  69156 NGO    Orga… Forman…
-## 5 Aage Dam         Dansk Erhver… Memb… Empl…       9  72204 NGO    Stat  Adm. d…
-## 6 Aage Frandsen    Dommere valg… Memb… Judg…      15  73158 Parli… <NA>  <NA>   
-## # … with 8 more variables: created <dttm>, archived <dttm>,
-## #   last_checked <dttm>, cvr_person <dbl>, cvr_affiliation <dbl>,
-## #   person_id <dbl>, affiliation_id <dbl>, gender <chr>, and abbreviated
-## #   variable names ¹​position_id, ²​description
+##   name       affiliation role  tags  position_id     id sector type  description
+##   <chr>      <chr>       <chr> <chr>       <dbl>  <dbl> <chr>  <chr> <chr>      
+## 1 Aage Almt… Middelfart… Memb… Corp…           1  95023 Corpo… <NA>  Automatisk…
+## 2 Aage B. A… Foreningen… Memb… Char…           4  67511 NGO    Orga… Direktoer  
+## 3 Aage Chri… AARHUS SOE… Chai… Foun…           6 100903 Found… <NA>  Automatisk…
+## 4 Aage Dam   Branchefor… Chai… Busi…           8  69156 NGO    Orga… Formand, A…
+## 5 Aage Dam   Dansk Erhv… Memb… Empl…           9  72204 NGO    Stat  Adm. dir. …
+## 6 Aage Fran… Dommere va… Memb… Judg…          15  73158 Parli… <NA>  <NA>       
+## # ℹ 8 more variables: created <dttm>, archived <dttm>, last_checked <dttm>,
+## #   cvr_person <dbl>, cvr_affiliation <dbl>, person_id <dbl>,
+## #   affiliation_id <dbl>, gender <chr>
 ```
 
 ### 1.3 Data manipulation with `dplyr`
@@ -180,7 +179,7 @@ head(den)
 The data set `den` has 56,849 rows of individuals and 17 columns.
 
 
-```r
+``` r
 dim(den) # we could also write: den %>% dim()
 ```
 
@@ -197,7 +196,7 @@ We use the following functions in order to gain a better overview of our data se
 3.  the `view()` function to see the whole data set, or a subset, on the big screen.
 
 
-```r
+``` r
 glimpse(den) # we could also write: den %>% glimpse()
 ```
 
@@ -226,7 +225,7 @@ glimpse(den) # we could also write: den %>% glimpse()
 If we are interested in seeing how many data entries there are per sector, we can write the following command.
 
 
-```r
+``` r
 den %>% # here, we start to use the pipe
   count(sector) # this gives us an unordered summary statistics
 ```
@@ -250,7 +249,7 @@ den %>% # here, we start to use the pipe
 ## 13 <NA>          2349
 ```
 
-```r
+``` r
 den %>% 
   count(sector, sort = TRUE) # this gives us the same thing, but ordered
 ```
@@ -287,7 +286,7 @@ Here, we make use of the following functions:
 Both of these functions are used to make subsets, that are then assigned to new data objects. Below, we assign a subset of `den` which only looks at `Corporations` to the object `den1`.
 
 
-```r
+``` r
 # selecting the name and affiliation of a person
 den %>% 
   select(name, affiliation)
@@ -307,11 +306,11 @@ den %>%
 ##  8 Aage Krogsdam        Danske Rejsejournalister (bestyrelse)                   
 ##  9 Aage Larsen          Liberalt Oplysnings Forbund (LOF) (Landsstyrelsen)      
 ## 10 Aage Lauridsen       Halinspektoerforeningen (Bestyrelse)                    
-## # … with 56,839 more rows
+## # ℹ 56,839 more rows
 ```
 
 
-```r
+``` r
 # filtering the data set to only show the sector of corporations
 # and assigning it to the object den1
 
@@ -325,28 +324,28 @@ den1
 
 ```
 ## # A tibble: 7,989 × 17
-##    name                  affil…¹ role  tags  posit…²     id sector type  descr…³
-##    <chr>                 <chr>   <chr> <chr>   <dbl>  <dbl> <chr>  <chr> <chr>  
-##  1 Aage Almtoft          Middel… Memb… Corp…       1  95023 Corpo… <NA>  Automa…
-##  2 Aage Juhl Joergensen  Vestfo… Memb… Corp…      28 100249 Corpo… <NA>  Automa…
-##  3 Adam Christian Harho… IF IT … Exec… Corp…     131  92328 Corpo… <NA>  Automa…
-##  4 Adam Troels Bjerg     Ejner … Memb… Corp…     186  87369 Corpo… <NA>  Automa…
-##  5 Adam Troels Bjerg     ISS FA… Chai… Corp…     187  92613 Corpo… <NA>  Automa…
-##  6 Adine Charlotte Grat… HI3G D… Memb… Corp…     220  91906 Corpo… <NA>  Automa…
-##  7 Agnes Marie Therese … Dalum … Chie… Corp…     302  85188 Corpo… <NA>  Automa…
-##  8 Agnete Damkjaer Lyng… TRE-FO… Memb… Corp…     321 110225 Corpo… Virk… <NA>   
-##  9 Agnete Raaschou-Niel… Broedr… Chai… Corp…     353  84179 Corpo… <NA>  Automa…
-## 10 Agnete Raaschou-Niel… Novozy… Vice… Corp…     355 128276 Corpo… <NA>  Automa…
-## # … with 7,979 more rows, 8 more variables: created <dttm>, archived <dttm>,
-## #   last_checked <dttm>, cvr_person <dbl>, cvr_affiliation <dbl>,
-## #   person_id <dbl>, affiliation_id <dbl>, gender <chr>, and abbreviated
-## #   variable names ¹​affiliation, ²​position_id, ³​description
+##    name      affiliation role  tags  position_id     id sector type  description
+##    <chr>     <chr>       <chr> <chr>       <dbl>  <dbl> <chr>  <chr> <chr>      
+##  1 Aage Alm… Middelfart… Memb… Corp…           1  95023 Corpo… <NA>  Automatisk…
+##  2 Aage Juh… Vestforsyn… Memb… Corp…          28 100249 Corpo… <NA>  Automatisk…
+##  3 Adam Chr… IF IT Serv… Exec… Corp…         131  92328 Corpo… <NA>  Automatisk…
+##  4 Adam Tro… Ejner Hess… Memb… Corp…         186  87369 Corpo… <NA>  Automatisk…
+##  5 Adam Tro… ISS FACILI… Chai… Corp…         187  92613 Corpo… <NA>  Automatisk…
+##  6 Adine Ch… HI3G Denma… Memb… Corp…         220  91906 Corpo… <NA>  Automatisk…
+##  7 Agnes Ma… Dalum Papir Chie… Corp…         302  85188 Corpo… <NA>  Automatisk…
+##  8 Agnete D… TRE-FOR (R… Memb… Corp…         321 110225 Corpo… Virk… <NA>       
+##  9 Agnete R… Broedrene … Chai… Corp…         353  84179 Corpo… <NA>  Automatisk…
+## 10 Agnete R… Novozymes   Vice… Corp…         355 128276 Corpo… <NA>  Automatisk…
+## # ℹ 7,979 more rows
+## # ℹ 8 more variables: created <dttm>, archived <dttm>, last_checked <dttm>,
+## #   cvr_person <dbl>, cvr_affiliation <dbl>, person_id <dbl>,
+## #   affiliation_id <dbl>, gender <chr>
 ```
 
 All of these functions can be combined through the pipe operator which allows you to write two commands at once without having to assign it to an object in the meantime. How would you e.g. find the affiliation with the most members in the corporate sector?
 
 
-```r
+``` r
 # find a list of corporate affiliations and order them
 den %>% 
   filter(sector == "Corporations") %>% 
@@ -367,7 +366,7 @@ den %>%
 ##  8 Koebenhavns Lufthavns Vaekstkomité (Medlemmer)    24
 ##  9 Syd Energi (SE)                                   24
 ## 10 TDC (note)                                        24
-## # … with 1,185 more rows
+## # ℹ 1,185 more rows
 ```
 
 ### 1.4 Creating graphs
@@ -385,7 +384,7 @@ There are two important kinds of data matrices of which networks are constructed
 In R, we create an incidence matrix by cross tabulating two columns of a data frame with the `xtabs()` function which stands for *cross tabulation.* To transform an `incidence` matrix into an `adjacency` matrix, we perform a simple matrix multiplication of the `incidence` matrix with the transposed version of itself.
 
 
-```r
+``` r
 ## incidence matrix ## 
 
 # we use the argument sparse to save space on our memory because 
@@ -406,7 +405,7 @@ incidence[1:2,1:2]
 ##   Aage Juhl Joergensen    .         .
 ```
 
-```r
+``` r
 ## Adjacency matrices ##
 
 # individuals * individuals matrix 
@@ -418,12 +417,13 @@ adj_i[1:2,1:2]
 
 ```
 ## 2 x 2 sparse Matrix of class "dgCMatrix"
-##                      Aage Almtoft Aage Juhl Joergensen
-## Aage Almtoft                    1                    .
-## Aage Juhl Joergensen            .                    1
+##                       name
+## name                   Aage Almtoft Aage Juhl Joergensen
+##   Aage Almtoft                    1                    .
+##   Aage Juhl Joergensen            .                    1
 ```
 
-```r
+``` r
 # affiliation * affiliation matrix 
 adj_a <- Matrix::t(incidence) %*% incidence
 
@@ -433,9 +433,10 @@ adj_a[1:2,1:2]
 
 ```
 ## 2 x 2 sparse Matrix of class "dgCMatrix"
-##           & co 3C Groups
-## & co         4         .
-## 3C Groups    .         3
+##            affiliation
+## affiliation & co 3C Groups
+##   & co         4         .
+##   3C Groups    .         3
 ```
 
 #### 1.4.1 Loading graph objects
@@ -445,16 +446,27 @@ Graph objects can be loaded through a variety of ways. In this course, we concen
 Since some people have several affiliations (see data set `den`), graph objects loaded from with the function `graph_from_adjacency_matrix()` contain loops and weights. In order to remove those loops and weights again, and to make the graph object more lean, we add the `simplify()` function.
 
 
-```r
+``` r
 # making a two-mode graph
 gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
+```
+
+```
+## Warning: `graph_from_incidence_matrix()` was deprecated in igraph 1.6.0.
+## ℹ Please use `graph_from_biadjacency_matrix()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
+``` r
 gr
 ```
 
 ```
-## IGRAPH 858b3f4 UN-B 8090 7989 -- 
+## IGRAPH ff30386 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 858b3f4 (vertex names):
+## + edges from ff30386 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
@@ -466,7 +478,7 @@ gr
 ## + ... omitted several edges
 ```
 
-```r
+``` r
 # one-mode graph for individuals 
 gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -483,7 +495,7 @@ Having loaded the graph objects, we are able to visualize them using the `ggraph
 The syntax for plotting network graphs in the `ggraph` package is very close to the `ggplot` package. We start out with the `ggraph()` function, where we specify the graph object. This creates a plain board which can be filled accordingly with other functions. Here is an example code for visualizing two-mode networks.
 
 
-```r
+``` r
 # Visualize the two mode graph
 gr %>% 
   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr" 
@@ -506,7 +518,7 @@ Despite the fact that we reduced the node size drastically, it is still difficul
 Let us also visualize the one-mode network of companies.
 
 
-```r
+``` r
 # Visualize the two mode graph
 gr2 %>% 
 #   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr 
