@@ -1,7 +1,7 @@
 ---
 title: "Session 2: Network components, density and paths" 
 author: Alexander Gamerdinger
-date: '2023-01-26'
+date: 2023-01-26
 slug: /density-and-components/
 categories:
   - R
@@ -355,7 +355,7 @@ all.equal(target = colnames(distances),
 # let us add a new graph attribute. It is a vertex (node) attribute, and hence, it has to include V(comp1). 
 # So first, we create $distance and assign distances to it
 
-V(comp1)$distance <- distances 
+V(comp1)$distance <- as.numeric(distances) 
 
 # and now, we create a second attribute, which is called lego, which is TRUE only if LEGO A/S appears
 
@@ -372,6 +372,8 @@ V(comp1)$lego <- ifelse(
 Let us plot this.
 
 ```{r plot1}
+
+library(tidygraph)
 
 comp1 %>% 
   ggraph(layout = "fr") +

@@ -1,7 +1,7 @@
 ---
 title: "Session 2: Network components, density and paths" 
 author: Alexander Gamerdinger
-date: '2023-01-26'
+date: 2023-01-26
 slug: /density-and-components/
 categories:
   - R
@@ -90,9 +90,9 @@ gr
 ```
 
 ```
-## IGRAPH 1a48611 UN-- 661 1332 -- 
+## IGRAPH 69d5696 UN-- 661 1332 -- 
 ## + attr: name (v/c)
-## + edges from 1a48611 (vertex names):
+## + edges from 69d5696 (vertex names):
 ## [1] 3C Groups          --Nielsen & Nielsen Holding                
 ## [2] 3xN                --Hildebrandt & Brandi                     
 ## [3] 3xN                --Lead Agency                              
@@ -187,6 +187,9 @@ gr %>%
 ```
 ## Warning: Using the `size` aesthetic in this geom was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` in the `default_aes` field and elsewhere instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 ```
 
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/vis1-1.png" width="672" />
@@ -261,7 +264,17 @@ Since we are interested in choosing the biggest component, we need to make sure 
 ```r
 # the decomposed graph - you are welcome to take a look if you want - but be wanted, it is a long list. 
 comps <- decompose.graph(gr)
+```
 
+```
+## Warning: `decompose.graph()` was deprecated in igraph 2.0.0.
+## ℹ Please use `decompose()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
+```r
 # create an index 
 index <- 
   # tabulate complist$membership
@@ -368,7 +381,7 @@ transitivity(g2)
 ```
 
 ```
-## [1] 0.5217391
+## [1] 0.2571429
 ```
 
 Let us calculate the transitivity of the whole graph `gr` and the biggest component `comp1`.
@@ -470,7 +483,7 @@ all.equal(target = colnames(distances),
 # let us add a new graph attribute. It is a vertex (node) attribute, and hence, it has to include V(comp1). 
 # So first, we create $distance and assign distances to it
 
-V(comp1)$distance <- distances 
+V(comp1)$distance <- as.numeric(distances) 
 
 # and now, we create a second attribute, which is called lego, which is TRUE only if LEGO A/S appears
 
@@ -485,6 +498,27 @@ V(comp1)$lego <- ifelse(
 
 Let us plot this.
 
+
+```r
+library(tidygraph)
+```
+
+```
+## 
+## Attaching package: 'tidygraph'
+```
+
+```
+## The following object is masked from 'package:igraph':
+## 
+##     groups
+```
+
+```
+## The following object is masked from 'package:stats':
+## 
+##     filter
+```
 
 ```r
 comp1 %>% 
@@ -535,8 +569,16 @@ farthest.nodes(comp1, directed = FALSE)
 ```
 
 ```
+## Warning: `farthest.nodes()` was deprecated in igraph 2.0.0.
+## ℹ Please use `farthest_vertices()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
+```
 ## $vertices
-## + 2/533 vertices, named, from 8145a8c:
+## + 2/533 vertices, named, from f0ce197:
 ## [1] Miracle (Bestyrelse) Philips             
 ## 
 ## $distance
@@ -546,11 +588,22 @@ farthest.nodes(comp1, directed = FALSE)
 ```r
 # How to traverse it?
 diam <- get.diameter(comp1, directed = FALSE)
+```
+
+```
+## Warning: `get.diameter()` was deprecated in igraph 2.0.0.
+## ℹ Please use `get_diameter()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+```
+
+```r
 diam
 ```
 
 ```
-## + 15/533 vertices, named, from 8145a8c:
+## + 15/533 vertices, named, from f0ce197:
 ##  [1] Miracle (Bestyrelse)                     
 ##  [2] Kim Johansen                             
 ##  [3] Anders Nielsen & Co                      
@@ -627,7 +680,7 @@ path_of_interest
 ```
 ## $vpath
 ## $vpath[[1]]
-## + 5/533 vertices, named, from 8145a8c:
+## + 5/533 vertices, named, from f0ce197:
 ## [1] A.P. Moeller - Maersk            Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen                   Groupcare (Bestyrelse)          
 ## [5] Advice A/S                      
@@ -635,7 +688,7 @@ path_of_interest
 ## 
 ## $epath
 ## $epath[[1]]
-## + 4/1244 edges from 8145a8c (vertex names):
+## + 4/1244 edges from f0ce197 (vertex names):
 ## [1] A.P. Moeller - Maersk--Kontorfaellesskabet i Amaliegade
 ## [2] Bang & Olufsen       --Kontorfaellesskabet i Amaliegade
 ## [3] Bang & Olufsen       --Groupcare (Bestyrelse)          
