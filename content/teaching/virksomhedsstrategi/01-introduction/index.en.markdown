@@ -1,7 +1,7 @@
 ---
 title: "Session 1: Introduction to network analysis"
 author: Alexander Gamerdinger
-date: '2023-01-25'
+date: 2023-01-25
 slug: /introduction/
 categories:
   - R
@@ -28,7 +28,7 @@ After you have created all of the folders, you can open your Rstudio. Create a n
 For macOs users, click on the folder name, and press `Option + CMD + C`. Paste the path into the function `setwd()`. It should look something similar to this:
 
 
-``` r
+```r
 setwd("/Users/alexandergamerdinger/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/PhD/teaching/virksomhedsstrategi_2023")
 ```
 
@@ -47,7 +47,7 @@ After you have set your working directory, we will install and load important pa
 How do we install and load packages? Please note that **packages need to only be installed once.** This means that you can simply delete the `install.packages()` function right after its execution.
 
 
-``` r
+```r
 # install packages (but only run this once)
 install.packages("tidyverse")
 install.packages("igraph")
@@ -72,7 +72,7 @@ The pipe allows us to write cleaner and more visually pleasing code. Let us take
 In `baseR` you would have to write this:
 
 
-``` r
+```r
 #finding a sub set
 subset <- subset(iris, Petal.Width > 0.2)
 
@@ -95,7 +95,7 @@ aggregate(subset[ ,c("Petal.Length", "Petal.Width")],
 In `dplyr` which is a sub-package of `tidyverse`, you would only have to write this:
 
 
-``` r
+```r
 iris %>% 
   # finding a sub set
   filter(Petal.Width > 0.2) %>% 
@@ -133,7 +133,7 @@ Download the data set
 Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
 
 
-``` r
+```r
 # loading data | If there is an error, 
 #it is probably because of your working directory
 
@@ -152,7 +152,7 @@ den <- read_csv("input/den17-no-nordic-letters.csv")
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-``` r
+```r
 # look at the head of the data set
 head(den)
 ```
@@ -179,7 +179,7 @@ head(den)
 The data set `den` has 56,849 rows of individuals and 17 columns.
 
 
-``` r
+```r
 dim(den) # we could also write: den %>% dim()
 ```
 
@@ -196,7 +196,7 @@ We use the following functions in order to gain a better overview of our data se
 3.  the `view()` function to see the whole data set, or a subset, on the big screen.
 
 
-``` r
+```r
 glimpse(den) # we could also write: den %>% glimpse()
 ```
 
@@ -225,7 +225,7 @@ glimpse(den) # we could also write: den %>% glimpse()
 If we are interested in seeing how many data entries there are per sector, we can write the following command.
 
 
-``` r
+```r
 den %>% # here, we start to use the pipe
   count(sector) # this gives us an unordered summary statistics
 ```
@@ -249,7 +249,7 @@ den %>% # here, we start to use the pipe
 ## 13 <NA>          2349
 ```
 
-``` r
+```r
 den %>% 
   count(sector, sort = TRUE) # this gives us the same thing, but ordered
 ```
@@ -286,7 +286,7 @@ Here, we make use of the following functions:
 Both of these functions are used to make subsets, that are then assigned to new data objects. Below, we assign a subset of `den` which only looks at `Corporations` to the object `den1`.
 
 
-``` r
+```r
 # selecting the name and affiliation of a person
 den %>% 
   select(name, affiliation)
@@ -310,7 +310,7 @@ den %>%
 ```
 
 
-``` r
+```r
 # filtering the data set to only show the sector of corporations
 # and assigning it to the object den1
 
@@ -345,7 +345,7 @@ den1
 All of these functions can be combined through the pipe operator which allows you to write two commands at once without having to assign it to an object in the meantime. How would you e.g. find the affiliation with the most members in the corporate sector?
 
 
-``` r
+```r
 # find a list of corporate affiliations and order them
 den %>% 
   filter(sector == "Corporations") %>% 
@@ -384,7 +384,7 @@ There are two important kinds of data matrices of which networks are constructed
 In R, we create an incidence matrix by cross tabulating two columns of a data frame with the `xtabs()` function which stands for *cross tabulation.* To transform an `incidence` matrix into an `adjacency` matrix, we perform a simple matrix multiplication of the `incidence` matrix with the transposed version of itself.
 
 
-``` r
+```r
 ## incidence matrix ## 
 
 # we use the argument sparse to save space on our memory because 
@@ -405,7 +405,7 @@ incidence[1:2,1:2]
 ##   Aage Juhl Joergensen    .         .
 ```
 
-``` r
+```r
 ## Adjacency matrices ##
 
 # individuals * individuals matrix 
@@ -417,13 +417,12 @@ adj_i[1:2,1:2]
 
 ```
 ## 2 x 2 sparse Matrix of class "dgCMatrix"
-##                       name
-## name                   Aage Almtoft Aage Juhl Joergensen
-##   Aage Almtoft                    1                    .
-##   Aage Juhl Joergensen            .                    1
+##                      Aage Almtoft Aage Juhl Joergensen
+## Aage Almtoft                    1                    .
+## Aage Juhl Joergensen            .                    1
 ```
 
-``` r
+```r
 # affiliation * affiliation matrix 
 adj_a <- Matrix::t(incidence) %*% incidence
 
@@ -433,10 +432,9 @@ adj_a[1:2,1:2]
 
 ```
 ## 2 x 2 sparse Matrix of class "dgCMatrix"
-##            affiliation
-## affiliation & co 3C Groups
-##   & co         4         .
-##   3C Groups    .         3
+##           & co 3C Groups
+## & co         4         .
+## 3C Groups    .         3
 ```
 
 #### 1.4.1 Loading graph objects
@@ -446,7 +444,7 @@ Graph objects can be loaded through a variety of ways. In this course, we concen
 Since some people have several affiliations (see data set `den`), graph objects loaded from with the function `graph_from_adjacency_matrix()` contain loops and weights. In order to remove those loops and weights again, and to make the graph object more lean, we add the `simplify()` function.
 
 
-``` r
+```r
 # making a two-mode graph
 gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
 ```
@@ -459,14 +457,14 @@ gr <- graph_from_incidence_matrix(incidence, directed = FALSE)
 ## generated.
 ```
 
-``` r
+```r
 gr
 ```
 
 ```
-## IGRAPH 4530498 UN-B 8090 7989 -- 
+## IGRAPH a98ba60 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 4530498 (vertex names):
+## + edges from a98ba60 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
@@ -478,7 +476,7 @@ gr
 ## + ... omitted several edges
 ```
 
-``` r
+```r
 # one-mode graph for individuals 
 gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -495,7 +493,7 @@ Having loaded the graph objects, we are able to visualize them using the `ggraph
 The syntax for plotting network graphs in the `ggraph` package is very close to the `ggplot` package. We start out with the `ggraph()` function, where we specify the graph object. This creates a plain board which can be filled accordingly with other functions. Here is an example code for visualizing two-mode networks.
 
 
-``` r
+```r
 # Visualize the two mode graph
 gr %>% 
   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr" 
@@ -518,7 +516,7 @@ Despite the fact that we reduced the node size drastically, it is still difficul
 Let us also visualize the one-mode network of companies.
 
 
-``` r
+```r
 # Visualize the two mode graph
 gr2 %>% 
 #   # there are different layout types which changes the position of the nodes. For now, we only use this one called "kk" or "fr 
