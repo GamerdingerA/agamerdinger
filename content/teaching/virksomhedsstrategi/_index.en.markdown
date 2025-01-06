@@ -10,6 +10,8 @@ description: 'Copenhagen Business School | HA i Europæisk Business | 6th Semest
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 ---
 
+![](feature-pic.jpg)
+
 ## Course description
 
 This course introduces students to the fundamentals of business strategy through a network perspective, emphasizing how organizations connect and interact with their environments. Students explore key theories on network-based business strategy, gain hands-on experience with conducting network analysis using the R programming language, and apply these insights to real-world cases. The course integrates theoretical frameworks, methodological tools, and practical applications, enabling students to analyze how internal and external networks impact organizational strategy.
