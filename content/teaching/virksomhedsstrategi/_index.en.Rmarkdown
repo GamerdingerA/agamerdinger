@@ -1,13 +1,12 @@
 ---
-title: "Corporate strategy in a network perspective"
-description: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
+title: 'Corporate strategy in a network perspective'
+author: Alexander Gamerdinger
+date: '2023-01-06'
+slug: []
+categories: []
+tags: []
+description: ''
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
-cascade:
-  showReadingTime: false
-  groupByYear: false
-  showDate: false
-  showSummary: true
-  showHeadingAnchors: true
 ---
 
 ## Course description
