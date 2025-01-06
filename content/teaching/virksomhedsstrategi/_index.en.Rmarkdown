@@ -1,11 +1,12 @@
 ---
 title: 'Corporate strategy in a network perspective'
 author: Alexander Gamerdinger
-date: '2023-01-06'
-slug: []
+date: 2023-01-06
+lastmod: 2023-01-06
+slug: [/virksomhedsstrategi/]
 categories: []
 tags: []
-description: ''
+description: 'Copenhagen Business School | HA i Europæisk Business | 6th Semester'
 summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
 ---
 
