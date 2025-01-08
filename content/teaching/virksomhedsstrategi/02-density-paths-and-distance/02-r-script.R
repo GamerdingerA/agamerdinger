@@ -207,7 +207,7 @@ all.equal(target = colnames(distances),
 # let us add a new graph attribute. It is a vertex (node) attribute, and hence, it has to include V(comp1). 
 # So first, we create $distance and assign distances to it
 
-V(comp1)$distance <- distances 
+V(comp1)$distance <- as.numeric(distances) 
 
 # and now, we create a second attribute, which is called lego, which is TRUE only if LEGO A/S appears
 
