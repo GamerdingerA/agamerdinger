@@ -14,13 +14,13 @@ copyright = "&copy; 2025 Alexander Gamerdinger"
 [params.author]
   name = "Alexander Gamerdinger"
   image = "author.jpg"
-  headline = "PhD Fellow at Copenhagen Business School"
-  bio = "I am a PhD Fellow at Copenhagen Business School."
+  headline = "Postdoctoral Researcher at Aalborg University"
+  bio = "I am a Postdoc at Aalborg University."
   links = [
-    { email = "mailto:aga.ioa@cbs.dk" },
+    { email = "mailto:alexanderg@ikkl.aau.dk" },
     { github = "https://github.com/GamerdingerA" },
     { linkedin = "https://linkedin.com/in/alexander-gamerdinger" },
     { twitter = "https://twitter.com/GamerdingerA" },
     { google = "https://scholar.google.com/citations?user=qstJ4-QAAAAJ&hl=en&oi=ao" },
-    { link = "https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa" },
+    { link = "https://vbn.aau.dk/en/persons/alexanderg/" },
   ]
