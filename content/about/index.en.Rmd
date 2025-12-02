@@ -8,20 +8,20 @@ showReadingTime: false
 description: 'I am Alexander, a PhD Fellow at Copenhagen Business School'
 ---
 
-I am a PhD student at the [Department of Organization](https://www.cbs.dk/en/research/departments-and-centres/department-of-organization/staff/agaioa) at Copenhagen Business School. 
+I am an economic sociologist and Postdoctoral Researcher in Aalborg University’s [Techno-Anthropology Lab](https://www.en.culture.aau.dk/research/research-groups/tantlab). My work sits at the intersection of economic sociology, science and technology studies, and the sociology of professions.
 
-As part of the [Algorithms,Data & Democracy](https://algoritmer.org/) consortium, I study the adoption of behavioral data and machine learning algorithms in life insurance, with a particular focus on how technical data professionals and regulatory experts align their innovative potential with their inherent risks. I investigate how professional decisions, morals, and ethical judgments shape technical classification systems and affect the algorithmization of insurance markets.
+I study how algorithmic technologies reshape market and organizational practices, and how public-sector AI infrastructures are developed and governed. I am particularly interested in why some algorithmic systems take root in organizations while others fail to gain traction, even when they are technically feasible and economically valuable.
 
-My research explores two specific contexts. The first context focuses on the regulatory governance of AI in the European Union, where I analyze how regulatory experts translate EU-wide governance initiatives, such as the AI Act or the Ethics Guidelines for Trustworthy AI, into practical governance standards for practitioners that clarify which AI systems are morally acceptable. 
+My current project examines the development of public-sector AI infrastructures in Denmark and compares national AI initiatives across the Nordic countries. This research explores how states coordinate, govern, and institutionalize AI infrastructures, and how these infrastructures shape public perceptions of AI.
 
-The second context focuses on algorithmic practices in life insurance companies in Denmark, where I examine the uneven algorithmization of life insurance; or the fact that while behavioral data and machine learning algorithms are increasingly used in loss prevention, there are not (yet) prevalent in risk calculations for pricing decisions. Specifically, I examine how this uneven algorithmization of life insurnace can be traced back to the technical data professionals 'on the ground', their different professional cultures and perspectives on morality that shape decisions on data use and algorithmic design. 
+In my doctoral research, I investigated the adoption of AI in the life insurance industry. Drawing on economic sociology and science and technology studies, I explored how professional ideologies, ethical principles, and regulatory norms shape decisions about data use, algorithm design, and the boundaries of what is deemed a morally acceptable AI system. This work highlighted a striking paradox: while behavioral data and machine learning techniques are increasingly used for loss prevention, they remain far less common in pricing and actuarial risk-calculation practices, despite frequent discussions about their potential. My research traced this, what I call "uneven algorithmization" to the moral frameworks and professional cultures of data professionals. 
 
-Overall, this research is set out to show how the adoption of behavioral data and algorithms are not only technical engineering problems, but have ethical and moral dimensions that are embedded in professional and organizational cultures. 
+Across my projects, I use a mixed-methods approach that includes participant observation, interviews, document analysis, and quantitative techniques such as statistical modelling, network analysis, and multiple correspondence analysis.
 
-Methodologically, I conduct mixed methods research, including participant observation, interviews, statistical analysis, and spatial quantitative analyses such as network analysis or multiple correspondence analysis.
+I hold a PhD in Economic Sociology from Copenhagen Business School, which included a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Before my doctoral studies, I completed my BSc and MSc in International Business and Politics at CBS. Alongside my studies, I was an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I continue to actively follow the wellbeing and post-growth political movement. 
 
-I have a background from Copenhagen Business School, where I received my BSc and MSc degrees in International Business and Politics. In 2024, I was a Visiting Researcher at Stanford University, associated with [SCANCOR](https://scancor.org/about/).  Before starting my Ph.D., I was an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I continue to actively follow the wellbeing and post-growth political movement.
+Alongside my academic work, I currently serve as a consultative expert at the European Insurance and Occupational Pensions Authority (EIOPA).
 
-If you would like to know more about me, check out my [CV](Gamerdinger_CV.pdf), or send me an e-mail @ [aga.ioa\@cbs.dk](mailto:aga.ioa@cbs.dk).
+If you would like to know more about me, check out my [CV](Gamerdinger_CV.pdf), or send me an e-mail @ [alexanderg@ikl.aau.dk](mailto:alexanderg@ikl.aau.dk).
 
 
