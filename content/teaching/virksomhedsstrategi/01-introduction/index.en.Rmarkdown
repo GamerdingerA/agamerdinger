@@ -122,9 +122,7 @@ After you have set your working directory, and loaded all the required packages,
 
 First, download the data set and place it into the `virksomhedsstrategi/input` folder.
 
-{{< button href="input/den17-no-nordic-letters.csv" target="_self" download= "den17-no-nordic-letters.csv" >}}
-Download the data set
-{{< /button >}}
+[Download the data set](input/den17-no-nordic-letters.csv)
 
 Second, load the `.csv` data file with the function `read_csv()`. Remember to load your data set from your current working directory.
 
