@@ -5,7 +5,7 @@ weight = 1
 
 
 title = "Alexander Gamerdinger"
-copyright = "&copy; 2025 Alexander Gamerdinger"
+copyright = "&copy; 2026 Alexander Gamerdinger"
 
 [params]
   description = "Personal Website of Alexander Gamerdinger"
@@ -14,7 +14,7 @@ copyright = "&copy; 2025 Alexander Gamerdinger"
 [params.author]
   name = "Alexander Gamerdinger"
   image = "author.jpg"
-  headline = "Postdoctoral Researcher at Aalborg University"
+  headline = "Postdoctoral Researcher in Economic Sociology & STS"
   bio = "I am a Postdoc at Aalborg University."
   links = [
     { email = "mailto:alexanderg@ikkl.aau.dk" },

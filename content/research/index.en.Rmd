@@ -2,7 +2,7 @@
 title: "Research"
 author: "Alexander Gamerdinger"
 date: "2021-12-14"
-showTableOfContents: yes
+showTableOfContents: no
 showDate: no
 showReadingTime: no
 slug: /research/
@@ -10,38 +10,242 @@ description: "My research is focused on professionals, algorithmic work and well
   issues"
 ---
 
-This page provides an overview of my work in progress, peer-reviewed publications and reports I have co-authored. It also shows a selected collection of press and media articles I was mentioned in. 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(results = "asis")
+library(dplyr)
+library(tibble)
+library(htmltools)
+
+```
+
+```{r research-data, include=FALSE}
+
+# ---- Work in progress (optional table; useful later) ----
+wip <- tribble(
+  ~year, ~title, ~summary,
+  NA, "From Risk Transfer to Risk Prevention: How field level dynamics shape AI innovation pathways",
+  "Uneven adoption of AI innovations in Danish life insurance: limited use for risk-transfer pricing versus broader uptake for risk prevention. Legitimacy, shared norms, and strategic coordination shape innovation pathways in regulated industries."
+)
+
+# ---- Peer-reviewed publications ----
+peer_reviewed <- tribble(
+  ~year, ~status, ~authors, ~title, ~venue, ~authoritative_url, ~pdf_url, ~notes, ~img,
+  2026,   "forthcoming", "Gamerdinger, A.", "Data is the new money: How data scientists gain authority in life insurance", "Journal of Professions and Organization", "https://doi.org/10.1093/jpo/joag004", NA, NA, "/img/journals/jpo.webp",
+  2025, "published",   "Gamerdinger, A.", "Moral authority over risk classifications: How data professionals shape the uneven algorithmization of life insurance", "Socio-Economic Review", "https://doi.org/10.1093/ser/mwaf033", NA, "Volume 23, Issue 4, Pages 1661–1682", "/img/journals/ser.webp",
+  2025, "published",   "Gamerdinger, A.; Willers, J. O.", "Solving AI ethics? Hybrid expertise and professional power in EU ethics governance", "Journal of European Public Policy", "https://doi.org/10.1080/13501763.2025.2499113", NA, NA, "/img/journals/jepp.webp",
+  2023, "published",   "Gamerdinger, A.; Just, S. N.; Lantz, P. M. V.", "Healthy transparency: Dynamic interrelations between credibility, transparency, and trust in the context of Danish public authorities' COVID-19 communication", "Social Sciences & Humanities Open", "https://doi.org/10.1016/j.ssaho.2023.100688", NA, "Vol 8(1), 100688", "/img/journals/ssho.webp"
+)
+
+# ---- Non-peer-reviewed publications ----
+non_peer_reviewed <- tribble(
+  ~year, ~status, ~authors, ~title, ~venue, ~authoritative_url, ~pdf_url, ~notes, ~img,
+  2024, "report", "Gamerdinger, A.; Holm, J.", "Ethical AI in Life and Non-Life Insurance: A Framework for Mapping Ethical Trade-Offs in AI Use", "Forsikring & Pension", NA, "https://fogp.dk/media/n23fabwb/ethical-ai-in-life-and-non-life-insurance-final-oktober-2024.pdf", NA, "/img/journals/fp.webp",
+  2021, "report", "Birkjær, M.; Gamerdinger, A.; El-Abd, S.", "Towards a Nordic Wellbeing Economy", "Nordic Council of Ministers", "https://doi.org/10.6027/nord2021-049", "https://pub.norden.org/nord2021-049/nord2021-049.pdf", "pp. 1–61", "/img/journals/nmr.webp",
+  2020, "report", "Gamerdinger, A.; Rubio, A.; Kaats, M.", "Wellbeing in the age of COVID-19", "Happiness Research Institute", NA, "https://www.happinessresearchinstitute.com/_files/ugd/928487_235023a664f144bba3776c053eb48855.pdf", "pp. 1–35", "/img/journals/hri.webp"
+)
+
+# ---- Press & media ----
+press_media <- tribble(
+  ~year, ~title, ~outlet, ~url, ~notes,
+  2022, "Da Sundhedsstyrelsen blev til Coronastyrelsen", "Kommunikationsforum", "https://www.kommunikationsforum.dk/artikler/Saadan-kommunikerede-SST-under-pandemien", NA,
+  2022, "Who makes the rules for a Wellbeing Economy?", "Wellbeing Economy Alliance", "https://weall.org/who-makes-the-rules-for-a-wellbeing-economy", NA,
+  2021, "Talk about happiness and home (in German)", "Deutschlandfunk Nova", "https://www.deutschlandfunknova.de/beitrag/wohnen-unser-traum-vom-eigenheim-lebt", "German",
+  2021, "Why we need a common language for Wellbeing Economy?", "Wellbeing Economy Alliance", "https://weall.org/why-we-need-a-common-language-for-wellbeing-economy", NA,
+  2020, "How has Covid-19 affected wellbeing across the world?", "What Works Wellbeing", "https://whatworkswellbeing.org/blog/how-has-covid-19-affected-wellbeing-across-the-world/", NA,
+  2019, "The Germans and their homes (in German)", "Frankfurter Allgemeine", "https://www.faz.net/aktuell/wirtschaft/gluecks-studie-die-deutschen-lieben-ihre-haeuser-16255243.html", "German"
+)
+
+# Optional: one combined table for rendering later
+ research_items <- bind_rows(
+  peer_reviewed %>% mutate(section = "Peer-reviewed"),
+  non_peer_reviewed %>% mutate(section = "Non-peer-reviewed")
+) %>% arrange(desc(year), section)
+
+```
+
+```{r render-functions, include=FALSE}
+
+render_pub_block <- function(df, block_title) {
+  # Make sure year labels exist
+  df <- df %>%
+    mutate(
+      year_label = ifelse(is.na(year), "Forthcoming", as.character(year)),
+      year_sort  = ifelse(is.na(year), -Inf, year)
+    ) %>%
+    arrange(desc(year_sort), title)
+
+  out <- character(0)
+
+  # Block title
+  out <- c(out, paste0(
+    '<div class="research-block-title">',
+    htmltools::htmlEscape(block_title),
+    '</div>'
+  ))
+
+  # Loop years
+  years <- unique(df$year_label)
+
+  for (yl in years) {
+    out <- c(out, paste0(
+      '<div class="research-year">',
+      htmltools::htmlEscape(yl),
+      '</div>'
+    ))
+
+    # (Optional but recommended) year grid wrapper for consistent spacing
+    out <- c(out, '<div class="pub-year-grid">')
+
+    dfy <- df %>% filter(year_label == yl)
+
+    for (i in seq_len(nrow(dfy))) {
+      row <- dfy[i, ]
+
+      # Title: link if url exists, else plain span (so styling is consistent)
+      title_html <- if (!is.na(row$authoritative_url) && nzchar(row$authoritative_url)) {
+        paste0(
+          '<a href="', htmltools::htmlEscape(row$authoritative_url),
+          '" target="_blank" rel="noopener noreferrer">',
+          htmltools::htmlEscape(row$title),
+          '</a>'
+        )
+      } else {
+        paste0('<span>', htmltools::htmlEscape(row$title), '</span>')
+      }
+
+      # Image
+      img_html <- if (!is.na(row$img) && nzchar(row$img)) {
+        paste0(
+          '<img class="pub-img" src="', htmltools::htmlEscape(row$img),
+          '" alt="', htmltools::htmlEscape(row$venue), '" />'
+        )
+      } else {
+        '<div class="pub-img" style="background: rgba(255,255,255,0.03);"></div>'
+      }
+
+      # Notes
+      notes_html <- if (!is.na(row$notes) && nzchar(row$notes)) {
+        paste0(
+          '<div class="pub-meta" style="margin-top:0.4rem;">',
+          htmltools::htmlEscape(row$notes),
+          '</div>'
+        )
+      } else {
+        ''
+      }
+
+      # Links (buttons)
+      links <- character(0)
+
+      if (!is.na(row$pdf_url) && nzchar(row$pdf_url)) {
+        links <- c(links, paste0(
+          '<a href="', htmltools::htmlEscape(row$pdf_url),
+          '" target="_blank" rel="noopener noreferrer">Link to pdf</a>'
+        ))
+      }
+
+      if (!is.na(row$authoritative_url) && nzchar(row$authoritative_url)) {
+        links <- c(links, paste0(
+          '<a href="', htmltools::htmlEscape(row$authoritative_url),
+          '" target="_blank" rel="noopener noreferrer">Link to Journal</a>'
+        ))
+      }
+
+      links_html <- if (length(links) > 0) {
+        paste0('<div class="pub-links">', paste(links, collapse = ''), '</div>')
+      } else {
+        ''
+      }
+
+      # Card HTML — IMPORTANT: no leading indentation at line starts
+      card_html <- paste0(
+        '<div class="pub-card">', "\n",
+          img_html, "\n",
+          '<div>', "\n",
+            '<div class="pub-meta">', htmltools::htmlEscape(row$authors), '</div>', "\n",
+            '<div class="pub-title">', title_html, '</div>', "\n",
+            '<div class="pub-journal">', htmltools::htmlEscape(row$venue), '</div>', "\n",
+            notes_html, "\n",
+            links_html, "\n",
+          '</div>', "\n",
+        '</div>'
+      )
+
+      out <- c(out, card_html)
+    }
+
+    out <- c(out, '</div>') # close .pub-year-grid
+  }
+
+  knitr::asis_output(paste(out, collapse = "\n"))
+}
+
+# (NEW) Simple list renderer for Press & media (no year grouping)
+render_press_media <- function(df, block_title = "Press & media") {
+
+  out <- character(0)
+
+  out <- c(out, paste0(
+    '<div class="research-block-title">',
+    htmltools::htmlEscape(block_title),
+    '</div>'
+  ))
+
+  # Simple list
+  out <- c(out, '<ul class="press-list">')
+
+  for (i in seq_len(nrow(df))) {
+    row <- df[i, ]
+
+    title_link <- if (!is.na(row$url) && nzchar(row$url)) {
+      paste0(
+        '<a href="', htmltools::htmlEscape(row$url),
+        '" target="_blank" rel="noopener noreferrer">',
+        htmltools::htmlEscape(row$title),
+        '</a>'
+      )
+    } else {
+      htmltools::htmlEscape(row$title)
+    }
+
+    meta_bits <- c()
+    if (!is.na(row$outlet) && nzchar(row$outlet)) meta_bits <- c(meta_bits, htmltools::htmlEscape(row$outlet))
+    if (!is.na(row$year) && nzchar(as.character(row$year))) meta_bits <- c(meta_bits, htmltools::htmlEscape(as.character(row$year)))
+    meta <- if (length(meta_bits) > 0) paste(meta_bits, collapse = " · ") else ""
+
+    notes <- if (!is.na(row$notes) && nzchar(row$notes)) {
+      paste0(' <span class="press-notes">(', htmltools::htmlEscape(row$notes), ')</span>')
+    } else ""
+
+    out <- c(out, paste0(
+      '<li class="press-item">',
+        '<div class="press-title">', title_link, '</div>',
+        if (nzchar(meta)) paste0('<div class="press-meta">', meta, notes, '</div>') else "",
+      '</li>'
+    ))
+  }
+
+  out <- c(out, '</ul>')
+
+  knitr::asis_output(paste(out, collapse = "\n"))
+}
 
 
-## Work in progress 
 
-### Data is the new money: How data scientists gain authority in life insurance 
+```
 
-This study examines how data scientists become an increasingly important professional group that drives forth the behavioral insurance revolution in life insurance. In this paper, I investigate how data scientists adopt machine learning (ML) algorithms to drive claims prevention, and how this positions them as "new money professionals." The findings highlight that data scientists need to employ relational strategies, such as collaboration with health guides for domain expertise, strategic alliances with actuaries for financial validation, and governance specialists for compliance.This research underscores how an emerging professions must connect with multiple stakeholders to gain authority and drive forward the behavioral transformation. 
-
-### From Risk Transfer to Risk Prevention: How field level dynamics shape AI innovation pathways
-
-This paper examines the uneven adoption of AI innovations in the Danish life insurance sector, contrasting its limited use in individualizing pricing (risk transfer) with its broader success in preventing health risks (risk prevention). The findings highlight that risk prevention gained traction due to strong alignment of stakeholder values, including societal benefits and regulatory support, while risk transfer faced barriers such as concerns about fairness, uninsurability, and reputational risks. The study emphasizes the importance of field-level legitimacy and strategic coordination in fostering innovation pathways. It sheds light on how shared norms and coordinated actions shape the adoption of AI technologies in regulated industries.
+This page provides an overview of my work in progress, peer-reviewed publications and reports I have co-authored.
 
 
-## Peer-reviewed Publications
-- Gamerdinger, A. (2025) Moral authority over risk classifications: How data professionals shape the uneven algorithmization of life insurance. Socio-Economic Review. [Link](https://doi.org/10.1093/ser/mwaf033)
-- Gamerdinger, A., & Willers, J. O. (2025). Solving AI ethics? Hybrid expertise and professional power in EU ethics governance. Journal of European Public Policy, 1–28. [Link](https://doi.org/10.1080/13501763.2025.2499113)
--   Gamerdinger, A., Just, S. N., & Lantz, P. M. V. (2023). Healthy transparency: Dynamic interrelations between credibility, transparency, and trust in the context of Danish public authorities' COVID-19 communication. Social Sciences & Humanities Open, 8(1), 100688.[Link](https://www.sciencedirect.com/science/article/pii/S2590291123002930)
+```{r render-publications, results="asis", echo=FALSE}
 
-## Non-peer-reviewed Publications
+cat('<div class="pub-section">')
 
-- Gamerdinger, A., & Holm, J. (2024). Ethical AI in Life and Non-Life Insurance: A Framework for Mapping Ethical Trade-Offs in AI Use. Copenhagen: Forsikring & Pension. [Link](https://fogp.dk/media/n23fabwb/ethical-ai-in-life-and-non-life-insurance-final-oktober-2024.pdf)
--   Birkjær, M., Gamerdinger, A., & El-Abd, S. (2021). Towards a Nordic Wellbeing Economy. Copenhagen: Nordisk Ministerråd, pp. 1-61. [Link](https://doi.org/10.6027/nord2021-049)
--   Gamerdinger, A., Rubio, A., & Kaats, M. (2020) Wellbeing in the age of COVID-19. Copenhagen: Happiness Research Institute, pp. 1-35. [Link](https://www.happinessresearchinstitute.com/covid-19)
+render_pub_block(peer_reviewed, "Peer-reviewed publications")
+render_pub_block(non_peer_reviewed, "Reports and other publications")
 
-## Press & media
+# (NEW) Press & media list
+render_press_media(press_media, "Press & media")
 
-- AI: Dilemma-kortlægning skal finde ”skjulte” etiske overvejelser [Forsikring & Pension](https://fogp.dk/politik/digitalisering-og-dataetik/kunstig-intelligens/ai-dilemma-kortlaegning-skal-finde-skjulte-etiske-overvejelser/)
-- Da Sundhedsstyrelsen blev til Coronastyrelsen [Kommunikationsforum](https://www.kommunikationsforum.dk/artikler/Saadan-kommunikerede-SST-under-pandemien)
--   Who makes the rules for a Wellbeing Economy? [Wellbeing Economy Alliance](https://weall.org/who-makes-the-rules-for-a-wellbeing-economy)
--   Talk about happiness and home (in German) [Deutschlandfunk Nova](https://www.deutschlandfunknova.de/beitrag/wohnen-unser-traum-vom-eigenheim-lebt)
--   The Loneliness Pandemic [Wellbeing People](https://www.youtube.com/watch?v=P9lXf1QTjSM)
--   Why we need a common language for Wellbeing Economy? [Wellbeing Economy Alliance](https://weall.org/why-we-need-a-common-language-for-wellbeing-economy)
--   How has Covid-19 affected wellbeing across the world? [What Works Wellbeing](https://whatworkswellbeing.org/blog/how-has-covid-19-affected-wellbeing-across-the-world/)
--   The Germans and their homes (in German) [Frankfurter Allgemeine](https://www.faz.net/aktuell/wirtschaft/gluecks-studie-die-deutschen-lieben-ihre-haeuser-16255243.html)
+cat('</div>')
+```

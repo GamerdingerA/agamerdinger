@@ -12,6 +12,9 @@ autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = true
 
+# customCSS for research page
+customCSS = ["css/custom.css"]
+
 # robots = ""
 
 [header]
