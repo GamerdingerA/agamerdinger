@@ -25,9 +25,7 @@ First, I will highlight how you can find subsets of the data set `den17`. We sta
 
 This time, we also load an additional R.file called `custom_functions.R` which can be downloaded below. Please place this R.file in your `r` folder.
 
-{{< button href="r/custom_functions.R" target="_self" download= "custom_functions.R" >}}
-Download customs_functions.R
-{{< /button >}}
+[Download the R.file](r/custom_functions.R)
 
 ```{r eval=FALSE, include=TRUE}
 
@@ -151,11 +149,9 @@ For this exercise class, I have created a different data set than what you see i
 
 ![Screenshot from Orbis](images/image-1015133488.png)
 
-The data set that you can download here contains information about all public limited Companies in Copenhagen. You can download it by pressing the button below.
+The data set that you can download here contains information about all public limited Companies in Copenhagen. You can download it by clicking the link below.
 
-{{< button href="input/public_companies_cph.xlsx" target="_self" download= "public_companies_cph.xlsx" >}}
-Download Orbis data
-{{< /button >}}
+[Download the Excel file](input/public_companies_cph.xlsx)
 
 If you follow the video above and add columns that include information about the shareholders, their titles, and their unique identification number, you can use the function `clean_orbis()` which I have created to make your lives a little easier. The function cleans the column names, certain data entries and classes and returns structure that is similar to the `den17` data set.
 

@@ -25,12 +25,10 @@ First, I will highlight how you can find subsets of the data set `den17`. We sta
 
 This time, we also load an additional R.file called `custom_functions.R` which can be downloaded below. Please place this R.file in your `r` folder.
 
-{{< button href="r/custom_functions.R" target="_self" download= "custom_functions.R" >}}
-Download customs_functions.R
-{{< /button >}}
+[Download the R.file](r/custom_functions.R)
 
 
-```r
+``` r
 ## load working directory 
 setwd("/Users/alexandergamerdinger/Desktop/PhD/teaching/virksomhedsstrategi_forår_2022")
 
@@ -71,7 +69,7 @@ We load the `custom_functions.R` file by putting it into the **`source()`** func
 We can see all tags of the raw data set `den` by using the function `show.all.tags()`. Below, only the first 20 entries are shown.
 
 
-```r
+``` r
 # all tags of company boards
 show.all.tags(den1)[1:20, ] 
 ```
@@ -105,7 +103,7 @@ To actually subset the data set, we can use the `has.tags()` function. This func
 The R chunk below only shows the first 20 rows for each output.
 
 
-```r
+``` r
 # suppose we want to get a subset of den1 that includes all names and affiliations with the tag "Banks"
 bank <- has.tags(den1, "Banks", result = "den")
 ```
@@ -117,7 +115,7 @@ bank <- has.tags(den1, "Banks", result = "den")
 ## 
 ```
 
-```r
+``` r
 # now, we only want the UNIQUE affiliations 
 bank1 <- has.tags(den1, "Banks", result = "affil")
 ```
@@ -129,7 +127,7 @@ bank1 <- has.tags(den1, "Banks", result = "affil")
 ## 
 ```
 
-```r
+``` r
 # and only UNIQUE names
 bank2 <- has.tags(den1, "Banks", result = "name")
 ```
@@ -141,7 +139,7 @@ bank2 <- has.tags(den1, "Banks", result = "name")
 ## 
 ```
 
-```r
+``` r
 # we can also subset by several tags, first we make a vector
 tags <- c("Banks", "Finance", "Pensions")
 
@@ -158,7 +156,7 @@ finance <- has.tags(den1, tags, result = "den")
 ## 
 ```
 
-```r
+``` r
 finance[1:20, ]
 ```
 
@@ -194,7 +192,7 @@ finance[1:20, ]
 Some people and affiliations can have several tags. To find people with several tags, we filter the data by the tags we are interested in, and then use the `intersect()` function.
 
 
-```r
+``` r
 a1 <- den1 %>% filter(grepl("Farming", tags)) %>% pull(name)
 
 b1 <- den1 %>% filter(grepl("Banks", tags)) %>% pull(name)
@@ -216,16 +214,14 @@ For this exercise class, I have created a different data set than what you see i
 
 ![Screenshot from Orbis](images/image-1015133488.png)
 
-The data set that you can download here contains information about all public limited Companies in Copenhagen. You can download it by pressing the button below.
+The data set that you can download here contains information about all public limited Companies in Copenhagen. You can download it by clicking the link below.
 
-{{< button href="input/public_companies_cph.xlsx" target="_self" download= "public_companies_cph.xlsx" >}}
-Download Orbis data
-{{< /button >}}
+[Download the Excel file](input/public_companies_cph.xlsx)
 
 If you follow the video above and add columns that include information about the shareholders, their titles, and their unique identification number, you can use the function `clean_orbis()` which I have created to make your lives a little easier. The function cleans the column names, certain data entries and classes and returns structure that is similar to the `den17` data set.
 
 
-```r
+``` r
 df <- clean_orbis(path = "input/public_companies_cph.xlsx")
 ```
 
@@ -109741,7 +109737,7 @@ df <- clean_orbis(path = "input/public_companies_cph.xlsx")
 ## Warning: Expecting numeric in D42568 / R42568C4: got 'n.a.'
 ```
 
-```r
+``` r
 glimpse(df)
 ```
 
@@ -109772,7 +109768,7 @@ There are also different ways of loading graph objects, such as through the `igr
 Since we already covered on how to load a graph object through an incidence or adjacency matrix [here](https://agamerdinger.com/teaching/virksomhedsstrategi/introduction/#14-creating-graphs), I will just show the code.
 
 
-```r
+``` r
 incidence <- xtabs(formula = ~ name + affiliation, data = finance, sparse = TRUE)
 
 adj_i <- incidence %*% Matrix::t(incidence)
@@ -109793,7 +109789,7 @@ gr <- graph_from_incidence_matrix(incidence, directed = FALSE) %>%
 ## generated.
 ```
 
-```r
+``` r
 gr1 <- graph_from_adjacency_matrix(adj_i, mode = "undirected") %>% 
   simplify(remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -109805,9 +109801,9 @@ gr
 ```
 
 ```
-## IGRAPH 4e0a126 UN-B 920 931 -- 
+## IGRAPH 61c7a14 UN-B 920 931 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from 4e0a126 (vertex names):
+## + edges from 61c7a14 (vertex names):
 ## [1] Aage Almtoft            --Middelfart Sparekasse                    
 ## [2] AAke Per-Urban Bäckström--Danske Bank                              
 ## [3] AAse Kogsboell          --JURISTERNES OG OEKONOMERNES PENSIONSKASSE
@@ -109824,7 +109820,7 @@ Visualizing two-mode networks is very similar to visualizing one-mode networks. 
 When we visualize two-mode networks, we need to make the `type` of the node visible, because otherwise, we will not know which node is a corporation and person respectively. We specify this by using the color argument.
 
 
-```r
+``` r
 gr %>% 
   ggraph("fr") +
   geom_edge_link0(color = "gray40") +
@@ -109845,7 +109841,7 @@ gr %>%
 We select the largest component exactly as we do with one-mode networks too. Let us select the largest component and visualize it.
 
 
-```r
+``` r
 # Select largest component 
 complist <- components(gr)
 comps <- decompose.graph(gr)
@@ -109892,7 +109888,7 @@ If you want to visualize certain aspects of the underlying raw data, you have to
 Here, I show how you can add the gender of the person as a graph attribute.
 
 
-```r
+``` r
 # we want to add attributes to the person one-mode network gr1 
 
 # first, make a tibble where you make a name and gender column
@@ -109909,7 +109905,7 @@ all.equal(V(gr1)$name, a1$name)
 ## [1] TRUE
 ```
 
-```r
+``` r
 # add it as a vertex attribute
 V(gr1)$gender <- a1$gender
 
@@ -109928,7 +109924,7 @@ gr1 %>%
 Here, I show how you can add the sector of a corporation as a graph attribute
 
 
-```r
+``` r
 # remember that the corporate network is made from the object finance which includes the tags Banks, Finance and Pension
 # first, we make an affiliation sub set for each.
 bank <- has.tags(den1, "Banks", "affil")
@@ -109941,7 +109937,7 @@ bank <- has.tags(den1, "Banks", "affil")
 ## 
 ```
 
-```r
+``` r
 fin <- has.tags(den1, "Finance", "affil")
 ```
 
@@ -109952,7 +109948,7 @@ fin <- has.tags(den1, "Finance", "affil")
 ## 
 ```
 
-```r
+``` r
 pension <- has.tags(den1, "Pensions", "affil")
 ```
 
@@ -109963,7 +109959,7 @@ pension <- has.tags(den1, "Pensions", "affil")
 ## 
 ```
 
-```r
+``` r
 # second, we create a data frame which binds three data frames together into one. We give each node a tag name. 
 
 a1 <- rbind(
@@ -110002,7 +109998,7 @@ a2
 The object `a2` denotes `1` if a corporation belongs to a sector and `0` if it does not. With this information, we can use the `filter()` function to make vectors with different names depending on the possible firm types. Consequently, each firm type is assigned to the `firmtpye` attribute.
 
 
-```r
+``` r
 # make vectors with different names depending on the possible firm types
 only_bank <- a2 %>% filter(bank==1 & finance==0 & pension ==0) %>% pull(name)
 only_finance <- a2 %>% filter(bank==0 & finance==1 & pension ==0) %>% pull(name)
@@ -110071,7 +110067,7 @@ V(gr2)$firmtype
 Last, we select the largest component, and visualize the network with `firmtype` as the color node attribute.
 
 
-```r
+``` r
 # Select largest component 
 complist <- components(gr2)
 comps <- decompose.graph(gr2)
@@ -110095,7 +110091,7 @@ comp1 %>%
 ```
 
 ```
-## Warning: ggrepel: 15 unlabeled data points (too many overlaps). Consider
+## Warning: ggrepel: 50 unlabeled data points (too many overlaps). Consider
 ## increasing max.overlaps
 ```
 
