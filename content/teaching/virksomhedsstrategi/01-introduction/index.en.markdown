@@ -370,15 +370,17 @@ den %>%
 
 ### 1.4 Creating graphs
 
-Before we can make a network graph, we need to transform the data from a `\((\text{row} \times \text{column})\)` data frame into a data matrix.
+{{< katex >}}
+
+Before we can make a network graph, we need to transform the data from a \\(row \* column\\) data frame into a data matrix.
 
 There are two important kinds of data matrices of which networks are constructed:
 
-1. A two-mode network is based on an *incidence matrix* which is an `\(n \times m\)` matrix, where `\(n\)` corresponds to one unit (such as an individual), and `\(m\)` corresponds to another unit (such as an organization). Each entry `\(a_{ij} \geq 1\)` if there is an edge between node `\(i\)` and node `\(j\)`, and `\(a_{ij} = 0\)` otherwise.
+1. A two-mode network is based on an `incidence matrix` which is an \\(n \* m\\) matrix, where \\(n\\) corresponds to one unit (such as an individual), and \\(m\\) corresponds to another unit (such as organization). Each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} = 0\\) otherwise.
 
-2. A one-mode network is based on an *adjacency matrix* which is an `\(n \times n\)` matrix, where both row elements `\(n\)` and column elements `\(n\)` correspond to nodes with the same unit. It is a symmetric matrix where each entry `\(a_{ij} \geq 1\)` if there is an edge between node `\(i\)` and node `\(j\)` and `\(a_{ij} = 0\)` otherwise.
+2. A one-mode network is based on an `adjacency matrix` which is an \\(n \* n \\) matrix, where both row elements \\(n\\) and column elements \\(n\\) corresponds to nodes with the same unit. It is a symmetric matrix where each entry \\(a\_{ij} \>=1\\) if there is an edge between node \\(i\\) and node \\(j\\) and \\(a\_{ij} =0\\) otherwise.
 
-In R, we create an incidence matrix by cross-tabulating two columns of a data frame with the `xtabs()` function, which stands for *cross tabulation*. To transform an *incidence* matrix into an *adjacency* matrix, we perform a simple matrix multiplication of the incidence matrix with the transposed version of itself.
+In R, we create an incidence matrix by cross tabulating two columns of a data frame with the `xtabs()` function which stands for *cross tabulation.* To transform an `incidence` matrix into an `adjacency` matrix, we perform a simple matrix multiplication of the `incidence` matrix with the transposed version of itself.
 
 
 
@@ -462,9 +464,9 @@ gr
 ```
 
 ```
-## IGRAPH d6edb36 UN-B 8090 7989 -- 
+## IGRAPH ee4cd31 UN-B 8090 7989 -- 
 ## + attr: type (v/l), name (v/c)
-## + edges from d6edb36 (vertex names):
+## + edges from ee4cd31 (vertex names):
 ##  [1] Lars Eivind Kreken        --& co      Mikael Ernst Joergensen   --& co     
 ##  [3] Thomas Hoegeboel          --& co      Thomas Hoffmann           --& co     
 ##  [5] Nicoline E. Hyldahl       --3C Groups Niels Thorborg            --3C Groups
