@@ -3,6 +3,7 @@
   publish = "public"
 
 [build.environment]
+  NODE_VERSION = "20"
   HUGO_VERSION = "0.147.8"
   HUGO_ENV = "production"
   TZ = "UTC"
