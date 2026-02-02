@@ -13,7 +13,7 @@ copyright = "&copy; 2026 Alexander Gamerdinger"
 
 [params.author]
   name = "Alexander Gamerdinger"
-  image = "author.jpg"
+  image = "img/author.webp"
   headline = "Postdoctoral Researcher in Economic Sociology & STS"
   bio = "I am a Postdoc at Aalborg University."
   links = [

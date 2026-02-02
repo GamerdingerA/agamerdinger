@@ -1,17 +1,18 @@
 [build]
-  command = "hugo mod get -u && hugo --gc --minify -b $URL"
+  command = "npm ci && npm run build:css && hugo --gc --minify -b $URL"
   publish = "public"
 
 [build.environment]
   HUGO_VERSION = "0.147.8"
   HUGO_ENV = "production"
   TZ = "UTC"
+  GIT_SUBMODULE_STRATEGY = "recursive"
 
 [context.production.environment]
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo mod get -u && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
+  command = "npm ci && npm run build:css && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "hugo mod get -u && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
+  command = "npm ci && npm run build:css && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
