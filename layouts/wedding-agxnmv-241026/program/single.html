@@ -279,34 +279,91 @@
     }
 
     @media (max-width: 720px){
-      .frame{
-        padding: 3rem 1.6rem;
-      }
-      .frame::before{
-        inset: 18px;
-      }
-
-      .timeline{
-        --icon-col: 92px;
-        --buffer-col: 18px;
-        --line-col: 26px;
-        --gap: 18px;
-        row-gap: 44px;
-
-        --line-shift: 40px;
-        --dot-shift: -40px;
-      }
-
-      .t-icon, .t-buffer, .t-dot, .t-content{
-        min-height: 110px;
-        height: 110px;
-      }
-
-      .t-icon img{
-        width: 120px;
-        height: 120px;
-      }
+    .frame{
+      padding: 3rem 1.6rem;
     }
+    .frame::before{
+      inset: 10px;
+    }
+  
+    /* Reduce main content paragraph size */
+    .prose p{
+      font-size: 1.15rem;   /* was 1.3rem */
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    /* Reduce subheading size */
+    .subtitle{
+      font-size: 1rem;   /* was 1.3rem */
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    .timeline{
+      --icon-col: 92px;     /* keep icon column */
+      --buffer-col: 3px;    /* ↓ was 18px: tighter space between icon and line */
+      --line-col: 10px;     /* ↓ was 26px: slightly slimmer line column */
+      --gap: 10px;          /* ↓ was 18px: more room for text */
+      row-gap: 60px;        /* a bit tighter vertically */
+  
+      /* line position: bring it slightly LEFT compared to your current */
+      --line-shift: 20px;   /* ↓ was 40px */
+  
+      /* dot must sit exactly on line (keep same shift) */
+      --dot-shift: -24px;   /* match the line-shift direction */
+    }
+  
+    /* Make content column actually shrink instead of overflowing */
+    .t-content{
+      min-width: 0;
+    }
+  
+    /* Force wrapping so headings/notes don’t spill outside */
+    .t-label,
+    .t-note{
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+  
+    /* Slightly reduce big label size on mobile so it fits */
+    .t-label{
+      font-size: 1.35rem;   /* ↓ was 1.6rem */
+      line-height: 1.2;
+    }
+  
+    .t-time{
+      font-size: 1.05rem;   /* ↓ was 1.2rem */
+      letter-spacing: .08em;
+    }
+  
+    .t-note{
+      font-size: 1.05rem;   /* ↓ was 1.15rem */
+      line-height: 1.4;
+    }
+  
+    /* Keep row height reasonable */
+    .t-icon, .t-buffer, .t-dot, .t-content{
+      min-height: 105px;
+      height: 105px;
+    }
+  
+    /* Slightly smaller icons on mobile so everything breathes */
+    .t-icon img{
+      width: 96px;
+      height: 96px;
+    }
+    
+    /* Smaller back button on mobile */
+    .back{
+      margin: 2.5rem auto 0 auto;   /* slightly less spacing above */
+      padding: .7rem 1.2rem;        /* smaller pill */
+      font-size: .75rem;            /* smaller text */
+      letter-spacing: .06em;        /* slightly softer spacing */
+    }
+    
+  }
   </style>
 </head>
 

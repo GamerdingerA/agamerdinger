@@ -198,11 +198,31 @@
         padding: 3rem 1.6rem;
       }
       .frame::before{
-        inset: 18px;
+        inset: 10px;
       }
       .prose img{
         width: min(440px, 100%);
       }
+      
+      /* Reduce main content paragraph size */
+      .prose p{
+        font-size: 1.15rem;   /* was 1.3rem */
+        line-height: 1.6;
+        text-align: center;
+      }
+      
+      /* Smaller list buttons on mobile */
+      .prose ul{
+        gap: .75rem;              /* slightly tighter spacing */
+      }
+      
+      .prose ul a{
+        font-size: .75rem;        /* smaller text */
+        padding: .7rem 1.1rem;    /* smaller pill */
+        min-width: 200px;         /* reduce width */
+        letter-spacing: .06em;    /* slightly softer spacing */
+      }
+      
     }
   </style>
 </head>

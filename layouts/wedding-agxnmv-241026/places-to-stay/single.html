@@ -350,7 +350,21 @@
         padding: 3rem 1.6rem;
       }
       .frame::before{
-        inset: 18px;
+        inset: 10px;
+      }
+      
+      /* Reduce subheading size */
+      .subtitle{
+        font-size: 1rem;   /* was 1.3rem */
+        line-height: 1.6;
+        text-align: center;
+      }
+      
+      /* Reduce main content paragraph size */
+      .prose p{
+        font-size: 1.15rem;   /* was 1.3rem */
+        line-height: 1.6;
+        text-align: center;
       }
 
       .stay{
@@ -366,6 +380,62 @@
 
       .detail-label{
         min-width: 74px;
+      }
+      
+      /* ===== Make stay cards smaller on mobile only ===== */
+      .stay{
+        padding: .95rem;           /* smaller card padding */
+        border-radius: 16px;       /* slightly tighter radius */
+        gap: .75rem;
+      }
+      
+      .stay-name{
+        font-size: 1.4rem;         /* smaller title */
+        line-height: 1.15;
+      }
+      
+      .capacity-row{
+        margin-top: .6rem;
+        gap: .4rem;
+      }
+      
+      .chip{
+        padding: .32rem .55rem;    /* smaller chips */
+        font-size: .7rem;
+        letter-spacing: .08em;
+      }
+      
+      .capacity-text{
+        font-size: .82rem;
+      }
+      
+      .details{
+        margin-top: .75rem;
+        gap: .45rem;
+      }
+      
+      .detail-label{
+        min-width: 68px;
+        font-size: .68rem;
+      }
+      
+      .detail-value{
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      
+      /* Smaller buttons */
+      .stay-link{
+        font-size: .75rem;
+        padding: .6rem .9rem;
+      }
+      
+      /* Smaller back button on mobile */
+      .back{
+        margin: 2.5rem auto 0 auto;   /* slightly less spacing above */
+        padding: .7rem 1.2rem;        /* smaller pill */
+        font-size: .75rem;            /* smaller text */
+        letter-spacing: .06em;        /* slightly softer spacing */
       }
     }
   </style>
