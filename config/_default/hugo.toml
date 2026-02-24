@@ -25,3 +25,8 @@ summaryLength = 0
 [services]
   [services.x]
     disableInlineCSS = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -12,3 +12,4 @@ static/.DS_Store
 content/.DS_Store
 Thumbs.db
 /.quarto/
+node_modules/

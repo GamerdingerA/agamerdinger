@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{{ .Title }}</title>
+
+  {{ partial "head.html" . }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bordeaux:#5b1f2d;
+      --paper:#FFFCF4;
+      --ink: var(--bordeaux);
+      --soft: rgba(91,31,45,.06);
+      --frame-blue:#C9DAEA;
+    }
+
+    body{
+      background: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 4rem 1.5rem;
+    }
+
+    /* ===== Frame (clean, no scallops) ===== */
+    .frame{
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      background: var(--paper);
+      padding: 4rem 2.6rem;
+      border-radius: 18px;
+    }
+
+    /* Clean blue inner line only */
+    .frame::before{
+      content:"";
+      position:absolute;
+      inset: 22px;
+      border: 2.5px solid var(--frame-blue);
+      border-radius: 60px;
+      pointer-events:none;
+    }
+
+    .inner{
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Title */
+    .title{
+      font-family: "Corinthia", cursive;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin: 0;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    /* Reduced spacing */
+    .meta{
+      margin-top: .5rem;   /* reduced from 1rem */
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      letter-spacing: .06em;
+      opacity: .9;
+      color: var(--ink);
+    }
+
+    .prose{
+      margin-top: 2.2rem;   /* slightly tighter */
+      max-width: 700px;
+      margin-left:auto;
+      margin-right:auto;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .prose,
+    .prose p,
+    .prose span,
+    .prose div,
+    .prose em,
+    .prose strong{
+      color: var(--ink) !important;
+    }
+    
+
+    .prose p{
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0 0 1.4rem 0;
+    }
+
+    /* Reduced image size */
+    .prose img{
+      display:block;
+      margin: 2rem auto 2.5rem auto;
+      width: min(520px, 100%);  /* reduced from 620px */
+      height:auto;
+    }
+
+    .prose ul{
+      list-style:none;
+      padding:0;
+      margin: 3rem 0 0 0;
+      display:flex;
+      flex-direction:column;
+      gap: 1.1rem;
+      align-items:center;
+    }
+
+    .prose li{ margin:0; padding:0; }
+
+    /* Inline links */
+    .prose p a{
+      color: var(--ink) !important;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      font-weight: 500;
+    }
+
+    .prose p a:hover{
+      background: rgba(91,31,45,.08);   /* soft bordeaux */
+      border-bottom: 1px solid var(--bordeaux);
+    }
+
+    /* Button links */
+    .prose ul a{
+      font-family: Inter, sans-serif;
+      text-decoration: none !important;
+      color: var(--ink) !important;
+      opacity: .85;
+    
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .9rem;
+    
+      padding: 1rem 1.7rem;
+      min-width: 260px;
+    
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    
+      box-sizing: border-box;
+      border: 2px solid rgba(91,31,45,.35);
+      border-radius: 999px !important;   /* lock pill shape */
+      background: transparent !important; /* prevent any global hover fill */
+      outline: none !important;          /* prevent default focus outline */
+      box-shadow: none !important;       /* prevent shadow pop-in */
+      transform: none !important;        /* prevent movement from global rules */
+    
+      transition: color .18s ease, border-color .18s ease;
+    }
+    
+    /* Hover/focus/active: color shift only */
+    .prose ul a:hover,
+    .prose ul a:focus,
+    .prose ul a:focus-visible,
+    .prose ul a:active{
+      color: var(--frame-blue) !important;
+      border-color: var(--frame-blue) !important;
+    
+      text-decoration: none !important;
+      background: transparent !important;
+      border-radius: 999px !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .note{
+      margin-top: 2rem;
+      font-size: .95rem;
+      opacity: .75;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    @media (max-width: 720px){
+      .frame{
+        padding: 3rem 1.6rem;
+      }
+      .frame::before{
+        inset: 18px;
+      }
+      .prose img{
+        width: min(440px, 100%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="frame">
+      <div class="inner">
+
+        <h1 class="title">Nanna &amp; Alexander</h1>
+        <div class="meta">24. &amp; 25. October 2026 · Oremansgaard, Præstø</div>
+
+        <section class="prose">
+          {{ .Content }}
+        </section>
+
+        <div class="note">Invitation shared via QR code only.</div>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>

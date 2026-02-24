@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{{ .Title }}</title>
+
+  {{ partial "head.html" . }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Same fonts as the framed pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bordeaux:#5b1f2d;
+      --paper:#FFFCF4;
+      --ink: var(--bordeaux);
+      --soft: rgba(91,31,45,.06);
+      --frame-blue:#C9DAEA;
+      
+      --frame-blue-soft: rgba(201,218,234,.18);
+      --frame-blue-soft2: rgba(201,218,234,.10);
+      --frame-blue-strong: rgba(201,218,234,.55);
+
+      --border: rgba(91,31,45,.35);
+      --border2: rgba(91,31,45,.18);
+      --soft2: rgba(91,31,45,.03);
+      --shadow: 0 12px 28px rgba(0,0,0,.04);
+    }
+
+    body{
+      background: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 4rem 1.5rem;
+    }
+
+    /* ===== Frame (same as original) ===== */
+    .frame{
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      background: var(--paper);
+      padding: 4rem 2.6rem;
+      border-radius: 18px;
+    }
+
+    .frame::before{
+      content:"";
+      position:absolute;
+      inset: 22px;
+      border: 2.5px solid var(--frame-blue);
+      border-radius: 60px;
+      pointer-events:none;
+    }
+
+    .inner{
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Title: match framed pages (Corinthia) */
+    .title{
+      font-family: "Corinthia", cursive;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin: 0;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    /* Subtitle: match framed pages */
+    .subtitle{
+      margin-top: .5rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      letter-spacing: .06em;
+      color: var(--ink);
+      opacity: .9;
+    }
+
+    .subtitle-capacity{
+      margin-top: 1rem;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Content block: same typography as framed pages */
+    .prose{
+      margin-top: 2.2rem;
+      max-width: 700px;
+      margin-left:auto;
+      margin-right:auto;
+      text-align:left;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--ink);
+    }
+
+    .prose,
+    .prose p,
+    .prose span,
+    .prose div,
+    .prose em,
+    .prose strong{
+      color: var(--ink) !important;
+    }
+
+    .prose p{
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0 0 1.4rem 0;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    /* Optional: keep link look consistent with framed pages */
+    .prose p a{
+      color: var(--ink) !important;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      font-weight: 500;
+    }
+    .prose p a:hover{
+      background: rgba(91,31,45,.08);
+      border-bottom: 1px solid var(--bordeaux);
+    }
+
+    /* ===== Stay list ===== */
+    .stay-list{
+      max-width: 820px;
+      margin: 3rem auto 0 auto;
+      display:flex;
+      flex-direction:column;
+      gap: 1.1rem;
+      text-align:left;
+    }
+
+    .stay{
+      border: 1.1px solid rgba(201,218,234,.85);                 /* blue frame border */
+      border-radius: 22px;
+      padding: 1.35rem 1.35rem;
+      background: linear-gradient(180deg, #ffffff, var(--frame-blue-soft2));
+      box-shadow: 0 14px 30px rgba(0,0,0,.035);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 1rem;
+    }
+    
+    .stay:hover{
+      border-color: rgba(201,218,234,1);
+      box-shadow: 0 18px 40px rgba(0,0,0,.045);
+    }
+
+    .stay-left{
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .stay-name{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.85rem;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.12;
+    }
+
+    /* Capacity chips */
+    .capacity-row{
+      margin-top: .85rem;
+      display:flex;
+      flex-wrap: wrap;
+      align-items:center;
+      gap: .5rem;
+    }
+
+    .chip{
+    display:inline-flex;
+    align-items:center;
+    padding: .42rem .7rem;
+    border: 1px solid rgba(201,218,234,.95);     /* blue border */
+    background: rgba(201,218,234,.22);           /* blue tint */
+    border-radius: 999px;
+    font-family: Inter, sans-serif;
+    font-size: .78rem;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink);                            /* keep bordeaux text */
+    opacity: .95;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+  /* make the PERSONS chip look "highlighted" */
+  .chip-strong{
+    background: rgba(201,218,234,.45);
+    border-color: rgba(201,218,234,1);
+    font-weight: 700;
+    color: rgba(60,100,135,1);
+  }
+
+    .capacity-text{
+      font-family: Inter, sans-serif;
+      font-size: .92rem;
+      color: var(--ink);
+      opacity: .85;
+      letter-spacing: .02em;
+      margin-left: .1rem;
+    }
+
+    /* Detail lines */
+    .details{
+      margin-top: 1.05rem;
+      display:flex;
+      flex-direction:column;
+      gap: .6rem;
+    }
+
+    .detail{
+      display:flex;
+      gap: .6rem;
+      align-items:flex-start;
+    }
+
+    .detail-label{
+      flex: 0 0 auto;
+      min-width: 82px;
+      font-family: Inter, sans-serif;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .65;
+      padding-top: .2rem;
+    }
+
+    .detail-value{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      opacity: .95;
+      color: var(--ink);
+    }
+
+    /* Right side buttons */
+    .stay-right{
+      flex: 0 0 auto;
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-end;
+      gap: .6rem;
+      flex-wrap: wrap;
+      padding-top: .15rem;
+    }
+
+    .stay-link{
+      font-family: Inter, sans-serif;
+      text-decoration:none !important;
+      color: var(--ink) !important;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      padding: .85rem 1.2rem;
+      min-width: 0;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      box-sizing: border-box;
+      border: 2px solid rgba(91,31,45,.35);
+      border-radius: 999px !important;
+      background: transparent !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+
+      transition: color .18s ease, border-color .18s ease;
+      white-space: nowrap;
+    }
+
+    .stay-link:hover,
+    .stay-link:focus,
+    .stay-link:focus-visible,
+    .stay-link:active{
+      color: var(--frame-blue) !important;
+      border-color: var(--frame-blue) !important;
+      background: transparent !important;
+      text-decoration:none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+      border-radius: 999px !important;
+    }
+
+    /* Back button: same locked pill behavior */
+    .back{
+      font-family: Inter, sans-serif;
+      display:inline-flex;
+      margin: 3.2rem auto 0 auto;
+      padding: 1rem 1.8rem;
+
+      box-sizing: border-box;
+      border: 2px solid rgba(91,31,45,.35);
+      border-radius: 999px !important;
+      text-decoration:none !important;
+
+      color: var(--ink) !important;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+
+      background: transparent !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+
+      transition: color .18s ease, border-color .18s ease;
+    }
+
+    .back:hover,
+    .back:focus,
+    .back:focus-visible,
+    .back:active{
+      color: var(--frame-blue) !important;
+      border-color: var(--frame-blue) !important;
+      background: transparent !important;
+      text-decoration:none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+      border-radius: 999px !important;
+    }
+
+    @media (max-width: 720px){
+      .frame{
+        padding: 3rem 1.6rem;
+      }
+      .frame::before{
+        inset: 18px;
+      }
+
+      .stay{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stay-right{
+        width: 100%;
+        justify-content:flex-start;
+        margin-top: .85rem;
+      }
+
+      .detail-label{
+        min-width: 74px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="frame">
+      <div class="inner">
+
+        <header>
+          <h1 class="title">{{ .Title }}</h1>
+          {{ with .Params.subtitle }}
+            <div class="subtitle">{{ . }}</div>
+          {{ end }}
+
+          {{/* Total capacity across stays (single=1, double=2). Stays without bed counts contribute 0. */}}
+          {{ $totalCapacity := 0 }}
+          {{ range .Params.stays }}
+            {{ $sb := .single_beds | default 0 }}
+            {{ $db := .double_beds | default 0 }}
+            {{ $totalCapacity = add $totalCapacity (add (mul $db 2) $sb) }}
+          {{ end }}
+
+          {{ if gt $totalCapacity 0 }}
+            <div class="subtitle-capacity">
+              <span class="chip chip-strong">{{ $totalCapacity }} persons total</span>
+            </div>
+          {{ end }}
+        </header>
+
+        <section class="prose">
+          {{ .Content }}
+        </section>
+
+        <section class="stay-list" aria-label="Places to stay">
+          {{ range .Params.stays }}
+            <article class="stay">
+              <div class="stay-left">
+
+                <h2 class="stay-name">{{ .name }}</h2>
+
+                {{ $sb := .single_beds | default 0 }}
+                {{ $db := .double_beds | default 0 }}
+                {{ $total := add (mul $db 2) $sb }}
+
+                {{ if or (gt $sb 0) (gt $db 0) }}
+                  <div class="capacity-row">
+                    <span class="chip chip-strong">{{ $total }} persons</span>
+                    <span class="capacity-text">distributed across</span>
+                    <span class="chip">
+                      {{ if gt $db 0 }}{{ $db }} double bed{{ if ne $db 1 }}s{{ end }}{{ end }}
+                      {{ if and (gt $db 0) (gt $sb 0) }} · {{ end }}
+                      {{ if gt $sb 0 }}{{ $sb }} single bed{{ if ne $sb 1 }}s{{ end }}{{ end }}
+                    </span>
+                  </div>
+                {{ end }}
+
+                <div class="details">
+                  {{ with .address }}
+                    <div class="detail">
+                      <div class="detail-label">Address</div>
+                      <div class="detail-value">{{ . }}</div>
+                    </div>
+                  {{ end }}
+
+                  {{ with .note }}
+                    <div class="detail">
+                      <div class="detail-label">Notes</div>
+                      <div class="detail-value">{{ . }}</div>
+                    </div>
+                  {{ end }}
+                </div>
+              </div>
+
+              <div class="stay-right">
+                {{ with .link }}
+                  <a class="stay-link" href="{{ . }}" target="_blank" rel="noopener">Link</a>
+                {{ end }}
+
+                {{ with .phone }}
+                  <a class="stay-link" href="tel:{{ . }}">Call</a>
+                {{ end }}
+
+                {{ with .email }}
+                  <a class="stay-link" href="mailto:{{ . }}">Email</a>
+                {{ end }}
+              </div>
+            </article>
+          {{ end }}
+        </section>
+
+        <a class="back" href="../">Back</a>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>
