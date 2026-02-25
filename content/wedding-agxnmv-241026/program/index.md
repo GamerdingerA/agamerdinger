@@ -1,45 +1,48 @@
 ---
 title: "Program"
-subtitle: "An overview of the day"
+subtitle: "An overview of the celebration"
 robots: "noindex, nofollow"
 sitemap:
   disable: true
 
 day1:
-  date: "24. October"
+  date: "24 October"
   schedule:
     - icon: "rings"
-      label: "Ceremony"
-      time: "15:00-16:00"
-      note: "Arrival and seating up to 30 min. before."
+      label: "Ceremony at Allerslev Kirke"
+      time: "15:00–16:00"
+      note: "The ceremony will be held at Allerslev Kirke, Kirkestræde 2, 4720 Præstø. Kindly arrive 30 minutes early."
+
     - icon: "champagne"
-      label: "Reception at Oremansgaard Gods"
-      time: "17:00"
-      note: "Cheers, snacks and aperatives."
+      label: "Reception at Oremandsgaard Gods"
+      time: "16:30–18:00"
+      note: "The reception will be held at Oremandsgaard Alle 2, 4720 Præstø."
+
     - icon: "bus"
-      label: "Transport to the party location"
+      label: "Transport to Husflidsskolen"
       time: "18:00"
-      note: "Mini-busses will take care of the transport."
+      note: "Mini-buses will transport guests to Husflidsskolen, Kragevigvej 13, 4720 Præstø."
+
     - icon: "meal"
-      label: "Dinner"
-      time: "18:30"
-      note: "Three course meal, and speeches during the evening."
+      label: "Dinner at Husflidsskolen"
+      time: "18:30–23:30"
+      note: "A three-course dinner, accompanied by speeches and festive interludes throughout the evening."
+
     - icon: "disco"
-      label: "Let’s party"
-      time: "24:00-04:00"
-      note: "Dance floor opens."
+      label: "The Bridal Waltz and Evening Celebration"
+      time: "23:45–04:00"
+      note: "The traditional bridal waltz, followed by dancing and late-night festivities."
 
 day2:
-  date: "25. October"
+  date: "25 October"
   schedule:
     - icon: "breakfast"
-      label: "Breakfast"
-      time: "09:30-11:00"
-      note: "Coffee, tea, and an easy start to the day."
-    - icon: "goodbye"
-      label: "Leaving & saying goodbye"
-      time: "12:00"
-      note: "Thank you for celebrating with us."
----
+      label: "Breakfast at Oremandsgaard Gods"
+      time: "09:30–11:00"
+      note: "For those staying nearby, breakfast will be served at Oremandsgaard Gods."
 
-Please note that we’ll keep this program updated. Times are indicative and may shift slightly on the day.
+    - icon: "goodbye"
+      label: "Farewell"
+      time: "12:00"
+      note: "Thank you for celebrating this special weekend with us."
+---

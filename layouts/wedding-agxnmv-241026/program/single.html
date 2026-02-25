@@ -279,90 +279,118 @@
     }
 
     @media (max-width: 720px){
+
+    /* overall breathing room */
+    .wrap{
+      padding: 1.6rem .9rem;
+    }
+  
     .frame{
-      padding: 3rem 1.6rem;
+      padding: 3rem 1.2rem;
     }
     .frame::before{
       inset: 10px;
     }
   
-    /* Reduce main content paragraph size */
-    .prose p{
-      font-size: 1.15rem;   /* was 1.3rem */
-      line-height: 1.6;
-      text-align: center;
-    }
-    
-    /* Reduce subheading size */
+    /* typography */
     .subtitle{
-      font-size: 1rem;   /* was 1.3rem */
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+  
+    .prose{
+      text-align: center;
+    }
+    .prose p{
+      font-size: 1.15rem;
       line-height: 1.6;
       text-align: center;
     }
-    
-    .timeline{
-      --icon-col: 92px;     /* keep icon column */
-      --buffer-col: 3px;    /* ↓ was 18px: tighter space between icon and line */
-      --line-col: 10px;     /* ↓ was 26px: slightly slimmer line column */
-      --gap: 10px;          /* ↓ was 18px: more room for text */
-      row-gap: 60px;        /* a bit tighter vertically */
   
-      /* line position: bring it slightly LEFT compared to your current */
-      --line-shift: 20px;   /* ↓ was 40px */
-  
-      /* dot must sit exactly on line (keep same shift) */
-      --dot-shift: -24px;   /* match the line-shift direction */
+    /* spacing between days (before 25 October block) */
+    .day + .day{
+      margin-top: 5.2rem;
     }
   
-    /* Make content column actually shrink instead of overflowing */
+    /* TIMELINE GRID: make room for text on the right */
+    .timeline{
+      max-width: 100%;
+      padding: 0;
+      margin-top: 4.6rem;
+      margin-bottom: 2rem;
+  
+      --icon-col: 65px;
+      --buffer-col: 5px;
+      --line-col: 5px;
+      --gap: 10px;
+  
+      /* IMPORTANT: keep dot on the line using ONE shift only */
+      --line-shift: 10px;
+      --dot-shift: -20px;
+  
+      row-gap: clamp(80px, 10vw, 120px);
+    }
+  
+    /* START THE LINE LOWER (so it begins where first entry begins) */
+    .timeline::before{
+      top: 2px;     /* push line down a bit */
+      bottom: 0;
+    }
+  
+    /* Make the first event sit lower too (matches line top) */
+    .day:first-of-type .timeline{
+      padding-top: 14px;
+    }
+  
+    /* row heights */
+    .t-icon, .t-buffer, .t-dot, .t-content{
+      height: 96px;
+      min-height: 96px;
+    }
+  
+    /* icons */
+    .t-icon img{
+      width: 64px;
+      height: 64px;
+    }
+  
+    /* text fit + wrapping */
     .t-content{
       min-width: 0;
     }
   
-    /* Force wrapping so headings/notes don’t spill outside */
     .t-label,
     .t-note{
       white-space: normal;
       overflow-wrap: anywhere;
-      word-break: normal;
     }
   
-    /* Slightly reduce big label size on mobile so it fits */
     .t-label{
-      font-size: 1.35rem;   /* ↓ was 1.6rem */
+      font-size: 1.20rem;
       line-height: 1.2;
+      margin: 0;
     }
   
     .t-time{
-      font-size: 1.05rem;   /* ↓ was 1.2rem */
+      font-size: 1.0rem;
       letter-spacing: .08em;
+      margin-top: .2rem;
     }
   
     .t-note{
-      font-size: 1.05rem;   /* ↓ was 1.15rem */
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.3;
+      margin-top: .35rem;
     }
   
-    /* Keep row height reasonable */
-    .t-icon, .t-buffer, .t-dot, .t-content{
-      min-height: 105px;
-      height: 105px;
-    }
-  
-    /* Slightly smaller icons on mobile so everything breathes */
-    .t-icon img{
-      width: 96px;
-      height: 96px;
-    }
-    
-    /* Smaller back button on mobile */
+    /* smaller back button + no extra bottom feel */
     .back{
-      margin: 2.5rem auto 0 auto;   /* slightly less spacing above */
-      padding: .7rem 1.2rem;        /* smaller pill */
-      font-size: .75rem;            /* smaller text */
-      letter-spacing: .06em;        /* slightly softer spacing */
+      margin: 1.6rem auto 0 auto;
+      padding: .65rem 1.1rem;
+      font-size: .75rem;
+      letter-spacing: .06em;
     }
-    
   }
   </style>
 </head>
