@@ -286,7 +286,7 @@
     }
   
     .frame{
-      padding: 3rem 1.2rem;
+      padding: 3rem 1.8rem;
     }
     .frame::before{
       inset: 10px;
@@ -310,37 +310,37 @@
   
     /* spacing between days (before 25 October block) */
     .day + .day{
-      margin-top: 5.2rem;
+      margin-top: 3.0rem;
     }
   
     /* TIMELINE GRID: make room for text on the right */
     .timeline{
       max-width: 100%;
       padding: 0;
-      margin-top: 4.6rem;
+      margin-top: 3.5rem;
       margin-bottom: 2rem;
   
-      --icon-col: 65px;
-      --buffer-col: 5px;
-      --line-col: 5px;
+      --icon-col: 70px;
+      --buffer-col:5px;
+      --line-col: 10px;
       --gap: 10px;
   
       /* IMPORTANT: keep dot on the line using ONE shift only */
       --line-shift: 10px;
       --dot-shift: -20px;
   
-      row-gap: clamp(80px, 10vw, 120px);
+      row-gap: clamp(70px, 10vw, 120px);
     }
   
     /* START THE LINE LOWER (so it begins where first entry begins) */
     .timeline::before{
-      top: 2px;     /* push line down a bit */
+      top: 0px;     /* push line down a bit */
       bottom: 0;
     }
   
     /* Make the first event sit lower too (matches line top) */
     .day:first-of-type .timeline{
-      padding-top: 14px;
+      padding-top: 10px;
     }
   
     /* row heights */
@@ -367,7 +367,7 @@
     }
   
     .t-label{
-      font-size: 1.20rem;
+      font-size: 1.25rem;
       line-height: 1.2;
       margin: 0;
     }
