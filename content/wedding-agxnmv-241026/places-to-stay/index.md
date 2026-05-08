@@ -1,6 +1,8 @@
 ---
 title: "Places to stay"
 subtitle: "A short list of nearby options"
+subtitle_da: "En kort liste over overnatningsmuligheder i nærheden"
+subtitle_de: "Eine kurze Liste nahegelegener Übernachtungsmöglichkeiten"
 robots: "noindex, nofollow"
 sitemap:
   disable: true

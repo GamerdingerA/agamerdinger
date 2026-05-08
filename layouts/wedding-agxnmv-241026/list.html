@@ -224,6 +224,20 @@
       }
       
     }
+
+    /* === Language switcher === */
+    .lang-switcher{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-bottom:1.6rem;}
+    .lang-btn{background:none;border:none;border-bottom:1.5px solid transparent;cursor:pointer;font-family:Inter,sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bordeaux);opacity:.32;padding:.3rem .35rem;transition:opacity .15s;}
+    .lang-btn.active{opacity:1;border-bottom-color:var(--bordeaux);}
+    .lang-sep{opacity:.18;font-size:.8rem;font-family:Inter,sans-serif;}
+    .l-en,.l-da,.l-de{display:none;}
+    body[data-lang="en"] .l-en{display:inline;}
+    body[data-lang="da"] .l-da{display:inline;}
+    body[data-lang="de"] .l-de{display:inline;}
+    .lb-en,.lb-da,.lb-de{display:none;}
+    body[data-lang="en"] .lb-en{display:block;}
+    body[data-lang="da"] .lb-da{display:block;}
+    body[data-lang="de"] .lb-de{display:block;}
   </style>
 </head>
 
@@ -233,16 +247,75 @@
       <div class="inner">
 
         <h1 class="title">Nanna &amp; Alexander</h1>
-        <div class="meta">24 &amp; 25 October 2026 · Oremandsgaard, Præstø</div>
 
-        <section class="prose">
-          {{ .Content }}
+        <div class="lang-switcher">
+          <button class="lang-btn" data-target="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="da">DA</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="de">DE</button>
+        </div>
+
+        <div class="meta lb-en">24 &amp; 25 October 2026 &middot; Oremandsgaard, Præstø</div>
+        <div class="meta lb-da">24. &amp; 25. oktober 2026 &middot; Oremandsgaard, Præstø</div>
+        <div class="meta lb-de">24. &amp; 25. Oktober 2026 &middot; Oremandsgaard, Præstø</div>
+
+        <section class="prose lb-en">
+          <img src="/img/wedding/wedding_venue2.png" alt="Wedding venue illustration" />
+          <p>With great joy, we invite you to celebrate our wedding with us at <a href="https://oremandsgaard.dk/">Oremandsgaard Gods</a>.</p>
+          <p>On this website you'll find the program for the day, information for staying nearby and other practicalities. We'll update details as we get closer to October 2026.</p>
+          <ul>
+            <li><a href="program/">Program</a></li>
+            <li><a href="places-to-stay/">Places to stay</a></li>
+            <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
+          </ul>
         </section>
 
-        <div class="note">Invitation shared via QR code only.</div>
+        <section class="prose lb-da">
+          <img src="/img/wedding/wedding_venue2.png" alt="Illustration af bryllupslokationen" />
+          <p>Med stor glæde inviterer vi jer til at fejre vores bryllup med os på <a href="https://oremandsgaard.dk/">Oremandsgaard Gods</a>.</p>
+          <p>På dette website finder I programmet for dagen, information om overnatning i nærheden og andre praktiske oplysninger. Vi opdaterer detaljerne, efterhånden som vi nærmer os oktober 2026.</p>
+          <ul>
+            <li><a href="program/">Program</a></li>
+            <li><a href="places-to-stay/">Overnatning</a></li>
+            <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
+          </ul>
+        </section>
+
+        <section class="prose lb-de">
+          <img src="/img/wedding/wedding_venue2.png" alt="Illustration des Veranstaltungsorts" />
+          <p>Mit großer Freude laden wir euch ein, unsere Hochzeit mit uns auf <a href="https://oremandsgaard.dk/">Oremandsgaard Gods</a> zu feiern.</p>
+          <p>Auf dieser Website findet ihr das Programm, Informationen zu Übernachtungsmöglichkeiten in der Nähe sowie weitere praktische Hinweise. Wir werden die Details ergänzen, sobald der Oktober 2026 näher rückt.</p>
+          <ul>
+            <li><a href="program/">Programm</a></li>
+            <li><a href="places-to-stay/">Unterkünfte</a></li>
+            <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
+          </ul>
+        </section>
+
+        <div class="note lb-en">Invitation shared via QR code only.</div>
+        <div class="note lb-da">Invitation delt via QR-kode.</div>
+        <div class="note lb-de">Einladung nur per QR-Code geteilt.</div>
 
       </div>
     </div>
   </main>
+
+  <script>
+  (function(){
+    var langs=['en','da','de'];
+    function show(lang){
+      document.body.setAttribute('data-lang',lang);
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.target===lang);
+      });
+    }
+    var nav=(navigator.language||'en').toLowerCase().slice(0,2);
+    show(langs.indexOf(nav)!==-1?nav:'en');
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click',function(){show(b.dataset.target);});
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -1,48 +1,83 @@
 ---
 title: "Program"
+title_de: "Programm"
 subtitle: "An overview of the celebration"
+subtitle_da: "Et overblik over festlighederne"
+subtitle_de: "Ein Überblick über die Feierlichkeiten"
 robots: "noindex, nofollow"
 sitemap:
   disable: true
 
 day1:
   date: "24 October"
+  date_da: "24. oktober"
+  date_de: "24. Oktober"
   schedule:
     - icon: "rings"
       label: "Ceremony at Allerslev Kirke"
+      label_da: "Vielse i Allerslev Kirke"
+      label_de: "Trauung in der Allerslev Kirke"
       time: "15:00–16:00"
       note: "The ceremony will be held at Allerslev Kirke, Kirkestræde 2, 4720 Præstø. Kindly arrive 30 minutes early."
+      note_da: "Vielsen finder sted i Allerslev Kirke, Kirkestræde 2, 4720 Præstø. Vi beder jer ankomme 30 minutter i forvejen."
+      note_de: "Die Trauung findet in der Allerslev Kirke, Kirkestræde 2, 4720 Præstø statt. Bitte erscheint 30 Minuten früher."
 
     - icon: "champagne"
       label: "Reception at Oremandsgaard Gods"
+      label_da: "Modtagelse på Oremandsgaard Gods"
+      label_de: "Empfang auf Oremandsgaard Gods"
       time: "16:30–18:00"
       note: "The reception will be held at Oremandsgaard Alle 2, 4720 Præstø."
+      note_da: "Modtagelsen finder sted på Oremandsgaard Alle 2, 4720 Præstø."
+      note_de: "Der Empfang findet auf Oremandsgaard Alle 2, 4720 Præstø statt."
 
     - icon: "bus"
       label: "Transport to Husflidsskolen"
+      label_da: "Transport til Husflidsskolen"
+      label_de: "Transport zur Husflidsskolen"
       time: "18:00"
       note: "Mini-buses will transport guests to Husflidsskolen, Kragevigvej 13, 4720 Præstø."
+      note_da: "Minibusser kører gæsterne til Husflidsskolen, Kragevigvej 13, 4720 Præstø."
+      note_de: "Kleinbusse bringen die Gäste zur Husflidsskolen, Kragevigvej 13, 4720 Præstø."
 
     - icon: "meal"
       label: "Dinner at Husflidsskolen"
+      label_da: "Middag på Husflidsskolen"
+      label_de: "Abendessen in der Husflidsskolen"
       time: "18:30–23:30"
       note: "A three-course dinner, accompanied by speeches and festive interludes throughout the evening."
+      note_da: "En treretter middag med taler og festlige indslag gennem hele aftenen."
+      note_de: "Ein Drei-Gänge-Menü, begleitet von Reden und festlichen Einlagen den ganzen Abend über."
 
     - icon: "disco"
       label: "The Bridal Waltz and Evening Celebration"
+      label_da: "Brudevals og aftenfest"
+      label_de: "Hochzeitswalzer und Abendfeier"
       time: "23:45–04:00"
       note: "The traditional bridal waltz, followed by dancing and late-night festivities."
+      note_da: "Den traditionelle brudevals efterfulgt af dans og fest til de tidlige morgentimer."
+      note_de: "Der traditionelle Brautwalzer, gefolgt von Tanz und ausgelassener Feier bis in die frühen Morgenstunden."
 
 day2:
   date: "25 October"
+  date_da: "25. oktober"
+  date_de: "25. Oktober"
   schedule:
     - icon: "breakfast"
       label: "Breakfast at Oremandsgaard Gods"
+      label_da: "Morgenmad på Oremandsgaard Gods"
+      label_de: "Frühstück auf Oremandsgaard Gods"
       time: "09:30–11:00"
       note: "For those staying nearby, breakfast will be served at Oremandsgaard Gods."
+      note_da: "For jer der overnatter i nærheden, serveres morgenmad på Oremandsgaard Gods."
+      note_de: "Für alle, die in der Nähe übernachten, wird auf Oremandsgaard Gods Frühstück serviert."
 
     - icon: "goodbye"
       label: "Farewell"
+      label_da: "Farvel"
+      label_de: "Auf Wiedersehen"
       time: "12:00"
       note: "Thank you for celebrating this special weekend with us."
+      note_da: "Tak fordi I fejrede denne særlige weekend med os."
+      note_de: "Danke, dass ihr dieses besondere Wochenende mit uns gefeiert habt."
 ---

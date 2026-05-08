@@ -392,6 +392,24 @@
       letter-spacing: .06em;
     }
   }
+
+    /* === Language switcher === */
+    .lang-switcher{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-bottom:1.6rem;}
+    .lang-btn{background:none;border:none;border-bottom:1.5px solid transparent;cursor:pointer;font-family:Inter,sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bordeaux);opacity:.32;padding:.3rem .35rem;transition:opacity .15s;}
+    .lang-btn.active{opacity:1;border-bottom-color:var(--bordeaux);}
+    .lang-sep{opacity:.18;font-size:.8rem;font-family:Inter,sans-serif;}
+    .l-en,.l-da,.l-de{display:none;}
+    body[data-lang="en"] .l-en{display:inline;}
+    body[data-lang="da"] .l-da{display:inline;}
+    body[data-lang="de"] .l-de{display:inline;}
+    .lb-en,.lb-da,.lb-de{display:none;}
+    body[data-lang="en"] .lb-en{display:block;}
+    body[data-lang="da"] .lb-da{display:block;}
+    body[data-lang="de"] .lb-de{display:block;}
+    .t-content .lb-en,.t-content .lb-da,.t-content .lb-de{display:none;flex-direction:column;justify-content:center;}
+    body[data-lang="en"] .t-content .lb-en{display:flex;}
+    body[data-lang="da"] .t-content .lb-da{display:flex;}
+    body[data-lang="de"] .t-content .lb-de{display:flex;}
   </style>
 </head>
 
@@ -400,11 +418,25 @@
     <div class="frame">
       <div class="inner">
 
+        <div class="lang-switcher">
+          <button class="lang-btn" data-target="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="da">DA</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="de">DE</button>
+        </div>
+
         <header>
-          <h1 class="title">{{ .Title }}</h1>
-          {{ with .Params.subtitle }}
-            <div class="subtitle">{{ . }}</div>
-          {{ end }}
+          <h1 class="title">
+            <span class="l-en">{{ .Title }}</span>
+            <span class="l-da">{{ .Title }}</span>
+            <span class="l-de">{{ .Params.title_de | default .Title }}</span>
+          </h1>
+          <div class="subtitle">
+            <span class="l-en">{{ .Params.subtitle }}</span>
+            <span class="l-da">{{ .Params.subtitle_da | default .Params.subtitle }}</span>
+            <span class="l-de">{{ .Params.subtitle_de | default .Params.subtitle }}</span>
+          </div>
         </header>
 
         <section class="prose">
@@ -413,7 +445,11 @@
 
         {{ with .Params.day1 }}
           <section class="day">
-            <h2 class="day-title">{{ .date }}</h2>
+            <h2 class="day-title">
+              <span class="l-en">{{ .date }}</span>
+              <span class="l-da">{{ .date_da | default .date }}</span>
+              <span class="l-de">{{ .date_de | default .date }}</span>
+            </h2>
 
             <div class="timeline">
               {{ range .schedule }}
@@ -426,9 +462,21 @@
                 <div class="t-dot" aria-hidden="true"></div>
 
                 <div class="t-content">
-                  <p class="t-label">{{ .label }}</p>
-                  <div class="t-time">{{ .time }}</div>
-                  {{ with .note }}<div class="t-note">{{ . }}</div>{{ end }}
+                  <div class="lb-en">
+                    <p class="t-label">{{ .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
+                  <div class="lb-da">
+                    <p class="t-label">{{ .label_da | default .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note_da }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
+                  <div class="lb-de">
+                    <p class="t-label">{{ .label_de | default .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note_de }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
                 </div>
               {{ end }}
             </div>
@@ -437,7 +485,11 @@
 
         {{ with .Params.day2 }}
           <section class="day">
-            <h2 class="day-title">{{ .date }}</h2>
+            <h2 class="day-title">
+              <span class="l-en">{{ .date }}</span>
+              <span class="l-da">{{ .date_da | default .date }}</span>
+              <span class="l-de">{{ .date_de | default .date }}</span>
+            </h2>
 
             <div class="timeline">
               {{ range .schedule }}
@@ -450,19 +502,52 @@
                 <div class="t-dot" aria-hidden="true"></div>
 
                 <div class="t-content">
-                  <p class="t-label">{{ .label }}</p>
-                  <div class="t-time">{{ .time }}</div>
-                  {{ with .note }}<div class="t-note">{{ . }}</div>{{ end }}
+                  <div class="lb-en">
+                    <p class="t-label">{{ .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
+                  <div class="lb-da">
+                    <p class="t-label">{{ .label_da | default .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note_da }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
+                  <div class="lb-de">
+                    <p class="t-label">{{ .label_de | default .label }}</p>
+                    <div class="t-time">{{ .time }}</div>
+                    {{ with .note_de }}<div class="t-note">{{ . }}</div>{{ end }}
+                  </div>
                 </div>
               {{ end }}
             </div>
           </section>
         {{ end }}
 
-        <a class="back" href="../">Back</a>
+        <a class="back" href="../">
+          <span class="l-en">Back</span>
+          <span class="l-da">Tilbage</span>
+          <span class="l-de">Zurück</span>
+        </a>
 
       </div>
     </div>
   </main>
+
+  <script>
+  (function(){
+    var langs=['en','da','de'];
+    function show(lang){
+      document.body.setAttribute('data-lang',lang);
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.target===lang);
+      });
+    }
+    var nav=(navigator.language||'en').toLowerCase().slice(0,2);
+    show(langs.indexOf(nav)!==-1?nav:'en');
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click',function(){show(b.dataset.target);});
+    });
+  })();
+  </script>
 </body>
 </html>

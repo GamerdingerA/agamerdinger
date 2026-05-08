@@ -438,6 +438,20 @@
         letter-spacing: .06em;        /* slightly softer spacing */
       }
     }
+
+    /* === Language switcher === */
+    .lang-switcher{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-bottom:1.6rem;}
+    .lang-btn{background:none;border:none;border-bottom:1.5px solid transparent;cursor:pointer;font-family:Inter,sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bordeaux);opacity:.32;padding:.3rem .35rem;transition:opacity .15s;}
+    .lang-btn.active{opacity:1;border-bottom-color:var(--bordeaux);}
+    .lang-sep{opacity:.18;font-size:.8rem;font-family:Inter,sans-serif;}
+    .l-en,.l-da,.l-de{display:none;}
+    body[data-lang="en"] .l-en{display:inline;}
+    body[data-lang="da"] .l-da{display:inline;}
+    body[data-lang="de"] .l-de{display:inline;}
+    .lb-en,.lb-da,.lb-de{display:none;}
+    body[data-lang="en"] .lb-en{display:block;}
+    body[data-lang="da"] .lb-da{display:block;}
+    body[data-lang="de"] .lb-de{display:block;}
   </style>
 </head>
 
@@ -446,11 +460,25 @@
     <div class="frame">
       <div class="inner">
 
+        <div class="lang-switcher">
+          <button class="lang-btn" data-target="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="da">DA</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="de">DE</button>
+        </div>
+
         <header>
-          <h1 class="title">{{ .Title }}</h1>
-          {{ with .Params.subtitle }}
-            <div class="subtitle">{{ . }}</div>
-          {{ end }}
+          <h1 class="title">
+            <span class="l-en">{{ .Title }}</span>
+            <span class="l-da">Overnatning</span>
+            <span class="l-de">Unterkünfte</span>
+          </h1>
+          <div class="subtitle">
+            <span class="l-en">{{ .Params.subtitle }}</span>
+            <span class="l-da">{{ .Params.subtitle_da | default .Params.subtitle }}</span>
+            <span class="l-de">{{ .Params.subtitle_de | default .Params.subtitle }}</span>
+          </div>
 
           {{/* Total capacity across stays (single=1, double=2). Stays without bed counts contribute 0. */}}
           {{ $totalCapacity := 0 }}
@@ -462,13 +490,27 @@
 
           {{ if gt $totalCapacity 0 }}
             <div class="subtitle-capacity">
-              <span class="chip chip-strong">{{ $totalCapacity }} persons total</span>
+              <span class="chip chip-strong">{{ $totalCapacity }} <span class="l-en">persons total</span><span class="l-da">personer i alt</span><span class="l-de">Personen insgesamt</span></span>
             </div>
           {{ end }}
         </header>
 
         <section class="prose">
-          {{ .Content }}
+          <div class="lb-en">
+            <p>We encourage you to stay close to Oremandsgaard Gods. In principle, there should be sufficient accommodation for everyone, provided the available places are not booked by other visitors.</p>
+            <p>Once you have made your reservation, please let us know which accommodation you have chosen. This allows us to keep the list updated and indicate which options remain available for other guests.</p>
+            <p>If you would like to share accommodation with other guests, please coordinate directly among yourselves.</p>
+          </div>
+          <div class="lb-da">
+            <p>Vi opfordrer jer til at overnatte tæt på Oremandsgaard Gods. I princippet er der nok pladser til alle, forudsat at de tilgængelige steder ikke er booket af andre gæster.</p>
+            <p>Når I har foretaget jeres reservation, beder vi jer give os besked om, hvilken overnatning I har valgt. Det giver os mulighed for at holde listen opdateret og angive, hvilke muligheder der stadig er ledige for andre gæster.</p>
+            <p>Hvis I ønsker at dele overnatning med andre gæster, bedes I koordinere dette direkte indbyrdes.</p>
+          </div>
+          <div class="lb-de">
+            <p>Wir empfehlen euch, in der Nähe von Oremandsgaard Gods zu übernachten. Im Prinzip sollte es ausreichend Unterkünfte für alle geben, sofern die verfügbaren Plätze nicht bereits von anderen Gästen gebucht wurden.</p>
+            <p>Sobald ihr eure Reservierung vorgenommen habt, bitten wir euch, uns mitzuteilen, welche Unterkunft ihr gewählt habt. So können wir die Liste aktuell halten und anzeigen, welche Optionen noch für andere Gäste verfuegbar sind.</p>
+            <p>Falls ihr eine Unterkunft mit anderen Gästen teilen möchtet, koordiniert dies bitte direkt untereinander.</p>
+          </div>
         </section>
 
         <section class="stay-list" aria-label="Places to stay">
@@ -488,7 +530,7 @@
                     <span class="capacity-text">distributed across</span>
                     <span class="chip">
                       {{ if gt $db 0 }}{{ $db }} double bed{{ if ne $db 1 }}s{{ end }}{{ end }}
-                      {{ if and (gt $db 0) (gt $sb 0) }} · {{ end }}
+                      {{ if and (gt $db 0) (gt $sb 0) }} &middot; {{ end }}
                       {{ if gt $sb 0 }}{{ $sb }} single bed{{ if ne $sb 1 }}s{{ end }}{{ end }}
                     </span>
                   </div>
@@ -528,10 +570,31 @@
           {{ end }}
         </section>
 
-        <a class="back" href="../">Back</a>
+        <a class="back" href="../">
+          <span class="l-en">Back</span>
+          <span class="l-da">Tilbage</span>
+          <span class="l-de">Zurück</span>
+        </a>
 
       </div>
     </div>
   </main>
+
+  <script>
+  (function(){
+    var langs=['en','da','de'];
+    function show(lang){
+      document.body.setAttribute('data-lang',lang);
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.target===lang);
+      });
+    }
+    var nav=(navigator.language||'en').toLowerCase().slice(0,2);
+    show(langs.indexOf(nav)!==-1?nav:'en');
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click',function(){show(b.dataset.target);});
+    });
+  })();
+  </script>
 </body>
 </html>
