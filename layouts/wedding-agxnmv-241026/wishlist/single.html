@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{{ .Title }}</title>
+
+  {{ partial "head.html" . }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bordeaux:#5b1f2d;
+      --paper:#FFFCF4;
+      --ink: var(--bordeaux);
+      --soft: rgba(91,31,45,.06);
+      --frame-blue:#C9DAEA;
+      --frame-blue-soft: rgba(201,218,234,.18);
+      --frame-blue-soft2: rgba(201,218,234,.10);
+      --frame-blue-strong: rgba(201,218,234,.55);
+      --border: rgba(91,31,45,.35);
+      --border2: rgba(91,31,45,.18);
+      --shadow: 0 12px 28px rgba(0,0,0,.04);
+    }
+
+    body{
+      background: var(--paper);
+      color: var(--ink);
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 4rem 1.5rem;
+    }
+
+    .frame{
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      background: var(--paper);
+      padding: 4rem 2.6rem;
+      border-radius: 18px;
+    }
+
+    .frame::before{
+      content:"";
+      position:absolute;
+      inset: 22px;
+      border: 2.5px solid var(--frame-blue);
+      border-radius: 60px;
+      pointer-events:none;
+    }
+
+    .inner{
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .title{
+      font-family: "Corinthia", cursive;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin: 0;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .subtitle{
+      margin-top: .5rem;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      letter-spacing: .06em;
+      color: var(--ink);
+      opacity: .9;
+    }
+
+    /* Ornamental divider */
+    .ornament{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .9rem;
+      margin: 2.2rem auto 0 auto;
+      max-width: 260px;
+    }
+    .ornament::before,
+    .ornament::after{
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,218,234,.9), transparent);
+    }
+    .ornament-diamond{
+      width: .45rem;
+      height: .45rem;
+      background: var(--frame-blue);
+      transform: rotate(45deg);
+      opacity: .8;
+      flex: 0 0 auto;
+    }
+
+    /* Wish list */
+    .wish-list{
+      max-width: 440px;
+      margin: 3.5rem auto 0 auto;
+      text-align: left;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+    }
+
+    .wish-item{
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding: .55rem .65rem;
+      border-radius: 8px;
+      transition: background .18s;
+    }
+
+    .wish-item:hover{
+      background: rgba(201,218,234,.22);
+    }
+
+    .wish-bullet{
+      flex: 0 0 auto;
+      width: .35rem;
+      height: .35rem;
+      border-radius: 50%;
+      background: var(--bordeaux);
+      opacity: .45;
+      margin-top: .58rem;
+    }
+
+    .wish-text{
+      flex: 1 1 auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .wish-text a{
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(91,31,45,.35);
+      font-weight: 500;
+      transition: border-color .15s;
+    }
+
+    .wish-text a:hover{
+      border-bottom-color: var(--bordeaux);
+      background: rgba(91,31,45,.04);
+    }
+
+    .wish-note{
+      display: block;
+      margin-top: .3rem;
+      font-size: 1rem;
+      opacity: .7;
+      font-style: italic;
+    }
+
+    /* Back button */
+    .back{
+      font-family: Inter, sans-serif;
+      display: inline-flex;
+      margin: 3.5rem auto 0 auto;
+      padding: 1rem 1.8rem;
+      box-sizing: border-box;
+      border: 2px solid rgba(91,31,45,.35);
+      border-radius: 999px !important;
+      text-decoration: none !important;
+      color: var(--ink) !important;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      background: transparent !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transition: color .18s ease, border-color .18s ease;
+    }
+
+    .back:hover,
+    .back:focus{
+      color: var(--frame-blue) !important;
+      border-color: var(--frame-blue) !important;
+      background: transparent !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    @media (max-width: 720px){
+      .frame{
+        padding: 3rem 1.6rem;
+      }
+      .frame::before{
+        inset: 10px;
+      }
+      .subtitle{
+        font-size: 1rem;
+      }
+      .wish-text{
+        font-size: 1.1rem;
+      }
+      .back{
+        padding: .7rem 1.2rem;
+        font-size: .75rem;
+        letter-spacing: .06em;
+        margin-top: 2.5rem;
+      }
+    }
+
+    /* === Language switcher === */
+    .lang-switcher{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-bottom:1.6rem;}
+    .lang-btn{background:none;border:none;border-bottom:1.5px solid transparent;cursor:pointer;font-family:Inter,sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bordeaux);opacity:.32;padding:.3rem .35rem;transition:opacity .15s;}
+    .lang-btn.active{opacity:1;border-bottom-color:var(--bordeaux);}
+    .lang-sep{opacity:.18;font-size:.8rem;font-family:Inter,sans-serif;}
+    .l-en,.l-da,.l-de{display:none;}
+    body[data-lang="en"] .l-en{display:inline;}
+    body[data-lang="da"] .l-da{display:inline;}
+    body[data-lang="de"] .l-de{display:inline;}
+    .lb-en,.lb-da,.lb-de{display:none;}
+    body[data-lang="en"] .lb-en{display:block;}
+    body[data-lang="da"] .lb-da{display:block;}
+    body[data-lang="de"] .lb-de{display:block;}
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="frame">
+      <div class="inner">
+
+        <div class="lang-switcher">
+          <button class="lang-btn" data-target="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="da">DA</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-target="de">DE</button>
+        </div>
+
+        <header>
+          <h1 class="title">
+            <span class="l-en">{{ .Title }}</span>
+            <span class="l-da">{{ .Params.title_da | default .Title }}</span>
+            <span class="l-de">{{ .Params.title_de | default .Title }}</span>
+          </h1>
+          <div class="subtitle">
+            <span class="l-en">{{ .Params.subtitle }}</span>
+            <span class="l-da">{{ .Params.subtitle_da | default .Params.subtitle }}</span>
+            <span class="l-de">{{ .Params.subtitle_de | default .Params.subtitle }}</span>
+          </div>
+        </header>
+
+        <div class="ornament">
+          <span class="ornament-diamond"></span>
+        </div>
+
+        <!-- EN list -->
+        <div class="lb-en">
+          <ol class="wish-list" style="list-style:none;padding:0;">
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Matching towels and bathrobes</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Contribution to honeymoon or experiences</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Oak dining chairs / contribution towards — preferably classic Danish design</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Le Klint or Louis Poulsen pendant light for above the dining table<span class="wish-note"><a href="https://www.illumsbolighus.dk/lamper/pendler/ph-5-pendel-classic-hvid-901146244.html" target="_blank" rel="noopener">PH 5 Classic White</a> &nbsp;&middot;&nbsp; <a href="https://www.illumsbolighus.dk/lamper/pendler/ph-3%2F2-pendel-krom-900874672.html" target="_blank" rel="noopener">PH 3/2 Chrome</a></span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Fruit trees or berry bushes for the summer house</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Beautiful tablecloths for the dining table</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Georg Jensen Bernadotte tableware<span class="wish-note">Cake forks, thermos jug, cake knife</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Royal Copenhagen Princess tableware<span class="wish-note">Everything except teapot and large bowl</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Lovely towels in white, beige or light blue</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Sage coffee machine with built-in grinder</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Bird feeder for the summer house</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Robot vacuum cleaner</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">A thick wooden cutting board</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Bed linen</span></li>
+          </ol>
+        </div>
+
+        <!-- DA list -->
+        <div class="lb-da">
+          <ol class="wish-list" style="list-style:none;padding:0;">
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Matchende håndklæder og badekåber</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Tilskud til bryllupsrejse eller oplevelser</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Spisebordsstole i egetræ / tilskud til — gerne klassisk dansk design</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Le Klint eller Louis Poulsen pendel til over spisebordet<span class="wish-note"><a href="https://www.illumsbolighus.dk/lamper/pendler/ph-5-pendel-classic-hvid-901146244.html" target="_blank" rel="noopener">PH 5 Classic hvid</a> &nbsp;&middot;&nbsp; <a href="https://www.illumsbolighus.dk/lamper/pendler/ph-3%2F2-pendel-krom-900874672.html" target="_blank" rel="noopener">PH 3/2 krom</a></span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Frugttræer eller bærbuske til sommerhuset</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Lækre duge til spisebordet</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Georg Jensen Bernadotte stel<span class="wish-note">Kagegafler, termokande, kagekniv</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Royal Copenhagen Prinsesse stel<span class="wish-note">Alt undtaget tekande og stor skål</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Lækre håndklæder i enten hvid, beige eller lyseblå</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Sage kaffemaskine med indbygget kværn</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Fuglefoderbræt til sommerhuset</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Robotstøvsuger</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Et tykt skærebræt i træ</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Sengetøj</span></li>
+          </ol>
+        </div>
+
+        <!-- DE list -->
+        <div class="lb-de">
+          <ol class="wish-list" style="list-style:none;padding:0;">
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Passende Handtücher und Bademäntel</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Beitrag zur Hochzeitsreise oder zu Erlebnissen</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Esstischstühle aus Eiche / Beitrag dazu — gerne im klassischen dänischen Design</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Le Klint oder Louis Poulsen Pendelleuchte über dem Esstisch<span class="wish-note"><a href="https://www.illumsbolighus.dk/lamper/pendler/ph-5-pendel-classic-hvid-901146244.html" target="_blank" rel="noopener">PH 5 Classic Weiß</a> &nbsp;&middot;&nbsp; <a href="https://www.illumsbolighus.dk/lamper/pendler/ph-3%2F2-pendel-krom-900874672.html" target="_blank" rel="noopener">PH 3/2 Chrom</a></span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Obstbäume oder Beerensträucher für das Sommerhaus</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Schöne Tischdecken für den Esstisch</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Georg Jensen Bernadotte Geschirr<span class="wish-note">Kuchengabeln, Thermoskanne, Kuchenmesser</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Royal Copenhagen Prinzessin Geschirr<span class="wish-note">Alles außer Teekanne und großer Schüssel</span></span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Schöne Handtücher in Weiß, Beige oder Hellblau</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Sage Kaffeemaschine mit eingebautem Mahlwerk</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Vogelfutterbrett für das Sommerhaus</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Saugroboter</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Ein dickes Holzschneidebrett</span></li>
+            <li class="wish-item"><span class="wish-bullet"></span><span class="wish-text">Bettwäsche</span></li>
+          </ol>
+        </div>
+
+        <a class="back" href="../">
+          <span class="l-en">Back</span>
+          <span class="l-da">Tilbage</span>
+          <span class="l-de">Zurück</span>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+  (function(){
+    var langs=['en','da','de'];
+    function show(lang){
+      document.body.setAttribute('data-lang',lang);
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.target===lang);
+      });
+    }
+    var nav=(navigator.language||'en').toLowerCase().slice(0,2);
+    show(langs.indexOf(nav)!==-1?nav:'en');
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click',function(){show(b.dataset.target);});
+    });
+  })();
+  </script>
+</body>
+</html>

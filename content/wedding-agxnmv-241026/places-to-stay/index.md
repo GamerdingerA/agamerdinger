@@ -8,36 +8,6 @@ sitemap:
   disable: true
 
 stays:
-  - name: "Accomodation at Stine Grøn"
-    phone: "+45 61 28 36 36"
-    double_beds: 4
-    address: "Oremandsgaard Allé 2, 4720 Præstø"
-    note: "Stine has four double rooms."
-
-  - name: "Accomodation at Louise Hartmann"
-    phone: "+45 24 29 79 44"
-    single_beds: 7
-    address: "Sandvig Kohave 3, 4735 Mern"
-    note: "The seven beds are distributed among three rooms and a shared bathroom/toilet. "
-
-  - name: "Accomodation at Helle & Frederik"
-    phone: "+45 61 78 46 10"
-    address: "Kragevigvej 7, 4720 Præstø"
-    double_beds: 1
-    note: "1 room with private bathroom."
-
-  - name: "Accomodation at Carsten & Birthe"
-    phone: "+45 23 20 50 30"
-    address: "Kragevigvej 9, 4720 Præstø"
-    double_beds: 3
-    note: "3 rooms with double beds. 1 bathroom."
-
-  - name: "Accomodation at John and Philip"
-    phone: "+45 71 14 35 95"
-    double_beds: 3
-    address: "Æblehuset, Oremandsgaard Allé, 4720 Præstø"
-    note: "3 rooms with double beds. 1 bathroom."
-
   - name: "Annex at Fuglsanggaard"
     phone: "+45 23 93 60 09"
     email: "familienboehm@hotmail.com"

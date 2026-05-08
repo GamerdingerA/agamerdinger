@@ -410,6 +410,11 @@
     body[data-lang="en"] .t-content .lb-en{display:flex;}
     body[data-lang="da"] .t-content .lb-da{display:flex;}
     body[data-lang="de"] .t-content .lb-de{display:flex;}
+
+    /* Ornamental divider */
+    .ornament{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:2.2rem auto 0 auto;max-width:260px;}
+    .ornament::before,.ornament::after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,218,234,.9),transparent);}
+    .ornament-diamond{width:.45rem;height:.45rem;background:var(--frame-blue);transform:rotate(45deg);opacity:.8;flex:0 0 auto;}
   </style>
 </head>
 
@@ -438,6 +443,8 @@
             <span class="l-de">{{ .Params.subtitle_de | default .Params.subtitle }}</span>
           </div>
         </header>
+
+        <div class="ornament"><span class="ornament-diamond"></span></div>
 
         <section class="prose">
           {{ .Content }}

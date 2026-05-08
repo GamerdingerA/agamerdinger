@@ -238,6 +238,11 @@
     body[data-lang="en"] .lb-en{display:block;}
     body[data-lang="da"] .lb-da{display:block;}
     body[data-lang="de"] .lb-de{display:block;}
+
+    /* Ornamental divider */
+    .ornament{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:2.2rem auto 0 auto;max-width:260px;}
+    .ornament::before,.ornament::after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,218,234,.9),transparent);}
+    .ornament-diamond{width:.45rem;height:.45rem;background:var(--frame-blue);transform:rotate(45deg);opacity:.8;flex:0 0 auto;}
   </style>
 </head>
 
@@ -260,6 +265,8 @@
         <div class="meta lb-da">24. &amp; 25. oktober 2026 &middot; Oremandsgaard, Præstø</div>
         <div class="meta lb-de">24. &amp; 25. Oktober 2026 &middot; Oremandsgaard, Præstø</div>
 
+        <div class="ornament"><span class="ornament-diamond"></span></div>
+
         <section class="prose lb-en">
           <img src="/img/wedding/wedding_venue2.png" alt="Wedding venue illustration" />
           <p>With great joy, we invite you to celebrate our wedding with us at <a href="https://oremandsgaard.dk/">Oremandsgaard Gods</a>.</p>
@@ -267,6 +274,7 @@
           <ul>
             <li><a href="program/">Program</a></li>
             <li><a href="places-to-stay/">Places to stay</a></li>
+            <li><a href="wishlist/">Wish list</a></li>
             <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
           </ul>
         </section>
@@ -278,6 +286,7 @@
           <ul>
             <li><a href="program/">Program</a></li>
             <li><a href="places-to-stay/">Overnatning</a></li>
+            <li><a href="wishlist/">Ønskeliste</a></li>
             <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
           </ul>
         </section>
@@ -289,6 +298,7 @@
           <ul>
             <li><a href="program/">Programm</a></li>
             <li><a href="places-to-stay/">Unterkünfte</a></li>
+            <li><a href="wishlist/">Wunschliste</a></li>
             <li><a href="https://tally.so/r/q4d525">RSVP</a></li>
           </ul>
         </section>
