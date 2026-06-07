@@ -1,27 +1,58 @@
 ---
 title: 'About me'
 author: Alexander Gamerdinger
-date: '2021-12-14'
+date: '2026-05-09'
 showTableOfContents: false
 showDate: false
 showReadingTime: false
-description: 'I am Alexander, a PhD Fellow at Copenhagen Business School'
+description: 'Postdoctoral Researcher in economic sociology and STS at Aalborg University'
 ---
 
-I am an economic sociologist and Postdoctoral Researcher in Aalborg University’s [Techno-Anthropology Lab](https://www.en.culture.aau.dk/research/research-groups/tantlab). My work sits at the intersection of economic sociology, science and technology studies, and the sociology of professions.
+I am a Postdoctoral Researcher at Aalborg University's [Techno-Anthropology Lab](https://www.en.culture.aau.dk/research/research-groups/tantlab), researching algorithmic markets and AI governance. My work examines how algorithmic systems are designed, adopted, and governed in insurance markets, in professional work, and across the public sector, drawing on economic sociology, science and technology studies, and the sociology of professions.
 
-I study how algorithmic technologies reshape market and organizational practices, and how public-sector AI infrastructures are developed and governed. I am particularly interested in why some algorithmic systems take root in organizations while others fail to gain traction, even when they are technically feasible and economically valuable.
+I am particularly interested in why some algorithmic systems take root in organizations while others fail to gain traction, even when they are technically feasible and economically valuable. My current work examines how governments coordinate, orchestrate an govern the development of public sector AI infrastructures, comparing Danish initiatives with others across the Nordic countries.
 
-My current project examines the development of public-sector AI infrastructures in Denmark and compares national AI initiatives across the Nordic countries. This research explores how states coordinate, govern, and institutionalize AI infrastructures, and how these infrastructures shape public perceptions of AI.
+Alongside my academic work, I advise organizations on AI governance and responsible AI use.
 
-In my doctoral research, I investigated the adoption of AI in the life insurance industry. Drawing on economic sociology and science and technology studies, I explored how professional ideologies, ethical principles, and regulatory norms shape decisions about data use, algorithm design, and the boundaries of what is deemed a morally acceptable AI system. This work highlighted a striking paradox: while behavioral data and machine learning techniques are increasingly used for loss prevention, they remain far less common in pricing and actuarial risk-calculation practices, despite frequent discussions about their potential. My research traced this, what I call "uneven algorithmization" to the moral frameworks and professional cultures of data professionals. 
+## Explore further
+
+```{=html}
+<div class="home-actions">
+{{< button-secondary href="/research/" target="_self" >}} Research → {{< /button-secondary >}}
+{{< button-secondary href="/research-agenda/" target="_self" >}} Research agenda → {{< /button-secondary >}}
+{{< button-secondary href="/talks/" target="_self" >}} Talks & Public Engagement → {{< /button-secondary >}}
+{{< button-secondary href="/about/Gamerdinger_CV.pdf" target="_blank" >}} CV → {{< /button-secondary >}}
+</div>
+```
+
+## Background
+
+In my doctoral research, I investigated the adoption of AI in the life insurance industry. Drawing on economic sociology and science and technology studies, I explored how professional ideologies, ethical principles, and regulatory norms shape decisions about data use, algorithm design, and the boundaries of what is deemed a morally acceptable AI system. This work traced a striking paradox, namely that behavioral data and machine learning techniques are increasingly used for loss prevention but remain far less common in pricing and actuarial risk calculation. Throughout several articles, I showed how this is attributed to the moral frameworks and professional cultures of data professionals.
+
+I completed my PhD in Economic Sociology at Copenhagen Business School in 2025, with a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Before my doctoral studies, I completed my BSc and MSc in International Business and Politics at CBS. Alongside my studies, I was an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I continue to actively follow the wellbeing and post-growth political movement.
 
 Across my projects, I use a mixed-methods approach that includes participant observation, interviews, document analysis, and quantitative techniques such as statistical modelling, network analysis, and multiple correspondence analysis.
 
-I hold a PhD in Economic Sociology from Copenhagen Business School, which included a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Before my doctoral studies, I completed my BSc and MSc in International Business and Politics at CBS. Alongside my studies, I was an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I continue to actively follow the wellbeing and post-growth political movement.
+I currently serve as Consultative Expert on Data Use in Insurance at the European Insurance and Occupational Pensions Authority (EIOPA), where I am developing an authoritative report on ethical boundaries in data use and their implications for risk mutualization.
 
-Alongside my academic work, I currently serve as a consultative expert at the European Insurance and Occupational Pensions Authority (EIOPA).
+## Contact
 
-If you would like to know more about me, check out my [CV](Gamerdinger_CV.pdf), or send me an e-mail @ [alexanderg@ikl.aau.dk](mailto:alexanderg@ikl.aau.dk).
-
-
+```{=html}
+<section class="home-latest-strip">
+  <article class="home-latest-item">
+    <h3>Email</h3>
+    <p><a href="mailto:alexanderg@ikk.aau.dk">alexanderg<wbr>@ikk.aau.dk</a></p>
+  </article>
+  <article class="home-latest-item">
+    <h3>Academic</h3>
+    <p><a href="https://vbn.aau.dk/en/persons/alexanderg/" target="_blank" rel="noopener noreferrer">Aalborg University · VBN profile</a></p>
+    <p><a href="https://scholar.google.com/citations?user=qstJ4-QAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
+  </article>
+  <article class="home-latest-item">
+    <h3>Social &amp; Professional</h3>
+    <p><a href="https://linkedin.com/in/alexander-gamerdinger" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p><a href="https://github.com/GamerdingerA" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    <p><a href="https://twitter.com/GamerdingerA" target="_blank" rel="noopener noreferrer">X / Twitter</a></p>
+  </article>
+</section>
+```

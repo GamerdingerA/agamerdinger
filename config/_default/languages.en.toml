@@ -14,7 +14,7 @@ copyright = "&copy; 2026 Alexander Gamerdinger"
 [params.author]
   name = "Alexander Gamerdinger"
   image = "img/author.webp"
-  headline = "Postdoctoral Researcher in Economic Sociology & STS"
+  headline = "Algorithmic Markets · Professional Ethics · AI Governance"
   bio = "I am a Postdoc at Aalborg University."
   links = [
     { email = "mailto:alexanderg@ikk.aau.dk" },  

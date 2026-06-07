@@ -13,7 +13,7 @@
 {{ $altText := (site.Language.Params.Author.name | default "Author") }}
 {{ $webp := $.Page.Site.Params.enableImageWebp | default true }}
 
-<article class="{{ if not .Site.Params.homepage.showRecent }}h-full{{ end }}">
+<article class="home-profile-block">
   <div class="flex items-center justify-center h-full">
     <div class="flex flex-col sm:flex-row w-full items-center text-center sm:items-stretch sm:text-left">
 
@@ -65,6 +65,27 @@
     </div>
   </div>
 </article>
+
+<section class="home-latest-strip">
+  <article class="home-latest-item">
+    <h3>Most Recent Article</h3>
+    <div class="home-latest-img-wrap"><img class="home-latest-img home-latest-img--portrait" src="/img/journals/ser.webp" alt="Socio-Economic Review" /></div>
+    <p>Gamerdinger, A. (2025). <em>Moral authority over risk classifications: How data professionals shape the uneven algorithmization of life insurance.</em> Socio-Economic Review, 23(4), 1661–1682.</p>
+    <a href="https://doi.org/10.1093/ser/mwaf033" target="_blank" rel="noopener noreferrer">Read article →</a>
+  </article>
+  <article class="home-latest-item">
+    <h3>Most Recent Report</h3>
+    <div class="home-latest-img-wrap"><img class="home-latest-img home-latest-img--portrait" src="/img/journals/fp.webp" alt="Forsikring &amp; Pension" /></div>
+    <p>Gamerdinger, A. &amp; Holm, J. (2024). <em>Ethical AI in Life and Non-Life Insurance: A Framework for Mapping Ethical Trade-Offs in AI Use.</em> Forsikring &amp; Pension.</p>
+    <a href="https://fogp.dk/media/n23fabwb/ethical-ai-in-life-and-non-life-insurance-final-oktober-2024.pdf" target="_blank" rel="noopener noreferrer">Read report →</a>
+  </article>
+  <article class="home-latest-item">
+    <h3>Current Project</h3>
+    <div class="home-latest-img-wrap"><img class="home-latest-img home-latest-img--landscape" src="/img/journals/add.png" alt="Algorithms, Data &amp; Democracy" /></div>
+    <p>A research project, part of the <a href="https://algoritmer.org/" target="_blank" rel="noopener noreferrer">Algorithms, Data &amp; Democracy</a> consortium, studying how AI middle powers such as the Nordic countries govern and orchestrate AI infrastructures in the public sector.</p>
+    <a href="/research/">View research →</a>
+  </article>
+</section>
 
 <section>
   {{ partial "recent-articles.html" . }}
