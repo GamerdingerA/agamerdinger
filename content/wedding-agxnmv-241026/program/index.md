@@ -24,11 +24,11 @@ day1:
 
     - icon: "champagne"
       label: "Reception at Oremandsgaard Gods"
-      label_da: "Modtagelse på Oremandsgaard Gods"
+      label_da: "Reception på Oremandsgaard Gods"
       label_de: "Empfang auf Oremandsgaard Gods"
       time: "16:30–18:00"
       note: "The reception will be held at Oremandsgaard Alle 2, 4720 Præstø."
-      note_da: "Modtagelsen finder sted på Oremandsgaard Alle 2, 4720 Præstø."
+      note_da: "Receptionen finder sted på Oremandsgaard Alle 2, 4720 Præstø."
       note_de: "Der Empfang findet auf Oremandsgaard Alle 2, 4720 Præstø statt."
 
     - icon: "bus"
@@ -67,7 +67,7 @@ day2:
       label: "Breakfast at Oremandsgaard Gods"
       label_da: "Morgenmad på Oremandsgaard Gods"
       label_de: "Frühstück auf Oremandsgaard Gods"
-      time: "09:30–11:00"
+      time: "09:00–11:00"
       note: "For those staying nearby, breakfast will be served at Oremandsgaard Gods."
       note_da: "For jer der overnatter i nærheden, serveres morgenmad på Oremandsgaard Gods."
       note_de: "Für alle, die in der Nähe übernachten, wird auf Oremandsgaard Gods Frühstück serviert."
