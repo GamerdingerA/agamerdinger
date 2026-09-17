@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main class="shell">
+  <div class="prose">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with or .Description .Params.summary }}<p class="post-meta">{{ . }}</p>{{ end }}
+    <div class="post-body">{{ .Content }}</div>
+    {{ with .Parent }}
+      <p class="back"><a href="{{ .RelPermalink }}">&larr; {{ .Title }}</a></p>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

@@ -3,7 +3,7 @@ title: 'A different kind of literature review: networks and online data bases'
 author: Alexander Gamerdinger
 date: '2022-01-23'
 showDate: true
-draft: yes
+draft: true
 slug: []
 categories:
   - R

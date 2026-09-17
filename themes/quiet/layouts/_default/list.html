@@ -1,0 +1,127 @@
+{{ define "main" }}
+
+{{/* The filter bar only appears where entries carry tags. The Overview
+     jump list appears wherever there is more than one category. */}}
+{{ $filterable := false }}
+{{ range .Pages }}{{ if .Params.tags }}{{ $filterable = true }}{{ end }}{{ end }}
+
+{{/* Work out the category order once, then use it for both the jump list
+     and the groups themselves, so the two can never disagree. */}}
+{{ $groups := .Pages.GroupByParam "category" }}
+{{ $keys   := slice }}
+{{ range .Params.category_order }}
+  {{ $k := . }}
+  {{ range where $groups "Key" $k }}{{ $keys = $keys | append $k }}{{ end }}
+{{ end }}
+{{ range $groups }}
+  {{ if not (in $keys .Key) }}{{ $keys = $keys | append .Key }}{{ end }}
+{{ end }}
+
+<main class="shell">
+  <div class="prose">
+
+    <h1 class="page-title">{{ .Title }}</h1>
+
+    {{ with .Content }}<div class="page-intro">{{ . }}</div>{{ end }}
+
+    {{ if gt (len $keys) 1 }}
+      <nav class="category-jump" aria-labelledby="overview-heading">
+        <h2 class="overview-title" id="overview-heading">Overview</h2>
+        <ul>
+          {{ range $keys }}
+            <li><a class="overview-link" href="#cat-{{ . | urlize }}">{{ . }}</a></li>
+          {{ end }}
+        </ul>
+      </nav>
+    {{ end }}
+
+    {{ if $filterable }}
+      {{/* Hidden until the script runs, so no-JS readers aren't shown
+           controls that do nothing. The default view below is complete
+           and correct on its own. */}}
+      <div class="filters" hidden data-section="{{ .Section }}">
+        <div class="filter-row">
+          <span class="filter-label">Filter by</span>
+
+          {{/* The picker is closed to begin with. Ninety-odd tags shown at
+               once is a wall; behind one button it is an offer. */}}
+          <button type="button" class="filter-open"
+                  aria-expanded="false" aria-controls="tag-picker">
+            <span>Tags</span>
+            <span class="filter-open-count" hidden></span>
+            <span class="filter-open-caret" aria-hidden="true">&#9662;</span>
+          </button>
+
+          {{/* Flips between newest and oldest first. The arrow is the state:
+               its label is rewritten by filters.js on every press. */}}
+          <button type="button" class="filter-order" data-order="newest">
+            <span class="filter-order-arrow" aria-hidden="true">&darr;</span>
+            <span class="filter-order-text">Newest first</span>
+          </button>
+        </div>
+
+        {{/* What is picked and how many entries it leaves. Sits outside the
+             picker so it is still readable once the picker is shut. */}}
+        <div class="filter-selection" hidden></div>
+
+        <div class="tag-picker" id="tag-picker" hidden>
+          {{/* Only shown once the picker is a column of its own, where it
+               needs naming. Behind the "Tags" button it would just repeat
+               the button. */}}
+          <h2 class="tag-picker-title">Filter by tag</h2>
+
+          <div class="filter-search">
+            <label class="sr-only" for="tag-search">Search tags</label>
+            <input type="search" id="tag-search" autocomplete="off"
+                   placeholder="Type to find a tag&hellip;">
+          </div>
+
+          {{/* Scrolls inside itself rather than growing the page. Without a
+               ceiling the open picker ran to several screens, so filtering
+               would collapse the document under the reader and leave them
+               stranded in white space.
+
+               The button is the scroll made visible: it counts what is
+               still below and pages down, and turns into "Top" at the end.
+               filters.js hides it whenever everything already fits. */}}
+          <div class="tag-scroller">
+            <div class="filter-values"></div>
+
+            <button type="button" class="tag-more" data-dir="down" hidden>
+              <span class="tag-more-text"></span>
+              <span class="tag-more-caret" aria-hidden="true">&#8964;</span>
+            </button>
+          </div>
+
+          <div class="picker-foot">
+            <span class="picker-mode" hidden></span>
+            <button type="button" class="picker-done">Done</button>
+          </div>
+        </div>
+      </div>
+
+      {{/* Groups for the tag picker. Edit data/tag_groups.yaml, not the
+           script - filters.js reads whatever is emitted here. */}}
+      {{ with hugo.Data.tag_groups }}
+        {{/* safeJS: jsonify already produced valid JSON, and without it the
+             script context would escape the whole thing into a JS string. */}}
+        <script type="application/json" id="tag-groups">{{ .groups | jsonify | safeJS }}</script>
+      {{ end }}
+    {{ end }}
+
+    <div class="entries" id="entries">
+      {{ range $keys }}
+        {{ $k := . }}
+        {{ range where $groups "Key" $k }}
+          {{ partial "category-group.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
+
+  </div>
+</main>
+
+{{ if $filterable }}
+  <script src="{{ "js/filters.js" | relURL }}" defer></script>
+{{ end }}
+{{ end }}

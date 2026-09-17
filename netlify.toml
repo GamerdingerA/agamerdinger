@@ -1,19 +1,24 @@
 [build]
-  command = "npm ci && npm run build:css && hugo --gc --minify -b $URL"
+  command = "hugo --gc --minify -b $URL"
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "20"
-  HUGO_VERSION = "0.147.8"
+  # The quiet theme needs Hugo 0.158.0 or newer.
+  HUGO_VERSION = "0.165.0"
   HUGO_ENV = "production"
-  TZ = "UTC"
-  GIT_SUBMODULE_STRATEGY = "recursive"
+  TZ = "Europe/Copenhagen"
 
 [context.production.environment]
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "npm ci && npm run build:css && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "npm ci && npm run build:css && hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
+  command = "hugo --gc --minify -D -b $DEPLOY_PRIME_URL"
+
+# The old research page now lives under publications.
+[[redirects]]
+  from = "/research/"
+  to = "/publications/"
+  status = 301

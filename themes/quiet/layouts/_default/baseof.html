@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="{{ if .IsHome }}home has-particles{{ else }}page{{ end }}">
+
+  {{ if .IsHome }}{{ partial "particles.html" . }}{{ end }}
+
+  {{ partial "header.html" . }}
+
+  {{ block "main" . }}{{ end }}
+
+  {{ partial "footer.html" . }}
+
+  {{/* Nothing to scroll on the homepage, so no cat and no scroll handler. */}}
+  {{ if not .IsHome }}
+    {{ partial "back-to-top.html" . }}
+    <script src="{{ "js/scroll.js" | relURL }}" defer></script>
+  {{ end }}
+
+</body>
+</html>

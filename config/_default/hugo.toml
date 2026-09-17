@@ -1,32 +1,73 @@
-# -- Site Configuration --
-# Refer to the theme docs for more details about each of these parameters.
-# https://jpanther.github.io/congo/docs/getting-started/
-
-baseURL = "https://agamerdinger.com/"
-defaultContentLanguage = "en"
-
+baseURL        = "https://agamerdinger.com/"
+locale         = "en"
+title          = "Alexander Gamerdinger"
+theme          = "quiet"
 enableRobotsTXT = true
-summaryLength = 0
 
-[pagination]
-  pagerSize = 10
+# Headings keep the case they are written in ("Talks & press", not
+# "Talks & Press").
+titleCaseStyle = "none"
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+# blogdown sources. Hugo renders the knitted .markdown next to them.
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 
-[privacy]
-  [privacy.vimeo]
-    enableDNT = true
-  [privacy.x]
-    enableDNT = true
-  [privacy.youTube]
-    privacyEnhanced = true
+[params]
+  description = "Alexander Gamerdinger, postdoctoral researcher at Aalborg University. Publications, projects, research agenda and talks."
 
-[services]
-  [services.x]
-    disableInlineCSS = true
+  # Footer icons. Leave one empty to hide it.
+  email    = "mailto:alexanderg@ikk.aau.dk"
+  scholar  = "https://scholar.google.com/citations?user=qstJ4-QAAAAJ&hl=en"
+  linkedin = "https://linkedin.com/in/alexander-gamerdinger"
+  github   = "https://github.com/GamerdingerA"
+
+  # The theme's blog link. The blog pages still build, they are just not
+  # in the menu.
+  enableBlog = false
+
+[services.googleAnalytics]
+  ID = "G-YB2C47SWM7"
+
+[menus]
+  [[menus.main]]
+    name   = "publications"
+    url    = "/publications/"
+    weight = 1
+  [[menus.main]]
+    name   = "projects"
+    url    = "/projects/"
+    weight = 2
+  [[menus.main]]
+    name   = "research agenda"
+    url    = "/research-agenda/"
+    weight = 3
+  [[menus.main]]
+    name   = "talks & press"
+    url    = "/talks/"
+    weight = 4
+  [[menus.main]]
+    name   = "about"
+    url    = "/about/"
+    weight = 5
+
+[taxonomies]
+  tag = "tags"
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+  [markup.goldmark.renderer]
+    unsafe = true
+  # Lets a paragraph take a class, e.g. {.question}
+  [markup.goldmark.parser.attribute]
+    block = true
+  # Keeps $$ ... $$ maths intact for KaTeX on the teaching pages
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block  = [['\[', '\]'], ['$$', '$$']]
+      inline = [['\(', '\)']]
+  [markup.highlight]
+    noClasses = true
+    style = "github"
+
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']

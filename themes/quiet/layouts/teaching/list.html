@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="shell">
+  <div class="prose">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Content }}<div class="post-body">{{ . }}</div>{{ end }}
+    <ul class="post-list">
+      {{ range .Pages.ByDate }}
+        <li class="post-item">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ with or .Description .Params.summary }}<p class="post-meta">{{ . }}</p>{{ end }}
+        </li>
+      {{ end }}
+    </ul>
+    {{ with .Parent }}{{ if not .IsHome }}
+      <p class="back"><a href="{{ .RelPermalink }}">&larr; {{ .Title }}</a></p>
+    {{ end }}{{ end }}
+  </div>
+</main>
+{{ end }}

@@ -1,0 +1,10 @@
+{{/* A plain text page with its title on top. Used by the research agenda.
+     Set `layout: "page"` in front matter to use it. */}}
+{{ define "main" }}
+<main class="shell">
+  <div class="prose">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+</main>
+{{ end }}

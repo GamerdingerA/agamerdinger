@@ -1,0 +1,13 @@
+name = "quiet"
+license = "MIT"
+description = "A quiet academic portfolio theme: Rubik, one accent colour, and a particle field on the homepage."
+min_version = "0.158.0"
+
+[author]
+  name = "Adapted for Alexander Gamerdinger"
+
+# Based on the "Stanusch" Hugo theme (MIT), from
+# https://github.com/nataliastanusch/natalia.stanusch.net
+[original]
+  name = "Stanusch"
+  repo = "https://github.com/nataliastanusch/natalia.stanusch.net"

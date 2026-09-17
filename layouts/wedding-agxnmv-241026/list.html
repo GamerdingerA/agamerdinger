@@ -6,7 +6,10 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>{{ .Title }}</title>
 
-  {{ partial "head.html" . }}
+  {{/* The styles these pages had under the old Congo theme, frozen so the
+       wedding pages look exactly as before. */}}
+  <link rel="stylesheet" href="{{ "css/wedding-legacy.css" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

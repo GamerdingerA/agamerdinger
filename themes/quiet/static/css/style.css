@@ -1,0 +1,1615 @@
+/* ===========================================================
+   Stanusch - a Hugo theme
+   All tunable values live in :root.
+   =========================================================== */
+
+:root {
+  /* Colour */
+  --ink:       #111111;
+
+  /* The brand colour. The hidden picker changes this one. */
+  --accent:    #1d3a5f;
+
+  /* What actually gets painted. Identical to --accent in light mode;
+     JS lightens it in dark mode so links stay legible. */
+  --accent-display: var(--accent);
+
+  --paper:     #ffffff;
+  --muted:     #6f6f6f;
+  --rule:      #e2e2e2;
+
+  /* Width of the centred column, padding included. Lower it for wider
+     margins, raise it for a roomier page. */
+  /* Outer width of the centred column. Derived, so it always equals the
+     text measure plus the page padding - narrow --measure and the whole
+     column narrows with it, staying centred. */
+  --shell:     calc(var(--measure) + 3 * var(--page-x));
+
+  /* Measure - how wide the text column runs inside that column. */
+  --measure:   32rem;
+
+  /* Rhythm */
+  --page-x:    1.5rem;
+  --gap-entry: 2.75rem;
+}
+
+
+/* ---------- Dark theme ---------- */
+
+/* Tokens are listed twice on purpose: once for "follow the system" and
+   once for "the reader chose dark". CSS has no way to share them. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink:   #ececed;
+    --paper: #101012;
+    --muted: #9a9a9f;
+    --rule:  #2b2b31;
+  }
+  /* Fallback for the no-JavaScript case, where nothing lightens the
+     accent for us. Overridden by the inline style JS sets. */
+  @supports (color: color-mix(in srgb, red, white)) {
+    :root:not([data-theme="light"]) {
+      --accent-display: color-mix(in srgb, var(--accent) 55%, white);
+    }
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink:   #ececed;
+  --paper: #101012;
+  --muted: #9a9a9f;
+  --rule:  #2b2b31;
+}
+
+/* Colour changes shouldn't strobe when the theme flips. */
+@media (prefers-reduced-motion: no-preference) {
+  body { transition: background-color 200ms ease, color 200ms ease; }
+}
+
+/* ---------- Reset ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body, h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+
+img, svg { display: block; max-width: 100%; }
+
+/* ---------- Buttons ---------- */
+
+/* Safari paints its own grey, system-font button chrome and ignores
+   background/font alone. `appearance: none` is what actually removes it. */
+button,
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+}
+
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* ---------- Page frame ---------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The page is one centred column. Header, content and footer all share
+   this width, so the whole layout sits in the middle with wide white
+   margins either side. --shell is the outer width, including padding. */
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--page-x);
+}
+
+main { flex: 1 0 auto; }
+
+/* ---------- Particle background ---------- */
+
+/* Sits behind everything, covering the whole viewport. */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--paper);
+}
+
+.particles-bg canvas { display: block; }
+
+/* Content floats above the field. */
+body.has-particles > main,
+body.has-particles > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* The header sits above <main> so the accent panel, which hangs below
+   the header, isn't swallowed by the content that follows it. */
+body > header {
+  position: relative;
+  z-index: 10;
+}
+
+/* ---------- Top bar ---------- */
+
+/* Two children, never wrapping: the name-and-nav block, and the toggle.
+   All the reflowing happens inside .topbar-main, so the toggle is never
+   what gets pushed onto a new line - it stays in the bar, hard against
+   the right edge, at every width. */
+.topbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  column-gap: 1.1rem;
+  padding-block: 1.6rem 2.2rem;
+  /* The accent panel is positioned against this. */
+  position: relative;
+}
+
+/* Name beside nav while there is room for both, name above nav when there
+   isn't. `min-width: 0` so this block is allowed to shrink rather than
+   shoving the toggle off the end. */
+.topbar-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1.1rem;
+  row-gap: 0.35rem;
+}
+
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-name:hover,
+.site-name:focus-visible { color: var(--accent-display); }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  min-width: 0;
+  column-gap: 0.9rem;
+  row-gap: 0.2rem;
+}
+
+.nav a {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible,
+.nav a[aria-current="page"] { color: var(--accent-display); }
+
+
+/* ---------- A header that answers to the scroll ---------- */
+
+/* Interior pages only. The homepage is a single screen with nothing to
+   scroll, and a solid bar there would cut a band out of the particle
+   field. scroll.js owns both classes below.
+
+   Beats the `position: relative` on .topbar above on specificity, which
+   is what the accent panel is positioned against - sticky establishes a
+   containing block just as relative does, so the panel is unaffected. */
+body.page .topbar {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  transition: transform 260ms ease, box-shadow 200ms ease;
+}
+
+/* Retracted while you are heading down the page. `pointer-events` because
+   a retracted bar must not still be catching clicks meant for whatever is
+   now under it. */
+body.page .topbar.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Once the page has moved at all, a hairline stops the bar bleeding into
+   the text sliding underneath it. A shadow rather than a border, so the
+   header's height never changes and the content below never jumps. */
+body.page .topbar.is-stuck { box-shadow: 0 1px 0 var(--rule); }
+
+/* Anything we scroll to has to clear the bar when the bar is showing, or
+   it lands underneath it and cannot be read - or clicked. */
+body.page .category,
+body.page .filters { scroll-margin-top: 5.5rem; }
+
+/* ---------- Theme toggle ---------- */
+
+.theme-toggle {
+  flex: none;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: color 120ms ease;
+  /* Sits on the site name's line, not in the middle of the bar, so it
+     holds still when the nav drops onto a second row underneath. */
+  align-self: baseline;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible { color: var(--accent-display); }
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-display);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg { width: 19px; height: 19px; }
+
+/* Three settings, three icons. The icon names the *setting* - auto, light,
+   dark - and not the colours currently on screen, so every press visibly
+   changes the button even when it doesn't change the page: choosing light
+   while the system is already light has to look like it did something.
+
+   Keyed off <html data-theme-pref>, which the inline script in <head> sets
+   before the first paint. Keying off the button instead would mean shipping
+   one icon in the markup and swapping it once theme.js runs, which is a
+   visible flicker on every load for anyone not on the default.
+
+   Auto doubles as the no-JS fallback: nothing sets the attribute then. */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon,
+:root[data-theme-pref="light"] .theme-toggle .icon-auto,
+:root[data-theme-pref="dark"]  .theme-toggle .icon-auto { display: none; }
+
+.theme-toggle .icon-auto,
+:root[data-theme-pref="light"] .theme-toggle .icon-sun,
+:root[data-theme-pref="dark"]  .theme-toggle .icon-moon { display: block; }
+
+/* ---------- Accent picker (five clicks on the header) ---------- */
+
+.accent-panel {
+  position: absolute;
+  top: 100%;
+  right: var(--page-x);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.7rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.12);
+  font-size: 0.85rem;
+}
+
+.accent-panel[hidden] { display: none; }
+
+.accent-label { color: var(--muted); }
+
+.accent-select {
+  font: inherit;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.2rem 0.3rem;
+}
+
+.accent-custom {
+  width: 28px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+}
+
+.accent-reset,
+.accent-close {
+  font: inherit;
+  font-family: inherit;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0.2rem 0.3rem;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+
+.accent-close { font-size: 1.1rem; line-height: 1; }
+
+.accent-reset:hover,
+.accent-close:hover,
+.accent-reset:focus-visible,
+.accent-close:focus-visible { color: var(--accent-display); }
+
+@media (max-width: 30rem) {
+  .accent-panel {
+    right: var(--page-x);
+    left: var(--page-x);
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- Home ---------- */
+
+body.home main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 3rem;
+}
+
+/* Whatever you write in content/_index.md lands here, so this styles
+   arbitrary markdown, not just a single line. */
+.home-center {
+  text-align: center;
+  max-width: 34rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.home-center > p { margin-bottom: 1rem; }
+
+.home-center > *:last-child { margin-bottom: 0; }
+
+.home-center h1,
+.home-center h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.home-center ul,
+.home-center ol {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.home-center a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease;
+}
+
+.home-center a:hover,
+.home-center a:focus-visible { color: var(--accent-display); }
+
+/* ---------- Text pages ---------- */
+
+.prose { max-width: var(--measure); }
+
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > blockquote { margin-bottom: 1.15rem; }
+
+.prose > *:last-child { margin-bottom: 0; }
+
+/* Deliberately smaller than .site-name: the site's name outranks the name
+   of the page you happen to be on. Weight carries it instead of size. */
+.page-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  margin-bottom: 1.9rem;
+}
+
+.page-intro { margin-bottom: 3rem; }
+
+/* Category heading - Articles, Book Chapters, and so on */
+.category {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 3.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.category:first-of-type { margin-top: 0; }
+
+/* ---------- A single entry ---------- */
+
+.entry { margin-bottom: var(--gap-entry); }
+
+.entry:last-child { margin-bottom: 0; }
+
+/* The markdown body of the entry file. Style it however you like in the
+   file itself - these rules only set rhythm, not appearance. */
+.entry-body > p,
+.entry-body > ul,
+.entry-body > ol,
+.entry-body > blockquote { margin-bottom: 0.6rem; }
+
+.entry-body > *:last-child { margin-bottom: 0; }
+
+.entry-body ul,
+.entry-body ol { padding-left: 1.2rem; }
+
+.entry-body blockquote {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+/* Back-link on an individual entry page */
+.back {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+}
+
+.back a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.back a:hover,
+.back a:focus-visible { color: var(--accent-display); }
+
+/* "Read more" on entries that have a page of their own */
+.entry-more {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.entry-more a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.entry-more a:hover,
+.entry-more a:focus-visible { color: var(--accent-display); }
+
+/* Visible to screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Tags ---------- */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  list-style: none;
+}
+
+.tags a {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.tags a:hover,
+.tags a:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+/* ---------- Links in body copy ---------- */
+
+/* Scoped to the containers that hold rendered markdown, rather than to
+   .prose generally - .prose also contains the tag pills, and a rule like
+   `.prose li a` would outrank `.tags a` and underline them. */
+.entry-body a,
+.page-intro a,
+.about-lede a,
+.post-body a,
+.prose > p a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease;
+}
+
+.entry-body a:hover,
+.entry-body a:focus-visible,
+.page-intro a:hover,
+.page-intro a:focus-visible,
+.about-lede a:hover,
+.about-lede a:focus-visible,
+.post-body a:hover,
+.post-body a:focus-visible,
+.prose > p a:hover,
+.prose > p a:focus-visible { color: var(--accent-display); }
+
+/* ---------- About page ---------- */
+
+.about-lede {
+  max-width: 44rem;
+  margin-inline: auto;
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.about-lede p + p { margin-top: 1.1rem; }
+
+/* ---------- Blog ---------- */
+
+.post-list { list-style: none; }
+
+.post-item { margin-bottom: 2.25rem; }
+
+.post-item a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.post-item a:hover,
+.post-item a:focus-visible { color: var(--accent-display); }
+
+.post-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.post-body h2 { font-size: 1.2rem; font-weight: 500; margin: 2rem 0 0.75rem; }
+.post-body h3 { font-size: 1.05rem; font-weight: 500; margin: 1.5rem 0 0.5rem; }
+.post-body p  { margin-bottom: 1.15rem; }
+
+
+/* ---------- The controls above a section ---------- */
+
+/* Three rows of meaning, kept visually distinct: how entries are arranged,
+   what narrows them, and - only once something is picked - what that
+   selection currently is. */
+
+.filters {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.filters[hidden] { display: none; }
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+}
+
+.filter-row + .filter-row { margin-top: 0.7rem; }
+
+/* Fixed width so "View" and "Filter by" line their controls up under each
+   other rather than staggering by the length of the word. */
+.filter-label {
+  flex: none;
+  min-width: 4.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Shared shape for every control in the bar. */
+.filter-order,
+.filter-open {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.filter-order:hover,
+.filter-order:focus-visible,
+.filter-open:hover,
+.filter-open:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+/* ---------- Order ---------- */
+
+/* Pushed to the far end of the row: it answers a different question from
+   the tag picker and shouldn't read as part of it. */
+.filter-order {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.filter-order-arrow {
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--accent-display);
+}
+
+@media (max-width: 30rem) {
+  .filter-order { margin-left: 0; }
+}
+
+/* ---------- The tag picker's button ---------- */
+
+.filter-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter-open[aria-expanded="true"] {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+.filter-open-caret {
+  font-size: 0.7rem;
+  transition: transform 150ms ease;
+}
+
+.filter-open[aria-expanded="true"] .filter-open-caret { transform: rotate(180deg); }
+
+/* How many tags are picked, so a filter is never invisible behind a shut
+   picker. */
+.filter-open-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: var(--accent-display);
+  color: var(--paper);
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.filter-open-count[hidden] { display: none; }
+
+/* ---------- The picker panel ---------- */
+
+.tag-picker {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
+.tag-picker[hidden] { display: none; }
+
+/* Behind the "Tags" button this would only repeat the button, so it is
+   read out but not drawn. The rail below turns it back on. */
+.tag-picker-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.filter-search { margin-bottom: 0.6rem; }
+
+.filter-search input {
+  font: inherit;
+  font-size: 0.85rem;
+  width: 100%;
+  max-width: 18rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.3rem 0.5rem;
+}
+
+.filter-search input::placeholder { color: var(--muted); }
+
+.filter-search input:focus-visible {
+  outline: 2px solid var(--accent-display);
+  outline-offset: 1px;
+  border-color: var(--accent-display);
+}
+
+/* ---------- The picker's footer ---------- */
+
+.picker-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.picker-mode {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.picker-mode[hidden] { display: none; }
+
+.picker-done {
+  margin-left: auto;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.15rem 0.7rem;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.picker-done:hover,
+.picker-done:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+/* ---------- Tag pills ---------- */
+
+/* Scrolls inside itself rather than growing the page. Left to grow, an
+   open picker ran several screens tall, and filtering then collapsed the
+   document under a reader who had scrolled down into it - which is what
+   made picking a tag feel like the page had broken. */
+/* The wrapper is what the fades and the button are pinned to: they must
+   not scroll with the pills, so they cannot live on the scrollport. */
+.tag-scroller { position: relative; }
+
+.filter-values {
+  position: relative;          /* pills measure their offset against this */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  max-height: 44vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  /* Room for the button to rest over, so the last row is never sat on. */
+  padding-bottom: 2rem;
+}
+
+.filter-values::-webkit-scrollbar { width: 8px; }
+.filter-values::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 999px;
+}
+
+/* Softens whichever edge has more behind it. Both are painted over the
+   pills, so neither can be clicked through. */
+.tag-scroller::before,
+.tag-scroller::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.4rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.tag-scroller::before {
+  top: 0;
+  background: linear-gradient(var(--paper), transparent);
+}
+
+.tag-scroller::after {
+  bottom: 0;
+  background: linear-gradient(transparent, var(--paper));
+}
+
+.tag-scroller.is-scrollable:not(.is-top)::before { opacity: 1; }
+.tag-scroller.is-scrollable:not(.is-end)::after  { opacity: 1; }
+
+/* Says how many tags are still below, and pages down to them. Turns into
+   the way back once you reach the end. */
+.tag-more {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.12rem 0.5rem;
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.tag-more[hidden] { display: none; }
+
+.tag-more:hover,
+.tag-more:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+.tag-more-caret { font-size: 0.85rem; line-height: 1; }
+
+/* Stacked rather than one wrapping run, so each heading owns the pills
+   beneath it. Set from data/tag_groups.yaml; see filters.js. */
+.filter-values.is-grouped {
+  display: block;
+}
+
+.filter-values button {
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.filter-values button:hover,
+.filter-values button:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+.filter-values button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+/* How many entries carry the tag. Dimmed, because it is a hint about the
+   pill and not part of its name. */
+.pill-count {
+  margin-left: 0.35rem;
+  font-size: 0.72rem;
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-values .tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+}
+
+.tag-group + .tag-group { margin-top: 1rem; }
+
+/* Sticky against the scrollport, so you always know which group you are
+   looking at however far down you have scrolled. */
+.tag-group-title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0 0 0.4rem;
+  padding: 0.15rem 0 0.25rem;
+  background: var(--paper);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* How many tags the group holds - the count you would otherwise only
+   learn by expanding it. */
+.tag-group-count {
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Supported but currently unused - see the note in data/tag_groups.yaml.
+   A rule down the left ties nested tags to their subheading without
+   adding another box. */
+.tag-subgroup {
+  margin: 0.55rem 0 0;
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--rule);
+}
+
+.tag-subgroup-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.filter-empty { color: var(--muted); }
+
+/* Offered when "all" of several tags matches nothing. */
+.filter-empty-action {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color 120ms ease;
+}
+
+.filter-empty-action:hover,
+.filter-empty-action:focus-visible { color: var(--accent-display); }
+
+/* ---------- The picker as a column of its own ---------- */
+
+/* Above this width the margin beside the text column is wide enough to
+   hold the picker, so it stops being a panel you open and becomes a column
+   that is simply there: filter, selection and results all on screen at
+   once, which is the whole point of filtering by tag.
+
+   Floated rather than positioned, and contained by .prose rather than by
+   .filters. A float is contained by the nearest block formatting context,
+   so `flow-root` on .prose - and deliberately not on .filters - lets the
+   rail escape the filter bar and make the whole column grow to fit it.
+   Absolute positioning would have let a rail taller than the results
+   spill through the footer.
+
+   The negative margin puts it entirely in the white space, so no line box
+   in the text column is shortened and the column does not move a pixel
+   from where it sits at every other width. Same trick as the About
+   portrait, mirrored. Keep 78rem in step with filters.js. */
+@media (min-width: 78rem) {
+
+  .prose { display: flow-root; }
+
+  .tag-picker,
+  .tag-picker[hidden] {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 16rem;
+    margin: 0 0 0 -19rem;   /* 16rem column + 3rem gutter */
+    padding: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  /* Nothing to open and nothing to dismiss. */
+  .filter-open,
+  .filter-row .filter-label,
+  .picker-done { display: none; }
+
+  /* Left alone in its row, the order button would be shoved to the right
+     edge by the `margin-left: auto` that separates it from the picker
+     button at narrower widths. Bring it back to the column's edge. */
+  .filter-order { margin-left: 0; }
+
+  .tag-picker-title {
+    position: static;
+    order: 0;
+    width: auto;
+    height: auto;
+    margin: 0 0 0.6rem;
+    clip: auto;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .filter-search { order: 1; }
+
+  /* With two or more tags picked this holds the any/all switch. Kept near
+     the top: at the foot it would sit a couple of thousand pixels below
+     the thing it governs. */
+  .picker-foot {
+    order: 2;
+    justify-content: flex-start;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    border: none;
+    min-height: 0;
+  }
+
+  .tag-scroller { order: 3; }
+
+  /* The page scrolls; the picker does not need to scroll inside itself.
+     updateMore() measures this and takes the fades and the "n more"
+     button away on its own. */
+  .filter-values {
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 0;
+    margin-top: 0.9rem;
+  }
+
+  /* Sticky needs a scrollport to stick to, and without one it would pin
+     to the viewport and fight the retracting header. */
+  .tag-group-title { position: static; }
+}
+
+/* ---------- The current tag selection ---------- */
+
+/* Sits beside the picker button: what's picked, how the picks combine, and
+   how many entries survive - all readable with the picker shut. */
+.filter-selection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.filter-selection[hidden] { display: none; }
+
+.selection-count { color: var(--ink); }
+
+.selection-word { color: var(--muted); }
+
+/* Two halves of one control, so they share a border rather than each
+   carrying their own. */
+.selection-mode {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.picker-mode .selection-mode button {
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0.08rem 0.42rem;
+  cursor: pointer;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+.picker-mode .selection-mode button + button {
+  border-left: 1px solid var(--rule);
+}
+
+.picker-mode .selection-mode button:hover,
+.picker-mode .selection-mode button:focus-visible {
+  color: var(--accent-display);
+}
+
+.picker-mode .selection-mode button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--accent-display);
+}
+
+/* A picked tag, shown the way it looks in the picker, with the cross
+   marking that clicking removes it. */
+.filter-selection .selection-tag {
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--paper);
+  background: var(--accent-display);
+  border: 1px solid var(--accent-display);
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+  cursor: pointer;
+}
+
+.selection-x {
+  margin-left: 0.3rem;
+  opacity: 0.75;
+}
+
+.filter-selection .selection-tag:hover .selection-x,
+.filter-selection .selection-tag:focus-visible .selection-x { opacity: 1; }
+
+.filter-selection .selection-clear {
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 0.15rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color 120ms ease;
+}
+
+.filter-selection .selection-clear:hover,
+.filter-selection .selection-clear:focus-visible { color: var(--accent-display); }
+
+/* ---------- About page: text left, portrait right ---------- */
+
+/* Always a grid, so `order` can lift the portrait above the text on a
+   phone even though it comes after it in the markup. */
+.about-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Stacked on a phone: keep the portrait modest rather than full-bleed. */
+.about-photo {
+  order: -1;
+  min-width: 0;
+  margin: 0 0 2rem;
+  max-width: 13rem;
+}
+
+.about-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.about-photo figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: var(--muted);
+  position: absolute;
+}
+
+/* Side by side only once there is genuinely a margin to put the photo in.
+   The negative margin lets the photo column hang outside the centred
+   column: 10rem photo + 2.5rem gap = 12.5rem of overhang, which needs
+   about 65rem of window before it fits.
+
+   Below that the portrait stacks above the text rather than sharing the
+   row. Sharing would squeeze the text to roughly two thirds of its
+   measure, so the About page would read narrower than every other page
+   on any window between 672px and 1088px. */
+@media (min-width: 65rem) {
+  .about-columns {
+    grid-template-columns: minmax(0, 1fr) 10rem;
+    gap: 2.5rem;
+    align-items: start;
+    margin-right: -12.5rem;
+  }
+
+  .about-photo {
+    order: 0;
+    margin: 0.35rem 0 0;
+    max-width: none;
+  }
+}
+
+/* ---------- Jump list at the top of a section ---------- */
+
+.category-jump { margin-bottom: 2.25rem; }
+
+.overview-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+}
+
+.category-jump ul {
+  list-style: none;
+}
+
+.category-jump li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-bottom: 0.3rem;
+}
+
+.category-jump li:last-child { margin-bottom: 0; }
+
+/* Small accent lozenge in front of each category */
+.category-jump li::before {
+  content: "";
+  flex: none;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent-display);
+  transform: translateY(-0.1em);
+}
+
+.category-jump a {
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+
+a.overview-link {
+  /* text-decoration: underline; */
+  color: var(--accent-display);
+  display: inline-block;
+  position: relative;
+}
+a.overview-link:before {
+  content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+  font-size: 0.7em;
+  font-weight: 400;
+  font-family: Times New Roman, Serif;
+  color: var(--accent-display);
+  width: 100%;
+  position: absolute;
+  top: 12px;
+  overflow: hidden;
+}
+
+
+
+.category-jump a:hover,
+.category-jump a:focus-visible { color: var(--accent-display); }
+
+/* Anchored headings shouldn't land flush against the top of the window */
+.category { scroll-margin-top: 1.5rem; }
+
+/* ---------- Back to top ---------- */
+
+.to-top {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* The copy that closes each category. Long sections would otherwise
+   strand you a long way from the one in the footer. */
+.to-top--section {
+  margin: 2rem 0 0;
+  font-size: 0.8rem;
+}
+
+.to-top a {
+  color: var(--accent-display);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.to-top a:hover,
+.to-top a:focus-visible { color: var(--accent-display); }
+
+/* ---------- The kitten ---------- */
+
+/* Pops up out of the bottom edge while you are scrolling down, and ducks
+   back out of sight the moment you scroll up - by which point the header
+   has returned and is offering the same thing. See js/scroll.js.
+
+   No overflow rule is needed to crop the body: the paths run past the
+   SVG's viewBox, and an outermost <svg> clips to its viewBox by default.
+   That leaves the bubble below free to sit outside the button. */
+.cat-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 0;
+  z-index: 30;
+  width: 54px;
+  height: 62px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.3, 1.15),
+              opacity 200ms ease,
+              color 120ms ease;
+}
+
+.cat-top[hidden] { display: none; }
+
+.cat-top.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cat-top:hover,
+.cat-top:focus-visible { color: var(--accent-display); }
+
+.cat-top:focus-visible {
+  outline: 2px solid var(--accent-display);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.cat-top .cat {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Two sets of eyes live in the markup; the cat squints when you go near
+   it. Any value but `none` renders an SVG group. */
+.cat-eyes-happy { display: none; }
+
+.cat-top:hover .cat-eyes-open,
+.cat-top:focus-visible .cat-eyes-open { display: none; }
+
+.cat-top:hover .cat-eyes-happy,
+.cat-top:focus-visible .cat-eyes-happy { display: inline; }
+
+/* view-box, or the rotation would pivot on the SVG's origin rather than
+   where the tail meets the body. */
+.cat-tail {
+  transform-box: view-box;
+  transform-origin: 46px 58px;
+}
+
+.cat-top:hover .cat-tail { animation: cat-wag 900ms ease-in-out infinite; }
+
+.cat-say {
+  position: absolute;
+  right: 100%;
+  bottom: 1.9rem;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.cat-top:hover .cat-say,
+.cat-top:focus-visible .cat-say {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cat-top.is-hopping { animation: cat-hop 400ms ease; }
+
+@keyframes cat-hop {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-9px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cat-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-9deg); }
+}
+
+/* The arrow is the point of the whole thing, so it keeps a slow nudge
+   upwards. Stilled by the reduced-motion block at the foot of this file. */
+.cat-top.is-in .cat-arrow { animation: cat-point 1.8s ease-in-out infinite; }
+
+@keyframes cat-point {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2.5px); }
+}
+
+/* Sat right where a thumb rests, so give the page edge a little more room
+   and stand the cat off the corner. */
+@media (max-width: 30rem) {
+  .cat-top { right: 0.9rem; }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  flex-shrink: 0;
+  padding-block: 3.5rem 2.25rem;
+}
+
+.social {
+  display: flex;
+  justify-content: center;   /* icons centred */
+  gap: 1.25rem;
+  align-items: center;
+  list-style: none;
+}
+
+.social a {
+  color: var(--ink);
+  display: inline-flex;
+  transition: color 120ms ease;
+}
+
+.social a:hover,
+.social a:focus-visible { color: var(--accent-display); }
+
+.social svg { width: 24px; height: 24px; }
+
+/* ---------- Focus visibility ---------- */
+
+a:focus-visible {
+  outline: 2px solid var(--accent-display);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 45rem) {
+  :root {
+    --page-x: 3rem;
+    --measure: 34rem;
+  }
+
+  body { font-size: 1.0625rem; }
+
+  /* The gap belongs to both boxes now: .topbar sets the space between the
+     name-and-nav block and the toggle, .topbar-main the space between the
+     name and the nav. Name and nav share a row here and drop to two rows
+     when the column gets too narrow for both; the toggle is out of that
+     argument either way. */
+  .topbar,
+  .topbar-main { column-gap: 1.5rem; }
+
+  .topbar { padding-block: 2.25rem 3rem; }
+
+  .site-name { font-size: 1.3rem; }
+
+  .nav { column-gap: 1rem; }
+
+  .nav a { font-size: 0.9rem; }
+
+  .page-title  { font-size: 1.1rem; }
+  .category    { font-size: 1.05rem; }
+  .about-lede  { font-size: 1.2rem; }
+  .home-center { font-size: 1.45rem; }
+  .home-center h1,
+  .home-center h2 { font-size: 1.6rem; }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ===========================================================
+   Additions for agamerdinger.com
+   =========================================================== */
+
+/* Headings and lists inside plain text pages (about, research agenda) */
+.prose > h2,
+.post-body h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2.4rem 0 0.8rem;
+}
+
+.prose > h3,
+.post-body h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 1.6rem 0 0.5rem;
+}
+
+.prose > ul,
+.prose > ol,
+.post-body ul,
+.post-body ol { padding-left: 1.2rem; }
+
+.prose > ul li + li,
+.post-body li + li { margin-top: 0.35rem; }
+
+.prose > ul a,
+.post-body li a {
+  color: var(--ink);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.prose > ul a:hover,
+.post-body li a:hover { color: var(--accent-display); }
+
+/* The research question that opens each workstream */
+.prose > p.question {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Code in the teaching pages */
+.post-body pre {
+  overflow-x: auto;
+  padding: 0.9rem 1rem;
+  margin: 0 0 1.15rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
+.post-body img { margin: 1rem 0; height: auto; }
+
+.post-body table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-bottom: 1.15rem;
+  font-size: 0.9rem;
+}
+
+.post-body th,
+.post-body td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.3rem 0.6rem;
+  text-align: left;
+}
+
+/* Small links under an entry, e.g. a PDF */
+.entry-body .entry-links { font-size: 0.9rem; color: var(--muted); }

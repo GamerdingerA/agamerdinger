@@ -1,0 +1,33 @@
+# Groups for the "Filter by" tag picker on /publications/.
+# Each group is a heading in the picker. Any tag used by an entry but not
+# listed here collects under "Other" at the end.
+
+groups:
+  - name: Insurance and markets
+    items:
+      - tags:
+          - life insurance
+          - insurance
+          - moral markets
+          - algorithmization
+  - name: Professions and expertise
+    items:
+      - tags:
+          - professions
+          - data scientists
+          - expertise
+  - name: Governance and ethics
+    items:
+      - tags:
+          - AI ethics
+          - data ethics
+          - EU governance
+          - policy
+  - name: Public life and wellbeing
+    items:
+      - tags:
+          - wellbeing economy
+          - COVID-19
+          - public communication
+          - trust
+          - Nordic countries
