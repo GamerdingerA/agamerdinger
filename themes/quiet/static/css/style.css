@@ -1738,3 +1738,37 @@ body.home .topbar { padding-block: 1.6rem 0; }
 @media (min-width: 40rem) {
   .home-text { font-size: 1.25rem; }
 }
+
+
+/* ---------- About page portrait ---------- */
+
+/* Centred in the text column and cropped to a circle. The ring is the
+   accent colour at low strength, so it follows the theme. */
+.about-portrait {
+  margin: 2rem auto 2.4rem;
+  width: 12rem;
+  max-width: 60%;
+}
+
+.about-portrait img {
+  width: 100%;
+  /* height must be auto, or the img's own height attribute wins and
+     aspect-ratio is ignored. */
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+.about-portrait figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (min-width: 40rem) {
+  .about-portrait { width: 13.5rem; }
+}
