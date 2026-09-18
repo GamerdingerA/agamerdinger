@@ -1,11 +1,9 @@
 ---
 title: "Projects"
-description: "Current, upcoming and earlier research projects"
+description: "Current and past research projects on algorithmic markets, insurance and public-sector AI"
 category_order:
-  - "Now"
-  - "Next"
-  - "Later"
-  - "Earlier"
+  - "Current projects"
+  - "Past projects"
 ---
 
-What I am working on now, what comes next, and some earlier projects. The questions behind them are set out in my [research agenda](/research-agenda/).
+Three projects have my attention at the moment, and older work sits further down. Next in line are a study of state orchestration of AI development in Denmark, and methodological work on how to study that orchestration as infrastructure. The questions behind all of it are in my [research agenda](/research-agenda/).

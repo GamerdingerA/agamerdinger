@@ -164,13 +164,13 @@
       root.setAttribute('data-theme-pref', theme || 'auto');
 
       T.paint();
-      if (window.initParticles) window.initParticles();
+      if (window.drawGolden) window.drawGolden();
     },
 
     setAccent: function (hex) {
       if (hex) write('accent', hex); else write('accent', null);
       T.paint();
-      if (window.initParticles) window.initParticles();
+      if (window.drawGolden) window.drawGolden();
     }
   };
 

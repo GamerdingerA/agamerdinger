@@ -1613,3 +1613,128 @@ a:focus-visible {
 
 /* Small links under an entry, e.g. a PDF */
 .entry-body .entry-links { font-size: 0.9rem; color: var(--muted); }
+
+
+/* ===========================================================
+   Type and the homepage drawing
+   =========================================================== */
+
+:root {
+  /* 1.618..., used for the measure, the homepage block and the drawing */
+  --phi: 1.618;
+}
+
+body {
+  font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  line-height: 1.62;
+}
+
+/* Everything that labels rather than reads runs in the sans face. */
+.nav,
+.tags,
+.post-meta,
+.entry-more,
+.to-top,
+.back,
+.category-jump,
+.overview-title,
+.filters,
+.tag-picker,
+.filter-label,
+.social,
+button,
+input[type="search"] {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.site-name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.page-title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.category {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Homepage ---------- */
+
+.golden-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.golden-bg canvas { display: block; }
+
+body.has-golden > main,
+body.has-golden > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* The name sits in the top bar on every other page. Here it is the page. */
+body.home .site-name { display: none; }
+
+body.home .topbar { padding-block: 1.6rem 0; }
+
+.home-main {
+  display: flex;
+  align-items: flex-start;
+  /* Golden section rather than the middle: the block starts a little
+     above halfway, at 1/phi of the space above it. */
+  padding-top: calc((100svh - 14rem) / (var(--phi) * 2));
+  padding-bottom: 3rem;
+}
+
+.home-lede { max-width: 30rem; }
+
+.home-name {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.6rem;
+}
+
+/* The hairline is 1/phi of the block wide. */
+.home-name::after {
+  content: "";
+  display: block;
+  width: 61.8%;
+  height: 1px;
+  margin-top: 1.2rem;
+  background: var(--accent-display);
+  opacity: 0.55;
+}
+
+.home-text {
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.home-text > p { margin-bottom: 0.9rem; }
+
+.home-text > *:last-child { margin-bottom: 0; }
+
+.home-text a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease;
+}
+
+.home-text a:hover,
+.home-text a:focus-visible { color: var(--accent-display); }
+
+@media (min-width: 40rem) {
+  .home-text { font-size: 1.25rem; }
+}

@@ -1,0 +1,8 @@
+{{/* The drawing behind the homepage. A golden rectangle, cut again and
+     again into a square and a smaller golden rectangle, with the quarter
+     arcs that make the spiral. Drawn in a canvas so it can redraw when
+     the window or the theme changes. Nothing loads from anywhere else. */}}
+<div class="golden-bg" id="golden" aria-hidden="true">
+  <canvas id="golden-canvas"></canvas>
+</div>
+<script src="{{ "js/golden.js" | relURL }}" defer></script>

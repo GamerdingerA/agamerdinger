@@ -3,9 +3,9 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="{{ if .IsHome }}home has-particles{{ else }}page{{ end }}">
+<body class="{{ if .IsHome }}home has-golden{{ else }}page{{ end }}">
 
-  {{ if .IsHome }}{{ partial "particles.html" . }}{{ end }}
+  {{ if .IsHome }}{{ partial "golden.html" . }}{{ end }}
 
   {{ partial "header.html" . }}
 

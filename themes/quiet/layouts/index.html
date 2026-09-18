@@ -1,8 +1,10 @@
 {{ define "main" }}
-<main class="shell">
-  {{/* The homepage text comes from the body of content/_index.md */}}
-  <div class="home-center">
-    {{ .Content }}
+<main class="shell home-main">
+  {{/* The name is set large here, so the one in the top bar is hidden on
+       this page only (see body.home .site-name in style.css). */}}
+  <div class="home-lede">
+    <h1 class="home-name">{{ site.Title }}</h1>
+    <div class="home-text">{{ .Content }}</div>
   </div>
 </main>
 {{ end }}
