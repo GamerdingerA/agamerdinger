@@ -31,3 +31,8 @@ groups:
           - public communication
           - trust
           - Nordic countries
+  - name: Infrastructure and STS
+    items:
+      - tags:
+          - infrastructure
+          - STS

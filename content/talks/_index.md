@@ -7,4 +7,4 @@ category_order:
   - "Press & media"
 ---
 
-I speak at academic conferences such as EASST and SASE, and to industry and public-sector audiences including EIOPA and Forsikring & Pension. To invite me to speak, write to [alexanderg@ikk.aau.dk](mailto:alexanderg@ikk.aau.dk).
+Below is a selection of talks I have given, along with press coverage of my work. To invite me to speak, write to [alexanderg@ikk.aau.dk](mailto:alexanderg@ikk.aau.dk).
