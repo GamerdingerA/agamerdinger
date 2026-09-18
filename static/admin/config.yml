@@ -1,0 +1,122 @@
+# Sveltia CMS (a maintained fork of Decap CMS, formerly Netlify CMS).
+# Sign-in goes through Netlify's GitHub OAuth, so the only account needed
+# is the GitHub one that owns this repository.
+
+backend:
+  name: github
+  repo: GamerdingerA/agamerdinger
+  branch: main
+  base_url: https://api.netlify.com
+  commit_messages:
+    create: "Add {{collection}} entry from the editor"
+    update: "Update {{collection}} entry from the editor"
+    delete: "Delete {{collection}} entry from the editor"
+
+# Images dropped into an entry land here and are served from /img/...
+media_folder: static/img
+public_folder: /img
+
+collections:
+  # ---------------- Entry lists ----------------
+
+  - name: publications
+    label: Publications
+    label_singular: Publication
+    folder: content/publications
+    create: true
+    slug: "{{slug}}"
+    summary: "{{fields.category}} — {{year}}"
+    sortable_fields: [date, category]
+    fields:
+      - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Only used for sorting, newest first" }
+      - { name: category, label: Section, widget: select, options: ["Journal articles", "Reports"] }
+      - { name: tags, label: Tags, widget: list, required: false, hint: "Feeds the filter at the top of the page" }
+      - { name: body, label: Entry, widget: markdown, hint: "The whole citation, written as it should appear. Link the title, italicise the journal." }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    slug: "{{slug}}"
+    summary: "{{fields.category}} — {{year}}"
+    sortable_fields: [date, category]
+    fields:
+      - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Only used for sorting, newest first" }
+      - { name: category, label: Section, widget: select, options: ["Current projects", "Past projects"] }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: body, label: Entry, widget: markdown, hint: "Start with the project name in italics, then a sentence or two." }
+
+  - name: talks
+    label: Talks & press
+    label_singular: Talk or press item
+    folder: content/talks
+    create: true
+    slug: "{{slug}}"
+    summary: "{{fields.category}} — {{year}}"
+    sortable_fields: [date, category]
+    fields:
+      - { name: date, label: Date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, hint: "Only used for sorting, newest first" }
+      - { name: category, label: Section, widget: select, options: ["Invited talks", "Academic talks", "Press & media"] }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: body, label: Entry, widget: markdown }
+
+  # ---------------- The pages themselves ----------------
+
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home
+        file: content/_index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: body, label: Text, widget: markdown }
+
+      - name: about
+        label: About
+        file: content/about/index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: layout, label: Layout, widget: hidden, default: about }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: photo, label: Portrait, widget: image, required: false }
+          - { name: photo_alt, label: Portrait description, widget: string, required: false }
+          - { name: body, label: Text, widget: markdown }
+
+      - name: research_agenda
+        label: Research agenda
+        file: content/research-agenda/index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: layout, label: Layout, widget: hidden, default: page }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: body, label: Text, widget: markdown }
+
+      - name: publications_intro
+        label: Publications, page top
+        file: content/publications/_index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: category_order, label: Order of the sections, widget: list }
+          - { name: body, label: Intro text, widget: markdown, required: false }
+
+      - name: projects_intro
+        label: Projects, page top
+        file: content/projects/_index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: category_order, label: Order of the sections, widget: list }
+          - { name: body, label: Intro text, widget: markdown, required: false }
+
+      - name: talks_intro
+        label: Talks & press, page top
+        file: content/talks/_index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: Search description, widget: string, required: false }
+          - { name: category_order, label: Order of the sections, widget: list }
+          - { name: body, label: Intro text, widget: markdown, required: false }

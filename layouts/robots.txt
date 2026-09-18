@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /wedding-agxnmv-241026/
+
+Sitemap: {{ "sitemap.xml" | absURL }}
