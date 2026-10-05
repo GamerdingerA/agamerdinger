@@ -6,7 +6,8 @@
 <body class="{{ if .IsHome }}home has-golden{{ else }}page{{ end }}">
 
   {{ if .IsHome }}{{ partial "golden.html" . }}{{ end }}
-  {{ if and (not .IsHome) (in (slice "publications" "projects" "research-agenda" "talks" "about") .Section) }}{{ partial "golden-mark.html" . }}{{ end }}
+  {{/* The reading spiral on every inner page except the teaching pages. */}}
+  {{ if and (not .IsHome) (ne .Section "teaching") }}{{ partial "golden-mark.html" . }}{{ end }}
 
   {{ partial "header.html" . }}
 
