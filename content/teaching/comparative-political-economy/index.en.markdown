@@ -6,8 +6,9 @@ slug: []
 categories: []
 tags: []
 summary: "Copenhagen Business School, BSc in International Business and Politics, 4th semester."
-weight: 2
+weight: 5
 taught: [2022, 2023, 2025]
+current: false
 ---
 
 ## Course overview

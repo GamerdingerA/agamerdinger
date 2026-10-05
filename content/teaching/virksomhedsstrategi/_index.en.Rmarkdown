@@ -7,8 +7,9 @@ slug: [/virksomhedsstrategi/]
 categories: []
 tags: []
 summary: "Copenhagen Business School, HA i Europæisk Business, 6th semester. Taught in Danish."
-weight: 1
+weight: 4
 taught: [2022, 2023]
+current: false
 ---
 
 

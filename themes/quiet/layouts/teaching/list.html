@@ -10,25 +10,31 @@
     <h1 class="page-title">{{ .Title }}</h1>
     {{ with .Content }}<div class="page-intro">{{ . }}</div>{{ end }}
 
-    <h2 class="category">Courses with materials</h2>
-    <ul class="course-list">
-      {{ range .Pages.ByWeight }}
-        <li class="course-item">
-          <a class="course-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ with .Params.summary }}<p class="course-meta">{{ . }}</p>{{ end }}
-          <p class="course-taught">
-            {{- with .Params.taught }}Taught {{ delimit . ", " " and " }}{{ end -}}
-            {{- with .Pages }} · {{ len . }} sessions with R scripts and data{{ end -}}
-          </p>
-        </li>
+    {{ $all := .Pages.ByWeight }}
+    {{ range $group := slice (dict "title" "Current teaching" "current" true) (dict "title" "Earlier teaching" "current" false) }}
+      {{ $courses := where $all "Params.current" $group.current }}
+      {{ with $courses }}
+        <h2 class="category">{{ $group.title }}</h2>
+        <ul class="course-list">
+          {{ range . }}
+            <li class="course-item">
+              <a class="course-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{ with .Params.summary }}<p class="course-meta">{{ . }}</p>{{ end }}
+              <p class="course-taught">
+                {{- if .Params.current }}{{ with .Params.taught }}Since {{ index . 0 }}{{ end }}{{ else }}{{ with .Params.taught }}Taught {{ delimit . ", " " and " }}{{ end }}{{ end -}}
+                {{- with .Pages }} · {{ len . }} sessions with R scripts and data{{ end -}}
+              </p>
+            </li>
+          {{ end }}
+        </ul>
       {{ end }}
-    </ul>
+    {{ end }}
 
   {{ else }}
 
     <p class="course-eyebrow"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
     <h1 class="page-title">{{ .Title }}</h1>
-    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}</p>{{ end }}
+    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ if $.Params.current }}{{ with $.Params.taught }} Since {{ index . 0 }}.{{ end }}{{ else }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}{{ end }}</p>{{ end }}
 
     {{ with .Content }}<div class="post-body">{{ . }}</div>{{ end }}
 

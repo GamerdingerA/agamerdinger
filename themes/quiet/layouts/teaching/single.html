@@ -28,7 +28,7 @@
 
     <p class="course-eyebrow"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
     <h1 class="page-title">{{ .Title }}</h1>
-    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}</p>{{ end }}
+    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ if $.Params.current }}{{ with $.Params.taught }} Since {{ index . 0 }}.{{ end }}{{ else }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}{{ end }}</p>{{ end }}
     <div class="post-body">{{ .Content }}</div>
     <p class="back"><a href="{{ .Parent.RelPermalink }}">&larr; All teaching</a></p>
 
