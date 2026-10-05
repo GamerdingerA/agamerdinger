@@ -1712,7 +1712,22 @@ body.home .topbar { padding-block: 1.6rem 0; }
   padding-bottom: 3rem;
 }
 
-.home-lede { max-width: 30rem; }
+.home-lede { max-width: 30rem; position: relative; }
+
+/* A soft wash of paper behind the name and the sentence, so the lines of
+   the drawing fade out as they pass under the text instead of crossing
+   it. It is the page colour, so it works in light and dark alike. */
+.home-lede::before {
+  content: "";
+  position: absolute;
+  inset: -3.5rem -4.5rem -3.5rem -4.5rem;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 58% at 45% 50%,
+              var(--paper) 62%,
+              color-mix(in srgb, var(--paper) 70%, transparent) 78%,
+              transparent 100%);
+}
 
 .home-name {
   font-size: clamp(2.2rem, 6vw, 3.4rem);

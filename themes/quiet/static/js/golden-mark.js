@@ -102,12 +102,12 @@
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.clearRect(0, 0, W, H);
 
-    /* Centred in the right margin, sitting above the back-to-top cat. */
+    /* Centred in the right margin, near the foot of the window. */
     var m = margin();
     var left = W - m + Math.max(8, (m - boxW) / 2 + 8);
     if (left + boxW > W - 24) left = W - 24 - boxW;
     var cx = left + boxW / 2;
-    var cy = H - 96 - boxH / 2;
+    var cy = H - 40 - boxH / 2;
 
     ctx.save();
     ctx.translate(cx, cy);

@@ -14,9 +14,8 @@
 
   {{ partial "footer.html" . }}
 
-  {{/* Nothing to scroll on the homepage, so no cat and no scroll handler. */}}
+  {{/* Nothing to scroll on the homepage, so no scroll handler. */}}
   {{ if not .IsHome }}
-    {{ partial "back-to-top.html" . }}
     <script src="{{ "js/scroll.js" | relURL }}" defer></script>
   {{ end }}
 
