@@ -1744,8 +1744,9 @@ body.home .topbar { padding-block: 1.6rem 0; }
   width: 61.8%;
   height: 1px;
   margin-top: 1.2rem;
-  background: var(--accent-display);
-  opacity: 0.55;
+  /* The colour of the spiral: navy in light mode, light blue in dark. */
+  background: var(--question, var(--accent-display));
+  opacity: 0.7;
 }
 
 .home-text {
