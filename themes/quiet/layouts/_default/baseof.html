@@ -6,6 +6,7 @@
 <body class="{{ if .IsHome }}home has-golden{{ else }}page{{ end }}">
 
   {{ if .IsHome }}{{ partial "golden.html" . }}{{ end }}
+  {{ if and (not .IsHome) (in (slice "publications" "projects" "research-agenda" "talks" "about") .Section) }}{{ partial "golden-mark.html" . }}{{ end }}
 
   {{ partial "header.html" . }}
 

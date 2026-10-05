@@ -1,0 +1,10 @@
+{{/* The homepage spiral, small and faint, in the left margin. Each menu
+     section turns it a further quarter, in menu order, and it draws itself
+     as the page is read (see js/golden-mark.js). */}}
+{{ $order := slice "publications" "projects" "research-agenda" "talks" "about" }}
+{{ $turn := 0 }}
+{{ range $i, $s := $order }}{{ if eq $.Section $s }}{{ $turn = $i }}{{ end }}{{ end }}
+<div class="golden-mark" id="golden-mark" data-turn="{{ $turn }}" aria-hidden="true" hidden>
+  <canvas></canvas>
+</div>
+<script src="{{ "js/golden-mark.js" | relURL }}" defer></script>

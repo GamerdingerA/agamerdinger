@@ -1775,3 +1775,17 @@ body.home .topbar { padding-block: 1.6rem 0; }
 @media (min-width: 40rem) {
   .about-portrait { width: 13.5rem; }
 }
+
+/* ---------- The spiral in the margin of the inner pages ----------
+   Fixed behind everything and never in the way of a click. */
+.golden-mark {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.golden-mark[hidden] { display: none; }
+.golden-mark canvas { display: block; }
+body.page > header,
+body.page > main,
+body.page > footer { position: relative; z-index: 1; }
