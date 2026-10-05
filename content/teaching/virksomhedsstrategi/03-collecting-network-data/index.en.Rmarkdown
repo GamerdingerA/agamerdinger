@@ -1,5 +1,5 @@
 ---
-title: "Session 3: Collecting network data"
+title: "Collecting network data"
 author: Alexander Gamerdinger
 date: 2023-01-08
 slug: /collecting-network-data/
@@ -7,11 +7,11 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Session on how to collecting network data'
 summary: 'In this session, You will learn how to subset the data set den17 by tags, and how to collect network data from Orbis. Last, we cover how to visualize a two-mode network and to add network attributes'
+session: 3
+weight: 3
 ---
 
-## Session 3 - collection and construction of network data
 
 In this session, you are faced with an important decision in regard to data collection for your exam projects. There are three possibilities:
 

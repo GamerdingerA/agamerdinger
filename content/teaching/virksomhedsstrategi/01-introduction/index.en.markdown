@@ -1,5 +1,5 @@
 ---
-title: "Session 1: Introduction to network analysis"
+title: "Introduction to network analysis"
 author: Alexander Gamerdinger
 date: 2023-01-25
 weight: 1
@@ -8,11 +8,10 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Introduction to network analysis'
 summary: "In this session, we cover how to install R and RStudio, how to subset and manipulate data sets, and how to visualize simple networks using the packages: ggraph and igraph."
+session: 1
 ---
 
-## Session 1 - Introduction to network analysis
 
 The first thing you need to do is to set a project folder called `virksomhedsstrategi` which you can either place on your desktop, or into a another folder (such as one called `6_semester`).
 

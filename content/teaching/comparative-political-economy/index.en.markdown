@@ -1,12 +1,13 @@
 ---
-title: Comparative Political Economy
+title: Comparative political economy
 author: Alexander Gamerdinger
 date: '2022-02-14'
 slug: []
 categories: []
 tags: []
-description: 'This course is taught at CBS'
-summary: "Copenhagen Business School | Bsc International Business & Politics | 4th Semester"
+summary: "Copenhagen Business School, BSc in International Business and Politics, 4th semester."
+weight: 2
+taught: [2022, 2023, 2025]
 ---
 
 ## Course overview

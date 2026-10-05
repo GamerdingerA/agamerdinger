@@ -1,5 +1,5 @@
 ---
-title: "Session 6 - Communities and cliques"
+title: "Communities and cliques"
 author: Alexander Gamerdinger
 date: '2023-01-01'
 slug: /community-detection/
@@ -7,11 +7,11 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Session on  ommunities and cliques'
 summary: 'This session will focus on the Louvain community detection algorithm and the visualization of communities in a network. We will also discover what cliques are, and how they differ from communities.' 
+session: 6
+weight: 6
 ---
 
-## Session 6 - Communities and cliques
 
 This session marks the last 'tools' session of the course and focuses on node communities. Communities are groupings of nodes in the network that are very densely connected with each other. Detecting communities tells us something about the overall network structure.
 

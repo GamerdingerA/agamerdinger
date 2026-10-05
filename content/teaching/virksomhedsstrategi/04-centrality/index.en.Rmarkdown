@@ -1,5 +1,5 @@
 ---
-title: "Session 4 - Analysis of node centrality measures"
+title: "Node centrality measures"
 author: Alexander Gamerdinger
 date: '2023-01-01'
 slug: /centrality-measures/
@@ -7,13 +7,13 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Session on centrality measures'
 summary: 'The focus of this session is on node centrality measures. We will cover several metrics including degree centrality, betweenness centrality, closeness and eigenvector centrality.'
+session: 4
+weight: 4
 ---
 
-## Session 4 - Analysis of node centrality measures
 
-This session will provide you with tools to analyze important nodes in a network. It is different from [session 2](http://localhost:4321/teaching/virksomhedsstrategi/density-and-components/), which focused on the analysis of the network structure, as we are now focusing on the node level importance.
+This session will provide you with tools to analyze important nodes in a network. It is different from [session 2](/teaching/virksomhedsstrategi/density-and-components/), which focused on the analysis of the network structure, as we are now focusing on the node level importance.
 
 Before we introduce the new measures, let us set our working directory, load `den17`, find a subset and load a network object.
 

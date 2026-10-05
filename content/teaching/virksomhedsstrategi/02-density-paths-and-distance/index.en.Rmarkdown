@@ -1,5 +1,5 @@
 ---
-title: "Session 2: Network components, density and paths" 
+title: "Network components, density and paths"
 author: Alexander Gamerdinger
 date: 2023-01-26
 slug: /density-and-components/
@@ -7,8 +7,9 @@ categories:
   - R
   - Teaching
 tags:
-description: 'A session on network components, density and paths'
 summary: "In this session, you will learn how to select components of a network, and how to calculate network density, shortest paths, and the diameter of a network."
+session: 2
+weight: 2
 ---
 
 ## 2.1 Loading packages and data

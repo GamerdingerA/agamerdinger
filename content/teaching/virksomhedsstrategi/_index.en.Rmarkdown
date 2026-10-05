@@ -6,11 +6,11 @@ lastmod: 2023-01-06
 slug: [/virksomhedsstrategi/]
 categories: []
 tags: []
-description: 'Copenhagen Business School | HA i Europæisk Business | 6th Semester'
-summary: "Copenhagen Business School | HA i Europæisk Business | 6th Semester"
+summary: "Copenhagen Business School, HA i Europæisk Business, 6th semester. Taught in Danish."
+weight: 1
+taught: [2022, 2023]
 ---
 
-![](feature-pic.jpg)
 
 ## Course description
 
@@ -19,6 +19,5 @@ This course introduces students to the fundamentals of business strategy through
 Teaching methods include lectures, practical exercises, and diverse learning materials such as readings, podcasts, and videos. Students will work with real-world data, including Danish business networks, and apply their learning through case analyses and exercises. Assessment is project-based, requiring students to conduct an independent network analysis, combining theory and method to address practical organizational challenges. By the end of the course, students will have developed analytical skills and a nuanced understanding of how networks influence business strategy. You can read more about the course [here](https://cbscanvas.instructure.com/courses/22821/modules/items/480509).
 
 -   [Course syllabus](syllabus_2023.pdf)
--   [Guide: Installing R and Rstudio](setting_up_R.pdf)
+-   [Guide to installing R and RStudio](setting_up_R.pdf)
 
-# Sessions

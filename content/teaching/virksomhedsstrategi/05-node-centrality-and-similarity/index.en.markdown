@@ -1,5 +1,5 @@
 ---
-title: "Session 5 - Brokerage and assortativity"
+title: "Brokerage and assortativity"
 author: Alexander Gamerdinger
 date: '2023-01-01'
 slug: /brokerage-and-assortativity/
@@ -7,11 +7,11 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Session on brokerage and assortativity'
 summary: 'This session will focus on two topics. First, we will look at Burts constraint as a measure for brokerage. Second, we will cover assortativity as a measure of homophily in a network.'
+session: 5
+weight: 5
 ---
 
-## Session 5 - Brokerage and assortativity
 
 This session connects to session 4 which introduced analysis tools for the node level. Here, we further investigate the broker role with Burt's constraint as a measure for brokerage. Second, we cover assortativity which measures homophily among nodes - or in other words, the likelihood that nodes with similar properties are connected with each other.
 

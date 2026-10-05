@@ -1,19 +1,58 @@
 {{ define "main" }}
+{{/* Two kinds of list live under /teaching/. The teaching page itself lists
+     courses; a course with sessions (a section, like the network course)
+     lists its sessions in order, by weight. */}}
 <main class="shell">
   <div class="prose">
+
+  {{ if .Parent.IsHome }}
+
     <h1 class="page-title">{{ .Title }}</h1>
-    {{ with .Content }}<div class="post-body">{{ . }}</div>{{ end }}
-    <ul class="post-list">
-      {{ range .Pages.ByDate }}
-        <li class="post-item">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ with or .Description .Params.summary }}<p class="post-meta">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="page-intro">{{ . }}</div>{{ end }}
+
+    <h2 class="category">Courses with materials</h2>
+    <ul class="course-list">
+      {{ range .Pages.ByWeight }}
+        <li class="course-item">
+          <a class="course-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ with .Params.summary }}<p class="course-meta">{{ . }}</p>{{ end }}
+          <p class="course-taught">
+            {{- with .Params.taught }}Taught {{ delimit . ", " " and " }}{{ end -}}
+            {{- with .Pages }} · {{ len . }} sessions with R scripts and data{{ end -}}
+          </p>
         </li>
       {{ end }}
     </ul>
-    {{ with .Parent }}{{ if not .IsHome }}
-      <p class="back"><a href="{{ .RelPermalink }}">&larr; {{ .Title }}</a></p>
-    {{ end }}{{ end }}
+
+  {{ else }}
+
+    <p class="course-eyebrow"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}</p>{{ end }}
+
+    {{ with .Content }}<div class="post-body">{{ . }}</div>{{ end }}
+
+    {{ with .Pages.ByWeight }}
+      <h2 class="category">Sessions</h2>
+      <ol class="session-list">
+        {{ range . }}
+          <li class="session-item">
+            <a class="session-link" href="{{ .RelPermalink }}">
+              <span class="session-num">{{ .Params.session }}</span>
+              <span class="session-text">
+                <span class="session-title">{{ .Title }}</span>
+                {{ with .Params.summary }}<span class="session-summary">{{ . }}</span>{{ end }}
+              </span>
+            </a>
+          </li>
+        {{ end }}
+      </ol>
+    {{ end }}
+
+    <p class="back"><a href="{{ .Parent.RelPermalink }}">&larr; All teaching</a></p>
+
+  {{ end }}
+
   </div>
 </main>
 {{ end }}

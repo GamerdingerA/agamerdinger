@@ -1,12 +1,39 @@
 {{ define "main" }}
 <main class="shell">
   <div class="prose">
+
+  {{ if .Params.session }}
+    {{/* A session of a course. Previous and next are worked out from the
+         course's sessions in weight order. */}}
+    {{ $sessions := .Parent.Pages.ByWeight }}
+    {{ $i := 0 }}
+    {{ range $k, $p := $sessions }}{{ if eq $p.RelPermalink $.RelPermalink }}{{ $i = $k }}{{ end }}{{ end }}
+
+    <p class="course-eyebrow"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a> · Session {{ .Params.session }} of {{ len $sessions }}</p>
     <h1 class="page-title">{{ .Title }}</h1>
-    {{ with or .Description .Params.summary }}<p class="post-meta">{{ . }}</p>{{ end }}
+    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}</p>{{ end }}
+
     <div class="post-body">{{ .Content }}</div>
-    {{ with .Parent }}
-      <p class="back"><a href="{{ .RelPermalink }}">&larr; {{ .Title }}</a></p>
-    {{ end }}
+
+    <nav class="session-nav" aria-label="Sessions">
+      {{ if gt $i 0 }}{{ with index $sessions (sub $i 1) }}
+        <a class="session-nav-prev" href="{{ .RelPermalink }}"><span>&larr; Session {{ .Params.session }}</span>{{ .Title }}</a>
+      {{ end }}{{ else }}<span></span>{{ end }}
+      {{ if lt (add $i 1) (len $sessions) }}{{ with index $sessions (add $i 1) }}
+        <a class="session-nav-next" href="{{ .RelPermalink }}"><span>Session {{ .Params.session }} &rarr;</span>{{ .Title }}</a>
+      {{ end }}{{ end }}
+    </nav>
+
+  {{ else }}
+
+    <p class="course-eyebrow"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="course-meta course-meta--lead">{{ . }}{{ with $.Params.taught }} Taught {{ delimit . ", " " and " }}.{{ end }}</p>{{ end }}
+    <div class="post-body">{{ .Content }}</div>
+    <p class="back"><a href="{{ .Parent.RelPermalink }}">&larr; All teaching</a></p>
+
+  {{ end }}
+
   </div>
 </main>
 {{ end }}

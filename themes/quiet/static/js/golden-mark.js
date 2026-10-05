@@ -1,4 +1,4 @@
-/* The homepage spiral, small and faint, in the left margin of every other
+/* The homepage spiral, small and faint, in the right margin of every other
    page. It is the same figure, so the site reads as one drawing seen from
    different places.
 
@@ -69,13 +69,14 @@
     ctx.stroke();
   }
 
-  /* Width of the empty margin to the left of the text column. */
+  /* Width of the empty margin to the right of the text column. The right
+     side keeps it clear of the filter controls and the overview list. */
   function margin() {
     var col = document.querySelector('main.shell, main .shell, main');
     if (!col) return 0;
     var r = col.getBoundingClientRect();
-    var pad = parseFloat(getComputedStyle(col).paddingLeft) || 0;
-    return r.left + pad;
+    var pad = parseFloat(getComputedStyle(col).paddingRight) || 0;
+    return window.innerWidth - (r.right - pad);
   }
 
   function draw() {
@@ -101,9 +102,12 @@
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.clearRect(0, 0, W, H);
 
-    var left = Math.max(24, (margin() - boxW) / 2 - 8);
+    /* Centred in the right margin, sitting above the back-to-top cat. */
+    var m = margin();
+    var left = W - m + Math.max(8, (m - boxW) / 2 + 8);
+    if (left + boxW > W - 24) left = W - 24 - boxW;
     var cx = left + boxW / 2;
-    var cy = H - 36 - boxH / 2;
+    var cy = H - 96 - boxH / 2;
 
     ctx.save();
     ctx.translate(cx, cy);

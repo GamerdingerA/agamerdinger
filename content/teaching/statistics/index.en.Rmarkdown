@@ -6,8 +6,9 @@ slug: []
 categories:
   - Teaching
 tags: []
-description: ''
-summary: "Copenhagen Business School | HA i Europæisk Business | 3th Semester"
+summary: "Copenhagen Business School, HA i Europæisk Business, 3rd semester."
+weight: 3
+taught: [2022]
 ---
 
 ## Course overview

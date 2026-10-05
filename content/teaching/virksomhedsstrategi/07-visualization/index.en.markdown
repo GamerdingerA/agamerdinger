@@ -1,5 +1,5 @@
 ---
-title: "Session 7 - Visualization"
+title: "Network visualization"
 author: Alexander Gamerdinger
 date: '2023-01-01'
 slug: /network-visualization/
@@ -7,11 +7,11 @@ categories:
   - R
   - Teaching
 tags:
-description: 'Session on how to visualize a network'
 summary: 'This session will focus advanced network visualizations with the ggraph() package. This will be the last session of this course. ' 
+session: 7
+weight: 7
 ---
 
-## Session 7 - Network visualization
 
 This is the last session of this course. During this session, we will further sharpen your visualization skills using the `ggraph` package. We will cover topics such as adding graph attributes, scaling and tweaking network visualizations, modifying the legend, and adding a title. With the `ggraph` package, you will have a range of options to customize the visual output and create high-quality network visualizations in pdf format.
 
