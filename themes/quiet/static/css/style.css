@@ -45,6 +45,7 @@
     --paper: #101012;
     --muted: #9a9a9f;
     --rule:  #2b2b31;
+    --question: #c9e0ff;
   }
   /* Fallback for the no-JavaScript case, where nothing lightens the
      accent for us. Overridden by the inline style JS sets. */
@@ -60,6 +61,8 @@
   --paper: #101012;
   --muted: #9a9a9f;
   --rule:  #2b2b31;
+  /* The light blue of the homepage drawing in dark mode. */
+  --question: #c9e0ff;
 }
 
 /* Colour changes shouldn't strobe when the theme flips. */
@@ -1574,7 +1577,7 @@ a:focus-visible {
 
 /* The research question that opens each workstream */
 .prose > p.question {
-  color: var(--muted);
+  color: var(--question, var(--accent-display));
   font-style: italic;
 }
 
