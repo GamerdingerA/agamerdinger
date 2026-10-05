@@ -20,6 +20,8 @@ I completed my PhD in economic sociology at Copenhagen Business School in 2025 w
 
 Alongside my academic work, I serve as Consultative Expert on Data Use in Insurance at the European Insurance and Occupational Pensions Authority (EIOPA), where I am developing a report on the ethical boundaries of data use and their implications for risk mutualization. I also advise public- and private-sector organizations on AI governance and responsible AI use.
 
+An overview of my teaching, with course materials, is on the [teaching](/teaching/) page.
+
 ## Contact
 
 Write to me at [alexanderg@ikk.aau.dk](mailto:alexanderg@ikk.aau.dk). I am also on [Aalborg University's research portal](https://vbn.aau.dk/en/persons/alexanderg/), [Google Scholar](https://scholar.google.com/citations?user=qstJ4-QAAAAJ&hl=en), [LinkedIn](https://linkedin.com/in/alexander-gamerdinger), [GitHub](https://github.com/GamerdingerA) and [X](https://twitter.com/GamerdingerA).
