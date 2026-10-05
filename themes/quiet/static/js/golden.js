@@ -4,14 +4,15 @@
    cut into a square and a smaller rectangle of the same shape, over and
    over. Drawing the quarter circle inside each square gives the spiral.
 
-   It draws itself once on load, drifts a little with the pointer, brightens
-   as the pointer comes near, and turns a quarter when clicked. Colours come
+   It draws itself slowly on load, drifts a little with the pointer,
+   brightens as the pointer comes near, and turns a quarter and draws itself
+   again when clicked. Colours come
    from the CSS custom properties, so the drawing follows the theme and the
    accent picker without knowing anything about either. window.drawGolden is
    called by theme.js whenever one of those changes. */
 (function () {
   var PHI = (1 + Math.sqrt(5)) / 2;
-  var DEPTH = 11;
+  var DEPTH = 14;
 
   var still = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -104,8 +105,8 @@
 
     /* The figure sits in the right-hand part of the window, clear of the
        text, and always whole. */
-    var maxW = W * (W < 700 ? 0.86 : 0.48);
-    var maxH = H * 0.78;
+    var maxW = W * (W < 700 ? 0.92 : 0.58);
+    var maxH = H * 0.9;
     var h = Math.min(maxH, maxW / PHI);
     var w = h * PHI;
     var x = W < 700 ? (W - w) / 2 : W - w - Math.min(W * 0.04, 48);
@@ -124,9 +125,11 @@
     }
 
     var dark = isDark();
-    var ruleA = (dark ? 0.75 : 0.38) + near * 0.25;
-    var arcLow = dark ? 0.32 : 0.12;
+    var ruleA = (dark ? 0.6 : 0.38) + near * 0.25;
+    var arcLow = dark ? 0.6 : 0.12;
     var arcHigh = dark ? 0.95 : 0.46;
+    /* In dark mode the figure is drawn in a very light blue. */
+    var LIGHT_BLUE = '#c9e0ff';
 
     ctx.save();
     ctx.translate(driftX, driftY);
@@ -137,7 +140,7 @@
     }
 
     /* The cuts, very faint. */
-    ctx.strokeStyle = css('--rule', '#e2e2e2');
+    ctx.strokeStyle = dark ? LIGHT_BLUE : css('--rule', '#e2e2e2');
     ctx.lineWidth = 1;
     ctx.globalAlpha = ruleA * Math.min(1, grow * 1.6);
     ctx.strokeRect(x, y, w, h);
@@ -146,7 +149,7 @@
     });
 
     /* The spiral, in the accent colour, brighter towards the eye. */
-    ctx.strokeStyle = css('--accent-display', '#1d3a5f');
+    ctx.strokeStyle = dark ? LIGHT_BLUE : css('--accent-display', '#1d3a5f');
     ctx.lineWidth = dark ? 1.6 : 1.4;
     ctx.lineCap = 'round';
     sqs.forEach(function (sq, i) {
@@ -159,7 +162,7 @@
     /* A dot in the eye. */
     if (last && grow > 0.98) {
       ctx.globalAlpha = dark ? 1 : 0.7;
-      ctx.fillStyle = css('--accent-display', '#1d3a5f');
+      ctx.fillStyle = dark ? LIGHT_BLUE : css('--accent-display', '#1d3a5f');
       ctx.beginPath();
       ctx.arc(eye[0], eye[1], 2.2 + near * 1.4, 0, 2 * Math.PI);
       ctx.fill();
@@ -174,14 +177,16 @@
   function tick() {
     var busy = false;
 
-    if (grow < 1) { grow = Math.min(1, grow + 0.018); busy = true; }
+    /* About six seconds for the whole figure, one square after another,
+       so the construction can be followed. */
+    if (grow < 1) { grow = Math.min(1, grow + 0.0028); busy = true; }
     if (Math.abs(driftX - wantX) > 0.2 || Math.abs(driftY - wantY) > 0.2) {
-      driftX += (wantX - driftX) * 0.08;
-      driftY += (wantY - driftY) * 0.08;
+      driftX += (wantX - driftX) * 0.04;
+      driftY += (wantY - driftY) * 0.04;
       busy = true;
     }
     if (Math.abs(turnNow - turn) > 0.002) {
-      turnNow += (turn - turnNow) * 0.09;
+      turnNow += (turn - turnNow) * 0.03;
       busy = true;
     } else { turnNow = turn; }
 
@@ -233,6 +238,7 @@
     window.addEventListener('click', function (e) {
       if (e.target.closest('a, button, input, select, textarea, .home-lede')) return;
       turn += 1;
+      if (!still) grow = 0;   /* draw it again from the largest square in */
       wake();
     });
   }

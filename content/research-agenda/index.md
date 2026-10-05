@@ -4,7 +4,7 @@ layout: "page"
 description: "Research questions and workstreams on algorithmic markets, professional work and public-sector AI governance"
 ---
 
-My research is organized around three workstreams. Drawing on economic sociology and science and technology studies, as well as the sociology of professions, I analyze how constantly, and fast-moving AI systems are adopted and governed within public institutions, in markets, as well as how they interfere with professional judgements, expertise and working practices.
+My research is organized around three workstreams. Drawing on economic sociology and science and technology studies, as well as the sociology of professions, I analyze how constantly changing and fast-moving AI systems are adopted and governed within public institutions, in markets, as well as how they interfere with professional judgements, expertise and working practices.
 
 ## Public-sector AI governance
 
