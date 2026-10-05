@@ -9,8 +9,8 @@
     {{ partial "nav.html" . }}
   </div>
 
-  {{/* Three settings - auto, light, dark - so three icons. Which one shows
-       is CSS, keyed off <html data-theme-pref>; theme.js writes the label. */}}
+  {{/* Sun for light, moon for dark. Which one shows is CSS, keyed off
+       <html data-theme-pref>; theme.js writes the label. */}}
   <button class="theme-toggle" type="button" aria-label="Theme">
     <svg class="icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor"
          stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

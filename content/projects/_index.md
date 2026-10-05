@@ -6,4 +6,4 @@ category_order:
   - "Past projects"
 ---
 
-Three projects have my attention at the moment, and older work sits further down. Next in line are a study of state orchestration of AI development in Denmark, and methodological work on how to study that orchestration as infrastructure. The questions behind all of it are in my [research agenda](/research-agenda/).
+My current research centres on public-sector AI governance, alongside ongoing work on insurance and risk. Upcoming work includes a study of state orchestration of AI development in Denmark and methodological work on how to study that orchestration as infrastructure.

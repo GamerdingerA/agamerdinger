@@ -7,4 +7,4 @@ category_order:
   - "Press & media"
 ---
 
-Below is a selection of talks I have given, along with press coverage of my work. To invite me to speak, write to [alexanderg@ikk.aau.dk](mailto:alexanderg@ikk.aau.dk).
+Below is a selection of talks I have given at academic conferences and for industry and public-sector audiences, along with press coverage of my work. To invite me to speak, write to [alexanderg@ikk.aau.dk](mailto:alexanderg@ikk.aau.dk).

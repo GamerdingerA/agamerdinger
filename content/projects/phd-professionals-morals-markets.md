@@ -3,4 +3,4 @@ date: 2025-06-01
 category: "Past projects"
 ---
 
-*Professionals, morals and markets.* My PhD project at Copenhagen Business School on the uneven algorithmization of life insurance, with a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Completed 2025.
+*Professionals, morals and markets.* My PhD project at Copenhagen Business School on the uneven algorithmization of behavioral life insurance, with a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Completed 2025.

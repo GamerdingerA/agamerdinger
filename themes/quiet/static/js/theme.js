@@ -14,14 +14,9 @@
 
   /* ---------- Theme toggle ----------
 
-     Three settings, cycled in a fixed order: auto -> light -> dark -> auto.
-     Auto means no stored preference, so the page follows the system and
-     keeps following it if the system changes later.
-
-     The icon names the setting rather than the colours on screen. Those
-     two come apart in auto - auto on a dark system and dark are the same
-     picture - and if the button showed the picture, the press between
-     them would look like it had done nothing at all. */
+     Light and dark. With no stored preference the page follows the
+     system and keeps following it if the system changes later. The icon
+     shows the colours on screen (sun for light, moon for dark). */
 
   var darkQuery = window.matchMedia
     ? window.matchMedia('(prefers-color-scheme: dark)')
@@ -31,18 +26,17 @@
     return darkQuery && darkQuery.matches ? 'dark' : 'light';
   }
 
-  /* null = auto. An unrecognised stored value gives indexOf -1, so the
-     next press lands on auto, which is the right place to recover to. */
-  var ORDER = [null, 'light', 'dark'];
-
+  /* Two states. Every press flips the colours on screen, so the first
+     press always does something visible. Until the reader presses, the
+     page follows the system. */
   function nextTheme() {
-    return ORDER[(ORDER.indexOf(T.savedTheme()) + 1) % ORDER.length];
+    return T.isDark() ? 'light' : 'dark';
   }
 
   function syncToggle() {
     if (!toggle) return;
-    var pref = T.savedTheme() || 'auto';
-    var next = nextTheme() || 'auto';
+    var pref = T.isDark() ? 'dark' : 'light';
+    var next = nextTheme();
 
     /* The icon is chosen in CSS from <html data-theme-pref>, set before
        the first paint. This mirror is here for anything scripting the
@@ -52,9 +46,7 @@
     /* Not aria-pressed: that describes two states, and there are three. */
     toggle.removeAttribute('aria-pressed');
 
-    var label = 'Theme: ' + (pref === 'auto'
-      ? 'auto, following the system (' + systemTheme() + ')'
-      : pref) + '. Switch to ' + (next === 'auto' ? 'auto' : next) + '.';
+    var label = 'Theme: ' + pref + '. Switch to ' + next + '.';
 
     toggle.setAttribute('aria-label', label);
     /* Also on hover - three states behind one icon is a lot to infer. */
@@ -63,11 +55,11 @@
 
   if (toggle) {
     toggle.addEventListener('click', function () {
-      var next = nextTheme();          // null = auto
+      var next = nextTheme();
       T.write('theme', next);          // only written once they interact
       T.setTheme(next);
       syncToggle();
-      track('theme-toggle', { to: next || 'auto' });
+      track('theme-toggle', { to: next });
     });
     syncToggle();
   }

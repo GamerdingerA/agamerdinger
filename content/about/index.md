@@ -6,21 +6,19 @@ photo: "/img/alexander-gamerdinger.webp"
 photo_alt: "Portrait of Alexander Gamerdinger"
 ---
 
-I am a postdoctoral researcher at the [Techno-Anthropology Lab](https://www.en.culture.aau.dk/research/research-groups/tantlab) at Aalborg University, where I study algorithmic markets and AI governance. My work follows how algorithmic systems are adopted and governed in insurance markets and in the public sector. I also study what these systems do to professional work.
+I am a postdoctoral researcher at the [Techno-Anthropology Lab](https://www.en.culture.aau.dk/research/research-groups/tantlab) at Aalborg University Copenhagen, where I currently work in the research project Infrastructuring the Public Sector's Use of AI ([IPA](https://vbn.aau.dk/en/projects/infrastructuring-the-public-sectors-use-of-ai/)). My work sits between economic sociology and science and technology studies, and draws on the sociology of professions.
 
-I am particularly interested in why some algorithmic systems take root in organizations while others never gain traction, even when they are technically feasible and economically valuable. My current work examines how governments orchestrate and govern the development of public-sector AI infrastructures, comparing Danish initiatives with those in the other Nordic countries.
+I study how algorithmic systems are adopted and governed in markets and in the public sector, and what they do to professional work, judgement and expertise. I am particularly interested in why some algorithmic systems take root in organizations while others fail to gain traction, even when they are technically feasible and economically valuable.
 
-Alongside my academic work, I advise organizations on AI governance and responsible AI use.
+My current research examines how the Nordic governments orchestrate the development and scaling of AI across their public sectors.
 
 ## Background
 
-In my doctoral research I studied the adoption of AI in the life insurance industry. I looked at how professional ideologies and ethical principles shape decisions about data use and algorithm design, and how regulation sets the limits of what counts as a morally acceptable AI system. The work traced a striking paradox. Behavioral data and machine learning are used more and more for loss prevention, yet they remain far less common in pricing and actuarial risk calculation. Across several articles I showed that this comes down to the moral frameworks and professional cultures of data professionals.
+In my doctoral research, I investigated the adoption of AI in the Danish life insurance industry. I examined how professional ideologies and ethical principles shape decisions about data use and algorithm design, and how regulation defines the boundaries of a morally acceptable AI system. The research identified a paradox. Behavioral data and machine learning are increasingly used for loss prevention, yet they remain far less common in pricing and actuarial risk calculation. Across several articles, I trace this uneven algorithmization to the moral authority and professional cultures of data professionals, and to the legitimacy that different uses of AI can claim within the market and beyond it.
 
-I completed my PhD in economic sociology at Copenhagen Business School in 2025, with a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Before that I took a BSc and an MSc in International Business and Politics at CBS. During my studies I worked as an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/), and I still follow the wellbeing and post-growth movement closely.
+I completed my PhD in economic sociology at Copenhagen Business School in 2025 with the thesis Professionals, Morals and Markets: The Uneven Algorithmization of Behavioral Life Insurance. The PhD included a research stay at [SCANCOR](https://scancor.org/about/), Stanford University. Before my doctoral studies, I completed a BSc and an MSc in International Business and Politics at CBS. During my studies, I worked as an analyst at the [Happiness Research Institute](https://www.happinessresearchinstitute.com/).
 
-I am a consultative expert on data use in insurance at the European Insurance and Occupational Pensions Authority (EIOPA), where I am developing a report on the ethical boundaries of data use and what they mean for risk mutualization.
-
-Course materials from my teaching at CBS are on the [teaching](/teaching/) page.
+Alongside my academic work, I serve as Consultative Expert on Data Use in Insurance at the European Insurance and Occupational Pensions Authority (EIOPA), where I am developing a report on the ethical boundaries of data use and their implications for risk mutualization. I also advise public- and private-sector organizations on AI governance and responsible AI use.
 
 ## Contact
 
