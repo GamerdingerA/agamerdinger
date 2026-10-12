@@ -6,4 +6,4 @@ category_order:
   - "Past projects"
 ---
 
-My current research centres on public-sector AI governance, alongside ongoing work on insurance and risk. Upcoming work includes a study of state orchestration of AI development in Denmark and methodological work on how to study that orchestration as infrastructure.
+Below, please find a list of current and past projects I am working on.
