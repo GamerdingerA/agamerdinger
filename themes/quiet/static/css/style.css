@@ -1919,3 +1919,51 @@ body.page > footer { position: relative; z-index: 1; }
 /* The full-width paper behind the sticky bar reaches past the scrollbar;
    clip rather than hidden, so sticky positioning keeps working. */
 body.page { overflow-x: clip; }
+
+/* ---------- A button inside an entry ---------- */
+
+/* For a link that leads somewhere bigger than a page, such as the funding
+   tracker from the IPA entry on the projects page. Same thin rule and
+   2px corners as the filter controls, ink text, accent on hover. */
+.entry-cta { margin-top: 0.9rem; }
+
+.entry-body a.cta,
+a.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.5rem 0.85rem 0.5rem 0.7rem;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+a.cta svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: var(--accent-display);
+}
+
+a.cta .cta-note { color: var(--muted); }
+
+a.cta .cta-arrow {
+  color: var(--accent-display);
+  transition: transform 120ms ease;
+}
+
+.entry-body a.cta:hover,
+.entry-body a.cta:focus-visible,
+a.cta:hover,
+a.cta:focus-visible {
+  color: var(--accent-display);
+  border-color: var(--accent-display);
+}
+
+a.cta:hover .cta-arrow,
+a.cta:focus-visible .cta-arrow { transform: translateX(2px); }

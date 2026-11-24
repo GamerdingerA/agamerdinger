@@ -1,13 +1,16 @@
-<header class="shell topbar">
+<header class="shell topbar{{ if .Params.hide_site_nav }} topbar-bare{{ end }}">
   {{/* Name and nav are wrapped together so that they, and only they, are
        what reflows on a narrow screen. The toggle is a sibling of the pair
        rather than a third thing competing for the same row, so it can never
        be pushed out of the bar and left stranded on a line of its own. */}}
+  {{/* Pages with hide_site_nav in their front matter keep only the toggle. */}}
+  {{ if not .Params.hide_site_nav }}
   <div class="topbar-main">
     <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
 
     {{ partial "nav.html" . }}
   </div>
+  {{ end }}
 
   {{/* Sun for light, moon for dark. Which one shows is CSS, keyed off
        <html data-theme-pref>; theme.js writes the label. */}}

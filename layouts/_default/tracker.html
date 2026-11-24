@@ -1,0 +1,81 @@
+{{/* Shows the dashboard in static/nordic-ai-funding/dashboard/ in a frame that follows the light and dark toggle. */}}
+{{ define "main" }}
+<style>
+  /* This page only: a wider column for the charts. Header and footer
+     follow, so the page keeps one edge. */
+  :root { --measure: 64rem; }
+  /* The top bar here holds only the theme toggle (hide_site_nav), so it
+     stays at the top of the page instead of following the scroll. */
+  body.page .topbar.topbar-bare { position: relative; padding-block: 1.25rem 0.25rem; }
+  body.page .topbar.topbar-bare.is-hidden { transform: none; pointer-events: auto; }
+  body.page .topbar.topbar-bare::before { box-shadow: none; }
+  .tracker-frame {
+    display: block;
+    width: 100%;
+    height: 4400px;
+    border: 0;
+    background: var(--paper);
+  }
+  .tracker-fallback { font-family: 'Inter', system-ui, sans-serif; font-size: 0.9rem; color: var(--muted); }
+</style>
+
+<main class="shell">
+  <h1 class="sr-only">{{ .Title }}</h1>
+
+  <iframe class="tracker-frame" id="tracker-frame" title="{{ .Title }}"
+          data-src="{{ "nordic-ai-funding/dashboard/" | relURL }}"></iframe>
+
+  <noscript>
+    <p class="tracker-fallback">
+      <a href="{{ "nordic-ai-funding/dashboard/" | relURL }}">Open the dashboard on its own page</a>.
+    </p>
+  </noscript>
+
+  <p class="back"><a href="{{ "projects/" | relURL }}">&larr; Projects</a></p>
+</main>
+
+<script>
+(function () {
+  var frame = document.getElementById('tracker-frame');
+  var root  = document.documentElement;
+
+  /* The colours on screen right now. theme-init.html keeps
+     data-theme-pref at "light" or "dark", following the toggle or,
+     when nothing is chosen, the system setting. */
+  function theme() {
+    var t = root.getAttribute('data-theme-pref');
+    if (t === 'light' || t === 'dark') return t;
+    return (window.SiteTheme && window.SiteTheme.isDark()) ? 'dark' : 'light';
+  }
+
+  function send() {
+    if (frame.contentWindow) frame.contentWindow.postMessage({ ipaTheme: theme() }, '*');
+  }
+
+  /* Start the dashboard in the right theme, so it never flashes the
+     other one. */
+  frame.src = frame.getAttribute('data-src') + '?embed=1&theme=' + theme();
+
+  /* The toggle, the system setting and the accent picker all end in
+     SiteTheme.setTheme, which rewrites these attributes. */
+  new MutationObserver(send).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-theme-pref'] });
+  frame.addEventListener('load', send);
+
+  window.addEventListener('message', function (e) {
+    if (e.source !== frame.contentWindow || !e.data) return;
+    if (e.data.ipaReady) send();
+    if (e.data.ipaTrackerHeight) frame.style.height = Math.ceil(e.data.ipaTrackerHeight) + 'px';
+    /* A link to a section of the dashboard (its table of contents). The
+       frame has no scrollbar of its own, so the window scrolls instead. */
+    if (typeof e.data.ipaScrollTo === 'number') {
+      var bar = document.querySelector('.topbar');
+      var sticky = bar && getComputedStyle(bar).position === 'sticky';
+      var y = frame.getBoundingClientRect().top + window.pageYOffset + e.data.ipaScrollTo
+              - (sticky ? bar.offsetHeight : 0) - 20;
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: Math.max(0, y), behavior: still ? 'auto' : 'smooth' });
+    }
+  });
+})();
+</script>
+{{ end }}
