@@ -22,3 +22,10 @@
   from = "/research/"
   to = "/publications/"
   status = 301
+
+# The funding tracker moved to its own site.
+[[redirects]]
+  from = "/nordic-ai-funding/*"
+  to = "https://public-ai-funding-tracker.org/"
+  status = 301
+  force = true
