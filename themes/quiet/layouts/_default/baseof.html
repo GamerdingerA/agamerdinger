@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="{{ if .IsHome }}home has-golden{{ else }}page{{ end }}">
+<body class="{{ if .IsHome }}home has-golden{{ else }}page{{ with .Section }} section-{{ . }}{{ end }}{{ end }}">
 
   {{ if .IsHome }}{{ partial "golden.html" . }}{{ end }}
   {{/* The reading spiral on every inner page except the teaching pages and pages with hide_golden_mark in their front matter. */}}

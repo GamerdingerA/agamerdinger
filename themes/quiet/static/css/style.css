@@ -1967,3 +1967,9 @@ a.cta:focus-visible {
 
 a.cta:hover .cta-arrow,
 a.cta:focus-visible .cta-arrow { transform: translateX(2px); }
+
+/* Project names on the projects page, in the same blue as the research
+   questions on the research agenda page. */
+.section-projects .entry-body > p:first-child > em:first-child {
+  color: var(--question, var(--accent-display));
+}
