@@ -1,6 +1,6 @@
 ---
 date: 2021-03-01
-category: "Reports"
+category: "Non-peer-reviewed publications"
 tags: ["wellbeing economy", "Nordic countries", "policy"]
 ---
 

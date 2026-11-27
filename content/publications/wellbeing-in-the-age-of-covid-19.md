@@ -1,6 +1,6 @@
 ---
 date: 2020-06-01
-category: "Reports"
+category: "Non-peer-reviewed publications"
 tags: ["wellbeing economy", "COVID-19"]
 ---
 

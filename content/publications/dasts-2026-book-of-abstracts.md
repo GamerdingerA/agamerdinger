@@ -1,6 +1,6 @@
 ---
 date: 2026-06-01
-category: "Reports"
+category: "Non-peer-reviewed publications"
 tags: ["infrastructure", "STS"]
 ---
 

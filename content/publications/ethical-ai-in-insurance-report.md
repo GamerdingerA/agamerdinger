@@ -1,6 +1,6 @@
 ---
 date: 2024-10-01
-category: "Reports"
+category: "Non-peer-reviewed publications"
 tags: ["AI ethics", "insurance", "data ethics"]
 ---
 
